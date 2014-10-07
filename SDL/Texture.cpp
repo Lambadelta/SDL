@@ -1,11 +1,13 @@
+#pragma once
 #include "Texture.h"
+
 /*Constructor*/
 Texture::Texture()
 {
 	cTexture = NULL;
 	cImage = NULL;
-	cRenderer = NULL;
-	cDestRect = NULL;
+	cDestRect.x = NULL;
+	cDestRect.y = NULL;
 }
 
 /*Destructor*/
@@ -27,14 +29,15 @@ bool Texture::loadFromFile(std::string path)
 		return -1;
 	}
 }
-void Texture::createRenderer(SDL_Window * window)
-{
-	cRenderer = SDL_CreateRenderer(window, -1, 0);
-}
 
-void Texture::Render()
+void Texture::Render(SDL_Renderer* cRenderer)
 {
-	SDL_Texture * cTexture = SDL_CreateTextureFromSurface(cRenderer, cImage);
+	cTexture = SDL_CreateTextureFromSurface(cRenderer, cImage);
+	if (cTexture == NULL)
+	{
+		std::cout << "Unable to create texture from %s! SDL Error: %s\n", SDL_GetError();
+	}
+
 }
 
 /*Deallocate the texture data*/
@@ -44,13 +47,13 @@ void Texture::Deallocate()
 	SDL_DestroyTexture(cTexture);
 }
 /*Sets colour*/
-void Texture::setColour()
+void Texture::setColour(SDL_Renderer* cRenderer)
 {
 	// Set the colour for drawing, set to red here
 	SDL_SetRenderDrawColor(cRenderer, 0xFF, 0x0, 0x0, 0xFF);
 }
 /*Clears the colour*/
-void Texture::clearColour()
+void Texture::clearColour(SDL_Renderer* cRenderer)
 {
 	SDL_RenderClear(cRenderer);
 }
@@ -67,15 +70,11 @@ void Texture::setRect()
 
 }
 
-SDL_Renderer* Texture::getRenderer()
-{
-	return &cRenderer;
-}
-void Texture::CopyToScreen()
+void Texture::CopyToScreen(SDL_Renderer* cRenderer)
 {
 	SDL_RenderCopy(cRenderer, cTexture, NULL, &cDestRect);
 }
-void Texture::ShowScreen()
+void Texture::ShowScreen(SDL_Renderer* cRenderer)
 {
 	SDL_RenderPresent(cRenderer);
 }
@@ -84,12 +83,13 @@ void Texture::QureyTexture()
 	// Query the texture to get its original width and height
 	SDL_QueryTexture(cTexture, NULL, NULL, &cDestRect.w, &cDestRect.h);
 }
-void Texture::ProcessTexture(SDL_Window* window, std::string path)
+void Texture::ProcessTexture(SDL_Renderer* cRenderer)
 {
-	loadFromFile(path);
-	createRenderer(SDL_Window * window);
-	Render();
-	CopyToScreen();
-	ShowScreen();
+	setRect();
+	setColour(cRenderer);
+	Render(cRenderer);
+	QureyTexture();
+	CopyToScreen(cRenderer);
+	ShowScreen(cRenderer);
 
 }

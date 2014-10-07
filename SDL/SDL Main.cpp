@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
 	int winPosY = 100;
 	int winWidth = 640;
 	int winHeight = 480;
-	SDL_Window *window = SDL_CreateWindow("My Window!!!",  // The first parameter is the window title
+	SDL_Window *window = SDL_CreateWindow("SDL Main",  // The first parameter is the window title
 		winPosX, winPosY,
 		winWidth, winHeight,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	// When we create it we tell it which SDL_Window we want it to render to
 	// That renderer can only be used for this window
 	// (yes, we can have multiple windows - feel free to have a play sometime)
-	// SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
+	 SDL_Renderer * cRenderer = SDL_CreateRenderer(window, -1, 0);
 
 
 
@@ -69,32 +69,7 @@ int main(int argc, char *argv[])
 	Texture Scene;
 	// Now we will load our texture
 	std::string filename("image.bmp");
-	Scene.ProcessTexture(window,filename)
-
-	// First we load it to what SDL calls a 'surface'
-	// This is just a raw collection of pixels
-
-	//	SDL_Surface * image = SDL_LoadBMP(filename.c_str());
-	//	if (!image)
-	//	{
-	//		// We'll do a quick check here because it's easy to get filenames or directories wrong
-	//		std::cout << "Oh dear, sorry but I can't find your image file. This brings me great sadness :(" << std::endl;
-	//		SDL_Delay(100);
-	//		SDL_Quit();
-	//		return -1;
-	//	}
-
-	// Next we convert the SDL_Surface into what it calls a 'texture'
-	// This is kinda similar, but because it's bound to a renderer, SDL can make some useful optimisations behind the scenes
-	// This will make it draw to the screen faster
-
-	// SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
-
-	// We've now finished with our raw pixel data, so we can get rid of it
-
-	//SDL_FreeSurface(image);
-
-
+	Scene.loadFromFile(filename);
 
 	// Ok, hopefully finished with initialisation now
 	// Let's go and draw something!
@@ -147,32 +122,6 @@ int main(int argc, char *argv[])
 		// (nothing to update for now)
 
 
-		// Draw our worldScene[0]->getRenderer(cRenderer)
-
-		// Start by clearing what was drawn before
-		// Set the colour for drawing, set to red here
-		// Clear the entire screen to our selected colour
-		/*SDL_RenderClear(renderer);*/
-
-
-		// Ok, now we want to draw our texture to the screen
-		// First we're going to declare an SDL_Rect which we will use for specifying where in the window it should be drawn and how big it should be
-		// We will ultimately do a memory copy from our texture to the window and traditionally we say we are copying from a 'source' to a 'destination'
-		// This rectangle will specify the destination parameters for us
-		//SDL_Rect destRect;
-		//// SDL has (0,0) at the top left corner - check this by playing about with the numbers!
-		//destRect.x = 100;
-		//destRect.y = 100;
-
-		//// Query the texture to get its original width and height
-		//SDL_QueryTexture(texture, NULL, NULL, &destRect.w, &destRect.h);
-
-		// Here we are telling the renderer to copy the texture memory to our screen,
-		// at the position of the rectangle we specify
-		//SDL_RenderCopy(renderer, texture, NULL, &destRect);
-
-
-
 
 		// To be honest because we're not actually changing anything each time we draw our texture, the whole game loop is a bit of an overkill
 		// The point is though, I wanted to show you this way of doing things so that when we *do* change stuff each frame
@@ -186,6 +135,7 @@ int main(int argc, char *argv[])
 		// This tells the renderer to actually show its contents to the screen
 		// We'll get into this sort of thing at a later date - or just look up 'double buffering' if you're impatient :P
 		/*SDL_RenderPresent(renderer);*/
+		Scene.ProcessTexture(cRenderer);
 	}
 
 	// If we get outside the main game loop, it means our user has requested we exit
@@ -194,21 +144,7 @@ int main(int argc, char *argv[])
 	// Our cleanup phase, hopefully fairly self-explanatory ;)
 	/*SDL_DestroyTexture(texture);
 	SDL_DestroyWindow(window);*/
-	for (int iQuit = 0; iQuit > sizeof(Scene); iQuit++)
-	{
-		Scene[iQuit]->Deallocate;
-	}
 	SDL_Quit();
 
 	return 0;
-}
-
-void ProcessTexture(Texture& Scene, SDL_Window* window, std::string filename,)
-{
-	loadFromFile(filename);
-	createRenderer(SDL_Window * window);
-	Render();
-	CopyToScreen();
-	ShowScreen();
-
 }

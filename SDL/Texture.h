@@ -1,3 +1,6 @@
+#include <SDL.h>
+#include <string>
+#include <iostream>
 class Texture
 {
 public:
@@ -13,33 +16,27 @@ public:
 	/*Deallocate the texture data*/
 	void Deallocate();
 	/*Sets colour*/
-	void setColour();
+	void setColour(SDL_Renderer* cRenderer);
 	/*Clears the colour*/
-	void clearColour();
+	void clearColour(SDL_Renderer* cRenderer);
 	/*Sets Alpha*/
 	void setAlpha();
-	/*Create the Renderer*/
-	void createRenderer(SDL_Window * window);
 	/*Where the texture will be drawn*/
 	void setRect();
 	/*Function to render the texture*/
-	void Render();
+	void Render(SDL_Renderer* cRenderer);
 	/*Function to send the texture to the screen*/
-	void CopyToScreen();
-	void ShowScreen();
+	void CopyToScreen(SDL_Renderer* cRenderer);
+	void ShowScreen(SDL_Renderer* cRenderer);
 	void QureyTexture();
-	void ProcessTexture(SDL_Window* window, std::string path);
+	void ProcessTexture(SDL_Renderer* cRenderer);
 
-	
-	
-	SDL_Renderer* getRenderer();
 
 
 private:
 	/*Texture pointer declaration*/
 	SDL_Texture* cTexture;
 	SDL_Surface* cImage;
-	SDL_Renderer* cRenderer;
 	SDL_Rect cDestRect;
 	/*Height and Width dimensions for the texture*/
 	int iWidth;
