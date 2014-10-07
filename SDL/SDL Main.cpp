@@ -1,12 +1,18 @@
 // This is the main SDL include file
 #include <SDL.h>
 // iostream is so we can output error messages to console
-#include <iostream>
+#include <iostream> 
+/*Include strings*/
+#include <string>
+/*Include vector*/
+#include <vector>
+/*These are class headers*/
+#include "Texture.h"
+
 
 int main(int argc, char *argv[])
 {
 	// This is our initialisation phase
-
 	// SDL_Init is the main initialisation function for SDL
 	// It takes a 'flag' parameter which we use to tell SDL what systems we're going to use
 	// Here, we want to use SDL's video system, so we give it the flag for this
@@ -53,36 +59,40 @@ int main(int argc, char *argv[])
 	// When we create it we tell it which SDL_Window we want it to render to
 	// That renderer can only be used for this window
 	// (yes, we can have multiple windows - feel free to have a play sometime)
-	SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
+	// SDL_Renderer * renderer = SDL_CreateRenderer(window, -1, 0);
 
 
 
 
 
 
-
+	Texture Scene;
 	// Now we will load our texture
 	std::string filename("image.bmp");
+	Scene.ProcessTexture(window,filename)
 
 	// First we load it to what SDL calls a 'surface'
 	// This is just a raw collection of pixels
-	SDL_Surface * image = SDL_LoadBMP(filename.c_str());
-	if (!image)
-	{
-		// We'll do a quick check here because it's easy to get filenames or directories wrong
-		std::cout << "Oh dear, sorry but I can't find your image file. This brings me great sadness :(" << std::endl;
-		SDL_Delay(100);
-		SDL_Quit();
-		return -1;
-	}
+
+	//	SDL_Surface * image = SDL_LoadBMP(filename.c_str());
+	//	if (!image)
+	//	{
+	//		// We'll do a quick check here because it's easy to get filenames or directories wrong
+	//		std::cout << "Oh dear, sorry but I can't find your image file. This brings me great sadness :(" << std::endl;
+	//		SDL_Delay(100);
+	//		SDL_Quit();
+	//		return -1;
+	//	}
 
 	// Next we convert the SDL_Surface into what it calls a 'texture'
 	// This is kinda similar, but because it's bound to a renderer, SDL can make some useful optimisations behind the scenes
 	// This will make it draw to the screen faster
-	SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
+
+	// SDL_Texture * texture = SDL_CreateTextureFromSurface(renderer, image);
 
 	// We've now finished with our raw pixel data, so we can get rid of it
-	SDL_FreeSurface(image);
+
+	//SDL_FreeSurface(image);
 
 
 
@@ -137,30 +147,29 @@ int main(int argc, char *argv[])
 		// (nothing to update for now)
 
 
-		// Draw our world
+		// Draw our worldScene[0]->getRenderer(cRenderer)
 
 		// Start by clearing what was drawn before
 		// Set the colour for drawing, set to red here
-		SDL_SetRenderDrawColor(renderer, 0xFF, 0x0, 0x0, 0xFF);
 		// Clear the entire screen to our selected colour
-		SDL_RenderClear(renderer);
+		/*SDL_RenderClear(renderer);*/
 
 
 		// Ok, now we want to draw our texture to the screen
 		// First we're going to declare an SDL_Rect which we will use for specifying where in the window it should be drawn and how big it should be
 		// We will ultimately do a memory copy from our texture to the window and traditionally we say we are copying from a 'source' to a 'destination'
 		// This rectangle will specify the destination parameters for us
-		SDL_Rect destRect;
-		// SDL has (0,0) at the top left corner - check this by playing about with the numbers!
-		destRect.x = 100;
-		destRect.y = 100;
+		//SDL_Rect destRect;
+		//// SDL has (0,0) at the top left corner - check this by playing about with the numbers!
+		//destRect.x = 100;
+		//destRect.y = 100;
 
-		// Query the texture to get its original width and height
-		SDL_QueryTexture(texture, NULL, NULL, &destRect.w, &destRect.h);
+		//// Query the texture to get its original width and height
+		//SDL_QueryTexture(texture, NULL, NULL, &destRect.w, &destRect.h);
 
 		// Here we are telling the renderer to copy the texture memory to our screen,
 		// at the position of the rectangle we specify
-		SDL_RenderCopy(renderer, texture, NULL, &destRect);
+		//SDL_RenderCopy(renderer, texture, NULL, &destRect);
 
 
 
@@ -176,16 +185,30 @@ int main(int argc, char *argv[])
 
 		// This tells the renderer to actually show its contents to the screen
 		// We'll get into this sort of thing at a later date - or just look up 'double buffering' if you're impatient :P
-		SDL_RenderPresent(renderer);
+		/*SDL_RenderPresent(renderer);*/
 	}
 
 	// If we get outside the main game loop, it means our user has requested we exit
 
 
 	// Our cleanup phase, hopefully fairly self-explanatory ;)
-	SDL_DestroyTexture(texture);
-	SDL_DestroyWindow(window);
+	/*SDL_DestroyTexture(texture);
+	SDL_DestroyWindow(window);*/
+	for (int iQuit = 0; iQuit > sizeof(Scene); iQuit++)
+	{
+		Scene[iQuit]->Deallocate;
+	}
 	SDL_Quit();
 
 	return 0;
+}
+
+void ProcessTexture(Texture& Scene, SDL_Window* window, std::string filename,)
+{
+	loadFromFile(filename);
+	createRenderer(SDL_Window * window);
+	Render();
+	CopyToScreen();
+	ShowScreen();
+
 }

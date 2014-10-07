@@ -1,14 +1,35 @@
-﻿Build started 07/10/2014 13:21:04.
-     1>Project "c:\Users\lambadelta\documents\visual studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
+﻿Build started 07/10/2014 16:00:23.
+     1>Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "SDL Main.cpp"
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "SDL Main.cpp" Texture.cpp
+         Texture.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.h(11): error C2039: 'string' : is not a member of 'std'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.h(11): error C2061: syntax error : identifier 'string'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.h(26): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.h(26): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.h(27): error C2143: syntax error : missing ';' before '*'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.h(27): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(15): error C2039: 'string' : is not a member of 'std'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(15): error C2065: 'string' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(15): error C2146: syntax error : missing ')' before identifier 'path'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(15): error C2761: 'bool Texture::loadFromFile(void)' : member function redeclaration not allowed
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(15): error C2059: syntax error : ')'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(16): error C2143: syntax error : missing ';' before '{'
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(16): error C2447: '{' : missing function header (old-style formal list?)
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): error C2065: 'SDL_Texture' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): error C2065: 'cTexture' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): error C2065: 'renderer' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): error C2065: 'cImage' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): error C3861: 'SDL_CreateTextureFromSurface': identifier not found
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(36): error C2065: 'cImage' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(36): error C3861: 'SDL_FreeSurface': identifier not found
          SDL Main.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"c:\users\lambadelta\documents\visual studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"c:\users\lambadelta\documents\visual studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"c:\users\lambadelta\documents\visual studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 "Debug\SDL Main.obj"
-     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
-         SDL.vcxproj -> c:\users\lambadelta\documents\visual studio 2013\Projects\SDL\Debug\SDL.exe
-     1>Done Building Project "c:\Users\lambadelta\documents\visual studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)).
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\sdl main.cpp(165): error C2065: 'texture' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\sdl main.cpp(169): error C2065: 'texture' : undeclared identifier
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\sdl main.cpp(192): error C2065: 'texture' : undeclared identifier
+         Generating Code...
+     1>Done Building Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:02.54
+Time Elapsed 00:00:00.40
