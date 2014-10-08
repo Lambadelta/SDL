@@ -59,17 +59,19 @@ int main(int argc, char *argv[])
 	// When we create it we tell it which SDL_Window we want it to render to
 	// That renderer can only be used for this window
 	// (yes, we can have multiple windows - feel free to have a play sometime)
-	 SDL_Renderer * cRenderer = SDL_CreateRenderer(window, -1, 0);
+	 SDL_Renderer * Renderer = SDL_CreateRenderer(window, -1, 0);
 
 
+	 
+	 int Background_x = 0;
+	 int Background_y = 0;
 
 
-
-
-	Texture Scene;
+	
 	// Now we will load our texture
 	std::string filename("image.bmp");
-	Scene.loadFromFile(filename);
+	Texture * Scene = new Texture(filename,Background_x,Background_y);
+	Scene->Render(Renderer);
 
 	// Ok, hopefully finished with initialisation now
 	// Let's go and draw something!
@@ -135,7 +137,7 @@ int main(int argc, char *argv[])
 		// This tells the renderer to actually show its contents to the screen
 		// We'll get into this sort of thing at a later date - or just look up 'double buffering' if you're impatient :P
 		/*SDL_RenderPresent(renderer);*/
-		Scene.ProcessTexture(cRenderer);
+		Scene->ProcessTexture(Renderer);
 	}
 
 	// If we get outside the main game loop, it means our user has requested we exit

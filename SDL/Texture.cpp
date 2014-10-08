@@ -2,12 +2,13 @@
 #include "Texture.h"
 
 /*Constructor*/
-Texture::Texture()
+Texture::Texture(std::string path, int x, int y)
 {
 	cTexture = NULL;
 	cImage = NULL;
-	cDestRect.x = NULL;
-	cDestRect.y = NULL;
+	loadFromFile(path);
+	cDestRect.x = x;
+	cDestRect.y = y;
 }
 
 /*Destructor*/
@@ -35,9 +36,8 @@ void Texture::Render(SDL_Renderer* cRenderer)
 	cTexture = SDL_CreateTextureFromSurface(cRenderer, cImage);
 	if (cTexture == NULL)
 	{
-		std::cout << "Unable to create texture from %s! SDL Error: %s\n", SDL_GetError();
+		std::cout << "Unable to create texture from \n";
 	}
-
 }
 
 /*Deallocate the texture data*/
@@ -53,22 +53,22 @@ void Texture::setColour(SDL_Renderer* cRenderer)
 	SDL_SetRenderDrawColor(cRenderer, 0xFF, 0x0, 0x0, 0xFF);
 }
 /*Clears the colour*/
-void Texture::clearColour(SDL_Renderer* cRenderer)
+void Texture::clear(SDL_Renderer* Renderer)
 {
-	SDL_RenderClear(cRenderer);
+	SDL_RenderClear(Renderer);
 }
 /*Sets Alpha*/
 void Texture::setAlpha()
 {
 	
 }
-void Texture::setRect()
-{
-	// SDL has (0,0) at the top left corner - check this by playing about with the numbers!
-	cDestRect.x = 100;
-	cDestRect.y = 100;
-
-}
+//void Texture::setRect()
+//{
+//	// SDL has (0,0) at the top left corner - check this by playing about with the numbers!
+//	cDestRect.x = 0;
+//	cDestRect.y = 0;
+//
+//}
 
 void Texture::CopyToScreen(SDL_Renderer* cRenderer)
 {
@@ -83,13 +83,12 @@ void Texture::QureyTexture()
 	// Query the texture to get its original width and height
 	SDL_QueryTexture(cTexture, NULL, NULL, &cDestRect.w, &cDestRect.h);
 }
-void Texture::ProcessTexture(SDL_Renderer* cRenderer)
+void Texture::ProcessTexture(SDL_Renderer* Renderer)
 {
-	setRect();
-	setColour(cRenderer);
-	Render(cRenderer);
+	setColour(Renderer);
+	clear(Renderer);
 	QureyTexture();
-	CopyToScreen(cRenderer);
-	ShowScreen(cRenderer);
+	CopyToScreen(Renderer);
+	ShowScreen(Renderer);
 
 }

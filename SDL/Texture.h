@@ -5,7 +5,7 @@ class Texture
 {
 public:
 	/*Constructor*/
-	Texture();
+	Texture(std::string path, int, int);
 
 	/*Destructor*/
 	~Texture();
@@ -16,13 +16,13 @@ public:
 	/*Deallocate the texture data*/
 	void Deallocate();
 	/*Sets colour*/
-	void setColour(SDL_Renderer* cRenderer);
+	void setColour(SDL_Renderer* Renderer);
 	/*Clears the colour*/
-	void clearColour(SDL_Renderer* cRenderer);
+	void clear(SDL_Renderer* cRenderer);
 	/*Sets Alpha*/
 	void setAlpha();
 	/*Where the texture will be drawn*/
-	void setRect();
+	/*void setRect();*/
 	/*Function to render the texture*/
 	void Render(SDL_Renderer* cRenderer);
 	/*Function to send the texture to the screen*/
@@ -33,7 +33,7 @@ public:
 
 
 
-private:
+protected:
 	/*Texture pointer declaration*/
 	SDL_Texture* cTexture;
 	SDL_Surface* cImage;
