@@ -1,18 +1,16 @@
-﻿Build started 07/10/2014 23:40:22.
+﻿Build started 08/10/2014 18:34:37.
      1>Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "SDL Main.cpp" Texture.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt "SDL Main.cpp" Sprite.cpp Texture.cpp
          Texture.cpp
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): warning C4305: 'return' : truncation from 'int' to 'bool'
+         Sprite.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\sprite.cpp(3): error C2512: 'Texture' : no appropriate default constructor available
          SDL Main.cpp
          Generating Code...
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(32): warning C4715: 'Texture::loadFromFile' : not all control paths return a value
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 "Debug\SDL Main.obj"
-         Debug\Texture.obj
-         SDL.vcxproj -> C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe
-     1>Done Building Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)).
+     1>Done Building Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)) -- FAILED.
 
-Build succeeded.
+Build FAILED.
 
-Time Elapsed 00:00:01.77
+Time Elapsed 00:00:01.88
