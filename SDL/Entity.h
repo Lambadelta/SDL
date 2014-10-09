@@ -1,3 +1,5 @@
+#ifndef ENTITY_H
+#define ENTITY_H
 #include <SDL.h>
 #include <iostream>
 #include "Vec2.h"
@@ -8,3 +10,5 @@ public:
 
 private:
 };
+
+#endif

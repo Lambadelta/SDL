@@ -31,14 +31,14 @@ int main(int argc, char *argv[])
 	// Now we have got SDL initialised, we are ready to create a window!
 	// These are some variables to help show you what the parameters are for this function
 	// You can experiment with the numbers to see what they do
-	int winPosX = 100;
+	/*int winPosX = 100;
 	int winPosY = 100;
 	int winWidth = 640;
-	int winHeight = 480;
-	SDL_Window *window = SDL_CreateWindow("SDL Main",  // The first parameter is the window title
-		winPosX, winPosY,
-		winWidth, winHeight,
-		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+	int winHeight = 480;*/
+	//SDL_Window *window = SDL_CreateWindow("SDL Main",  // The first parameter is the window title
+	//	winPosX, winPosY,
+	//	winWidth, winHeight,
+	//	SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 	// The last parameter lets us specify a number of options
 	// Here, we tell SDL that we want the window to be shown and that it can be resized
 	// You can learn more about SDL_CreateWindow here: https://wiki.libsdl.org/SDL_CreateWindow?highlight=%28\bCategoryVideo\b%29|%28CategoryEnum%29|%28CategoryStruct%29
