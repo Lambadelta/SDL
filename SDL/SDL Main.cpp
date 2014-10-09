@@ -136,7 +136,6 @@ int main(int argc, char *argv[])
 
 		// This tells the renderer to actually show its contents to the screen
 		// We'll get into this sort of thing at a later date - or just look up 'double buffering' if you're impatient :P
-		/*SDL_RenderPresent(renderer);*/
 		Scene->ProcessTexture(Renderer);
 	}
 

@@ -31,9 +31,9 @@ bool Texture::loadFromFile(std::string path)
 	}
 }
 
-void Texture::Render(SDL_Renderer* cRenderer)
+void Texture::Render(SDL_Renderer* BackRenderer)
 {
-	cTexture = SDL_CreateTextureFromSurface(cRenderer, cImage);
+	cTexture = SDL_CreateTextureFromSurface(BackRenderer, cImage);
 	if (cTexture == NULL)
 	{
 		std::cout << "Unable to create texture from \n";
@@ -47,15 +47,15 @@ void Texture::Deallocate()
 	SDL_DestroyTexture(cTexture);
 }
 /*Sets colour*/
-void Texture::setColour(SDL_Renderer* cRenderer)
+void Texture::setColour(SDL_Renderer* BackRenderer)
 {
 	// Set the colour for drawing, set to red here
-	SDL_SetRenderDrawColor(cRenderer, 0xFF, 0x0, 0x0, 0xFF);
+	SDL_SetRenderDrawColor(BackRenderer, 0xFF, 0x0, 0x0, 0xFF);
 }
 /*Clears the colour*/
-void Texture::clear(SDL_Renderer* Renderer)
+void Texture::clear(SDL_Renderer* BackRenderer)
 {
-	SDL_RenderClear(Renderer);
+	SDL_RenderClear(BackRenderer);
 }
 /*Sets Alpha*/
 void Texture::setAlpha()
@@ -70,25 +70,25 @@ void Texture::setAlpha()
 //
 //}
 
-void Texture::CopyToScreen(SDL_Renderer* cRenderer)
+void Texture::CopyToScreen(SDL_Renderer* BackRenderer)
 {
-	SDL_RenderCopy(cRenderer, cTexture, NULL, &cDestRect);
+	SDL_RenderCopy(BackRenderer, cTexture, NULL, &cDestRect);
 }
-void Texture::ShowScreen(SDL_Renderer* cRenderer)
+void Texture::ShowScreen(SDL_Renderer* BackRenderer)
 {
-	SDL_RenderPresent(cRenderer);
+	SDL_RenderPresent(BackRenderer);
 }
 void Texture::QureyTexture()
 {
 	// Query the texture to get its original width and height
 	SDL_QueryTexture(cTexture, NULL, NULL, &cDestRect.w, &cDestRect.h);
 }
-void Texture::ProcessTexture(SDL_Renderer* Renderer)
+void Texture::ProcessTexture(SDL_Renderer* BackRenderer)
 {
-	setColour(Renderer);
-	clear(Renderer);
+	setColour(BackRenderer);
+	clear(BackRenderer);
 	QureyTexture();
-	CopyToScreen(Renderer);
-	ShowScreen(Renderer);
+	CopyToScreen(BackRenderer);
+	ShowScreen(BackRenderer);
 
 }

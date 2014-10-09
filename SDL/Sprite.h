@@ -1,18 +1,22 @@
-#include "Texture.h"
-class Sprite : protected Texture
+#ifndef SPRITE_H
+#define SPRITE_H
+
+#include "Entity.h"
+class Sprite
 {
 public:
-	Sprite(int x, int y);
+	Sprite(Entity* Entity_ptr, Vec2 vecV);
 	~Sprite();
 	void updateSpritePosition();
 	void drawSpritePosition();
-	int GetBoundBoxX(void);
-	int GetBoundBoxY(void);
-	int GetBoundBoxW(void);
-	int GetBoundBoxH(void);
-protected:
+	void assignSpriteImage(Entity* Entity_ptr);
+private:
 	int BoundBoxX;
 	int BoundBoxY;
 	int BoundBoxW;
 	int BoundBoxH;
+	Vec2 destXY;
+	Entity* cSpriteImage = NULL;
 };
+
+#endif
