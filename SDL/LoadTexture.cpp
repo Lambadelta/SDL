@@ -20,7 +20,7 @@ SDL_Surface* LoadTexture::onTextureLoad(std::string path)
 	if (!Temp)
 	{
 		// We'll do a quick check here because it's easy to get filenames or directories wrong
-		std::cout << "Oh dear, sorry but I can't find your image file. This brings me great sadness :(" << std::endl;
+		std::cout << "Image -> " << path << "Could not be loaded. Returning NULL" << std::endl;
 		SDL_Delay(100);
 		SDL_Quit();
 		/*Returns the value NULL to the pointer incase of an error with the image*/

@@ -2,11 +2,12 @@
 #define APPLICATION_H
 
 #include <SDL.h>
+#include "Vec4.h"
 
 class Application
 {
 public:
-	Application();
+	Application(Vec4 v4);
 	~Application();
 
 	bool callInit();

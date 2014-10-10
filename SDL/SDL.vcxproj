@@ -82,11 +82,13 @@
     <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Entity.h" />
+    <ClInclude Include="EventHandler.h" />
     <ClInclude Include="LoadTexture.h" />
     <ClInclude Include="SourceRect.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Texture.h" />
     <ClInclude Include="Vec2.h" />
+    <ClInclude Include="Vec4.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
