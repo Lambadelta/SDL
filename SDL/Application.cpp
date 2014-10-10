@@ -3,7 +3,7 @@ Application::Application(Vec4 v4)
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerTexture = NULL;
+	PlayerEntity = new Entity(Vec2 (100,100),SourceRect(768,570,768,570));
 	int winPosX = v4.f_x;
 	int winPosY = v4.f_y;
 	int winWidth = v4.f_w;
@@ -27,28 +27,26 @@ int Application::CallExecution()
 	while (GameLoop)
 	{
 		/*Grabs the events queued in sdlEvent, while there can be many in the queue the process is looped to go through them all*/
-		while (SDL_PollEvent(&sdlEvent))
-		{
-			callEvent(&sdlEvent);
-		}
+		callEvent(&sdlEvent);
+		
 		callLoop();
 		callRenderer();
 	}
 	return 0;
 
 }
-int main(int argc, char* argv[])
-{
-	/* Assigning the size of the window*/
-
-	Vec4 window(100, 100, 640, 480);
-
-	/*Creates the Application*/
-	Application SDL(window);
-
-	/*Returns the execution method*/
-	return SDL.CallExecution;
-}
+//int main(int argc, char* argv[])
+//{
+//	/* Assigning the size of the window*/
+//
+//	Vec4 window(100, 100, 640, 480);
+//
+//	/*Creates the Application*/
+//	Application SDL(window);
+//	SDL.CallExecution();
+//
+//	return 0;
+//}
 bool Application::callInit()
 {
 	/*If called initialise the program*/
@@ -59,6 +57,7 @@ bool Application::callInit()
 		winPosX, winPosY,
 		winWidth, winHeight,
 		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+
 	/*Checks if the display has been initialised correctly*/
 	if (Display == NULL)
 	{
@@ -66,28 +65,59 @@ bool Application::callInit()
 	}
 	Player.iMaxFrames = 8;
 	Player.bfluctuate = true;
-	if ((PlayerTexture = LoadTexture::onTextureLoad("image.bmp")) == NULL)
+
+	std::string filename("image.bmp");
+	PlayerEntity->Sprite = LoadTexture::onTextureLoad(filename);
+	if (PlayerEntity->Sprite == NULL)
 	{
+		std::cout << "PlayerEntity failed to load texture. Error" << std::endl;
 		return false;
 	}
 
 	return true;
 }
-void Application::callEvent(SDL_Event* Event)
+void Application::callEvent(SDL_Event* sdlEvent)
 {
-	EventHandler::onEvent(Event);
+	while (SDL_PollEvent(sdlEvent))
+	{
+		if (sdlEvent->type == SDL_QUIT)
+		{
+			GameLoop = false;
+		}
+		else if (sdlEvent->type == SDL_KEYDOWN)
+		{
+			switch (sdlEvent->key.keysym.sym)
+			{
+			case SDLK_ESCAPE:
+				GameLoop = false;
+				break;
+			case SDLK_w:
+				break;
+			case SDLK_a:
+				break;
+			case SDLK_s:
+				break;
+			case SDLK_d :
+				break;
+			case SDLK_e: 
+				break;
+			default:
+				break;
+			}
+		}
+	}
 }
 void Application::callLoop()
 {
-	Animation::onAnimation();
 }
 void Application::callRenderer()
 {
 	SDL_Renderer * Renderer = SDL_CreateRenderer(Display, -1, 0);
-	LoadTexture::OnDraw(Renderer, PlayerTexture, v2, sr1);
+
+	LoadTexture::OnDraw(Renderer, PlayerEntity->Sprite, PlayerEntity->vXY, PlayerEntity->vXYWH);
 }
 void Application::callCleanup()
 {
-	SDL_FreeSurface(PlayerTexture);
+	SDL_FreeSurface(PlayerEntity->Sprite);
 	SDL_Quit();
 }

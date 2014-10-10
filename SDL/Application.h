@@ -3,11 +3,11 @@
 
 #include <SDL.h>
 #include "Vec4.h"
-#include "EventHandler.h"
 #include "LoadTexture.h"
 #include "Animation.h"
+#include "Entity.h"
 
-class Application : protected Animation, protected LoadTexture, protected EventHandler
+class Application : protected Animation, public LoadTexture
 {
 public:
 	Application(Vec4 v4);
@@ -30,9 +30,9 @@ protected:
 	int winPosY;
 	int winWidth;
 	int winHeight;
-	Vec2 v2;
-	SourceRect sr1;
-	SDL_Surface* PlayerTexture;
+	//Vec2 v2;
+	//SourceRect sr1;
+	Entity*  PlayerEntity;
 };
 
 #endif

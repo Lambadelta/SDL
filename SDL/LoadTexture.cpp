@@ -9,15 +9,15 @@ LoadTexture::~LoadTexture()
 {
 
 }
-SDL_Surface* LoadTexture::onTextureLoad(std::string path)
+SDL_Surface* LoadTexture::onTextureLoad(std::string path/*,SDL_Window* window*/)
 {
 	/*Two Surfaces to load the texture, and then return it to the LoadTexture to be used */
 	/*This uses two local instances of surface to ensure the main one doesn't have an issue*/
 	SDL_Surface* Temp = NULL;
-	SDL_Surface* ReturnSurface = NULL;
+	//SDL_Surface* ReturnSurface = NULL;
 
 	Temp = SDL_LoadBMP(path.c_str());
-	if (!Temp)
+	if (Temp == NULL)
 	{
 		// We'll do a quick check here because it's easy to get filenames or directories wrong
 		std::cout << "Image -> " << path << "Could not be loaded. Returning NULL" << std::endl;
@@ -27,13 +27,13 @@ SDL_Surface* LoadTexture::onTextureLoad(std::string path)
 		return NULL;
 	}
 
-	/*Copies the surface with the image to a new surface*/
-	ReturnSurface = SDL_ConvertSurfaceFormat(Temp, SDL_PIXELFORMAT_UNKNOWN, 0);
+	///*Copies the surface with the image to a new surface*/
+	//ReturnSurface = SDL_ConvertSurface(Temp,window->format,NULL);
 
 	/*Clears Temp*/
-	SDL_FreeSurface(Temp);
+	//SDL_FreeSurface(Temp);
 	/*Returns the copied surface as the value for onTextureLoad*/
-	return ReturnSurface;
+	return Temp;
 }
 /*OnDraw method for drawing the texture singler*/
 bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV)
