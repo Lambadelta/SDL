@@ -36,14 +36,19 @@ SDL_Surface* LoadTexture::onTextureLoad(std::string path)
 	return ReturnSurface;
 }
 /*OnDraw method for drawing the texture singler*/
-bool LoadTexture::OnDraw(SDL_Surface* Dest, SDL_Surface* Source, Vec2 vecV)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV)
 {
 	/*Checks to see if the Destination surface, and the source surface are valid locations before continuing*/
-	if (Dest == NULL || Source == NULL)
+	if (Source == NULL)
 	{
 		return false;
 	}
 
+	SDL_Texture* Dest = SDL_CreateTextureFromSurface(Renderer, Source);
+	if (Dest == NULL)
+	{
+		std::cout << "Unable to create texture from \n";
+	}
 	/*defines a rectangle that is used for positioning the texture*/
 	SDL_Rect DestXY;
 	/*Assigning the Rect values from the Vec2 structure*/
@@ -51,20 +56,25 @@ bool LoadTexture::OnDraw(SDL_Surface* Dest, SDL_Surface* Source, Vec2 vecV)
 	DestXY.y = vecV.f_y;
 
 
-	/*Bliting the destination surface with the texture from the Source surface using the Rect data*/
-	SDL_BlitSurface(Source, NULL, Dest, &DestXY);
+
+	/*Copy the destination surface with the texture from the Source surface using the Rect data*/
+	SDL_RenderCopy(Renderer, Dest, NULL, &DestXY);
 	
 	return true;
 }
 /*OnDraw method for using a sprite map source image*/
-bool LoadTexture::OnDraw(SDL_Surface* Dest, SDL_Surface* Source, Vec2 vecV, SourceRect sr1)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV, SourceRect sr1)
 {
 	/*Checks to see if the Destination surface, and the source surface are valid locations before continuing*/
-	if (Dest == NULL || Source == NULL)
+	if (Source == NULL)
 	{
 		return false;
 	}
-
+	SDL_Texture* Dest = SDL_CreateTextureFromSurface(Renderer, Source);
+	if (Dest == NULL)
+	{
+		std::cout << "Unable to create texture from \n";
+	}
 	/*defines a rectangle that is used for positioning the texture*/
 	SDL_Rect DestXY;
 	/*Assigning the Rect values from the Vec2 structure*/
@@ -77,8 +87,8 @@ bool LoadTexture::OnDraw(SDL_Surface* Dest, SDL_Surface* Source, Vec2 vecV, Sour
 	SrcRect.w = sr1.f_w;
 	SrcRect.h = sr1.f_h;
 
-	/*Bliting the destination surface with the texture from the Source surface using the Rect data*/
-	SDL_BlitSurface(Source, &SrcRect, Dest, &DestXY);
+	/*Coping the destination surface with the texture from the Source surface using the Rect data*/
+	SDL_RenderCopy(Renderer, Dest, &SrcRect, &DestXY);
 
 	return true;
 }

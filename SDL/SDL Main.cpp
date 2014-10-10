@@ -59,7 +59,7 @@ int main(int argc, char *argv[])
 	// When we create it we tell it which SDL_Window we want it to render to
 	// That renderer can only be used for this window
 	// (yes, we can have multiple windows - feel free to have a play sometime)
-	 SDL_Renderer * Renderer = SDL_CreateRenderer(window, -1, 0);
+	 //SDL_Renderer * Renderer = SDL_CreateRenderer(window, -1, 0);
 
 
 	 

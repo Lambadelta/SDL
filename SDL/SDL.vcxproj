@@ -73,6 +73,7 @@
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Application.cpp" />
+    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="LoadTexture.cpp" />
     <ClCompile Include="SDL Main.cpp" />
     <ClCompile Include="Sprite.cpp" />

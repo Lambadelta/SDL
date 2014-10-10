@@ -15,7 +15,7 @@ public:
 	void setFrameRate(int iRate);
 	void setCurrentFrame(int iFrame);
 	int GetCurrentFrame();
-private:
+protected:
 	int iCurrentFrame;
 	int iFrameIncrement;
 	int iFrameRate;

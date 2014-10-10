@@ -3,6 +3,7 @@ Application::Application(Vec4 v4)
 {
 	GameLoop = true;
 	Display = NULL;
+	PlayerTexture = NULL;
 	int winPosX = v4.f_x;
 	int winPosY = v4.f_y;
 	int winWidth = v4.f_w;
@@ -40,14 +41,11 @@ int main(int argc, char* argv[])
 {
 	/* Assigning the size of the window*/
 
-	Vec4 window;
-	window.f_x = 100;
-	window.f_y = 100;
-	window.f_h = 480;
-	window.f_w = 640;
+	Vec4 window(100, 100, 640, 480);
 
 	/*Creates the Application*/
 	Application SDL(window);
+
 	/*Returns the execution method*/
 	return SDL.CallExecution;
 }
@@ -66,24 +64,30 @@ bool Application::callInit()
 	{
 		return false;
 	}
+	Player.iMaxFrames = 8;
+	Player.bfluctuate = true;
+	if ((PlayerTexture = LoadTexture::onTextureLoad("image.bmp")) == NULL)
+	{
+		return false;
+	}
+
 	return true;
 }
 void Application::callEvent(SDL_Event* Event)
 {
-	if (Event->type == SDL_QUIT)
-	{
-		GameLoop = false;
-	}
+	EventHandler::onEvent(Event);
 }
 void Application::callLoop()
 {
-
+	Animation::onAnimation();
 }
 void Application::callRenderer()
 {
-
+	SDL_Renderer * Renderer = SDL_CreateRenderer(Display, -1, 0);
+	LoadTexture::OnDraw(Renderer, PlayerTexture, v2, sr1);
 }
 void Application::callCleanup()
 {
+	SDL_FreeSurface(PlayerTexture);
 	SDL_Quit();
 }

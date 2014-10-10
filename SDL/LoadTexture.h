@@ -13,8 +13,8 @@ public:
 	~LoadTexture();
 protected:
 	static SDL_Surface* onTextureLoad(std::string path);
-	static bool OnDraw(SDL_Surface* Dest, SDL_Surface* Source, Vec2 vecV);
-	static bool OnDraw(SDL_Surface* Dest, SDL_Surface* Source, Vec2 vecV, SourceRect sr1);
+	static bool OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV);
+	static bool OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV, SourceRect sr1);
 };
 
 #endif
