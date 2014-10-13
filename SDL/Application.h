@@ -17,11 +17,11 @@ public:
 	bool callInit();
 	int callExecution();
 	void callEvent(SDL_Event* Event);
-	void callQuery();
 	void callLoop();
 	void callTexture();
 	void callRenderer();
 	void callCleanup();
+	void callSurface();
 
 protected:
 	bool GameLoop;
@@ -32,8 +32,10 @@ protected:
 	int winHeight;
 	//Vec2 v2;
 	//SourceRect sr1;
-	Entity*  PlayerEntity;
+	Entity* PlayerEntity;
+	SDL_Surface* Background;
 	SDL_Renderer * Renderer;
+	
 };
 
 #endif

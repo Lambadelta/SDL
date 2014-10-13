@@ -39,8 +39,8 @@ SDL_Surface* LoadTexture::onTextureLoad(std::string path/*,SDL_Window* window*/)
 bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect)
 {
 	/*Copy the destination surface with the texture from the Source surface using the Rect data*/
+	SDL_QueryTexture(cTexture, NULL, NULL, &descRect.w, &descRect.h);
 	SDL_RenderCopy(Renderer, cTexture, NULL, &descRect);
-	SDL_RenderPresent(Renderer);
 
 	return true;
 }
@@ -49,8 +49,9 @@ bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect
 {
 
 	/*Coping the destination surface with the texture from the Source surface using the Rect data*/
+	SDL_QueryTexture(cTexture, NULL, NULL, &descRect.w, &descRect.h);
 	SDL_RenderCopy(Renderer, cTexture, &descRect,&srcRect);
-	SDL_RenderPresent(Renderer);
+	
 
 	return true;
 }

@@ -15,13 +15,12 @@ public:
 	SDL_Rect SpriteDescRect;
 	SDL_Rect SpriteSrcRect;
 	float fSpeed;
-	void callQueryTexture();
 	void callMoveUp();
 	void callMoveDown();
 	void callMoveLeft();
 	void callMoveRight();
 private:
-	
+
 
 };
 

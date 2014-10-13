@@ -3,7 +3,8 @@ Application::Application(Vec4 v4)
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 0.5f);
+	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 5.0f);
+	Background = NULL;
 	Renderer = NULL;
 	winPosX = v4.f_x;
 	winPosY = v4.f_y;
@@ -30,6 +31,7 @@ int Application::callExecution()
 		/*Grabs the events queued in sdlEvent, while there can be many in the queue the process is looped to go through them all*/
 		callEvent(&sdlEvent);
 		callLoop();
+		SDL_RenderPresent(Renderer);
 		/*callRenderer();*/
 	}
 	return 0;
@@ -63,15 +65,9 @@ bool Application::callInit()
 	{
 		return false;
 	}
-	std::string filename("image.bmp");
-	PlayerEntity->Sprite = LoadTexture::onTextureLoad(filename);
-	if (PlayerEntity->Sprite == NULL)
-	{
-		std::cout << "PlayerEntity failed to load texture. Error" << std::endl;
-		return false;
-	}
 	Renderer = SDL_CreateRenderer(Display, -1, 0);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
+	callSurface();
 
 	return true;
 }
@@ -109,17 +105,13 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			case SDLK_e: 
 				break;
 			case SDLK_t:
-					callTexture();
-					std::cout << "called texture\n";
-					break;
+				callTexture();
+				std::cout << "called texture\n";
+				break;
 			case SDLK_r:
 				std::cout << "called renderer\n";
 				callRenderer();
 				break;
-			case SDLK_q:
-				std::cout << "Call Query\n";
-				callQuery();
-					break;
 			default:
 				break;
 			}
@@ -141,12 +133,20 @@ void Application::callCleanup()
 	SDL_Quit();
 }
 
-void Application::callQuery()
-{
-	PlayerEntity->callQueryTexture();
-}
-
 void Application::callTexture()
 {
 	PlayerEntity->EntityTexture = LoadTexture::callTexture(Renderer, PlayerEntity->Sprite);
+}
+
+void Application::callSurface()
+{	
+	std::string Player("image.bmp");
+	PlayerEntity->Sprite = LoadTexture::onTextureLoad(Player);
+	std::string sBackground("background.bmp");
+	Background = LoadTexture::onTextureLoad(sBackground);
+	if (Background = NULL)
+	{
+		std::cout << "ERROR BackGround Fail";
+	}
+
 }

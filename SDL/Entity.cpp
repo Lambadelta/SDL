@@ -13,19 +13,15 @@ Entity::Entity(Vec2 v1, SourceRect sr1,float s)
 	fSpeed = s;
 }
 
-void Entity::callQueryTexture()
-{
-	SDL_QueryTexture(EntityTexture, NULL, NULL, &SpriteDescRect.w, &SpriteDescRect.h);
-}
 
 void Entity::callMoveUp()
 {
-	SpriteDescRect.y += fSpeed;
+	SpriteDescRect.y -= fSpeed;
 }
 
 void Entity::callMoveDown()
 {
-	SpriteDescRect.y -= fSpeed;
+	SpriteDescRect.y += fSpeed;
 }
 
 void Entity::callMoveLeft()
