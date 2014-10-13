@@ -3,12 +3,12 @@ Application::Application(Vec4 v4)
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Entity(Vec2 (100,100),SourceRect (768,570,768,570));
+	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 0.5f);
 	Renderer = NULL;
-	int winPosX = v4.f_x;
-	int winPosY = v4.f_y;
-	int winWidth = v4.f_w;
-	int winHeight = v4.f_w;
+	winPosX = v4.f_x;
+	winPosY = v4.f_y;
+	winWidth = v4.f_w;
+	winHeight = v4.f_h;
 }
 Application::~Application()
 {
@@ -29,7 +29,6 @@ int Application::callExecution()
 	{
 		/*Grabs the events queued in sdlEvent, while there can be many in the queue the process is looped to go through them all*/
 		callEvent(&sdlEvent);
-		
 		callLoop();
 		/*callRenderer();*/
 	}
@@ -92,16 +91,20 @@ void Application::callEvent(SDL_Event* sdlEvent)
 				GameLoop = false;
 				break;
 			case SDLK_w:
+				PlayerEntity->callMoveUp();
 				std::cout << "W is pressed\n";
 				break;
 			case SDLK_a:
+				PlayerEntity->callMoveLeft();
 				std::cout << "A is pressed\n";
 				break;
 			case SDLK_s:
+				PlayerEntity->callMoveDown();
 				std::cout << "S is pressed\n";
 				break;
 			case SDLK_d :
-				std::cout << "W is pressed\n";
+				PlayerEntity->callMoveRight();
+				std::cout << "D is pressed\n";
 				break;
 			case SDLK_e: 
 				break;
@@ -125,6 +128,8 @@ void Application::callEvent(SDL_Event* sdlEvent)
 }
 void Application::callLoop()
 {
+	SDL_RenderClear(Renderer);
+	callRenderer();
 }
 void Application::callRenderer()
 {

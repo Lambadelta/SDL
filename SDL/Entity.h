@@ -8,15 +8,21 @@
 class Entity
 {
 public:
-	Entity(Vec2 v1, SourceRect sr1);
+	Entity(Vec2 v1, SourceRect sr1,float s);
 	~Entity();
 	SDL_Surface* Sprite;
 	SDL_Texture* EntityTexture;
 	SDL_Rect SpriteDescRect;
 	SDL_Rect SpriteSrcRect;
+	float fSpeed;
 	void callQueryTexture();
+	void callMoveUp();
+	void callMoveDown();
+	void callMoveLeft();
+	void callMoveRight();
 private:
 	
+
 };
 
 #endif
