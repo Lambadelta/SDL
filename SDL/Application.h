@@ -12,14 +12,14 @@ class Application : protected Animation, public LoadTexture
 public:
 	Application(Vec4 v4);
 	~Application();
-
-	Animation Player;
 	
 
 	bool callInit();
-	int CallExecution();
+	int callExecution();
 	void callEvent(SDL_Event* Event);
+	void callQuery();
 	void callLoop();
+	void callTexture();
 	void callRenderer();
 	void callCleanup();
 
@@ -33,6 +33,7 @@ protected:
 	//Vec2 v2;
 	//SourceRect sr1;
 	Entity*  PlayerEntity;
+	SDL_Renderer * Renderer;
 };
 
 #endif

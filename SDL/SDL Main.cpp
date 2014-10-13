@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 
 	/*Creates the Application*/
 	Application SDL(window);
-	SDL.CallExecution();
+	SDL.callExecution();
 
 	return 0;
 

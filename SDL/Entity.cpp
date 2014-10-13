@@ -1,10 +1,18 @@
 #include "Entity.h"
 
-Entity::Entity(Vec2 v1, SourceRect src1)
+Entity::Entity(Vec2 v1, SourceRect sr1)
 {
-	SDL_Surface* Sprite = NULL;
-	SDL_Rect* SpriteRect = NULL;
-	Vec2 vXY(v1.f_x, v1.f_y);
-	SourceRect vXYWH(src1.f_x,src1.f_y,src1.f_w,src1.f_h);
+	Sprite = NULL;
+	EntityTexture = NULL;
+	SpriteDescRect.x = v1.f_x;
+	SpriteDescRect.y = v1.f_y;
+	SpriteSrcRect.x = sr1.f_x;
+	SpriteSrcRect.y = sr1.f_y;
+	SpriteSrcRect.w = sr1.f_w;
+	SpriteSrcRect.h = sr1.f_h;
 }
 
+void Entity::callQueryTexture()
+{
+	SDL_QueryTexture(EntityTexture, NULL, NULL, &SpriteDescRect.w, &SpriteDescRect.h);
+}

@@ -3,7 +3,8 @@ Application::Application(Vec4 v4)
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Entity(Vec2 (100,100),SourceRect(768,570,768,570));
+	PlayerEntity = new Entity(Vec2 (100,100),SourceRect (768,570,768,570));
+	Renderer = NULL;
 	int winPosX = v4.f_x;
 	int winPosY = v4.f_y;
 	int winWidth = v4.f_w;
@@ -13,7 +14,7 @@ Application::~Application()
 {
 
 }
-int Application::CallExecution()
+int Application::callExecution()
 {
 	/*Checks to see if the application is running*/
 	if (callInit() == false)
@@ -30,7 +31,7 @@ int Application::CallExecution()
 		callEvent(&sdlEvent);
 		
 		callLoop();
-		callRenderer();
+		/*callRenderer();*/
 	}
 	return 0;
 
@@ -63,9 +64,6 @@ bool Application::callInit()
 	{
 		return false;
 	}
-	Player.iMaxFrames = 8;
-	Player.bfluctuate = true;
-
 	std::string filename("image.bmp");
 	PlayerEntity->Sprite = LoadTexture::onTextureLoad(filename);
 	if (PlayerEntity->Sprite == NULL)
@@ -73,6 +71,8 @@ bool Application::callInit()
 		std::cout << "PlayerEntity failed to load texture. Error" << std::endl;
 		return false;
 	}
+	Renderer = SDL_CreateRenderer(Display, -1, 0);
+	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
 
 	return true;
 }
@@ -92,15 +92,31 @@ void Application::callEvent(SDL_Event* sdlEvent)
 				GameLoop = false;
 				break;
 			case SDLK_w:
+				std::cout << "W is pressed\n";
 				break;
 			case SDLK_a:
+				std::cout << "A is pressed\n";
 				break;
 			case SDLK_s:
+				std::cout << "S is pressed\n";
 				break;
 			case SDLK_d :
+				std::cout << "W is pressed\n";
 				break;
 			case SDLK_e: 
 				break;
+			case SDLK_t:
+					callTexture();
+					std::cout << "called texture\n";
+					break;
+			case SDLK_r:
+				std::cout << "called renderer\n";
+				callRenderer();
+				break;
+			case SDLK_q:
+				std::cout << "Call Query\n";
+				callQuery();
+					break;
 			default:
 				break;
 			}
@@ -112,12 +128,20 @@ void Application::callLoop()
 }
 void Application::callRenderer()
 {
-	SDL_Renderer * Renderer = SDL_CreateRenderer(Display, -1, 0);
-
-	LoadTexture::OnDraw(Renderer, PlayerEntity->Sprite, PlayerEntity->vXY, PlayerEntity->vXYWH);
+	LoadTexture::OnDraw(Renderer, PlayerEntity->EntityTexture, PlayerEntity->SpriteDescRect);
 }
 void Application::callCleanup()
 {
 	SDL_FreeSurface(PlayerEntity->Sprite);
 	SDL_Quit();
+}
+
+void Application::callQuery()
+{
+	PlayerEntity->callQueryTexture();
+}
+
+void Application::callTexture()
+{
+	PlayerEntity->EntityTexture = LoadTexture::callTexture(Renderer, PlayerEntity->Sprite);
 }

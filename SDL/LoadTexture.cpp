@@ -36,59 +36,38 @@ SDL_Surface* LoadTexture::onTextureLoad(std::string path/*,SDL_Window* window*/)
 	return Temp;
 }
 /*OnDraw method for drawing the texture singler*/
-bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect)
 {
-	/*Checks to see if the Destination surface, and the source surface are valid locations before continuing*/
-	if (Source == NULL)
-	{
-		return false;
-	}
-
-	SDL_Texture* Dest = SDL_CreateTextureFromSurface(Renderer, Source);
-	if (Dest == NULL)
-	{
-		std::cout << "Unable to create texture from \n";
-	}
-	/*defines a rectangle that is used for positioning the texture*/
-	SDL_Rect DestXY;
-	/*Assigning the Rect values from the Vec2 structure*/
-	DestXY.x = vecV.f_x;
-	DestXY.y = vecV.f_y;
-
-
-
 	/*Copy the destination surface with the texture from the Source surface using the Rect data*/
-	SDL_RenderCopy(Renderer, Dest, NULL, &DestXY);
-	
+	SDL_RenderCopy(Renderer, cTexture, NULL, &descRect);
+	SDL_RenderPresent(Renderer);
+
 	return true;
 }
 /*OnDraw method for using a sprite map source image*/
-bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, Vec2 vecV, SourceRect sr1)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect, SDL_Rect srcRect)
 {
-	/*Checks to see if the Destination surface, and the source surface are valid locations before continuing*/
+
+	/*Coping the destination surface with the texture from the Source surface using the Rect data*/
+	SDL_RenderCopy(Renderer, cTexture, &descRect,&srcRect);
+	SDL_RenderPresent(Renderer);
+
+	return true;
+}
+
+SDL_Texture* LoadTexture::callTexture(SDL_Renderer* Renderer, SDL_Surface* Source)
+{
 	if (Source == NULL)
 	{
 		return false;
 	}
+
 	SDL_Texture* Dest = SDL_CreateTextureFromSurface(Renderer, Source);
 	if (Dest == NULL)
 	{
 		std::cout << "Unable to create texture from \n";
+		return NULL;
 	}
-	/*defines a rectangle that is used for positioning the texture*/
-	SDL_Rect DestXY;
-	/*Assigning the Rect values from the Vec2 structure*/
-	DestXY.x = vecV.f_x;
-	DestXY.y = vecV.f_y;
 
-	SDL_Rect SrcRect;
-	SrcRect.x = sr1.f_x;
-	SrcRect.y = sr1.f_y;
-	SrcRect.w = sr1.f_w;
-	SrcRect.h = sr1.f_h;
-
-	/*Coping the destination surface with the texture from the Source surface using the Rect data*/
-	SDL_RenderCopy(Renderer, Dest, &SrcRect, &DestXY);
-
-	return true;
+	return Dest;
 }

@@ -8,14 +8,15 @@
 class Entity
 {
 public:
-	Entity(Vec2, SourceRect);
+	Entity(Vec2 v1, SourceRect sr1);
 	~Entity();
 	SDL_Surface* Sprite;
-	SDL_Rect* SpriteRect;
-	Vec2 vXY;
-	SourceRect vXYWH;
-
+	SDL_Texture* EntityTexture;
+	SDL_Rect SpriteDescRect;
+	SDL_Rect SpriteSrcRect;
+	void callQueryTexture();
 private:
+	
 };
 
 #endif
