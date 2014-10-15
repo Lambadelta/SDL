@@ -23,6 +23,7 @@ public:
 	void callRenderer();
 	void callCleanup();
 	void callSurface();
+	void callTexture();
 
 protected:
 	bool GameLoop;

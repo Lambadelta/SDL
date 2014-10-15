@@ -30,7 +30,6 @@ int Application::callExecution()
 	while (GameLoop)
 	{
 		/*Grabs the events queued in sdlEvent, while there can be many in the queue the process is looped to go through them all*/
-		callSurface();
 		callEvent(&sdlEvent);
 		callLoop();
 		SDL_RenderPresent(Renderer);
@@ -39,18 +38,6 @@ int Application::callExecution()
 	return 0;
 
 }
-//int main(int argc, char* argv[])
-//{
-//	/* Assigning the size of the window*/
-//
-//	Vec4 window(100, 100, 640, 480);
-//
-//	/*Creates the Application*/
-//	Application SDL(window);
-//	SDL.CallExecution();
-//
-//	return 0;
-//}
 bool Application::callInit()
 {
 	/*If called initialise the program*/
@@ -69,46 +56,60 @@ bool Application::callInit()
 	}
 	Renderer = SDL_CreateRenderer(Display, -1, 0);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
+	callSurface();
+	callTexture();
 
 	return true;
 }
 void Application::callEvent(SDL_Event* sdlEvent)
 {
 
+	/*Event Handler*/
+
 	while (SDL_PollEvent(sdlEvent))
 	{
+		/*Checks to see if the event quit has been called*/
 		if (sdlEvent->type == SDL_QUIT)
 		{
 			GameLoop = false;
 		}
 		else if (sdlEvent->type == SDL_KEYDOWN)
 		{
+			/*Switch statement that checks the key events*/
 			switch (sdlEvent->key.keysym.sym)
 			{
+				/*Escape Key*/
 			case SDLK_ESCAPE:
 				GameLoop = false;
 				break;
+				/*W key*/
 			case SDLK_w:
 				PlayerEntity->callMoveUp();
 				std::cout << "W is pressed\n";
 				break;
 			case SDLK_a:
+				/*A Key*/
 				PlayerEntity->callMoveLeft();
 				std::cout << "A is pressed\n";
 				break;
+				/*S Key*/
 			case SDLK_s:
 				PlayerEntity->callMoveDown();
 				std::cout << "S is pressed\n";
 				break;
+				/*D Key*/
 			case SDLK_d :
 				PlayerEntity->callMoveRight();
 				std::cout << "D is pressed\n";
 				break;
+				/*E Key*/
 			case SDLK_e: 
 				break;
+				/*T Key*/
 			case SDLK_t:
 				std::cout << "called time\n";
 				break;
+				/*R Key*/
 			case SDLK_r:
 				std::cout << "called renderer\n";
 				callRenderer();
@@ -121,11 +122,14 @@ void Application::callEvent(SDL_Event* sdlEvent)
 }
 void Application::callLoop()
 {
-	SDL_RenderClear(Renderer);
+	/*Method that calls other methods that regularly need to loop*/
+	/*Calls the rendering method*/
 	callRenderer();
 }
 void Application::callRenderer()
 {
+	/**/
+	SDL_RenderClear(Renderer);
 	TextureLoader->OnDraw(Renderer, Background, BackRect);
 	TextureLoader->OnDraw(Renderer, PlayerEntity->Sprite, PlayerEntity->SpriteDescRect);
 	
@@ -138,15 +142,17 @@ void Application::callCleanup()
 
 void Application::callSurface()
 {	
-	if (PlayerEntity->Sprite == NULL)
-	{
 		std::string Player("image.bmp");
 		PlayerEntity->Sprite = TextureLoader->onTextureLoad(Player);
-	}
-	if (Background = NULL)
-	{
+
 		std::string sBackground("background.bmp");
 		Background = TextureLoader->onTextureLoad(sBackground);
-	}
+
+
+}
+
+void Application::callTexture()
+{
+	PlayerEntity->EntityTexture = TextureLoader->callTexture(Renderer, PlayerEntity->Sprite);
 
 }
