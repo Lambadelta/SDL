@@ -1,10 +1,8 @@
-﻿Build started 15/10/2014 11:39:02.
+﻿Build started 15/10/2014 12:57:08.
      1>Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp Application.cpp Entity.cpp LoadTexture.cpp "SDL Main.cpp" Sprite.cpp Texture.cpp
-         Texture.cpp
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(30): warning C4305: 'return' : truncation from 'int' to 'bool'
-         Sprite.cpp
+         H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Animation.cpp Application.cpp Entity.cpp LoadTexture.cpp "SDL Main.cpp" Timer.cpp
+         Timer.cpp
          SDL Main.cpp
          LoadTexture.cpp
          Entity.cpp
@@ -26,19 +24,17 @@
          Animation.cpp
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\animation.cpp(17): warning C4018: '>' : signed/unsigned mismatch
          Generating Code...
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\texture.cpp(32): warning C4715: 'Texture::loadFromFile' : not all control paths return a value
        Link:
          H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" /LIBPATH:"H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 Debug\Animation.obj
          Debug\Application.obj
          Debug\Entity.obj
          Debug\LoadTexture.obj
          "Debug\SDL Main.obj"
-         Debug\Sprite.obj
-         Debug\Texture.obj
+         Debug\Timer.obj
      1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
          SDL.vcxproj -> C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe
      1>Done Building Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:02.66
+Time Elapsed 00:00:02.38

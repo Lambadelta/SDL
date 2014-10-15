@@ -11,10 +11,7 @@ LoadTexture::~LoadTexture()
 }
 SDL_Surface* LoadTexture::onTextureLoad(std::string path/*,SDL_Window* window*/)
 {
-	/*Two Surfaces to load the texture, and then return it to the LoadTexture to be used */
-	/*This uses two local instances of surface to ensure the main one doesn't have an issue*/
 	SDL_Surface* Temp = NULL;
-	//SDL_Surface* ReturnSurface = NULL;
 
 	Temp = SDL_LoadBMP(path.c_str());
 	if (Temp == NULL)
@@ -27,17 +24,21 @@ SDL_Surface* LoadTexture::onTextureLoad(std::string path/*,SDL_Window* window*/)
 		return NULL;
 	}
 
-	///*Copies the surface with the image to a new surface*/
-	//ReturnSurface = SDL_ConvertSurface(Temp,window->format,NULL);
-
-	/*Clears Temp*/
-	//SDL_FreeSurface(Temp);
-	/*Returns the copied surface as the value for onTextureLoad*/
 	return Temp;
 }
 /*OnDraw method for drawing the texture singler*/
-bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, SDL_Rect descRect)
 {
+	if (Source == NULL)
+	{
+		return false;
+	}
+	SDL_Texture* cTexture = SDL_CreateTextureFromSurface(Renderer, Source);
+	if (cTexture == NULL)
+	{
+		std::cout << "Unable to create texture from \n";
+		return NULL;
+	}
 	/*Copy the destination surface with the texture from the Source surface using the Rect data*/
 	SDL_QueryTexture(cTexture, NULL, NULL, &descRect.w, &descRect.h);
 	SDL_RenderCopy(Renderer, cTexture, NULL, &descRect);
@@ -45,30 +46,22 @@ bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect
 	return true;
 }
 /*OnDraw method for using a sprite map source image*/
-bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect, SDL_Rect srcRect)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, SDL_Rect descRect, SDL_Rect srcRect)
 {
-
+	if (Source == NULL)
+	{
+		return false;
+	}
+	SDL_Texture* cTexture = SDL_CreateTextureFromSurface(Renderer, Source);
+	if (cTexture == NULL)
+	{
+		std::cout << "Unable to create texture from \n";
+		return NULL;
+	}
 	/*Coping the destination surface with the texture from the Source surface using the Rect data*/
 	SDL_QueryTexture(cTexture, NULL, NULL, &descRect.w, &descRect.h);
 	SDL_RenderCopy(Renderer, cTexture, &descRect,&srcRect);
 	
 
 	return true;
-}
-
-SDL_Texture* LoadTexture::callTexture(SDL_Renderer* Renderer, SDL_Surface* Source)
-{
-	if (Source == NULL)
-	{
-		return false;
-	}
-
-	SDL_Texture* Dest = SDL_CreateTextureFromSurface(Renderer, Source);
-	if (Dest == NULL)
-	{
-		std::cout << "Unable to create texture from \n";
-		return NULL;
-	}
-
-	return Dest;
 }

@@ -30,6 +30,7 @@ int Application::callExecution()
 	while (GameLoop)
 	{
 		/*Grabs the events queued in sdlEvent, while there can be many in the queue the process is looped to go through them all*/
+		callSurface();
 		callEvent(&sdlEvent);
 		callLoop();
 		SDL_RenderPresent(Renderer);
@@ -68,12 +69,12 @@ bool Application::callInit()
 	}
 	Renderer = SDL_CreateRenderer(Display, -1, 0);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
-	callSurface();
 
 	return true;
 }
 void Application::callEvent(SDL_Event* sdlEvent)
 {
+
 	while (SDL_PollEvent(sdlEvent))
 	{
 		if (sdlEvent->type == SDL_QUIT)
@@ -106,8 +107,7 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			case SDLK_e: 
 				break;
 			case SDLK_t:
-				callTexture();
-				std::cout << "called texture\n";
+				std::cout << "called time\n";
 				break;
 			case SDLK_r:
 				std::cout << "called renderer\n";
@@ -126,7 +126,9 @@ void Application::callLoop()
 }
 void Application::callRenderer()
 {
-	TextureLoader->OnDraw(Renderer, PlayerEntity->EntityTexture, PlayerEntity->SpriteDescRect);
+	TextureLoader->OnDraw(Renderer, Background, BackRect);
+	TextureLoader->OnDraw(Renderer, PlayerEntity->Sprite, PlayerEntity->SpriteDescRect);
+	
 }
 void Application::callCleanup()
 {
@@ -134,20 +136,17 @@ void Application::callCleanup()
 	SDL_Quit();
 }
 
-void Application::callTexture()
-{
-	PlayerEntity->EntityTexture = TextureLoader->callTexture(Renderer, PlayerEntity->Sprite);
-}
-
 void Application::callSurface()
 {	
-	std::string Player("image.bmp");
-	PlayerEntity->Sprite = TextureLoader->onTextureLoad(Player);
-	std::string sBackground("background.bmp");
-	Background = TextureLoader->onTextureLoad(sBackground);
+	if (PlayerEntity->Sprite == NULL)
+	{
+		std::string Player("image.bmp");
+		PlayerEntity->Sprite = TextureLoader->onTextureLoad(Player);
+	}
 	if (Background = NULL)
 	{
-		std::cout << "ERROR BackGround Fail";
+		std::string sBackground("background.bmp");
+		Background = TextureLoader->onTextureLoad(sBackground);
 	}
 
 }

@@ -2,10 +2,12 @@
 #define APPLICATION_H
 
 #include <SDL.h>
+#include <sstream>
 #include "Vec4.h"
 #include "LoadTexture.h"
 #include "Animation.h"
 #include "Entity.h"
+
 
 class Application
 {
@@ -18,7 +20,6 @@ public:
 	int callExecution();
 	void callEvent(SDL_Event* Event);
 	void callLoop();
-	void callTexture();
 	void callRenderer();
 	void callCleanup();
 	void callSurface();
@@ -35,7 +36,9 @@ protected:
 	Entity* PlayerEntity;
 	SDL_Surface* Background;
 	SDL_Renderer * Renderer;
-	LoadTexture* TextureLoader;
+	LoadTexture* TextureLoader; 
+	SDL_Rect BackRect;
+
 	
 };
 
