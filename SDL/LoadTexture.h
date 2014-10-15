@@ -12,10 +12,10 @@ class LoadTexture
 public:
 	LoadTexture();
 	~LoadTexture();
-	static SDL_Surface* onTextureLoad(std::string path/*, SDL_Window* window*/);
-	static bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect);
-	static bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect, SDL_Rect srcRect);
-	static SDL_Texture* callTexture(SDL_Renderer* Renderer, SDL_Surface* Source);
+	SDL_Surface* onTextureLoad(std::string path/*, SDL_Window* window*/);
+	bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect);
+	bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect, SDL_Rect srcRect);
+	SDL_Texture* callTexture(SDL_Renderer* Renderer, SDL_Surface* Source);
 };
 
 #endif

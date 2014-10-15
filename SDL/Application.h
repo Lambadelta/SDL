@@ -7,7 +7,7 @@
 #include "Animation.h"
 #include "Entity.h"
 
-class Application : protected Animation, public LoadTexture
+class Application
 {
 public:
 	Application(Vec4 v4);
@@ -35,6 +35,7 @@ protected:
 	Entity* PlayerEntity;
 	SDL_Surface* Background;
 	SDL_Renderer * Renderer;
+	LoadTexture* TextureLoader;
 	
 };
 

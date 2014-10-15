@@ -4,6 +4,7 @@ Application::Application(Vec4 v4)
 	GameLoop = true;
 	Display = NULL;
 	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 5.0f);
+	TextureLoader = new LoadTexture;
 	Background = NULL;
 	Renderer = NULL;
 	winPosX = v4.f_x;
@@ -125,7 +126,7 @@ void Application::callLoop()
 }
 void Application::callRenderer()
 {
-	LoadTexture::OnDraw(Renderer, PlayerEntity->EntityTexture, PlayerEntity->SpriteDescRect);
+	TextureLoader->OnDraw(Renderer, PlayerEntity->EntityTexture, PlayerEntity->SpriteDescRect);
 }
 void Application::callCleanup()
 {
@@ -135,15 +136,15 @@ void Application::callCleanup()
 
 void Application::callTexture()
 {
-	PlayerEntity->EntityTexture = LoadTexture::callTexture(Renderer, PlayerEntity->Sprite);
+	PlayerEntity->EntityTexture = TextureLoader->callTexture(Renderer, PlayerEntity->Sprite);
 }
 
 void Application::callSurface()
 {	
 	std::string Player("image.bmp");
-	PlayerEntity->Sprite = LoadTexture::onTextureLoad(Player);
+	PlayerEntity->Sprite = TextureLoader->onTextureLoad(Player);
 	std::string sBackground("background.bmp");
-	Background = LoadTexture::onTextureLoad(sBackground);
+	Background = TextureLoader->onTextureLoad(sBackground);
 	if (Background = NULL)
 	{
 		std::cout << "ERROR BackGround Fail";
