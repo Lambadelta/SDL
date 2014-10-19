@@ -1,16 +1,16 @@
 #include "Application.h"
-Application::Application(Vec4 v4)
+Application::Application()
 {
 	GameLoop = true;
 	Display = NULL;
 	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 5.0f);
 	TextureLoader = new LoadTexture;
-	Background = NULL;
+	Backgrounds = new Background;
+	TileLoader = new Tile;
 	Renderer = NULL;
-	winPosX = v4.f_x;
-	winPosY = v4.f_y;
-	winWidth = v4.f_w;
-	winHeight = v4.f_h;
+	/*Debug*/
+	SurfaceCall = 0;
+
 }
 Application::~Application()
 {
@@ -44,10 +44,7 @@ bool Application::callInit()
 
 
 	/*Assigns the Display window the screen size, and properties*/
-	Display = SDL_CreateWindow("SDL Main", 
-		winPosX, winPosY,
-		winWidth, winHeight,
-		SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+	Display = SDL_CreateWindow("SDL Main", WINDOW_X, WINDOW_Y,WINDOW_WIDTH, WINDOW_HEIGHT,SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
 
 	/*Checks if the display has been initialised correctly*/
 	if (Display == NULL)
@@ -56,6 +53,7 @@ bool Application::callInit()
 	}
 	Renderer = SDL_CreateRenderer(Display, -1, 0);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
+	TileLoader->loadmap("TestMap.map");
 	callSurface();
 	callTexture();
 
@@ -107,13 +105,21 @@ void Application::callEvent(SDL_Event* sdlEvent)
 				break;
 				/*T Key*/
 			case SDLK_t:
-				std::cout << "called time\n";
+				std::cout << "called texture\n";
+				callTexture();
 				break;
-				/*R Key*/
-			case SDLK_r:
-				std::cout << "called renderer\n";
-				callRenderer();
+				/*Debug keys to control surface loading*/
+			case SDLK_1:
+				std::cout << "called Surface 1\n";
+				SurfaceCall = 1;
+				callSurface();
 				break;
+			case SDLK_2:
+				std::cout << "called Surface 2\n";
+				SurfaceCall = 2;
+				callSurface();
+				break;
+				/*End of Debug Keys*/
 			default:
 				break;
 			}
@@ -130,29 +136,36 @@ void Application::callRenderer()
 {
 	/**/
 	SDL_RenderClear(Renderer);
-	TextureLoader->OnDraw(Renderer, Background, BackRect);
-	TextureLoader->OnDraw(Renderer, PlayerEntity->Sprite, PlayerEntity->SpriteDescRect);
+	TextureLoader->OnDraw(Renderer, Backgrounds->getSurface(), Backgrounds->getRect());
+	TextureLoader->OnDraw(Renderer, PlayerEntity->getSurface(), PlayerEntity->getDescRect());
 	
 }
 void Application::callCleanup()
 {
-	SDL_FreeSurface(PlayerEntity->Sprite);
 	SDL_Quit();
 }
 
 void Application::callSurface()
 {	
-		std::string Player("image.bmp");
-		PlayerEntity->Sprite = TextureLoader->onTextureLoad(Player);
+	switch (SurfaceCall)
+	{
+	case 0:
+		PlayerEntity->setSurface(TextureLoader->onTextureLoad("image.bmp"));
+		Backgrounds->setSurface(TextureLoader->onTextureLoad("background.bmp"));
+		SurfaceCall = 1;
+		break;
+	case 1:
+		break;
+	default:
+		break;
 
-		std::string sBackground("background.bmp");
-		Background = TextureLoader->onTextureLoad(sBackground);
-
+	}
 
 }
 
 void Application::callTexture()
 {
-	PlayerEntity->EntityTexture = TextureLoader->callTexture(Renderer, PlayerEntity->Sprite);
+	PlayerEntity->setTexture(TextureLoader->callTexture(Renderer, PlayerEntity->getSurface()));
+	Backgrounds->setTexture(TextureLoader->callTexture(Renderer, Backgrounds->getSurface()));
 
 }

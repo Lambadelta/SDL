@@ -7,12 +7,14 @@
 #include "LoadTexture.h"
 #include "Animation.h"
 #include "Entity.h"
+#include "Background.h"
+#include "Tile.h"
 
 
 class Application
 {
 public:
-	Application(Vec4 v4);
+	Application();
 	~Application();
 	
 
@@ -28,17 +30,20 @@ public:
 protected:
 	bool GameLoop;
 	SDL_Window* Display;
-	int winPosX;
-	int winPosY;
-	int winWidth;
-	int winHeight;
+	int SurfaceCall;
 	//Vec2 v2;
 	//SourceRect sr1;
 	Entity* PlayerEntity;
-	SDL_Surface* Background;
+	Background* Backgrounds;
 	SDL_Renderer * Renderer;
-	LoadTexture* TextureLoader; 
-	SDL_Rect BackRect;
+	LoadTexture* TextureLoader;
+	Tile* TileLoader;
+
+	/* Assigning the size of the window*/
+	const int WINDOW_X = 100;
+	const int WINDOW_Y = 100;
+	const int WINDOW_WIDTH = 1024;
+	const int WINDOW_HEIGHT = 768;
 
 	
 };

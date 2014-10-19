@@ -10,18 +10,25 @@ class Entity
 public:
 	Entity(Vec2 v1, SourceRect sr1,float s);
 	~Entity();
-	SDL_Surface* Sprite;
-	SDL_Texture* EntityTexture;
-	SDL_Rect SpriteDescRect;
-	SDL_Rect SpriteSrcRect;
 	float fSpeed;
 	void callMoveUp();
 	void callMoveDown();
 	void callMoveLeft();
 	void callMoveRight();
+
+	void setSurface(SDL_Surface*);
+	void setTexture(SDL_Texture*);
+	SDL_Surface* getSurface();
+	SDL_Texture* getTexture();
+
+	SDL_Rect getDescRect();
+	SDL_Rect getSrcRect();
 private:
 
-
+	SDL_Surface* EntitySurface;
+	SDL_Texture* EntityTexture;
+	SDL_Rect DescRect;
+	SDL_Rect SrcRect;
 };
 
 #endif

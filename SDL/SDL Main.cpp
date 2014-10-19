@@ -14,12 +14,9 @@
 
 int main(int argc, char *argv[])
 {
-	/* Assigning the size of the window*/
-
-	Vec4 window(100, 100, 640, 480);
 
 	/*Creates the Application*/
-	Application SDL(window);
+	Application SDL;
 	SDL.callExecution();
 
 	return 0;
