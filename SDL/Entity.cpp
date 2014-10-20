@@ -18,12 +18,11 @@ Entity::~Entity()
 	SDL_FreeSurface(EntitySurface);
 }
 
-void Entity::callMoveUp(bool move, float time)
+void Entity::callMoveUp(bool move)
 {
 	if (move == true)
 	{
-		/*DescRect.y -= fSpeed;*/
-		DescRect.y = DescRect.y - (fSpeed * time);
+		DescRect.y -= fSpeed;
 	}
 	else
 	{
@@ -31,12 +30,11 @@ void Entity::callMoveUp(bool move, float time)
 	}
 }
 
-void Entity::callMoveDown(bool move, float time)
+void Entity::callMoveDown(bool move)
 {
 	if (move == true)
 	{
-		/*DescRect.y += fSpeed;*/
-		DescRect.y = DescRect.y + (fSpeed * time);
+		DescRect.y += fSpeed;
 	}
 	else
 	{
@@ -44,12 +42,11 @@ void Entity::callMoveDown(bool move, float time)
 	}
 }
 
-void Entity::callMoveLeft(bool move, float time)
+void Entity::callMoveLeft(bool move)
 {
 	if (move == true)
 	{
-		/*DescRect.x -= fSpeed;*/
-		DescRect.x = DescRect.x - (fSpeed * time);
+		DescRect.x -= fSpeed;
 	}
 	else
 	{
@@ -57,12 +54,11 @@ void Entity::callMoveLeft(bool move, float time)
 	}
 }
 
-void Entity::callMoveRight(bool move, float time)
+void Entity::callMoveRight(bool move)
 {
 	if (move == true)
 	{
-		/*DescRect.x += fSpeed;*/
-		DescRect.x = DescRect.x + (fSpeed * time);
+		DescRect.x += fSpeed;
 	}
 	else
 	{

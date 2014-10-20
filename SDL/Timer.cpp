@@ -61,8 +61,8 @@ int Timer::getTime()
 		}
 		else
 		{
-			iTime = (iStartTime - iPausedTime) / 1000;
-			iPausedTime = iStartTime;
+			iTime = (SDL_GetTicks() - iStartTime) / 1000;
+			iStartTime = iTime;
 		}
 	}
 

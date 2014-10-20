@@ -46,6 +46,8 @@ protected:
 	const int WINDOW_Y = 100;
 	const int WINDOW_WIDTH = 1024;
 	const int WINDOW_HEIGHT = 768;
+	const int WINDOW_FPS = 60;
+	const int WINDOW_TICKS_PER_FRAME = 1000 / WINDOW_FPS;
 
 	
 };

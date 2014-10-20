@@ -3,7 +3,7 @@ Application::Application()
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 5.0f);
+	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 10.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	TileLoader = NULL;
@@ -52,7 +52,7 @@ bool Application::callInit()
 	{
 		return false;
 	}
-	Renderer = SDL_CreateRenderer(Display, -1, 0);
+	Renderer = SDL_CreateRenderer(Display, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
 	/*TileLoader->loadmap("TestMap.map");*/
 	time.callStart();
@@ -79,19 +79,19 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMoveUp(true, time.getTime());
+				PlayerEntity->callMoveUp(true);
 				std::cout << "W is pressed\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMoveDown(true, time.getTime());
+				PlayerEntity->callMoveDown(true);
 				std::cout << "S is pressed\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMoveRight(true, time.getTime());
+				PlayerEntity->callMoveRight(true);
 				std::cout << "D is pressed\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMoveLeft(true, time.getTime());
+				PlayerEntity->callMoveLeft(true);
 				std::cout << "A is pressed\n";
 				break;
 			case SDLK_k:
@@ -104,19 +104,19 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMoveUp(false, time.getTime());
+				PlayerEntity->callMoveUp(false);
 				std::cout << "W is released\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMoveDown(false, time.getTime());
+				PlayerEntity->callMoveDown(false);
 				std::cout << "S is released\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMoveRight(false, time.getTime());
+				PlayerEntity->callMoveRight(false);
 				std::cout << "D is released\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMoveLeft(false, time.getTime());
+				PlayerEntity->callMoveLeft(false);
 				std::cout << "A is released\n";
 				break;
 			}
