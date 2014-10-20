@@ -39,6 +39,7 @@ bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, SDL_Rect d
 		std::cout << "Unable to create texture from \n";
 		return NULL;
 	}
+
 	/*Copy the destination surface with the texture from the Source surface using the Rect data*/
 	SDL_QueryTexture(cTexture, NULL, NULL, &descRect.w, &descRect.h);
 	SDL_RenderCopy(Renderer, cTexture, NULL, &descRect);

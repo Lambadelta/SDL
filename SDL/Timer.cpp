@@ -8,6 +8,10 @@ Timer::Timer()
 	bPaused = false;
 	bStart = false;
 }
+Timer::~Timer()
+{
+
+}
 
 void Timer::callStart()
 {
@@ -57,7 +61,8 @@ int Timer::getTime()
 		}
 		else
 		{
-			iTime = SDL_GetTicks() - iStartTime;
+			iTime = (iStartTime - iPausedTime) / 1000;
+			iPausedTime = iStartTime;
 		}
 	}
 
@@ -74,3 +79,4 @@ bool Timer::isStarted()
 	return bStart;
 }
 
+/*16.7 Mil Seconds = 60 fps use SDL_Delay*/

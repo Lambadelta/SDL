@@ -18,24 +18,56 @@ Entity::~Entity()
 	SDL_FreeSurface(EntitySurface);
 }
 
-void Entity::callMoveUp()
+void Entity::callMoveUp(bool move, float time)
 {
-	DescRect.y -= fSpeed;
+	if (move == true)
+	{
+		/*DescRect.y -= fSpeed;*/
+		DescRect.y = DescRect.y - (fSpeed * time);
+	}
+	else
+	{
+		std::cout << "Stop Moving Up\n";
+	}
 }
 
-void Entity::callMoveDown()
+void Entity::callMoveDown(bool move, float time)
 {
-	DescRect.y += fSpeed;
+	if (move == true)
+	{
+		/*DescRect.y += fSpeed;*/
+		DescRect.y = DescRect.y + (fSpeed * time);
+	}
+	else
+	{
+		std::cout << "Stop Moving Down\n";
+	}
 }
 
-void Entity::callMoveLeft()
+void Entity::callMoveLeft(bool move, float time)
 {
-	DescRect.x -= fSpeed;
+	if (move == true)
+	{
+		/*DescRect.x -= fSpeed;*/
+		DescRect.x = DescRect.x - (fSpeed * time);
+	}
+	else
+	{
+		std::cout << "Stop Moving Left\n";
+	}
 }
 
-void Entity::callMoveRight()
+void Entity::callMoveRight(bool move, float time)
 {
-	DescRect.x += fSpeed;
+	if (move == true)
+	{
+		/*DescRect.x += fSpeed;*/
+		DescRect.x = DescRect.x + (fSpeed * time);
+	}
+	else
+	{
+		std::cout << "Stop Moving Right\n";
+	}
 }
 
 void Entity::setSurface(SDL_Surface* sSurface)

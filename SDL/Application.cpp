@@ -6,9 +6,10 @@ Application::Application()
 	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 5.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
-	TileLoader = new Tile;
+	TileLoader = NULL;
 	Renderer = NULL;
 	/*Debug*/
+	float ftime = time.getTime();
 	SurfaceCall = 0;
 
 }
@@ -53,9 +54,12 @@ bool Application::callInit()
 	}
 	Renderer = SDL_CreateRenderer(Display, -1, 0);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
-	TileLoader->loadmap("TestMap.map");
+	/*TileLoader->loadmap("TestMap.map");*/
+	time.callStart();
 	callSurface();
 	callTexture();
+
+
 
 	return true;
 }
@@ -66,63 +70,57 @@ void Application::callEvent(SDL_Event* sdlEvent)
 
 	while (SDL_PollEvent(sdlEvent))
 	{
-		/*Checks to see if the event quit has been called*/
-		if (sdlEvent->type == SDL_QUIT)
+		switch (sdlEvent->type)
 		{
+		case SDL_QUIT:
 			GameLoop = false;
-		}
-		else if (sdlEvent->type == SDL_KEYDOWN)
-		{
-			/*Switch statement that checks the key events*/
+			break;
+		case SDL_KEYDOWN:
 			switch (sdlEvent->key.keysym.sym)
 			{
-				/*Escape Key*/
-			case SDLK_ESCAPE:
-				GameLoop = false;
-				break;
-				/*W key*/
 			case SDLK_w:
-				PlayerEntity->callMoveUp();
+				PlayerEntity->callMoveUp(true, time.getTime());
 				std::cout << "W is pressed\n";
 				break;
-			case SDLK_a:
-				/*A Key*/
-				PlayerEntity->callMoveLeft();
-				std::cout << "A is pressed\n";
-				break;
-				/*S Key*/
 			case SDLK_s:
-				PlayerEntity->callMoveDown();
+				PlayerEntity->callMoveDown(true, time.getTime());
 				std::cout << "S is pressed\n";
 				break;
-				/*D Key*/
-			case SDLK_d :
-				PlayerEntity->callMoveRight();
+			case SDLK_d:
+				PlayerEntity->callMoveRight(true, time.getTime());
 				std::cout << "D is pressed\n";
 				break;
-				/*E Key*/
-			case SDLK_e: 
+			case SDLK_a:
+				PlayerEntity->callMoveLeft(true, time.getTime());
+				std::cout << "A is pressed\n";
 				break;
-				/*T Key*/
-			case SDLK_t:
-				std::cout << "called texture\n";
-				callTexture();
-				break;
-				/*Debug keys to control surface loading*/
-			case SDLK_1:
-				std::cout << "called Surface 1\n";
-				SurfaceCall = 1;
-				callSurface();
-				break;
-			case SDLK_2:
-				std::cout << "called Surface 2\n";
-				SurfaceCall = 2;
-				callSurface();
-				break;
-				/*End of Debug Keys*/
-			default:
+			case SDLK_k:
+				ftime = time.getTime();
+				std::cout << ftime << "\n";
 				break;
 			}
+			break;
+		case SDL_KEYUP:
+			switch (sdlEvent->key.keysym.sym)
+			{
+			case SDLK_w:
+				PlayerEntity->callMoveUp(false, time.getTime());
+				std::cout << "W is released\n";
+				break;
+			case SDLK_s:
+				PlayerEntity->callMoveDown(false, time.getTime());
+				std::cout << "S is released\n";
+				break;
+			case SDLK_d:
+				PlayerEntity->callMoveRight(false, time.getTime());
+				std::cout << "D is released\n";
+				break;
+			case SDLK_a:
+				PlayerEntity->callMoveLeft(false, time.getTime());
+				std::cout << "A is released\n";
+				break;
+			}
+			break;
 		}
 	}
 }

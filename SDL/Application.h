@@ -9,6 +9,7 @@
 #include "Entity.h"
 #include "Background.h"
 #include "Tile.h"
+#include "Timer.h"
 
 
 class Application
@@ -38,7 +39,8 @@ protected:
 	SDL_Renderer * Renderer;
 	LoadTexture* TextureLoader;
 	Tile* TileLoader;
-
+	Timer time;
+	float ftime;
 	/* Assigning the size of the window*/
 	const int WINDOW_X = 100;
 	const int WINDOW_Y = 100;

@@ -11,10 +11,10 @@ public:
 	Entity(Vec2 v1, SourceRect sr1,float s);
 	~Entity();
 	float fSpeed;
-	void callMoveUp();
-	void callMoveDown();
-	void callMoveLeft();
-	void callMoveRight();
+	void callMoveUp(bool move, float time);
+	void callMoveDown(bool move, float time);
+	void callMoveLeft(bool move, float time);
+	void callMoveRight(bool move, float time);
 
 	void setSurface(SDL_Surface*);
 	void setTexture(SDL_Texture*);
