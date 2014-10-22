@@ -13,16 +13,19 @@ public:
 	void callPause();
 	void callUnpause();
 	void callStop();
-
-	int getTime();
+	
+	float getDelta();
+	void updateTime();
 
 	bool isPaused();
 	bool isStarted();
 
 private:
-	int iStartTime;
-	int iPausedTime;
+	int iStartTick;
+	int iPausedTick;
+	int iLastTick;
 
+	float fDelta;
 	bool bPaused;
 	bool bStart;
 };

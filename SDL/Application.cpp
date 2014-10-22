@@ -9,7 +9,7 @@ Application::Application()
 	TileLoader = NULL;
 	Renderer = NULL;
 	/*Debug*/
-	float ftime = time.getTime();
+	float ftime = time.updateTime();
 	SurfaceCall = 0;
 
 }
@@ -95,7 +95,7 @@ void Application::callEvent(SDL_Event* sdlEvent)
 				std::cout << "A is pressed\n";
 				break;
 			case SDLK_k:
-				ftime = time.getTime();
+				ftime = time.updateTime();
 				std::cout << ftime << "\n";
 				break;
 			}

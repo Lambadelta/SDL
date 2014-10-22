@@ -2,8 +2,9 @@
 
 Timer::Timer()
 {
-	iStartTime = 0;
-	iPausedTime = 0;
+	iStartTick = 0;
+	iPausedTick = 0;
+	iLastTick = 0;
 
 	bPaused = false;
 	bStart = false;
@@ -18,8 +19,8 @@ void Timer::callStart()
 	bStart = true;
 	bPaused = false;
 
-	iStartTime = SDL_GetTicks();
-	iPausedTime = 0;
+	iStartTick = SDL_GetTicks();
+	iPausedTick = 0;
 
 }
 void Timer::callPause()
@@ -28,8 +29,8 @@ void Timer::callPause()
 	{
 		bPaused = true;
 
-		iPausedTime = SDL_GetTicks() - iStartTime;
-		iStartTime = 0;
+		iPausedTick = SDL_GetTicks() - iStartTick;
+		iStartTick = 0;
 	}
 }
 
@@ -39,8 +40,8 @@ void Timer::callUnpause()
 	{
 		bPaused = false;
 
-		iStartTime = SDL_GetTicks() - iStartTime;
-		iPausedTime = 0;
+		iStartTick = SDL_GetTicks() - iStartTick;
+		iPausedTick = 0;
 	}
 }
 
@@ -49,24 +50,29 @@ void Timer::callStop()
 
 }
 
-int Timer::getTime()
-{
-	int iTime = 0;
 
+float Timer::getDelta()
+{
+	return (fDelta);
+}
+
+void Timer::updateTime()
+{
 	if (bStart == true)
 	{
 		if (bPaused == true)
 		{
-			iTime = iPausedTime;
+			iLastTick = iPausedTick;
+			fDelta = (iPausedTick - iLastTick) / 1000;
 		}
 		else
 		{
-			iTime = (SDL_GetTicks() - iStartTime) / 1000;
-			iStartTime = iTime;
+			iLastTick = iStartTick;
+			iStartTick = SDL_GetTicks();
+			fDelta = (iStartTick - iLastTick) / 1000;
 		}
 	}
 
-	return iTime;
 }
 
 bool Timer::isPaused()
