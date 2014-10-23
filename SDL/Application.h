@@ -6,10 +6,10 @@
 #include "Vec4.h"
 #include "LoadTexture.h"
 #include "Animation.h"
-#include "Entity.h"
 #include "Background.h"
 #include "Tile.h"
 #include "Timer.h"
+#include "Player.h"
 
 
 class Application
@@ -34,7 +34,7 @@ protected:
 	int SurfaceCall;
 	//Vec2 v2;
 	//SourceRect sr1;
-	Entity* PlayerEntity;
+	Player* PlayerEntity;
 	Background* Backgrounds;
 	SDL_Renderer * Renderer;
 	LoadTexture* TextureLoader;

@@ -76,6 +76,7 @@
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="LoadTexture.cpp" />
+    <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDL Main.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -86,6 +87,7 @@
     <ClInclude Include="Background.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="LoadTexture.h" />
+    <ClInclude Include="Player.h" />
     <ClInclude Include="SourceRect.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Timer.h" />

@@ -3,7 +3,7 @@ Application::Application()
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 20.0f);
+	PlayerEntity = new Player(Vec2(100, 100), SourceRect(28, 46, 28, 46), 20.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	TileLoader = NULL;
@@ -78,19 +78,19 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMoveUp(true, time);
+				PlayerEntity->callMove("UP", time);
 				std::cout << "W is pressed\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMoveDown(true, time);
+				PlayerEntity->callMove("DOWN", time);
 				std::cout << "S is pressed\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMoveRight(true, time);
+				PlayerEntity->callMove("RIGHT", time);
 				std::cout << "D is pressed\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMoveLeft(true, time);
+				PlayerEntity->callMove("LEFT", time);
 				std::cout << "A is pressed\n";
 				break;
 			case SDLK_k:
@@ -103,19 +103,19 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMoveUp(false, time);
+				PlayerEntity->callMove("", time);
 				std::cout << "W is released\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMoveDown(false, time);
+				PlayerEntity->callMove("", time);
 				std::cout << "S is released\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMoveRight(false, time);
+				PlayerEntity->callMove("", time);
 				std::cout << "D is released\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMoveLeft(false, time);
+				PlayerEntity->callMove("", time);
 				std::cout << "A is released\n";
 				break;
 			}

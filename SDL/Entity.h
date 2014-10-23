@@ -11,11 +11,7 @@ class Entity
 public:
 	Entity(Vec2 v1, SourceRect sr1,float s);
 	~Entity();
-	float fSpeed;
-	void callMoveUp(bool move, Timer time);
-	void callMoveDown(bool move, Timer time);
-	void callMoveLeft(bool move, Timer time);
-	void callMoveRight(bool move, Timer time);
+
 
 	void setSurface(SDL_Surface*);
 	void setTexture(SDL_Texture*);
@@ -24,8 +20,10 @@ public:
 
 	SDL_Rect getDescRect();
 	SDL_Rect getSrcRect();
-private:
 
+protected:
+
+	float fSpeed;
 	SDL_Surface* EntitySurface;
 	SDL_Texture* EntityTexture;
 	SDL_Rect DescRect;
