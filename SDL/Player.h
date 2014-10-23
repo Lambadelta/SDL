@@ -10,7 +10,9 @@ public:
 	~Player();
 
 	void callMove(char* input, Timer time);
-
+	void addLives(int life);
+	void subLives(int damage);
+	int getLives();
 private:
 
 	bool bMoveUp = false;
@@ -18,6 +20,7 @@ private:
 	bool bMoveLeft = false;
 	bool bMoveRight = false;
 
+	int iLives;
 
 };
 

@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-Player::Player(Vec2 v1, SourceRect sr1, float s) : Entity(v1,sr1,s)
+Player::Player(Vec2 v1, SourceRect sr1, float s) : Entity()
 {
 	EntitySurface = NULL;
 	EntityTexture = NULL;
@@ -21,75 +21,74 @@ Player::~Player()
 
 void Player::callMove(char* input, Timer time)
 {
+	/*input check if
+		
+		Checking the input for which input has been pressed then assigning the correct 
+		boolean to the appropriate variable.*/
 
-	if (input == "UP")
 	{
-		bMoveUp = true;
-	}
-	else
-	{
+		if (input == "UP") //input check
+		{
+			bMoveUp = true;   //up is true
+		}
 		if (input == "DOWN")
 		{
-			bMoveDown = true;
+			bMoveDown = true;  //down is true
 		}
-		else
+		if (input == "LEFT")
 		{
-			if (input == "LEFT")
-			{
-				bMoveLeft = true;
-			}
-			else
-			{
-				if (input == "RIGHT")
-				{
-					bMoveRight = true;
-				}
-				else
-				{
-					if (input == "")
-					{
-						bMoveUp = false;
-						bMoveDown = false;
-						bMoveRight = false;
-						bMoveLeft = false;
-					}
-				}
-			}
+			bMoveLeft = true;  //left is true
+		}
+		if (input == "RIGHT")
+		{
+			bMoveRight = true;  //right is true
+		}
+		/*if input is nothing then set everything to false.*/
+		if (input == "")
+		{
+			bMoveUp = false;
+			bMoveDown = false;
+			bMoveRight = false;
+			bMoveLeft = false;
 		}
 	}
+	/*Movement if
+	
+		Checks the booleans for their corresponding direction waiting for when the button is pressed
+		to start movement.*/
 
 	{
 		if (bMoveUp == true)
 		{
-			DescRect.y -= fSpeed * time.getDelta();
-		}
-		else
-		{
-			std::cout << "Stop Moving Up\n";
+			DescRect.y -= fSpeed * time.getDelta(); 
 		}
 		if (bMoveDown == true)
 		{
 			DescRect.y += fSpeed * time.getDelta();
 		}
-		else
-		{
-			std::cout << "Stop Moving Down\n";
-		}
 		if (bMoveLeft == true)
 		{
 			DescRect.x -= fSpeed * time.getDelta();
-		}
-		else
-		{
-			std::cout << "Stop Moving Left\n";
 		}
 		if (bMoveRight == true)
 		{
 			DescRect.x += fSpeed * time.getDelta();
 		}
-		else
-		{
-			std::cout << "Stop Moving Right\n";
-		}
 	}
+}
+
+/* Methods to add or subtract from the life of the player*/
+void Player::addLives(int life)
+{
+	iLives += life;
+}
+void Player::subLives(int damage)
+{
+	iLives -= damage;
+}
+
+/*Method to get the current life of the player*/
+int Player::getLives()
+{
+	return iLives;
 }

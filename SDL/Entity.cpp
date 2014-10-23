@@ -1,6 +1,6 @@
 #include "Entity.h"
 
-Entity::Entity(Vec2 v1, SourceRect sr1,float s)
+Entity::Entity()
 {
 }
 Entity::~Entity()
