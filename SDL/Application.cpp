@@ -3,13 +3,12 @@ Application::Application()
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 10.0f);
+	PlayerEntity = new Entity(Vec2(100, 100), SourceRect(28, 46, 28, 46), 20.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	TileLoader = NULL;
 	Renderer = NULL;
 	/*Debug*/
-	float ftime = time.updateTime();
 	SurfaceCall = 0;
 
 }
@@ -79,23 +78,23 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMoveUp(true);
+				PlayerEntity->callMoveUp(true, time);
 				std::cout << "W is pressed\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMoveDown(true);
+				PlayerEntity->callMoveDown(true, time);
 				std::cout << "S is pressed\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMoveRight(true);
+				PlayerEntity->callMoveRight(true, time);
 				std::cout << "D is pressed\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMoveLeft(true);
+				PlayerEntity->callMoveLeft(true, time);
 				std::cout << "A is pressed\n";
 				break;
 			case SDLK_k:
-				ftime = time.updateTime();
+				ftime = time.getDelta();
 				std::cout << ftime << "\n";
 				break;
 			}
@@ -104,19 +103,19 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMoveUp(false);
+				PlayerEntity->callMoveUp(false, time);
 				std::cout << "W is released\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMoveDown(false);
+				PlayerEntity->callMoveDown(false, time);
 				std::cout << "S is released\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMoveRight(false);
+				PlayerEntity->callMoveRight(false, time);
 				std::cout << "D is released\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMoveLeft(false);
+				PlayerEntity->callMoveLeft(false, time);
 				std::cout << "A is released\n";
 				break;
 			}
@@ -127,6 +126,7 @@ void Application::callEvent(SDL_Event* sdlEvent)
 void Application::callLoop()
 {
 	/*Method that calls other methods that regularly need to loop*/
+	time.updateTime();
 	/*Calls the rendering method*/
 	callRenderer();
 }

@@ -53,7 +53,7 @@ void Timer::callStop()
 
 float Timer::getDelta()
 {
-	return (fDelta);
+	return ((fDelta / 100));
 }
 
 void Timer::updateTime()
@@ -63,13 +63,14 @@ void Timer::updateTime()
 		if (bPaused == true)
 		{
 			iLastTick = iPausedTick;
-			fDelta = (iPausedTick - iLastTick) / 1000;
+			fDelta = (iPausedTick - iLastTick);
 		}
 		else
 		{
-			iLastTick = iStartTick;
+			
 			iStartTick = SDL_GetTicks();
-			fDelta = (iStartTick - iLastTick) / 1000;
+			fDelta = (iStartTick - iLastTick);
+			iLastTick = iStartTick;
 		}
 	}
 

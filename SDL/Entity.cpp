@@ -18,11 +18,11 @@ Entity::~Entity()
 	SDL_FreeSurface(EntitySurface);
 }
 
-void Entity::callMoveUp(bool move)
+void Entity::callMoveUp(bool move, Timer time)
 {
 	if (move == true)
 	{
-		DescRect.y -= fSpeed;
+		DescRect.y -= fSpeed * time.getDelta();
 	}
 	else
 	{
@@ -30,11 +30,11 @@ void Entity::callMoveUp(bool move)
 	}
 }
 
-void Entity::callMoveDown(bool move)
+void Entity::callMoveDown(bool move, Timer time)
 {
 	if (move == true)
 	{
-		DescRect.y += fSpeed;
+		DescRect.y += fSpeed * time.getDelta();
 	}
 	else
 	{
@@ -42,11 +42,11 @@ void Entity::callMoveDown(bool move)
 	}
 }
 
-void Entity::callMoveLeft(bool move)
+void Entity::callMoveLeft(bool move, Timer time)
 {
 	if (move == true)
 	{
-		DescRect.x -= fSpeed;
+		DescRect.x -= fSpeed * time.getDelta();
 	}
 	else
 	{
@@ -54,11 +54,11 @@ void Entity::callMoveLeft(bool move)
 	}
 }
 
-void Entity::callMoveRight(bool move)
+void Entity::callMoveRight(bool move, Timer time)
 {
 	if (move == true)
 	{
-		DescRect.x += fSpeed;
+		DescRect.x += fSpeed * time.getDelta();
 	}
 	else
 	{

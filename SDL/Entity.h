@@ -4,6 +4,7 @@
 #include <iostream>
 #include "Vec2.h"
 #include "SourceRect.h"
+#include "Timer.h"
 
 class Entity
 {
@@ -11,10 +12,10 @@ public:
 	Entity(Vec2 v1, SourceRect sr1,float s);
 	~Entity();
 	float fSpeed;
-	void callMoveUp(bool move);
-	void callMoveDown(bool move);
-	void callMoveLeft(bool move);
-	void callMoveRight(bool move);
+	void callMoveUp(bool move, Timer time);
+	void callMoveDown(bool move, Timer time);
+	void callMoveLeft(bool move, Timer time);
+	void callMoveRight(bool move, Timer time);
 
 	void setSurface(SDL_Surface*);
 	void setTexture(SDL_Texture*);
