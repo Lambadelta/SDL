@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <sstream>
+#include <SDL_image.h>
 #include "Vec4.h"
 #include "LoadTexture.h"
 #include "Animation.h"

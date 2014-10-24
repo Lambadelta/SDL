@@ -9,11 +9,11 @@ LoadTexture::~LoadTexture()
 {
 
 }
-SDL_Surface* LoadTexture::onTextureLoad(std::string path/*,SDL_Window* window*/)
+SDL_Surface* LoadTexture::onTextureLoad(std::string path)
 {
 	SDL_Surface* Temp = NULL;
 
-	Temp = SDL_LoadBMP(path.c_str());
+	Temp = IMG_Load(path.c_str());
 	if (Temp == NULL)
 	{
 		// We'll do a quick check here because it's easy to get filenames or directories wrong

@@ -97,6 +97,10 @@ void Application::callEvent(SDL_Event* sdlEvent)
 				ftime = time.getDelta();
 				std::cout << ftime << "\n";
 				break;
+			case SDLK_ESCAPE:
+				GameLoop = false;
+				callCleanup();
+				break;
 			}
 			break;
 		case SDL_KEYUP:
@@ -148,7 +152,7 @@ void Application::callSurface()
 	switch (SurfaceCall)
 	{
 	case 0:
-		PlayerEntity->setSurface(TextureLoader->onTextureLoad("image.bmp"));
+		PlayerEntity->setSurface(TextureLoader->onTextureLoad("Asset/Entity/Player/image.bmp"));
 		Backgrounds->setSurface(TextureLoader->onTextureLoad("background.bmp"));
 		SurfaceCall = 1;
 		break;
