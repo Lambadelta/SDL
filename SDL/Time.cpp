@@ -53,7 +53,7 @@ void Time::callStop()
 
 float Time::getDelta()
 {
-	return ((fDelta / 100));
+	return (fDelta);
 }
 
 void Time::updateTime()
@@ -70,6 +70,7 @@ void Time::updateTime()
 			
 			iStartTick = SDL_GetTicks();
 			fDelta = (iStartTick - iLastTick);
+			fDelta = fDelta / 100;
 			iLastTick = iStartTick;
 		}
 	}

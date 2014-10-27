@@ -9,7 +9,7 @@ public:
 	Player(SourceRect v1, SourceRect sr1, float s);
 	~Player();
 
-	void callMove(char* input, Time time);
+	void callMove(char* input, Time time, Timer* Anim);
 	void addLives(int life);
 	void subLives(int damage);
 	int getLives();
@@ -19,7 +19,6 @@ private:
 	bool bMoveDown = false;
 	bool bMoveLeft = false;
 	bool bMoveRight = false;
-
 	int iLives;
 
 };

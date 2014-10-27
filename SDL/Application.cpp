@@ -3,13 +3,14 @@ Application::Application()
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Player(SourceRect(100, 100, 66, 66), SourceRect(0, 0, 22, 22), 20.0f);
+	PlayerEntity = new Player(SourceRect(100, 100, 44, 44), SourceRect(0, 0, 22, 22), 60.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	TileLoader = NULL;
 	Renderer = NULL;
-	/*Debug*/
+	Anim = new Timer(1);
 	SurfaceCall = 0;
+	ftimer = 0;
 
 }
 Application::~Application()
@@ -51,7 +52,7 @@ bool Application::callInit()
 	{
 		return false;
 	}
-	Renderer = SDL_CreateRenderer(Display, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+	Renderer = SDL_CreateRenderer(Display, -1, SDL_RENDERER_PRESENTVSYNC);
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
 	/*TileLoader->loadmap("TestMap.map");*/
 	time.callStart();
@@ -78,25 +79,29 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMove("UP", time);
+				PlayerEntity->callMove("UP", time, Anim);
 				std::cout << "W is pressed\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMove("DOWN", time);
+				PlayerEntity->callMove("DOWN", time, Anim);
 				std::cout << "S is pressed\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMove("RIGHT", time);
+				PlayerEntity->callMove("RIGHT", time, Anim);
 				std::cout << "D is pressed\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMove("LEFT", time);
+				PlayerEntity->callMove("LEFT", time, Anim);
 				std::cout << "A is pressed\n";
 				break;
 			case SDLK_k:
 				ftime = time.getDelta();
 				std::cout << ftime << "\n";
 				break;
+			case SDLK_l:
+				ftimer = Anim->debug();
+				std::cout << ftimer << "\n";
+					break;
 			case SDLK_ESCAPE:
 				GameLoop = false;
 				callCleanup();
@@ -107,19 +112,19 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			switch (sdlEvent->key.keysym.sym)
 			{
 			case SDLK_w:
-				PlayerEntity->callMove("", time);
+				PlayerEntity->callMove("", time, Anim);
 				std::cout << "W is released\n";
 				break;
 			case SDLK_s:
-				PlayerEntity->callMove("", time);
+				PlayerEntity->callMove("", time, Anim);
 				std::cout << "S is released\n";
 				break;
 			case SDLK_d:
-				PlayerEntity->callMove("", time);
+				PlayerEntity->callMove("", time, Anim);
 				std::cout << "D is released\n";
 				break;
 			case SDLK_a:
-				PlayerEntity->callMove("", time);
+				PlayerEntity->callMove("", time, Anim);
 				std::cout << "A is released\n";
 				break;
 			}
@@ -131,6 +136,7 @@ void Application::callLoop()
 {
 	/*Method that calls other methods that regularly need to loop*/
 	time.updateTime();
+	Anim->updateTimer(time.getDelta());
 	/*Calls the rendering method*/
 	callRenderer();
 }

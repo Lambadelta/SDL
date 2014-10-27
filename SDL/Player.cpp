@@ -21,79 +21,83 @@ Player::~Player()
 
 }
 
-void Player::callMove(char* input, Time time)
+void Player::callMove(char* input, Time time, Timer* Anim)
 {
+	Anim->updateTimer(time.getDelta());
 	/*input check if
-		
-		Checking the input for which input has been pressed then assigning the correct 
-		boolean to the appropriate variable.*/
-
-	{
-		if (input == "UP") //input check
-		{
-			bMoveUp = true;   //up is true
-			SrcRect.y = 44;
-			SrcRect.x += 22;
-			if (SrcRect.x >= 66)
-			{
-				SrcRect.x = 0;
-			}
-		}
-		if (input == "DOWN")
-		{
-			bMoveDown = true;  //down is true
-			SrcRect.y = 0;
-			SrcRect.x += 22;
-			if (SrcRect.x >= 66)
-			{
-				SrcRect.x = 0;
-			}
-		}
-		if (input == "LEFT")
-		{
-			bMoveLeft = true;  //left is true
-			
-		}
-		if (input == "RIGHT")
-		{
-			bMoveRight = true;  //right is true
-			SrcRect.y = 22;
-			SrcRect.x += 22;
-			if (SrcRect.x >= 66)
-			{
-				SrcRect.x = 0;
-			}
-		}
-		/*if input is nothing then set everything to false.*/
-		if (input == "")
-		{
-			bMoveUp = false;
-			bMoveDown = false;
-			bMoveRight = false;
-			bMoveLeft = false;
-		}
-	}
-	/*Movement if
 	
-		Checks the booleans for their corresponding direction waiting for when the button is pressed
-		to start movement.*/
-
+		Checking the input for which input has been pressed then assigning the correct
+		boolean to the appropriate variable.*/
 	{
-		if (bMoveUp == true)
-		{
-			DescRect.y -= fSpeed * time.getDelta(); 
+			if (input == "UP") //input check
+			{
+				bMoveUp = true;   //up is true
+			}
+			if (input == "DOWN")
+			{
+				bMoveDown = true;  //down is true
+			}
+			if (input == "LEFT")
+			{
+				bMoveLeft = true;  //left is true
+
+			}
+			if (input == "RIGHT")
+			{
+				bMoveRight = true;  //right is true
+			}
+			/*if input is nothing then set everything to false.*/
+			if (input == "")
+			{
+				bMoveUp = false;
+				bMoveDown = false;
+				bMoveRight = false;
+				bMoveLeft = false;
+			}
 		}
-		if (bMoveDown == true)
+		/*Movement if
+
+			Checks the booleans for their corresponding direction waiting for when the button is pressed
+			to start movement.*/
+	if (Anim->expiredTimer())
+	{
 		{
-			DescRect.y += fSpeed * time.getDelta();
-		}
-		if (bMoveLeft == true)
-		{
-			DescRect.x -= fSpeed * time.getDelta();
-		}
-		if (bMoveRight == true)
-		{
-			DescRect.x += fSpeed * time.getDelta();
+			{
+				if (bMoveUp == true)
+				{
+					DescRect.y -= fSpeed * time.getDelta();
+					SrcRect.y = 44;
+					SrcRect.x += 22;
+					if (SrcRect.x >= 66)
+					{
+						SrcRect.x = 0;
+					}
+				}
+				if (bMoveDown == true)
+				{
+					DescRect.y += fSpeed * time.getDelta();
+					SrcRect.y = 0;
+					SrcRect.x += 22;
+					if (SrcRect.x >= 66)
+					{
+						SrcRect.x = 0;
+					}
+				}
+				if (bMoveLeft == true)
+				{
+					DescRect.x -= fSpeed * time.getDelta();
+				}
+				if (bMoveRight == true)
+				{
+					DescRect.x += fSpeed * time.getDelta();
+					SrcRect.y = 22;
+					SrcRect.x += 22;
+					if (SrcRect.x >= 66)
+					{
+						SrcRect.x = 0;
+					}
+				}
+			}
 		}
 	}
 }

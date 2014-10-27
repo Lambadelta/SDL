@@ -71,7 +71,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Background.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -80,9 +79,9 @@
     <ClCompile Include="SDL Main.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Time.cpp" />
+    <ClCompile Include="Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Animation.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Background.h" />
     <ClInclude Include="Entity.h" />
@@ -91,6 +90,7 @@
     <ClInclude Include="SourceRect.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Time.h" />
+    <ClInclude Include="Timer.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vec4.h" />
   </ItemGroup>
