@@ -9,7 +9,7 @@
 #include "Animation.h"
 #include "Background.h"
 #include "Tile.h"
-#include "Timer.h"
+#include "Time.h"
 #include "Player.h"
 
 
@@ -40,7 +40,7 @@ protected:
 	SDL_Renderer * Renderer;
 	LoadTexture* TextureLoader;
 	Tile* TileLoader;
-	Timer time;
+	Time time;
 	float ftime;
 	/* Assigning the size of the window*/
 	const int WINDOW_X = 100;

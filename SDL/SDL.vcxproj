@@ -79,7 +79,7 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDL Main.cpp" />
     <ClCompile Include="Tile.cpp" />
-    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -90,7 +90,7 @@
     <ClInclude Include="Player.h" />
     <ClInclude Include="SourceRect.h" />
     <ClInclude Include="Tile.h" />
-    <ClInclude Include="Timer.h" />
+    <ClInclude Include="Time.h" />
     <ClInclude Include="Vec2.h" />
     <ClInclude Include="Vec4.h" />
   </ItemGroup>

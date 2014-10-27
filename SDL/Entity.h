@@ -4,7 +4,7 @@
 #include <iostream>
 #include "Vec2.h"
 #include "SourceRect.h"
-#include "Timer.h"
+#include "Time.h"
 
 /*Entity Superclass
 

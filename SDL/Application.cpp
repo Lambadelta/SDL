@@ -3,7 +3,7 @@ Application::Application()
 {
 	GameLoop = true;
 	Display = NULL;
-	PlayerEntity = new Player(Vec2(100, 100), SourceRect(28, 46, 28, 46), 20.0f);
+	PlayerEntity = new Player(SourceRect(100, 100, 66, 66), SourceRect(0, 0, 22, 22), 20.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	TileLoader = NULL;
@@ -139,7 +139,7 @@ void Application::callRenderer()
 	/**/
 	SDL_RenderClear(Renderer);
 	TextureLoader->OnDraw(Renderer, Backgrounds->getSurface(), Backgrounds->getRect());
-	TextureLoader->OnDraw(Renderer, PlayerEntity->getSurface(), PlayerEntity->getDescRect());
+	TextureLoader->OnDraw(Renderer, PlayerEntity->getSurface(), PlayerEntity->getDescRect(),PlayerEntity->getSrcRect());
 	
 }
 void Application::callCleanup()
@@ -152,7 +152,7 @@ void Application::callSurface()
 	switch (SurfaceCall)
 	{
 	case 0:
-		PlayerEntity->setSurface(TextureLoader->onTextureLoad("Asset/Entity/Player/image.bmp"));
+		PlayerEntity->setSurface(TextureLoader->onTextureLoad("Asset/Entity/Player/Player.png"));
 		Backgrounds->setSurface(TextureLoader->onTextureLoad("background.bmp"));
 		SurfaceCall = 1;
 		break;

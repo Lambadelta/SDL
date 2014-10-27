@@ -6,10 +6,10 @@
 class Player : public Entity
 {
 public:
-	Player(Vec2 v1, SourceRect sr1, float s);
+	Player(SourceRect v1, SourceRect sr1, float s);
 	~Player();
 
-	void callMove(char* input, Timer time);
+	void callMove(char* input, Time time);
 	void addLives(int life);
 	void subLives(int damage);
 	int getLives();
