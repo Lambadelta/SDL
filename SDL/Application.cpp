@@ -8,7 +8,7 @@ Application::Application()
 	Backgrounds = new Background;
 	TileLoader = NULL;
 	Renderer = NULL;
-	Anim = new Timer(1);
+	Anim = new Timer(0.49f);
 	SurfaceCall = 0;
 	ftimer = 0;
 
@@ -56,6 +56,11 @@ bool Application::callInit()
 	SDL_SetRenderDrawColor(Renderer, 0xFF, 0x0, 0x0, 0xFF);
 	/*TileLoader->loadmap("TestMap.map");*/
 	time.callStart();
+
+
+	/*Initialise the surfaces and textures currently
+	
+	Will be changed*/
 	callSurface();
 	callTexture();
 
@@ -75,59 +80,13 @@ void Application::callEvent(SDL_Event* sdlEvent)
 		case SDL_QUIT:
 			GameLoop = false;
 			break;
+			/* Checks if the key has been pressed down*/
 		case SDL_KEYDOWN:
-			switch (sdlEvent->key.keysym.sym)
-			{
-			case SDLK_w:
-				PlayerEntity->callMove("UP", time, Anim);
-				std::cout << "W is pressed\n";
-				break;
-			case SDLK_s:
-				PlayerEntity->callMove("DOWN", time, Anim);
-				std::cout << "S is pressed\n";
-				break;
-			case SDLK_d:
-				PlayerEntity->callMove("RIGHT", time, Anim);
-				std::cout << "D is pressed\n";
-				break;
-			case SDLK_a:
-				PlayerEntity->callMove("LEFT", time, Anim);
-				std::cout << "A is pressed\n";
-				break;
-			case SDLK_k:
-				ftime = time.getDelta();
-				std::cout << ftime << "\n";
-				break;
-			case SDLK_l:
-				ftimer = Anim->debug();
-				std::cout << ftimer << "\n";
-					break;
-			case SDLK_ESCAPE:
-				GameLoop = false;
-				callCleanup();
-				break;
-			}
+			PlayerEntity->callMove(sdlEvent->key.keysym.sym, time, Anim);
 			break;
+			/*Checks if the key has been released*/
 		case SDL_KEYUP:
-			switch (sdlEvent->key.keysym.sym)
-			{
-			case SDLK_w:
-				PlayerEntity->callMove("", time, Anim);
-				std::cout << "W is released\n";
-				break;
-			case SDLK_s:
-				PlayerEntity->callMove("", time, Anim);
-				std::cout << "S is released\n";
-				break;
-			case SDLK_d:
-				PlayerEntity->callMove("", time, Anim);
-				std::cout << "D is released\n";
-				break;
-			case SDLK_a:
-				PlayerEntity->callMove("", time, Anim);
-				std::cout << "A is released\n";
-				break;
-			}
+			PlayerEntity->callMove(sdlEvent->key.keysym.sym, time, Anim);
 			break;
 		}
 	}
@@ -135,6 +94,8 @@ void Application::callEvent(SDL_Event* sdlEvent)
 void Application::callLoop()
 {
 	/*Method that calls other methods that regularly need to loop*/
+
+	/*Updates the time, and timer for animation*/
 	time.updateTime();
 	Anim->updateTimer(time.getDelta());
 	/*Calls the rendering method*/
@@ -142,10 +103,10 @@ void Application::callLoop()
 }
 void Application::callRenderer()
 {
-	/**/
+	/*Clears the render then draws to the screen*/
 	SDL_RenderClear(Renderer);
-	TextureLoader->OnDraw(Renderer, Backgrounds->getSurface(), Backgrounds->getRect());
-	TextureLoader->OnDraw(Renderer, PlayerEntity->getSurface(), PlayerEntity->getDescRect(),PlayerEntity->getSrcRect());
+	TextureLoader->OnDraw(Renderer, Backgrounds->getTexture(0), Backgrounds->getRect());
+	TextureLoader->OnDraw(Renderer, PlayerEntity->getTexture(), PlayerEntity->getDescRect(),PlayerEntity->getSrcRect());
 	
 }
 void Application::callCleanup()
@@ -155,6 +116,11 @@ void Application::callCleanup()
 
 void Application::callSurface()
 {	
+	/*Idea for loading different levels/backgrounds by  calling them
+	
+	will most likely not use, and will just load all the tiles+sprites at the game start
+	
+	Look at ways to Improve This*/
 	switch (SurfaceCall)
 	{
 	case 0:
@@ -173,6 +139,8 @@ void Application::callSurface()
 
 void Application::callTexture()
 {
+
+	/*sets the texture to the entities/background*/
 	PlayerEntity->setTexture(TextureLoader->callTexture(Renderer, PlayerEntity->getSurface()));
 	Backgrounds->setTexture(TextureLoader->callTexture(Renderer, Backgrounds->getSurface()));
 

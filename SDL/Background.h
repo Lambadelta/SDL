@@ -14,7 +14,7 @@ public:
 	void callChangeBackground();
 	SDL_Surface* getSurface();
 	void setSurface(SDL_Surface* sSurface);
-	SDL_Texture* GetTexture(int i);
+	SDL_Texture* getTexture(int i);
 	void setTexture(SDL_Texture* sTexture);
 
 	SDL_Rect getRect();

@@ -29,24 +29,15 @@ void Background::setSurface(SDL_Surface* sSurface)
 	BackgroundSurface = sSurface;
 }
 
-SDL_Texture* Background::GetTexture(int i)
+SDL_Texture* Background::getTexture(int i)
 {
-	return BackgroundTexture[1];
+	return BackgroundTexture[i];
 }
 
 void Background::setTexture(SDL_Texture* sTexture)
 {
-	for (int iCheck = 0; iCheck > sizeof(BackgroundTexture); iCheck++)
-	{
-		if (BackgroundTexture[iCheck] == sTexture)
-		{
-			std::cout << sTexture << " is already loaded\n";
-		}
-		else 
-		{
-			BackgroundTexture.push_back(sTexture);
-		}
-	}
+	/* add a loop to prevent multiple same textures being pushed.*/
+	BackgroundTexture.push_back(sTexture);
 	
 }
 

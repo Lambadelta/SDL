@@ -14,9 +14,9 @@ class LoadTexture
 public:
 	LoadTexture();
 	~LoadTexture();
-	SDL_Surface* onTextureLoad(std::string path/*, SDL_Window* window*/);
-	bool OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, SDL_Rect descRect);
-	bool OnDraw(SDL_Renderer* Renderer, SDL_Surface* Source, SDL_Rect descRect, SDL_Rect srcRect);
+	SDL_Surface* onTextureLoad(std::string path);
+	bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect);
+	bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect, SDL_Rect srcRect);
 	SDL_Texture* callTexture(SDL_Renderer* sRenderer, SDL_Surface* sSurface);
 };
 

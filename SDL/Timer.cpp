@@ -1,7 +1,7 @@
 #include "timer.h"
 
 
-Timer::Timer(int ms)
+Timer::Timer(float ms)
 {
 	if (ms < 0)
 	{

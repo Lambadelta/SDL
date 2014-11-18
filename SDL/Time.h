@@ -21,9 +21,9 @@ public:
 	bool isStarted();
 
 private:
-	Uint32 iStartTick;
-	Uint32 iPausedTick;
-	Uint32 iLastTick;
+	float iStartTick;
+	float iPausedTick;
+	float iLastTick;
 
 	float fDelta;
 	bool bPaused;

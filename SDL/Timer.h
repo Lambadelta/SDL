@@ -4,7 +4,7 @@
 class Timer
 {
 public:
-	Timer(int ms);
+	Timer(float ms);
 	~Timer();
 
 	void updateTimer(float DeltaTime);
@@ -13,8 +13,8 @@ public:
 
 private:
 
-	unsigned int initialTime;
-	unsigned int currentTime;
+	 float initialTime;
+	 float currentTime;
 };
 
 #endif

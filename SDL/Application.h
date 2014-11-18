@@ -22,7 +22,7 @@ public:
 
 	bool callInit();
 	int callExecution();
-	void callEvent(SDL_Event* Event);
+	void callEvent(SDL_Event* sdlEvent);
 	void callLoop();
 	void callRenderer();
 	void callCleanup();

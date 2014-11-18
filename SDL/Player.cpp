@@ -21,85 +21,72 @@ Player::~Player()
 
 }
 
-void Player::callMove(char* input, Time time, Timer* Anim)
+void Player::callMove(SDL_Keycode move, Time &time, Timer* Anim)
 {
 	Anim->updateTimer(time.getDelta());
-	/*input check if
-	
-		Checking the input for which input has been pressed then assigning the correct
-		boolean to the appropriate variable.*/
-	{
-			if (input == "UP") //input check
-			{
-				bMoveUp = true;   //up is true
-			}
-			if (input == "DOWN")
-			{
-				bMoveDown = true;  //down is true
-			}
-			if (input == "LEFT")
-			{
-				bMoveLeft = true;  //left is true
-
-			}
-			if (input == "RIGHT")
-			{
-				bMoveRight = true;  //right is true
-			}
-			/*if input is nothing then set everything to false.*/
-			if (input == "")
-			{
-				bMoveUp = false;
-				bMoveDown = false;
-				bMoveRight = false;
-				bMoveLeft = false;
-			}
-		}
-		/*Movement if
-
-			Checks the booleans for their corresponding direction waiting for when the button is pressed
-			to start movement.*/
-	if (Anim->expiredTimer())
-	{
+		switch (move)
 		{
+		case SDLK_w:
+			if (Anim->expiredTimer())
 			{
-				if (bMoveUp == true)
+				SrcRect.y = 44;
+				SrcRect.x += 22;
+				if (SrcRect.x >= 66)
 				{
-					DescRect.y -= fSpeed * time.getDelta();
-					SrcRect.y = 44;
-					SrcRect.x += 22;
-					if (SrcRect.x >= 66)
-					{
-						SrcRect.x = 0;
-					}
+					SrcRect.x = 0;
 				}
-				if (bMoveDown == true)
-				{
-					DescRect.y += fSpeed * time.getDelta();
-					SrcRect.y = 0;
-					SrcRect.x += 22;
-					if (SrcRect.x >= 66)
-					{
-						SrcRect.x = 0;
-					}
-				}
-				if (bMoveLeft == true)
-				{
-					DescRect.x -= fSpeed * time.getDelta();
-				}
-				if (bMoveRight == true)
-				{
-					DescRect.x += fSpeed * time.getDelta();
-					SrcRect.y = 22;
-					SrcRect.x += 22;
-					if (SrcRect.x >= 66)
-					{
-						SrcRect.x = 0;
-					}
-				}
+				DescRect.y -= fSpeed * time.getDelta();
+				Anim->updateTimer(time.getDelta());
+				std::cout << "W is pressed\n";
 			}
+			break;
+		case SDLK_s:
+			if (Anim->expiredTimer())
+			{
+				SrcRect.y = 0;
+				SrcRect.x += 22;
+				if (SrcRect.x >= 66)
+				{
+					SrcRect.x = 0;
+				}
+				DescRect.y += fSpeed * time.getDelta();
+				std::cout << "S is pressed\n";
+				Anim->updateTimer(time.getDelta());
+			}
+			break;
+		case SDLK_d:
+			if (Anim->expiredTimer())
+			{
+				SrcRect.y = 22;
+				SrcRect.x += 22;
+				if (SrcRect.x >= 66)
+				{
+					SrcRect.x = 0;
+				}
+				DescRect.x += fSpeed * time.getDelta();
+				std::cout << "D is pressed\n";
+				Anim->updateTimer(time.getDelta());
+			}
+			break;
+		case SDLK_a:
+			if (Anim->expiredTimer())
+			{
+				SrcRect.y = 66;
+				SrcRect.x += 22;
+				if (SrcRect.x >= 66)
+				{
+					SrcRect.x = 0;
+				}
+				DescRect.x -= fSpeed * time.getDelta();
+				std::cout << "A is pressed\n";
+				Anim->updateTimer(time.getDelta());
+			}
+			break;
+		case SDLK_k:
+			std::cout <<"delta is: "<< time.getDelta() << "\n";
+			std::cout <<"animation time is: "<< Anim->debug() << "\n";
+			break;
 		}
-	}
 }
 
 /* Methods to add or subtract from the life of the player*/

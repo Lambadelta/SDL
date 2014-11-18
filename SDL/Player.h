@@ -9,7 +9,7 @@ public:
 	Player(SourceRect v1, SourceRect sr1, float s);
 	~Player();
 
-	void callMove(char* input, Time time, Timer* Anim);
+	void callMove(SDL_Keycode move, Time &time, Timer * Anim);
 	void addLives(int life);
 	void subLives(int damage);
 	int getLives();
