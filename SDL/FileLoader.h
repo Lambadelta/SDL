@@ -3,9 +3,10 @@
 
 
 #include <fstream>
+
 #include <string>
-#include "Moemon.h"
 #include <vector>
+#include "Moemon.h"
 
 class FileLoader
 {
@@ -13,12 +14,11 @@ public:
 	FileLoader();
 	~FileLoader();
 
-	bool LoadMoeMonFile(Moemon* MoeMonList[]);
-	std::vector<Moemon> LoadMoeMonFile();
+	void LoadMoeMonFile(std::vector<Moemon>& List);
 	
 private:
 
-	const int MOEMONNUMBER = 2;
+	const int MOEMONNUMBER = 36;
 };
 
 

@@ -6,18 +6,15 @@
 class Moemon : public Entity
 {
 public:
-	Moemon(int id, int health, int level, char* name, char* type);
-	~Moemon();
+	Moemon(int id, int health, int level, std::string name, std::string type);
 	
 private:
 
 	int i_ID;
 	int i_Health;
 	int i_Level;
-	char* c_MoeMonName;
-	char* c_Type;
-	SDL_Surface* SpriteS;
-	SDL_Texture* SpriteT;
+	std::string s_MoeMonName;
+	std::string s_Type;
 
 
 };

@@ -5,8 +5,8 @@ Entity::Entity()
 }
 Entity::~Entity()
 {
-	SDL_DestroyTexture(EntityTexture);
-	SDL_FreeSurface(EntitySurface);
+	/*SDL_DestroyTexture(EntityTexture);
+	SDL_FreeSurface(EntitySurface);*/
 }
 
 void Entity::setSurface(SDL_Surface* sSurface)

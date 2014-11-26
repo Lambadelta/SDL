@@ -60,7 +60,7 @@ bool Application::callInit()
 
 	/* Loading temp location*/
 
-	MoeMonList = fLoader->LoadMoeMonFile();
+	fLoader->LoadMoeMonFile(MoeMonList);
 
 	/*end of loading*/
 
