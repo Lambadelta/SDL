@@ -2,13 +2,14 @@
 Application::Application()
 {
 	GameLoop = true;
-	Display = NULL;
-	PlayerEntity = new Player(SourceRect(100, 100, 44, 44), SourceRect(0, 0, 22, 22), 60.0f);
+	PlayerEntity = new Player(SourceRect(100, 100, 44, 44), SourceRect(0, 0, 22, 22), 9.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
+	Event = new EventHandler;
+	fLoader = new FileLoader;
+	Display = NULL;
 	TileLoader = NULL;
 	Renderer = NULL;
-	Anim = new Timer(0.49f);
 	SurfaceCall = 0;
 	ftimer = 0;
 
@@ -57,6 +58,12 @@ bool Application::callInit()
 	/*TileLoader->loadmap("TestMap.map");*/
 	time.callStart();
 
+	/* Loading temp location*/
+
+	MoeMonList = fLoader->LoadMoeMonFile();
+
+	/*end of loading*/
+
 
 	/*Initialise the surfaces and textures currently
 	
@@ -82,11 +89,10 @@ void Application::callEvent(SDL_Event* sdlEvent)
 			break;
 			/* Checks if the key has been pressed down*/
 		case SDL_KEYDOWN:
-			PlayerEntity->callMove(sdlEvent->key.keysym.sym, time, Anim);
+			Event->runKeyboard(sdlEvent->key.keysym.sym,PlayerEntity, time);
 			break;
 			/*Checks if the key has been released*/
 		case SDL_KEYUP:
-			PlayerEntity->callMove(sdlEvent->key.keysym.sym, time, Anim);
 			break;
 		}
 	}
@@ -97,7 +103,7 @@ void Application::callLoop()
 
 	/*Updates the time, and timer for animation*/
 	time.updateTime();
-	Anim->updateTimer(time.getDelta());
+	Event->updateTime(time);
 	/*Calls the rendering method*/
 	callRenderer();
 }

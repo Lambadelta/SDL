@@ -3,64 +3,37 @@
 
 EventHandler::EventHandler()
 {
+	PlayerAnim = new Timer(0.3);
 }
 
 EventHandler::~EventHandler()
 {
+
 }
 
-
-void EventHandler::onEvent(SDL_Event* Event)
+void EventHandler::updateTime(Time dt)
 {
+	PlayerAnim->updateTimer(dt.getDelta());
+}
 
-if (Event->type == SDL_WINDOWEVENT)
+void EventHandler::runKeyboard(SDL_Keycode move, Player* Trainer, Time dt)
+{
+	switch (move)
 	{
-		switch (Event->window.event)
-		{
-
-		case SDL_WINDOWEVENT_CLOSE:
-			SDL_Log("Window %d closed", Event->window.windowID);
-			break;
-		case SDL_QUIT:
-			SDL_Log("Program %d quit", Event->window.event);
-			break;
-		default:
-			SDL_Log("Window %d got unknown event %d",
-				Event->window.windowID, Event->window.event);
-			break;
-		}
+	case SDLK_w:
+		Trainer->callMoveUp(true, PlayerAnim, dt);
+		break;
+	case SDLK_s:
+		Trainer->callMoveDown(true, PlayerAnim, dt);
+		break;
+	case SDLK_d:
+		Trainer->callMoveRight(true, PlayerAnim, dt);
+		break;
+	case SDLK_a:
+		Trainer->callMoveLeft(true, PlayerAnim, dt);
+		break;
+	case SDLK_k:
+		printf("%f \n", dt.getDelta());
+		break;
 	}
 }
-void EventHandler::onKeyUp()
-{
-
-}
-void EventHandler::onKeyDown()
-{
-
-}
-void EventHandler::onKeyLeft()
-{
-
-}
-void EventHandler::onKeyRight()
-{
-
-}
-void EventHandler::onKeyE()
-{
-
-}
-void EventHandler::onKeySpace()
-{
-
-}
-void EventHandler::onKeyEsc()
-{
-
-}
-void EventHandler::onExit()
-{
-
-}
-

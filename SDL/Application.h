@@ -11,6 +11,9 @@
 #include "Tile.h"
 #include "Time.h"
 #include "Player.h"
+#include "EventHandler.h"
+#include "Moemon.h"
+#include "FileLoader.h"
 
 
 class Application
@@ -33,6 +36,8 @@ protected:
 	bool GameLoop;
 	SDL_Window* Display;
 	int SurfaceCall;
+	FileLoader* fLoader;
+	std::vector<Moemon> MoeMonList;
 	//Vec2 v2;
 	//SourceRect sr1;
 	Player* PlayerEntity;
@@ -41,7 +46,7 @@ protected:
 	LoadTexture* TextureLoader;
 	Tile* TileLoader;
 	Time time;
-	Timer* Anim;
+	EventHandler* Event;
 	float ftime;
 	/* Assigning the size of the window*/
 	const int WINDOW_X = 100;

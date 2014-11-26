@@ -69,8 +69,8 @@ void Time::updateTime()
 		{
 			
 			iStartTick = SDL_GetTicks();
-			fDelta = (iStartTick - iLastTick);
-			fDelta = fDelta / 100;
+			fDelta = (iStartTick - iLastTick) / 100;
+			/*fDelta = fDelta / 100;*/
 			iLastTick = iStartTick;
 		}
 	}

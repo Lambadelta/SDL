@@ -30,7 +30,6 @@ public:
 
 protected:
 
-	float fSpeed;
 	SDL_Surface* EntitySurface;
 	SDL_Texture* EntityTexture;
 	SDL_Rect DescRect;

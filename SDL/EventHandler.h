@@ -1,7 +1,11 @@
 #ifndef EVENTHANDLER_H
 #define EVENTHANDLER_H
 
-#include <SDL.H>
+#include "SDL.h"
+#include "Time.h"
+#include "Timer.h"
+#include "Player.h"
+#include <iostream>
 
 class EventHandler
 {
@@ -9,16 +13,12 @@ public:
 	EventHandler();
 	~EventHandler();
 
-	virtual void onEvent(SDL_Event* Event);
-	virtual void onKeyUp();
-	virtual void onKeyDown();
-	virtual void onKeyLeft();
-	virtual void onKeyRight();
-	virtual void onKeyE();
-	virtual void onKeySpace();
-	virtual void onKeyEsc();
-	virtual void onExit();
+	void updateTime(Time dt);
+	void runKeyboard(SDL_Keycode move, Player* Trainer, Time dt);
 
+	
+protected:
+	Timer* PlayerAnim;
 };
 
 

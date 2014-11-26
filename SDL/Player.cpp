@@ -21,86 +21,59 @@ Player::~Player()
 
 }
 
-void Player::callMove(SDL_Keycode move, Time &time, Timer* Anim)
+void Player::callMoveUp(bool canMove, Timer* PlayerAnim, Time dt)
 {
-	Anim->updateTimer(time.getDelta());
-		switch (move)
+	if (canMove == true && PlayerAnim->expiredTimer())
+	{
+		SrcRect.y = 44;
+		SrcRect.x += 22;
+		if (SrcRect.x >= 66)
 		{
-		case SDLK_w:
-			if (Anim->expiredTimer())
-			{
-				SrcRect.y = 44;
-				SrcRect.x += 22;
-				if (SrcRect.x >= 66)
-				{
-					SrcRect.x = 0;
-				}
-				DescRect.y -= fSpeed * time.getDelta();
-				Anim->updateTimer(time.getDelta());
-				std::cout << "W is pressed\n";
-			}
-			break;
-		case SDLK_s:
-			if (Anim->expiredTimer())
-			{
-				SrcRect.y = 0;
-				SrcRect.x += 22;
-				if (SrcRect.x >= 66)
-				{
-					SrcRect.x = 0;
-				}
-				DescRect.y += fSpeed * time.getDelta();
-				std::cout << "S is pressed\n";
-				Anim->updateTimer(time.getDelta());
-			}
-			break;
-		case SDLK_d:
-			if (Anim->expiredTimer())
-			{
-				SrcRect.y = 22;
-				SrcRect.x += 22;
-				if (SrcRect.x >= 66)
-				{
-					SrcRect.x = 0;
-				}
-				DescRect.x += fSpeed * time.getDelta();
-				std::cout << "D is pressed\n";
-				Anim->updateTimer(time.getDelta());
-			}
-			break;
-		case SDLK_a:
-			if (Anim->expiredTimer())
-			{
-				SrcRect.y = 66;
-				SrcRect.x += 22;
-				if (SrcRect.x >= 66)
-				{
-					SrcRect.x = 0;
-				}
-				DescRect.x -= fSpeed * time.getDelta();
-				std::cout << "A is pressed\n";
-				Anim->updateTimer(time.getDelta());
-			}
-			break;
-		case SDLK_k:
-			std::cout <<"delta is: "<< time.getDelta() << "\n";
-			std::cout <<"animation time is: "<< Anim->debug() << "\n";
-			break;
+			SrcRect.x = 0;
 		}
+		DescRect.y -= fSpeed /** dt.getDelta()*/;
+	}
 }
 
-/* Methods to add or subtract from the life of the player*/
-void Player::addLives(int life)
+void Player::callMoveLeft(bool canMove, Timer* PlayerAnim, Time dt)
 {
-	iLives += life;
-}
-void Player::subLives(int damage)
-{
-	iLives -= damage;
+	if (canMove == true && PlayerAnim->expiredTimer())
+	{
+		SrcRect.y = 66;
+		SrcRect.x += 22;
+		if (SrcRect.x >= 66)
+		{
+			SrcRect.x = 0;
+		}
+		DescRect.x -= fSpeed /** dt.getDelta()*/;
+	}
 }
 
-/*Method to get the current life of the player*/
-int Player::getLives()
+void Player::callMoveRight(bool canMove, Timer* PlayerAnim, Time dt)
 {
-	return iLives;
+	if (canMove == true && PlayerAnim->expiredTimer())
+	{
+		SrcRect.y = 22;
+		SrcRect.x += 22;
+		if (SrcRect.x >= 66)
+		{
+			SrcRect.x = 0;
+		}
+		DescRect.x += fSpeed /** dt.getDelta()*/;
+	}
+
+}
+
+void Player::callMoveDown(bool canMove, Timer* PlayerAnim, Time dt)
+{
+	if (canMove == true && PlayerAnim->expiredTimer())
+	{
+		SrcRect.y = 0;
+		SrcRect.x += 22;
+		if (SrcRect.x >= 66)
+		{
+			SrcRect.x = 0;
+		}
+		DescRect.y += fSpeed /** dt.getDelta()*/;
+	}
 }
