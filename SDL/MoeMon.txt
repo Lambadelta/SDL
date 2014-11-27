@@ -1,2 +1,0 @@
-001 100 01 Charmander Fire
-002 100 01 Test Water
