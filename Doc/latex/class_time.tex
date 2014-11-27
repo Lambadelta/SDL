@@ -1,0 +1,148 @@
+\hypertarget{class_time}{\section{Time Class Reference}
+\label{class_time}\index{Time@{Time}}
+}
+
+
+A class that represents time.  
+
+
+
+
+{\ttfamily \#include $<$Time.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_time_a4245e409c7347d1d671858962c2ca3b5}{\hyperlink{class_time_a4245e409c7347d1d671858962c2ca3b5}{Time} ()}\label{class_time_a4245e409c7347d1d671858962c2ca3b5}
+
+\begin{DoxyCompactList}\small\item\em The time class object constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_time_a1e92dbe963fa3cdd6bea207680f5f6d1}{\hyperlink{class_time_a1e92dbe963fa3cdd6bea207680f5f6d1}{$\sim$\+Time} ()}\label{class_time_a1e92dbe963fa3cdd6bea207680f5f6d1}
+
+\begin{DoxyCompactList}\small\item\em The time class object deconstructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_time_a8207bba903bd8da8bc1b27e10f1fc67a}{call\+Start} ()
+\begin{DoxyCompactList}\small\item\em A method to call the start of the time class. \end{DoxyCompactList}\item 
+void \hyperlink{class_time_a1a2c7ad114dcf149aa41115f725080d4}{call\+Pause} ()
+\begin{DoxyCompactList}\small\item\em A method to call the time pause. \end{DoxyCompactList}\item 
+void \hyperlink{class_time_a4eb1dba53fb0189db133c2e6e93b7fc0}{call\+Unpause} ()
+\begin{DoxyCompactList}\small\item\em A method to call the time unpause. \end{DoxyCompactList}\item 
+void \hyperlink{class_time_a4481e9a19672b1587d6d429cf9f79b58}{call\+Stop} ()
+\begin{DoxyCompactList}\small\item\em A method to call time stop. \end{DoxyCompactList}\item 
+float \hyperlink{class_time_a9ad8743ccda87310ab3370aaf75c304e}{get\+Delta} ()
+\begin{DoxyCompactList}\small\item\em A method to get the delta time. \end{DoxyCompactList}\item 
+void \hyperlink{class_time_a6ca53f2e34d612ffb44e94b35186614b}{update\+Time} ()
+\begin{DoxyCompactList}\small\item\em A method to update the time. \end{DoxyCompactList}\item 
+bool \hyperlink{class_time_afebb5bb24dcb1ce79b99c9d64684d514}{is\+Paused} ()
+\begin{DoxyCompactList}\small\item\em A method to check if the time is paused. \end{DoxyCompactList}\item 
+bool \hyperlink{class_time_a85dce372c94fb3b773d77fc731998a16}{is\+Started} ()
+\begin{DoxyCompactList}\small\item\em A method to check if the time has started. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that represents time. 
+
+This class is used to create a time object that is used for update functions/methods. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_time_a1a2c7ad114dcf149aa41115f725080d4}{\index{Time@{Time}!call\+Pause@{call\+Pause}}
+\index{call\+Pause@{call\+Pause}!Time@{Time}}
+\subsubsection[{call\+Pause}]{\setlength{\rightskip}{0pt plus 5cm}void Time\+::call\+Pause (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a1a2c7ad114dcf149aa41115f725080d4}
+
+
+A method to call the time pause. 
+
+Pauses the time. \hypertarget{class_time_a8207bba903bd8da8bc1b27e10f1fc67a}{\index{Time@{Time}!call\+Start@{call\+Start}}
+\index{call\+Start@{call\+Start}!Time@{Time}}
+\subsubsection[{call\+Start}]{\setlength{\rightskip}{0pt plus 5cm}void Time\+::call\+Start (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a8207bba903bd8da8bc1b27e10f1fc67a}
+
+
+A method to call the start of the time class. 
+
+Starts the time, and to be used on application initialisation. \hypertarget{class_time_a4481e9a19672b1587d6d429cf9f79b58}{\index{Time@{Time}!call\+Stop@{call\+Stop}}
+\index{call\+Stop@{call\+Stop}!Time@{Time}}
+\subsubsection[{call\+Stop}]{\setlength{\rightskip}{0pt plus 5cm}void Time\+::call\+Stop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a4481e9a19672b1587d6d429cf9f79b58}
+
+
+A method to call time stop. 
+
+Stops the time completely. \hypertarget{class_time_a4eb1dba53fb0189db133c2e6e93b7fc0}{\index{Time@{Time}!call\+Unpause@{call\+Unpause}}
+\index{call\+Unpause@{call\+Unpause}!Time@{Time}}
+\subsubsection[{call\+Unpause}]{\setlength{\rightskip}{0pt plus 5cm}void Time\+::call\+Unpause (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a4eb1dba53fb0189db133c2e6e93b7fc0}
+
+
+A method to call the time unpause. 
+
+Unpauses the time. \hypertarget{class_time_a9ad8743ccda87310ab3370aaf75c304e}{\index{Time@{Time}!get\+Delta@{get\+Delta}}
+\index{get\+Delta@{get\+Delta}!Time@{Time}}
+\subsubsection[{get\+Delta}]{\setlength{\rightskip}{0pt plus 5cm}float Time\+::get\+Delta (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a9ad8743ccda87310ab3370aaf75c304e}
+
+
+A method to get the delta time. 
+
+Returns a float that contains delta time. \hypertarget{class_time_afebb5bb24dcb1ce79b99c9d64684d514}{\index{Time@{Time}!is\+Paused@{is\+Paused}}
+\index{is\+Paused@{is\+Paused}!Time@{Time}}
+\subsubsection[{is\+Paused}]{\setlength{\rightskip}{0pt plus 5cm}bool Time\+::is\+Paused (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_afebb5bb24dcb1ce79b99c9d64684d514}
+
+
+A method to check if the time is paused. 
+
+Returns a true/false if the application is paused. \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\hypertarget{class_time_a85dce372c94fb3b773d77fc731998a16}{\index{Time@{Time}!is\+Started@{is\+Started}}
+\index{is\+Started@{is\+Started}!Time@{Time}}
+\subsubsection[{is\+Started}]{\setlength{\rightskip}{0pt plus 5cm}bool Time\+::is\+Started (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a85dce372c94fb3b773d77fc731998a16}
+
+
+A method to check if the time has started. 
+
+Returns a true/false if the application time is unpaused. \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\hypertarget{class_time_a6ca53f2e34d612ffb44e94b35186614b}{\index{Time@{Time}!update\+Time@{update\+Time}}
+\index{update\+Time@{update\+Time}!Time@{Time}}
+\subsubsection[{update\+Time}]{\setlength{\rightskip}{0pt plus 5cm}void Time\+::update\+Time (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_time_a6ca53f2e34d612ffb44e94b35186614b}
+
+
+A method to update the time. 
+
+Called in the application loop to constantly update time. \begin{DoxyReturn}{Returns}
+float -\/ Containing Delta \hyperlink{class_time}{Time} 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+D\+L/Time.\+h\item 
+S\+D\+L/Time.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,96 @@
+\hypertarget{class_event_handler}{\section{Event\+Handler Class Reference}
+\label{class_event_handler}\index{Event\+Handler@{Event\+Handler}}
+}
+
+
+A Class that represents the Event Handler.  
+
+
+
+
+{\ttfamily \#include $<$Event\+Handler.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_event_handler_a8fe27b69582cce5c6a89a0b134bc8158}{Event\+Handler} ()
+\begin{DoxyCompactList}\small\item\em The constructor called on creation of the \hyperlink{class_event_handler}{Event\+Handler}. \end{DoxyCompactList}\item 
+\hypertarget{class_event_handler_a3decb8cd88ba8af2b9b0b0f0f2fcd722}{\hyperlink{class_event_handler_a3decb8cd88ba8af2b9b0b0f0f2fcd722}{$\sim$\+Event\+Handler} ()}\label{class_event_handler_a3decb8cd88ba8af2b9b0b0f0f2fcd722}
+
+\begin{DoxyCompactList}\small\item\em The deconstructor called on destruction of the \hyperlink{class_event_handler}{Event\+Handler}. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_handler_ad81e46a6ca2985314745eb04e2c23714}{update\+Time} (\hyperlink{class_time}{Time} dt)
+\begin{DoxyCompactList}\small\item\em A Method to update time. \end{DoxyCompactList}\item 
+void \hyperlink{class_event_handler_a76f1deef9364dcdb535a4e8d0e4426d8}{run\+Keyboard} (S\+D\+L\+\_\+\+Keycode move, \hyperlink{class_player}{Player} $\ast$Trainer, \hyperlink{class_time}{Time} dt)
+\begin{DoxyCompactList}\small\item\em A Method to control keyboard events. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_event_handler_a124c475b98b79180547741c536bd1fe7}{\hyperlink{class_timer}{Timer} $\ast$ \hyperlink{class_event_handler_a124c475b98b79180547741c536bd1fe7}{Player\+Anim}}\label{class_event_handler_a124c475b98b79180547741c536bd1fe7}
+
+\begin{DoxyCompactList}\small\item\em A timer object for timing the player animation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A Class that represents the Event Handler. 
+
+This class contains the methods to control events that happen during runtime. It contains timers for different events, and can update the time. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_event_handler_a8fe27b69582cce5c6a89a0b134bc8158}{\index{Event\+Handler@{Event\+Handler}!Event\+Handler@{Event\+Handler}}
+\index{Event\+Handler@{Event\+Handler}!Event\+Handler@{Event\+Handler}}
+\subsubsection[{Event\+Handler}]{\setlength{\rightskip}{0pt plus 5cm}Event\+Handler\+::\+Event\+Handler (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_event_handler_a8fe27b69582cce5c6a89a0b134bc8158}
+
+
+The constructor called on creation of the \hyperlink{class_event_handler}{Event\+Handler}. 
+
+It doesn't do anything. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_event_handler_a76f1deef9364dcdb535a4e8d0e4426d8}{\index{Event\+Handler@{Event\+Handler}!run\+Keyboard@{run\+Keyboard}}
+\index{run\+Keyboard@{run\+Keyboard}!Event\+Handler@{Event\+Handler}}
+\subsubsection[{run\+Keyboard}]{\setlength{\rightskip}{0pt plus 5cm}void Event\+Handler\+::run\+Keyboard (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Keycode}]{move, }
+\item[{{\bf Player} $\ast$}]{Trainer, }
+\item[{{\bf Time}}]{dt}
+\end{DoxyParamCaption}
+)}}\label{class_event_handler_a76f1deef9364dcdb535a4e8d0e4426d8}
+
+
+A Method to control keyboard events. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Keycode} & -\/ The keycode of the type of keyboard event \\
+\hline
+{\em Player$\ast$} & -\/ An object representing the player \\
+\hline
+{\em \hyperlink{class_time}{Time}} & -\/ An object representing time \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_event_handler_ad81e46a6ca2985314745eb04e2c23714}{\index{Event\+Handler@{Event\+Handler}!update\+Time@{update\+Time}}
+\index{update\+Time@{update\+Time}!Event\+Handler@{Event\+Handler}}
+\subsubsection[{update\+Time}]{\setlength{\rightskip}{0pt plus 5cm}void Event\+Handler\+::update\+Time (
+\begin{DoxyParamCaption}
+\item[{{\bf Time}}]{dt}
+\end{DoxyParamCaption}
+)}}\label{class_event_handler_ad81e46a6ca2985314745eb04e2c23714}
+
+
+A Method to update time. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em \hyperlink{class_time}{Time}} & -\/ An object representing time \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+D\+L/Event\+Handler.\+h\item 
+S\+D\+L/Event\+Handler.\+cpp\end{DoxyCompactItemize}

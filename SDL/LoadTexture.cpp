@@ -9,7 +9,7 @@ LoadTexture::~LoadTexture()
 {
 
 }
-SDL_Surface* LoadTexture::onTextureLoad(std::string path)
+SDL_Surface* LoadTexture::onSurfaceLoad(std::string path)
 {
 	SDL_Surface* Temp = NULL;
 

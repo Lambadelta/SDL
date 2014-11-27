@@ -2,16 +2,13 @@
 Application::Application()
 {
 	GameLoop = true;
-	PlayerEntity = new Player(SourceRect(100, 100, 44, 44), SourceRect(0, 0, 22, 22), 9.0f);
+	PlayerEntity = new Player(Rect(100, 100, 44, 44), Rect(0, 0, 22, 22), 9.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	Event = new EventHandler;
 	fLoader = new FileLoader;
 	Display = NULL;
-	TileLoader = NULL;
 	Renderer = NULL;
-	SurfaceCall = 0;
-	ftimer = 0;
 
 }
 Application::~Application()
@@ -111,35 +108,20 @@ void Application::callRenderer()
 {
 	/*Clears the render then draws to the screen*/
 	SDL_RenderClear(Renderer);
-	TextureLoader->OnDraw(Renderer, Backgrounds->getTexture(0), Backgrounds->getRect());
+	TextureLoader->OnDraw(Renderer, Backgrounds->getTexture(), Backgrounds->getRect());
 	TextureLoader->OnDraw(Renderer, PlayerEntity->getTexture(), PlayerEntity->getDescRect(),PlayerEntity->getSrcRect());
 	
 }
 void Application::callCleanup()
 {
+	MoeMonList.clear;
 	SDL_Quit();
 }
 
 void Application::callSurface()
 {	
-	/*Idea for loading different levels/backgrounds by  calling them
-	
-	will most likely not use, and will just load all the tiles+sprites at the game start
-	
-	Look at ways to Improve This*/
-	switch (SurfaceCall)
-	{
-	case 0:
-		PlayerEntity->setSurface(TextureLoader->onTextureLoad("Asset/Entity/Player/Player.png"));
-		Backgrounds->setSurface(TextureLoader->onTextureLoad("background.bmp"));
-		SurfaceCall = 1;
-		break;
-	case 1:
-		break;
-	default:
-		break;
-
-	}
+		PlayerEntity->setSurface(TextureLoader->onSurfaceLoad("Asset/Entity/Player/Player.png"));
+		Backgrounds->setSurface(TextureLoader->onSurfaceLoad("background.bmp"));
 
 }
 

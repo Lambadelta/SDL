@@ -8,15 +8,6 @@ Background::Background()
 
 Background::~Background()
 {
-	for (int iClear = 0; iClear > sizeof(BackgroundTexture); iClear++)
-	{
-		SDL_DestroyTexture(BackgroundTexture[iClear]);
-	}
-}
-
-void Background::callChangeBackground()
-{
-
 }
 
 SDL_Surface* Background::getSurface()
@@ -29,16 +20,14 @@ void Background::setSurface(SDL_Surface* sSurface)
 	BackgroundSurface = sSurface;
 }
 
-SDL_Texture* Background::getTexture(int i)
+SDL_Texture* Background::getTexture()
 {
-	return BackgroundTexture[i];
+	return BackgroundTexture;
 }
 
 void Background::setTexture(SDL_Texture* sTexture)
 {
-	/* add a loop to prevent multiple same textures being pushed.*/
-	BackgroundTexture.push_back(sTexture);
-	
+	BackgroundTexture = sTexture;
 }
 
 SDL_Rect Background::getRect()

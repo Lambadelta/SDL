@@ -1,0 +1,113 @@
+\hypertarget{class_timer}{\section{Timer Class Reference}
+\label{class_timer}\index{Timer@{Timer}}
+}
+
+
+A class that represents a timer.  
+
+
+
+
+{\ttfamily \#include $<$Timer.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_timer_a2cf265defc892796c92dc09d8a482ced}{Timer} (float ms)
+\begin{DoxyCompactList}\small\item\em The timer class object constructor. \end{DoxyCompactList}\item 
+\hyperlink{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}{$\sim$\+Timer} ()
+\begin{DoxyCompactList}\small\item\em The time class object deconstructor. \end{DoxyCompactList}\item 
+void \hyperlink{class_timer_a796907a264f364f5a4c819e7c18b1302}{update\+Timer} (float Delta\+Time)
+\begin{DoxyCompactList}\small\item\em A method for updating the timer. \end{DoxyCompactList}\item 
+bool \hyperlink{class_timer_a3ddc2b42f18cae583dc1a730fbd29fac}{expired\+Timer} ()
+\begin{DoxyCompactList}\small\item\em A method for checking if the time has expired. \end{DoxyCompactList}\item 
+int \hyperlink{class_timer_a32b0f17af4c43fc9a6f9730c718d1f9d}{debug} ()
+\begin{DoxyCompactList}\small\item\em A debug method for timer. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that represents a timer. 
+
+This class is used to create timers that take in the delta time, and checks if the timer has expired. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_timer_a2cf265defc892796c92dc09d8a482ced}{\index{Timer@{Timer}!Timer@{Timer}}
+\index{Timer@{Timer}!Timer@{Timer}}
+\subsubsection[{Timer}]{\setlength{\rightskip}{0pt plus 5cm}Timer\+::\+Timer (
+\begin{DoxyParamCaption}
+\item[{float}]{ms}
+\end{DoxyParamCaption}
+)}}\label{class_timer_a2cf265defc892796c92dc09d8a482ced}
+
+
+The timer class object constructor. 
+
+Takes in a float parameter to set up the timer. 
+\begin{DoxyParams}{Parameters}
+{\em float} & -\/ \hyperlink{class_time}{Time} for the timer \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}{\index{Timer@{Timer}!````~Timer@{$\sim$\+Timer}}
+\index{````~Timer@{$\sim$\+Timer}!Timer@{Timer}}
+\subsubsection[{$\sim$\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}Timer\+::$\sim$\+Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_timer_a14fa469c4c295c5fa6e66a4ad1092146}
+
+
+The time class object deconstructor. 
+
+Destroys the timer object 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_timer_a32b0f17af4c43fc9a6f9730c718d1f9d}{\index{Timer@{Timer}!debug@{debug}}
+\index{debug@{debug}!Timer@{Timer}}
+\subsubsection[{debug}]{\setlength{\rightskip}{0pt plus 5cm}int Timer\+::debug (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_timer_a32b0f17af4c43fc9a6f9730c718d1f9d}
+
+
+A debug method for timer. 
+
+Returns the timer's current value. \begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\hypertarget{class_timer_a3ddc2b42f18cae583dc1a730fbd29fac}{\index{Timer@{Timer}!expired\+Timer@{expired\+Timer}}
+\index{expired\+Timer@{expired\+Timer}!Timer@{Timer}}
+\subsubsection[{expired\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}bool Timer\+::expired\+Timer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_timer_a3ddc2b42f18cae583dc1a730fbd29fac}
+
+
+A method for checking if the time has expired. 
+
+Checks if the timer has expired, and returns a true/false. \begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+\hypertarget{class_timer_a796907a264f364f5a4c819e7c18b1302}{\index{Timer@{Timer}!update\+Timer@{update\+Timer}}
+\index{update\+Timer@{update\+Timer}!Timer@{Timer}}
+\subsubsection[{update\+Timer}]{\setlength{\rightskip}{0pt plus 5cm}void Timer\+::update\+Timer (
+\begin{DoxyParamCaption}
+\item[{float}]{Delta\+Time}
+\end{DoxyParamCaption}
+)}}\label{class_timer_a796907a264f364f5a4c819e7c18b1302}
+
+
+A method for updating the timer. 
+
+Takes in the parameter of delta time to update the timer. 
+\begin{DoxyParams}{Parameters}
+{\em float} & -\/ A float containing the delta time \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+D\+L/Timer.\+h\item 
+S\+D\+L/Timer.\+cpp\end{DoxyCompactItemize}

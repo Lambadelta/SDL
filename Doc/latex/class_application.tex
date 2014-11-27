@@ -1,0 +1,197 @@
+\hypertarget{class_application}{\section{Application Class Reference}
+\label{class_application}\index{Application@{Application}}
+}
+
+
+A class representing the \hyperlink{class_application}{Application}.  
+
+
+
+
+{\ttfamily \#include $<$Application.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_application_afa8cc05ce6b6092be5ecdfdae44e05f8}{\hyperlink{class_application_afa8cc05ce6b6092be5ecdfdae44e05f8}{Application} ()}\label{class_application_afa8cc05ce6b6092be5ecdfdae44e05f8}
+
+\begin{DoxyCompactList}\small\item\em The default constructor. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a748bca84fefb9c12661cfaa2f623748d}{\hyperlink{class_application_a748bca84fefb9c12661cfaa2f623748d}{$\sim$\+Application} ()}\label{class_application_a748bca84fefb9c12661cfaa2f623748d}
+
+\begin{DoxyCompactList}\small\item\em The default deconstructor. \end{DoxyCompactList}\item 
+bool \hyperlink{class_application_afabe70d81db4451db19d267b3e47953c}{call\+Init} ()
+\begin{DoxyCompactList}\small\item\em A method to call Initialisation. \end{DoxyCompactList}\item 
+int \hyperlink{class_application_aae6cea757aa072af2b04f80f0dc43035}{call\+Execution} ()
+\begin{DoxyCompactList}\small\item\em A method to call execution. \end{DoxyCompactList}\item 
+void \hyperlink{class_application_a120691d97bf8c56542863cfb629c5334}{call\+Event} (S\+D\+L\+\_\+\+Event $\ast$sdl\+Event)
+\begin{DoxyCompactList}\small\item\em A method that is called as part of the game loop. \end{DoxyCompactList}\item 
+void \hyperlink{class_application_ac45e87c4784cb82521166105137147ee}{call\+Loop} ()
+\begin{DoxyCompactList}\small\item\em A method that is called as part of the game loop. \end{DoxyCompactList}\item 
+void \hyperlink{class_application_a8164c003d80f4ac88300a3b972abf259}{call\+Renderer} ()
+\begin{DoxyCompactList}\small\item\em A method to call the rendering function. \end{DoxyCompactList}\item 
+void \hyperlink{class_application_aa85cb7c4c0ba25070aa3320618b04821}{call\+Cleanup} ()
+\begin{DoxyCompactList}\small\item\em This method is called when the program exits. \end{DoxyCompactList}\item 
+void \hyperlink{class_application_a2d00469b8187f560ba9ff8574a1e2477}{call\+Surface} ()
+\begin{DoxyCompactList}\small\item\em A method to set the surface of all visual objects. \end{DoxyCompactList}\item 
+void \hyperlink{class_application_a185d7edc1ca8c5f9ca86fd927a486848}{call\+Texture} ()
+\begin{DoxyCompactList}\small\item\em A method to set the texture of all visual objects. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_application_ac6112748a352677fa369ead5e3fd7b53}{bool \hyperlink{class_application_ac6112748a352677fa369ead5e3fd7b53}{Game\+Loop}}\label{class_application_ac6112748a352677fa369ead5e3fd7b53}
+
+\begin{DoxyCompactList}\small\item\em A bool to start or end the game loop. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a9216c8c03870932d081b5e6fe33e21a8}{S\+D\+L\+\_\+\+Window $\ast$ \hyperlink{class_application_a9216c8c03870932d081b5e6fe33e21a8}{Display}}\label{class_application_a9216c8c03870932d081b5e6fe33e21a8}
+
+\begin{DoxyCompactList}\small\item\em A S\+D\+L\+\_\+\+Window$\ast$ for creating the screen. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a6ebb16ce7358f874306c3593fd3abd39}{\hyperlink{class_file_loader}{File\+Loader} $\ast$ \hyperlink{class_application_a6ebb16ce7358f874306c3593fd3abd39}{f\+Loader}}\label{class_application_a6ebb16ce7358f874306c3593fd3abd39}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_file_loader}{File\+Loader} object for loading in the different files required. \end{DoxyCompactList}\item 
+\hypertarget{class_application_aa164b18de54da4097c294b96f65e5dd1}{std\+::vector$<$ \hyperlink{class_moemon}{Moemon} $>$ \hyperlink{class_application_aa164b18de54da4097c294b96f65e5dd1}{Moe\+Mon\+List}}\label{class_application_aa164b18de54da4097c294b96f65e5dd1}
+
+\begin{DoxyCompactList}\small\item\em A vector of \hyperlink{class_moemon}{Moemon} that stores all the \hyperlink{class_moemon}{Moemon} the application will use. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a5066daff6377e8577b11ff6706fef9bb}{\hyperlink{class_player}{Player} $\ast$ \hyperlink{class_application_a5066daff6377e8577b11ff6706fef9bb}{Player\+Entity}}\label{class_application_a5066daff6377e8577b11ff6706fef9bb}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_player}{Player} object. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a4678ca860a3791b2d09ef777fbdb3167}{\hyperlink{class_background}{Background} $\ast$ \hyperlink{class_application_a4678ca860a3791b2d09ef777fbdb3167}{Backgrounds}}\label{class_application_a4678ca860a3791b2d09ef777fbdb3167}
+
+\begin{DoxyCompactList}\small\item\em A background object (subject to change) \end{DoxyCompactList}\item 
+\hypertarget{class_application_af90aee2b6a03b1b1b1d7b9f06b622585}{S\+D\+L\+\_\+\+Renderer $\ast$ \hyperlink{class_application_af90aee2b6a03b1b1b1d7b9f06b622585}{Renderer}}\label{class_application_af90aee2b6a03b1b1b1d7b9f06b622585}
+
+\begin{DoxyCompactList}\small\item\em The S\+D\+L\+\_\+\+Renderer used to render textures to the screen. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a9a357975280488b775fda3f363ec556d}{\hyperlink{class_load_texture}{Load\+Texture} $\ast$ \hyperlink{class_application_a9a357975280488b775fda3f363ec556d}{Texture\+Loader}}\label{class_application_a9a357975280488b775fda3f363ec556d}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_load_texture}{Load\+Texture} object for loading in the surface/textures. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a5b3b987a58f1ff2cd672c52f05a46b2f}{\hyperlink{class_time}{Time} \hyperlink{class_application_a5b3b987a58f1ff2cd672c52f05a46b2f}{time}}\label{class_application_a5b3b987a58f1ff2cd672c52f05a46b2f}
+
+\begin{DoxyCompactList}\small\item\em A time object for managing delta time. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a31d4246ee49a814ca3110f3e51ccd03f}{\hyperlink{class_event_handler}{Event\+Handler} $\ast$ \hyperlink{class_application_a31d4246ee49a814ca3110f3e51ccd03f}{Event}}\label{class_application_a31d4246ee49a814ca3110f3e51ccd03f}
+
+\begin{DoxyCompactList}\small\item\em A \hyperlink{class_event_handler}{Event\+Handler} object. \end{DoxyCompactList}\item 
+\hypertarget{class_application_aad86b8086daa8c8d85e803aa7f3b70da}{const int \hyperlink{class_application_aad86b8086daa8c8d85e803aa7f3b70da}{W\+I\+N\+D\+O\+W\+\_\+\+X} = 100}\label{class_application_aad86b8086daa8c8d85e803aa7f3b70da}
+
+\begin{DoxyCompactList}\small\item\em A constant int for the window's x axises. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a44acc475d3da03e92d09629cc88bfffb}{const int \hyperlink{class_application_a44acc475d3da03e92d09629cc88bfffb}{W\+I\+N\+D\+O\+W\+\_\+\+Y} = 100}\label{class_application_a44acc475d3da03e92d09629cc88bfffb}
+
+\begin{DoxyCompactList}\small\item\em A constant int for the window's y axises. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a58027269bdd05739a498f4e35d36380c}{const int \hyperlink{class_application_a58027269bdd05739a498f4e35d36380c}{W\+I\+N\+D\+O\+W\+\_\+\+W\+I\+D\+T\+H} = 640}\label{class_application_a58027269bdd05739a498f4e35d36380c}
+
+\begin{DoxyCompactList}\small\item\em A constant int for the window's Width. \end{DoxyCompactList}\item 
+\hypertarget{class_application_a0bfec21f44d9cd3972fadf5ab5485e3b}{const int \hyperlink{class_application_a0bfec21f44d9cd3972fadf5ab5485e3b}{W\+I\+N\+D\+O\+W\+\_\+\+H\+E\+I\+G\+H\+T} = 480}\label{class_application_a0bfec21f44d9cd3972fadf5ab5485e3b}
+
+\begin{DoxyCompactList}\small\item\em A constant int for the window's Height. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class representing the \hyperlink{class_application}{Application}. 
+
+Contains the methods, and parameters that build up the application. Contains the application and use of all class objects. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_application_aa85cb7c4c0ba25070aa3320618b04821}{\index{Application@{Application}!call\+Cleanup@{call\+Cleanup}}
+\index{call\+Cleanup@{call\+Cleanup}!Application@{Application}}
+\subsubsection[{call\+Cleanup}]{\setlength{\rightskip}{0pt plus 5cm}void Application\+::call\+Cleanup (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_aa85cb7c4c0ba25070aa3320618b04821}
+
+
+This method is called when the program exits. 
+
+This method cleans up all the vectors, objects, and any other parts of the application before exiting. \hypertarget{class_application_a120691d97bf8c56542863cfb629c5334}{\index{Application@{Application}!call\+Event@{call\+Event}}
+\index{call\+Event@{call\+Event}!Application@{Application}}
+\subsubsection[{call\+Event}]{\setlength{\rightskip}{0pt plus 5cm}void Application\+::call\+Event (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Event $\ast$}]{sdl\+Event}
+\end{DoxyParamCaption}
+)}}\label{class_application_a120691d97bf8c56542863cfb629c5334}
+
+
+A method that is called as part of the game loop. 
+
+This method takes in the event parameter, and manages the \hyperlink{class_event_handler}{Event\+Handler} object.
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Event$\ast$} & -\/ A S\+D\+L\+\_\+\+Event$\ast$ that contains all the events that S\+D\+L catches \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+0 
+\end{DoxyReturn}
+\hypertarget{class_application_aae6cea757aa072af2b04f80f0dc43035}{\index{Application@{Application}!call\+Execution@{call\+Execution}}
+\index{call\+Execution@{call\+Execution}!Application@{Application}}
+\subsubsection[{call\+Execution}]{\setlength{\rightskip}{0pt plus 5cm}int Application\+::call\+Execution (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_aae6cea757aa072af2b04f80f0dc43035}
+
+
+A method to call execution. 
+
+This method executes the main game loop, and the event handler. \begin{DoxyReturn}{Returns}
+bool -\/ If the application has successfully initialised 
+\end{DoxyReturn}
+\hypertarget{class_application_afabe70d81db4451db19d267b3e47953c}{\index{Application@{Application}!call\+Init@{call\+Init}}
+\index{call\+Init@{call\+Init}!Application@{Application}}
+\subsubsection[{call\+Init}]{\setlength{\rightskip}{0pt plus 5cm}bool Application\+::call\+Init (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_afabe70d81db4451db19d267b3e47953c}
+
+
+A method to call Initialisation. 
+
+This method initialises all the classes, and objects that are needed before the application loop begins. This is the very first method called on the application starting. \hypertarget{class_application_ac45e87c4784cb82521166105137147ee}{\index{Application@{Application}!call\+Loop@{call\+Loop}}
+\index{call\+Loop@{call\+Loop}!Application@{Application}}
+\subsubsection[{call\+Loop}]{\setlength{\rightskip}{0pt plus 5cm}void Application\+::call\+Loop (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_ac45e87c4784cb82521166105137147ee}
+
+
+A method that is called as part of the game loop. 
+
+This method is where the methods of other objects are called to update them. \hyperlink{class_time}{Time} is updated here. \hypertarget{class_application_a8164c003d80f4ac88300a3b972abf259}{\index{Application@{Application}!call\+Renderer@{call\+Renderer}}
+\index{call\+Renderer@{call\+Renderer}!Application@{Application}}
+\subsubsection[{call\+Renderer}]{\setlength{\rightskip}{0pt plus 5cm}void Application\+::call\+Renderer (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_a8164c003d80f4ac88300a3b972abf259}
+
+
+A method to call the rendering function. 
+
+This method is where the texture of objects are sent to the renderer. \hypertarget{class_application_a2d00469b8187f560ba9ff8574a1e2477}{\index{Application@{Application}!call\+Surface@{call\+Surface}}
+\index{call\+Surface@{call\+Surface}!Application@{Application}}
+\subsubsection[{call\+Surface}]{\setlength{\rightskip}{0pt plus 5cm}void Application\+::call\+Surface (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_a2d00469b8187f560ba9ff8574a1e2477}
+
+
+A method to set the surface of all visual objects. 
+
+This method is where all the different objects that need surfaces are processed. This is called in the call\+Init method. \hypertarget{class_application_a185d7edc1ca8c5f9ca86fd927a486848}{\index{Application@{Application}!call\+Texture@{call\+Texture}}
+\index{call\+Texture@{call\+Texture}!Application@{Application}}
+\subsubsection[{call\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void Application\+::call\+Texture (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_application_a185d7edc1ca8c5f9ca86fd927a486848}
+
+
+A method to set the texture of all visual objects. 
+
+This method is where all the different objects that need textures are processed. This is called in the call\+Init method. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+D\+L/Application.\+h\item 
+S\+D\+L/Application.\+cpp\end{DoxyCompactItemize}

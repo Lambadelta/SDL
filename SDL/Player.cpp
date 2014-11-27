@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-Player::Player(SourceRect v1, SourceRect sr1, float s) : Entity()
+Player::Player(Rect v1, Rect sr1, float s) : Entity()
 {
 	EntitySurface = NULL;
 	EntityTexture = NULL;

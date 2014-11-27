@@ -1,0 +1,179 @@
+\hypertarget{class_entity}{\section{Entity Class Reference}
+\label{class_entity}\index{Entity@{Entity}}
+}
+
+
+A class that represents an \hyperlink{class_entity}{Entity}.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+h$>$}
+
+Inheritance diagram for Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_entity}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity} ()
+\begin{DoxyCompactList}\small\item\em Constructs an \hyperlink{class_entity}{Entity} object. \end{DoxyCompactList}\item 
+\hyperlink{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{$\sim$\+Entity} ()
+\begin{DoxyCompactList}\small\item\em Deconstructs an \hyperlink{class_entity}{Entity} object. \end{DoxyCompactList}\item 
+void \hyperlink{class_entity_a67a6fb32075b44c055f20b9332068cf8}{set\+Surface} (S\+D\+L\+\_\+\+Surface $\ast$)
+\begin{DoxyCompactList}\small\item\em A method to set the surface of the object. \end{DoxyCompactList}\item 
+void \hyperlink{class_entity_aaae0b0b28be4497af93cf2277662770b}{set\+Texture} (S\+D\+L\+\_\+\+Texture $\ast$)
+\begin{DoxyCompactList}\small\item\em A method to set the texture of the object. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Surface $\ast$ \hyperlink{class_entity_a3544323cdb2083bedbfa7f04e5cdaecf}{get\+Surface} ()
+\begin{DoxyCompactList}\small\item\em A method to get the surface from the object. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{class_entity_a25b50625a770e24dcafc25aa505fc54d}{get\+Texture} ()
+\begin{DoxyCompactList}\small\item\em A method to get the texture from the object. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Rect \hyperlink{class_entity_ae113498b7c37c80a814f0d92444ebf50}{get\+Desc\+Rect} ()
+\begin{DoxyCompactList}\small\item\em A method to get the Destination \hyperlink{struct_rect}{Rect}. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Rect \hyperlink{class_entity_a85faf9891defd68e4404178cc79a6419}{get\+Src\+Rect} ()
+\begin{DoxyCompactList}\small\item\em A method to get the Source \hyperlink{struct_rect}{Rect}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_entity_a195e44184fd33d919f727ae93c18b9de}{S\+D\+L\+\_\+\+Surface $\ast$ \hyperlink{class_entity_a195e44184fd33d919f727ae93c18b9de}{Entity\+Surface}}\label{class_entity_a195e44184fd33d919f727ae93c18b9de}
+
+\begin{DoxyCompactList}\small\item\em The objects Surface used to create a texture. \end{DoxyCompactList}\item 
+\hypertarget{class_entity_a2dc0bd74bf1e764381adf09f4e0ac7a2}{S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{class_entity_a2dc0bd74bf1e764381adf09f4e0ac7a2}{Entity\+Texture}}\label{class_entity_a2dc0bd74bf1e764381adf09f4e0ac7a2}
+
+\begin{DoxyCompactList}\small\item\em The objects \hyperlink{class_texture}{Texture} created from the surface, and used to render to screen. \end{DoxyCompactList}\item 
+\hypertarget{class_entity_a5ff9b78a02c0fe4eac20b438d92eaead}{S\+D\+L\+\_\+\+Rect \hyperlink{class_entity_a5ff9b78a02c0fe4eac20b438d92eaead}{Desc\+Rect}}\label{class_entity_a5ff9b78a02c0fe4eac20b438d92eaead}
+
+\begin{DoxyCompactList}\small\item\em The objects location to be drawn to the screen. \end{DoxyCompactList}\item 
+\hypertarget{class_entity_a0d63ab177666f7edae89c02f2e5e4e9e}{S\+D\+L\+\_\+\+Rect \hyperlink{class_entity_a0d63ab177666f7edae89c02f2e5e4e9e}{Src\+Rect}}\label{class_entity_a0d63ab177666f7edae89c02f2e5e4e9e}
+
+\begin{DoxyCompactList}\small\item\em The objects location on the texture to be drawn. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that represents an \hyperlink{class_entity}{Entity}. 
+
+This class contains the basic methods, and variables that all Entities require. It contains an S\+D\+L\+\_\+\+Texture$\ast$, S\+D\+L\+\_\+\+Surface$\ast$, S\+D\+L\+\_\+\+Rect and S\+D\+L\+\_\+\+Rect 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_entity_a980f368aa07ce358583982821533a54a}{\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\subsubsection[{Entity}]{\setlength{\rightskip}{0pt plus 5cm}Entity\+::\+Entity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_entity_a980f368aa07ce358583982821533a54a}
+
+
+Constructs an \hyperlink{class_entity}{Entity} object. 
+
+Is called when a class inheriting \hyperlink{class_entity}{Entity} is created Only derived objects will call this. \hypertarget{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}{\index{Entity@{Entity}!````~Entity@{$\sim$\+Entity}}
+\index{````~Entity@{$\sim$\+Entity}!Entity@{Entity}}
+\subsubsection[{$\sim$\+Entity}]{\setlength{\rightskip}{0pt plus 5cm}Entity\+::$\sim$\+Entity (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_entity_adf6d3f7cb1b2ba029b6b048a395cc8ae}
+
+
+Deconstructs an \hyperlink{class_entity}{Entity} object. 
+
+Called when a derived class object is destroyed. Only derived objects will call this. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_entity_ae113498b7c37c80a814f0d92444ebf50}{\index{Entity@{Entity}!get\+Desc\+Rect@{get\+Desc\+Rect}}
+\index{get\+Desc\+Rect@{get\+Desc\+Rect}!Entity@{Entity}}
+\subsubsection[{get\+Desc\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Rect Entity\+::get\+Desc\+Rect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_entity_ae113498b7c37c80a814f0d92444ebf50}
+
+
+A method to get the Destination \hyperlink{struct_rect}{Rect}. 
+
+Returns a S\+D\+L\+\_\+\+Rect containing the Destination when called \begin{DoxyReturn}{Returns}
+S\+D\+L\+\_\+\+Rect 
+\end{DoxyReturn}
+\hypertarget{class_entity_a85faf9891defd68e4404178cc79a6419}{\index{Entity@{Entity}!get\+Src\+Rect@{get\+Src\+Rect}}
+\index{get\+Src\+Rect@{get\+Src\+Rect}!Entity@{Entity}}
+\subsubsection[{get\+Src\+Rect}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Rect Entity\+::get\+Src\+Rect (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_entity_a85faf9891defd68e4404178cc79a6419}
+
+
+A method to get the Source \hyperlink{struct_rect}{Rect}. 
+
+Returns a S\+D\+L\+\_\+\+Rect containing the Source when called \begin{DoxyReturn}{Returns}
+S\+D\+L\+\_\+\+Rect 
+\end{DoxyReturn}
+\hypertarget{class_entity_a3544323cdb2083bedbfa7f04e5cdaecf}{\index{Entity@{Entity}!get\+Surface@{get\+Surface}}
+\index{get\+Surface@{get\+Surface}!Entity@{Entity}}
+\subsubsection[{get\+Surface}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Surface $\ast$ Entity\+::get\+Surface (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_entity_a3544323cdb2083bedbfa7f04e5cdaecf}
+
+
+A method to get the surface from the object. 
+
+Returns a S\+D\+L\+\_\+\+Surface$\ast$ when called \begin{DoxyReturn}{Returns}
+S\+D\+L\+\_\+\+Surface$\ast$ 
+\end{DoxyReturn}
+\hypertarget{class_entity_a25b50625a770e24dcafc25aa505fc54d}{\index{Entity@{Entity}!get\+Texture@{get\+Texture}}
+\index{get\+Texture@{get\+Texture}!Entity@{Entity}}
+\subsubsection[{get\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Texture $\ast$ Entity\+::get\+Texture (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_entity_a25b50625a770e24dcafc25aa505fc54d}
+
+
+A method to get the texture from the object. 
+
+Returns a S\+D\+L\+\_\+\+Texture$\ast$ when called \begin{DoxyReturn}{Returns}
+S\+D\+L\+\_\+\+Texture$\ast$ 
+\end{DoxyReturn}
+\hypertarget{class_entity_a67a6fb32075b44c055f20b9332068cf8}{\index{Entity@{Entity}!set\+Surface@{set\+Surface}}
+\index{set\+Surface@{set\+Surface}!Entity@{Entity}}
+\subsubsection[{set\+Surface}]{\setlength{\rightskip}{0pt plus 5cm}void Entity\+::set\+Surface (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{s\+Surface}
+\end{DoxyParamCaption}
+)}}\label{class_entity_a67a6fb32075b44c055f20b9332068cf8}
+
+
+A method to set the surface of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Surface$\ast$} & -\/ A pointer to a S\+D\+L\+\_\+\+Surface \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_entity_aaae0b0b28be4497af93cf2277662770b}{\index{Entity@{Entity}!set\+Texture@{set\+Texture}}
+\index{set\+Texture@{set\+Texture}!Entity@{Entity}}
+\subsubsection[{set\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}void Entity\+::set\+Texture (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{s\+Texture}
+\end{DoxyParamCaption}
+)}}\label{class_entity_aaae0b0b28be4497af93cf2277662770b}
+
+
+A method to set the texture of the object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Texture$\ast$} & -\/ A pointer to a S\+D\+L\+\_\+\+Texture \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+D\+L/Entity.\+h\item 
+S\+D\+L/Entity.\+cpp\end{DoxyCompactItemize}

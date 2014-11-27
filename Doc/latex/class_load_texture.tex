@@ -1,0 +1,137 @@
+\hypertarget{class_load_texture}{\section{Load\+Texture Class Reference}
+\label{class_load_texture}\index{Load\+Texture@{Load\+Texture}}
+}
+
+
+A class that represents a \hyperlink{class_texture}{Texture} Loader.  
+
+
+
+
+{\ttfamily \#include $<$Load\+Texture.\+h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{class_load_texture_ac19d60bf7cd2cd0824d7aa374c0b66de}{\hyperlink{class_load_texture_ac19d60bf7cd2cd0824d7aa374c0b66de}{Load\+Texture} ()}\label{class_load_texture_ac19d60bf7cd2cd0824d7aa374c0b66de}
+
+\begin{DoxyCompactList}\small\item\em The constructor called on creation of the \hyperlink{class_load_texture}{Load\+Texture} object. \end{DoxyCompactList}\item 
+\hypertarget{class_load_texture_a182de305868f31a00349a5700be12ba5}{\hyperlink{class_load_texture_a182de305868f31a00349a5700be12ba5}{$\sim$\+Load\+Texture} ()}\label{class_load_texture_a182de305868f31a00349a5700be12ba5}
+
+\begin{DoxyCompactList}\small\item\em The desconstructor called on destruction of the \hyperlink{class_load_texture}{Load\+Texture} object. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Surface $\ast$ \hyperlink{class_load_texture_a632390c1083afa8ea209c6b5af2168a7}{on\+Surface\+Load} (std\+::string path)
+\begin{DoxyCompactList}\small\item\em A Method to create a surface from an image. \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_texture_ab7d4e690623f00a1841b7d612153a4c0}{On\+Draw} (S\+D\+L\+\_\+\+Renderer $\ast$Renderer, S\+D\+L\+\_\+\+Texture $\ast$c\+Texture, S\+D\+L\+\_\+\+Rect desc\+Rect)
+\begin{DoxyCompactList}\small\item\em A Method to render a texture to the screen. This method does not support sprite maps. \end{DoxyCompactList}\item 
+bool \hyperlink{class_load_texture_a4b2e9d91b8a7832e3bcf86766bba6f45}{On\+Draw} (S\+D\+L\+\_\+\+Renderer $\ast$Renderer, S\+D\+L\+\_\+\+Texture $\ast$c\+Texture, S\+D\+L\+\_\+\+Rect desc\+Rect, S\+D\+L\+\_\+\+Rect src\+Rect)
+\begin{DoxyCompactList}\small\item\em A Method to render a texture to the screen. Overloaded This method does support sprite maps. \end{DoxyCompactList}\item 
+S\+D\+L\+\_\+\+Texture $\ast$ \hyperlink{class_load_texture_aae38c33f75a5cd1f7e7ef4452be6b9bf}{call\+Texture} (S\+D\+L\+\_\+\+Renderer $\ast$s\+Renderer, S\+D\+L\+\_\+\+Surface $\ast$s\+Surface)
+\begin{DoxyCompactList}\small\item\em A Method to create a texture from a surface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+A class that represents a \hyperlink{class_texture}{Texture} Loader. 
+
+This class contains the methods to take in parameters, and return a textures and copy them to the screen. This class only contains methods. 
+
+\subsection{Member Function Documentation}
+\hypertarget{class_load_texture_aae38c33f75a5cd1f7e7ef4452be6b9bf}{\index{Load\+Texture@{Load\+Texture}!call\+Texture@{call\+Texture}}
+\index{call\+Texture@{call\+Texture}!Load\+Texture@{Load\+Texture}}
+\subsubsection[{call\+Texture}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Texture $\ast$ Load\+Texture\+::call\+Texture (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{s\+Renderer, }
+\item[{S\+D\+L\+\_\+\+Surface $\ast$}]{s\+Surface}
+\end{DoxyParamCaption}
+)}}\label{class_load_texture_aae38c33f75a5cd1f7e7ef4452be6b9bf}
+
+
+A Method to create a texture from a surface. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Renderer$\ast$} & -\/ The renderer to create the texture \\
+\hline
+{\em S\+D\+L\+\_\+\+Surface$\ast$} & -\/ The surface to use when creating the texture \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+D\+L\+\_\+\+Texture$\ast$ 
+\end{DoxyReturn}
+\hypertarget{class_load_texture_ab7d4e690623f00a1841b7d612153a4c0}{\index{Load\+Texture@{Load\+Texture}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Load\+Texture@{Load\+Texture}}
+\subsubsection[{On\+Draw}]{\setlength{\rightskip}{0pt plus 5cm}bool Load\+Texture\+::\+On\+Draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{Renderer, }
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{c\+Texture, }
+\item[{S\+D\+L\+\_\+\+Rect}]{desc\+Rect}
+\end{DoxyParamCaption}
+)}}\label{class_load_texture_ab7d4e690623f00a1841b7d612153a4c0}
+
+
+A Method to render a texture to the screen. This method does not support sprite maps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Renderer$\ast$} & -\/ The Renderer that outputs to the screen \\
+\hline
+{\em S\+D\+L\+\_\+\+Texture$\ast$} & -\/ The \hyperlink{class_texture}{Texture} to be used for rendering \\
+\hline
+{\em S\+D\+L\+\_\+\+Rect} & -\/ The location on the screen to be rendered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ if it succeed/failed. 
+\end{DoxyReturn}
+\hypertarget{class_load_texture_a4b2e9d91b8a7832e3bcf86766bba6f45}{\index{Load\+Texture@{Load\+Texture}!On\+Draw@{On\+Draw}}
+\index{On\+Draw@{On\+Draw}!Load\+Texture@{Load\+Texture}}
+\subsubsection[{On\+Draw}]{\setlength{\rightskip}{0pt plus 5cm}bool Load\+Texture\+::\+On\+Draw (
+\begin{DoxyParamCaption}
+\item[{S\+D\+L\+\_\+\+Renderer $\ast$}]{Renderer, }
+\item[{S\+D\+L\+\_\+\+Texture $\ast$}]{c\+Texture, }
+\item[{S\+D\+L\+\_\+\+Rect}]{desc\+Rect, }
+\item[{S\+D\+L\+\_\+\+Rect}]{src\+Rect}
+\end{DoxyParamCaption}
+)}}\label{class_load_texture_a4b2e9d91b8a7832e3bcf86766bba6f45}
+
+
+A Method to render a texture to the screen. Overloaded This method does support sprite maps. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em S\+D\+L\+\_\+\+Renderer$\ast$} & -\/ The Renderer that outputs to the screen \\
+\hline
+{\em S\+D\+L\+\_\+\+Texture$\ast$} & -\/ The \hyperlink{class_texture}{Texture} to be used for rendering \\
+\hline
+{\em S\+D\+L\+\_\+\+Rect} & -\/ The location on the screen to be rendered \\
+\hline
+{\em S\+D\+L\+\_\+\+Rect} & -\/ The location on the texture to be rendered \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool -\/ If it succeed/failed 
+\end{DoxyReturn}
+\hypertarget{class_load_texture_a632390c1083afa8ea209c6b5af2168a7}{\index{Load\+Texture@{Load\+Texture}!on\+Surface\+Load@{on\+Surface\+Load}}
+\index{on\+Surface\+Load@{on\+Surface\+Load}!Load\+Texture@{Load\+Texture}}
+\subsubsection[{on\+Surface\+Load}]{\setlength{\rightskip}{0pt plus 5cm}S\+D\+L\+\_\+\+Surface $\ast$ Load\+Texture\+::on\+Surface\+Load (
+\begin{DoxyParamCaption}
+\item[{std\+::string}]{path}
+\end{DoxyParamCaption}
+)}}\label{class_load_texture_a632390c1083afa8ea209c6b5af2168a7}
+
+
+A Method to create a surface from an image. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em std\+::string} & -\/ A string to the location of the image being used. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\+D\+L\+\_\+\+Surface$\ast$ 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+S\+D\+L/Load\+Texture.\+h\item 
+S\+D\+L/Load\+Texture.\+cpp\end{DoxyCompactItemize}
