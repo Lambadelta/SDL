@@ -47,3 +47,36 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List)
 
 	}
 }
+
+void FileLoader::LoadSkillFile(std::vector<Skill>& List)
+{
+	std::ifstream SkillList("Asset/Entity/MoeMon.txt");
+	if (!SkillList)
+	{
+		printf("Unexpected Error has Occurred : MoeMon.txt has failed to load\n");
+	}
+	std::string str;
+	for (int i = 0; i < SKILLNUMBER; i++)
+	{
+		if (SkillList.fail())
+		{
+			printf("Unexpected Error has Occurred: Stream failbit. Error\n");
+		}
+		if (SkillList.bad())
+		{
+			printf("Unexpected Error has Occurred: Stream Badbit. Error\n");
+		}
+		int id = -1;   int power = -1;
+		int cost = -1; int acc = -1;
+		std::string name; std::string type; std::string description;
+
+		SkillList >> id; SkillList >> power;
+		SkillList >> cost; SkillList >> acc;
+		std::getline(SkillList, name, ',');
+		std::getline(SkillList, type, ',');
+		std::getline(SkillList, description, ';');
+
+		List.push_back(Skill(name, type, description, power, id, acc, cost));
+
+
+}

@@ -114,7 +114,7 @@ void Application::callRenderer()
 }
 void Application::callCleanup()
 {
-	MoeMonList.clear;
+	MoeMonList.clear();
 	SDL_Quit();
 }
 

@@ -11,7 +11,10 @@ struct Vec2
 	float f_x;
 	///Float that represents the Y axises
 	float f_y;
+	/**
+	@brief A default constructor for the structure
 	
+	*/
 	Vec2()
 	{
 

@@ -7,6 +7,7 @@
 #include <string>
 #include <vector>
 #include "Moemon.h"
+#include "Skill.h"
 
 	/**
 	@brief A class that represents the FileLoader
@@ -35,10 +36,12 @@ public:
 	@param std::Vector<Moemon>& - A reference to the Moemon vector
 	*/
 	void LoadMoeMonFile(std::vector<Moemon>& List);
+	void LoadSkillFile(std::vector<Skill>& List);
 	
 private:
 	///A constant int containing the number of MoeMon to be loaded in
 	const int MOEMONNUMBER = 36;
+	const int SKILLNUMBER = 60;
 };
 
 

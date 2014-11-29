@@ -1,0 +1,1 @@
+060 90 10 100 Phantom Force,Ghost,The user vanishes somewhere, then strikes the target on the next Turn. This move hits even if the target protects itself.;

@@ -80,6 +80,7 @@
     <ClCompile Include="Moemon.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDL Main.cpp" />
+    <ClCompile Include="Skill.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -93,6 +94,7 @@
     <ClInclude Include="Moemon.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="EventHandler.h" />
+    <ClInclude Include="Skill.h" />
     <ClInclude Include="SourceRect.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Time.h" />

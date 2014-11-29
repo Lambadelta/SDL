@@ -5,7 +5,6 @@
 #include <sstream>
 #include <SDL_image.h>
 #include "LoadTexture.h"
-#include "Animation.h"
 #include "Background.h"
 #include "Tile.h"
 #include "Time.h"
