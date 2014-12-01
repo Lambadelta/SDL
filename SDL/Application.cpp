@@ -58,6 +58,7 @@ bool Application::callInit()
 	/* Loading temp location*/
 
 	fLoader->LoadMoeMonFile(MoeMonList);
+	fLoader->LoadSkillFile(SkillList);
 
 	/*end of loading*/
 

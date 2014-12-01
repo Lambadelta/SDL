@@ -6,7 +6,7 @@
 class Skill
 {
 public:
-	Skill(std::string name, std::string type, std::string description, int potency, int id, int acc, int cost);
+	Skill(int id, int power, int pp, int accuracy, int statusinflict, std::string n, std::string t, std::string desc);
 	~Skill();
 
 	std::string getName();
@@ -16,6 +16,7 @@ public:
 	int getID();
 	int getAcc();
 	int getCost();
+	int getStatus();
 	
 private:
 	int skillID;
@@ -25,6 +26,7 @@ private:
 	int potency;
 	int acc;
 	int cost;
+	int status;
 };
 
 #endif

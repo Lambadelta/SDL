@@ -50,10 +50,10 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List)
 
 void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 {
-	std::ifstream SkillList("Asset/Entity/MoeMon.txt");
+	std::ifstream SkillList("Asset/SkillList.txt");
 	if (!SkillList)
 	{
-		printf("Unexpected Error has Occurred : MoeMon.txt has failed to load\n");
+		printf("Unexpected Error has Occurred : SkillList.txt has failed to load\n");
 	}
 	std::string str;
 	for (int i = 0; i < SKILLNUMBER; i++)
@@ -68,15 +68,20 @@ void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 		}
 		int id = -1;   int power = -1;
 		int cost = -1; int acc = -1;
+		int statusinflict = -1;
 		std::string name; std::string type; std::string description;
 
-		SkillList >> id; SkillList >> power;
-		SkillList >> cost; SkillList >> acc;
+		SkillList >> id;
+		SkillList >> power;
+		SkillList >> cost;
+		SkillList >> acc;
+		SkillList >> statusinflict;
 		std::getline(SkillList, name, ',');
 		std::getline(SkillList, type, ',');
 		std::getline(SkillList, description, ';');
 
-		List.push_back(Skill(name, type, description, power, id, acc, cost));
+		List.push_back(Skill(id, power, cost, acc, statusinflict,name, type, description));
 
 
+	}
 }

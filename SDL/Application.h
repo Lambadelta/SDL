@@ -11,6 +11,7 @@
 #include "Player.h"
 #include "EventHandler.h"
 #include "Moemon.h"
+#include "Skill.h"
 #include "FileLoader.h"
 
 /**
@@ -97,6 +98,8 @@ protected:
 	FileLoader* fLoader;
 	///A vector of Moemon that stores all the Moemon the application will use
 	std::vector<Moemon> MoeMonList;
+	///A vector of Skills that stores all of the MoeMon moves the application will use
+	std::vector<Skill> SkillList;
 	///A Player object 
 	Player* PlayerEntity;
 	///A background object (subject to change)

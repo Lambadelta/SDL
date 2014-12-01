@@ -41,7 +41,7 @@ public:
 private:
 	///A constant int containing the number of MoeMon to be loaded in
 	const int MOEMONNUMBER = 36;
-	const int SKILLNUMBER = 60;
+	const int SKILLNUMBER = 4;
 };
 
 

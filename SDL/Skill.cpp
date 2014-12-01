@@ -1,14 +1,15 @@
 #include "Skill.h"
 
-Skill::Skill(std::string name, std::string type, std::string description, int potency, int id, int acc, int cost)
+Skill::Skill(int id, int power, int pp, int accuracy, int statusinflict, std::string n, std::string t, std::string desc)
 {
-	name = name;
-	type = type;
-	description = description;
-	potency = potency;
+	name = n;
+	type = t;
+	description = desc;
+	potency = power;
 	skillID = id;
-	acc = acc;
-	cost = cost;
+	acc = accuracy;
+	cost = pp;
+	status = statusinflict;
 }
 
 Skill::~Skill()
@@ -49,4 +50,9 @@ int Skill::getAcc()
 int Skill::getCost()
 {
 	return cost;
+}
+
+int Skill::getStatus()
+{
+	return status;
 }
