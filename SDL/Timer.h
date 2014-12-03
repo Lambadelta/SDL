@@ -29,11 +29,17 @@ public:
 	*/
 	void updateTimer(float DeltaTime);
 	/**
+	@brief A method for resetting the timer
+
+	*/
+	void resetTimer();
+	/**
 	@brief A method for checking if the time has expired
 
 	Checks if the timer has expired, and returns a true/false.
 	@returns bool
 	*/
+
 	bool expiredTimer();
 	/**
 	@brief A debug method for timer

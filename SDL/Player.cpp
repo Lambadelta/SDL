@@ -31,7 +31,8 @@ void Player::callMoveUp(bool canMove, Timer* PlayerAnim, Time dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.y -= fSpeed /** dt.getDelta()*/;
+		DescRect.y -= fSpeed * dt.getDelta();
+		PlayerAnim->resetTimer();
 	}
 }
 
@@ -45,7 +46,8 @@ void Player::callMoveLeft(bool canMove, Timer* PlayerAnim, Time dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.x -= fSpeed /** dt.getDelta()*/;
+		DescRect.x -= fSpeed * dt.getDelta();
+		PlayerAnim->resetTimer();
 	}
 }
 
@@ -59,7 +61,8 @@ void Player::callMoveRight(bool canMove, Timer* PlayerAnim, Time dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.x += fSpeed /** dt.getDelta()*/;
+		DescRect.x += fSpeed * dt.getDelta();
+		PlayerAnim->resetTimer();
 	}
 
 }
@@ -74,6 +77,7 @@ void Player::callMoveDown(bool canMove, Timer* PlayerAnim, Time dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.y += fSpeed /** dt.getDelta()*/;
+		DescRect.y += fSpeed * dt.getDelta();
+		PlayerAnim->resetTimer();
 	}
 }

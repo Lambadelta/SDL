@@ -2,7 +2,7 @@
 Application::Application()
 {
 	GameLoop = true;
-	PlayerEntity = new Player(Rect(100, 100, 44, 44), Rect(0, 0, 22, 22), 9.0f);
+	PlayerEntity = new Player(Rect(100, 100, 44, 44), Rect(0, 0, 22, 22), 70.0f);
 	TextureLoader = new LoadTexture;
 	Backgrounds = new Background;
 	Event = new EventHandler;

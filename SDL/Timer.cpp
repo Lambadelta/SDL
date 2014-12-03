@@ -26,12 +26,12 @@ void Timer::updateTimer(float DeltaTime)
 	{
 		currentTime -= DeltaTime;
 	}
-	else
-	{
-		currentTime = initialTime;
-	}
-}
 
+}
+void Timer::resetTimer()
+{
+	currentTime = initialTime;
+}
 bool Timer::expiredTimer()
 {
 	if (currentTime <= 0)

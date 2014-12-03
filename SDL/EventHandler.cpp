@@ -3,7 +3,7 @@
 
 EventHandler::EventHandler()
 {
-	PlayerAnim = new Timer(0.3);
+	PlayerAnim = new Timer(0.8);
 }
 
 EventHandler::~EventHandler()

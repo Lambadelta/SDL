@@ -1,4 +1,4 @@
-057 60 20 100 Shadow Punch,Ghost, An unavoidable punch that is thrown from shadows.;
-058 80 15 100 Shadow Ball,Ghost,Hurls a black blobl that may lower Sp. Def;
-059 00 10 100 Confuse Ray,Ghost,A sinister ray that confuses the foe.;
-060 90 10 100 Phantom Force,Ghost,The user vanishes somewhere, then strikes the target on the next Turn. This move hits even if the target protects itself.;
+057 60 20 100 00 Shadow Punch,Ghost, An unavoidable punch that is thrown from shadows.;
+058 80 15 100 00 Shadow Ball,Ghost,Hurls a black blobl that may lower Sp. Def;
+059 00 10 100 00 Confuse Ray,Ghost,A sinister ray that confuses the foe.;
+060 90 10 100 00 Phantom Force,Ghost,The user vanishes somewhere, then strikes the target on the next Turn. This move hits even if the target protects itself.;
