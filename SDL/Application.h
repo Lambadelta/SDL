@@ -100,6 +100,10 @@ protected:
 	std::vector<Moemon> MoeMonList;
 	///A vector of Skills that stores all of the MoeMon moves the application will use
 	std::vector<Skill> SkillList;
+	///A vector of Tiles that stores all of the tiles the application will use
+	std::vector<Tile> TileList;
+
+	std::vector<int> TestMap;
 	///A Player object 
 	Player* PlayerEntity;
 	///A background object (subject to change)

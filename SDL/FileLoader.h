@@ -8,6 +8,7 @@
 #include <vector>
 #include "Moemon.h"
 #include "Skill.h"
+#include "Tile.h"
 
 	/**
 	@brief A class that represents the FileLoader
@@ -37,11 +38,14 @@ public:
 	*/
 	void LoadMoeMonFile(std::vector<Moemon>& List);
 	void LoadSkillFile(std::vector<Skill>& List);
+	void LoadTileFile(std::vector<Tile>& List);
+	void LoadMapFile(std::vector<int>& Map);
 	
 private:
 	///A constant int containing the number of MoeMon to be loaded in
 	const int MOEMONNUMBER = 36;
 	const int SKILLNUMBER = 4;
+	const int TILENUMBER = 324;
 };
 
 

@@ -23,7 +23,7 @@ public:
 	@param int - An int containing the y axises
 	@param int - An int containing the type of tile
 	*/
-	Tile(int x, int y, int type);
+	Tile(int x, int y, int id);
 	/**
 	@brief The deconstructor for the Tile object
 	*/
@@ -47,12 +47,10 @@ private:
 	///A SDL_Rect containing the tiles Rect
 	SDL_Rect BoxRect;
 	///An int containing the tile type
-	int iType;
+	int iID;
 
 	///An constant int containing the tile Width
-	const int csTile_Width = 32;
-	///An constant int containing the tile Height
-	const int csTile_Height = 32;
+	const int WH = 16;
 
 
 

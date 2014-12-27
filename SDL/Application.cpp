@@ -43,7 +43,7 @@ bool Application::callInit()
 
 
 	/*Assigns the Display window the screen size, and properties*/
-	Display = SDL_CreateWindow("SDL Main", WINDOW_X, WINDOW_Y,WINDOW_WIDTH, WINDOW_HEIGHT,SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE | SDL_WINDOW_OPENGL);
+	Display = SDL_CreateWindow("SDL Main", WINDOW_X, WINDOW_Y,WINDOW_WIDTH, WINDOW_HEIGHT,SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE /*| SDL_WINDOW_OPENGL*/);
 
 	/*Checks if the display has been initialised correctly*/
 	if (Display == NULL)
@@ -59,7 +59,8 @@ bool Application::callInit()
 
 	fLoader->LoadMoeMonFile(MoeMonList);
 	fLoader->LoadSkillFile(SkillList);
-
+	fLoader->LoadTileFile(TileList);
+	fLoader->LoadMapFile(TestMap);
 	/*end of loading*/
 
 

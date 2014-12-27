@@ -18,7 +18,6 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List)
 	{
 		printf("Unexpected Error has Occurred : MoeMon.txt has failed to load\n");
 	}
-	std::string str;
 	for (int i = 0; i < MOEMONNUMBER; i++)
 	{
 		if (MoeMon.fail())
@@ -55,7 +54,6 @@ void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 	{
 		printf("Unexpected Error has Occurred : SkillList.txt has failed to load\n");
 	}
-	std::string str;
 	for (int i = 0; i < SKILLNUMBER; i++)
 	{
 		if (SkillList.fail())
@@ -84,4 +82,64 @@ void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 
 
 	}
+}
+void FileLoader::LoadTileFile(std::vector<Tile>& List)
+{
+	std::ifstream TileList("Asset/Tiles.txt");
+	if (!TileList)
+	{
+		printf("Unexpected Error has Occurred : Tiles.txt has failed to load\n");
+	}
+	for (int i = 0; i < TILENUMBER; i++)
+	{
+		if (TileList.fail())
+		{
+			printf("Unexpected Error has Occurred: Stream failbit. Error\n");
+		}
+		if (TileList.bad())
+		{
+			printf("Unexpected Error has Occurred: Stream Badbit. Error\n");
+		}
+		int x = -1;
+		int y = -1;
+		int id = -1;
+
+		TileList >> id;
+		TileList >> y;
+		TileList >> x;
+
+
+		List.push_back(Tile(x, y, id));
+	}
+}
+
+void FileLoader::LoadMapFile(std::vector<int>& Map)
+{
+	int Mapsize = -1;
+	std::ifstream MapCoord("Asset/MapTest.txt");
+	if (!MapCoord)
+	{
+		printf("Unexpected Error has Occurred : Tiles.txt has failed to load\n");
+	}
+	MapCoord >> Mapsize;
+	for (int i = 0; i < Mapsize; i++)
+	{
+		if (MapCoord.fail())
+		{
+			printf("Unexpected Error has Occurred: Stream failbit. Error\n");
+		}
+		if (MapCoord.bad())
+		{
+			printf("Unexpected Error has Occurred: Stream Badbit. Error\n");
+		}
+
+		int tile = -1;
+
+		MapCoord >> tile;
+
+		Map.push_back(tile);
+
+	}
+		
+
 }

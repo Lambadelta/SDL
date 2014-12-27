@@ -2,15 +2,15 @@
 Tile::Tile()
 {
 }
-Tile::Tile(int x, int y, int type)
+Tile::Tile(int x, int y, int id)
 {
-	BoxRect.x = x;
-	BoxRect.y = y;
+	BoxRect.x = (x - 1 ) * WH ;
+	BoxRect.y = (y - 1 ) * WH;
 
-	BoxRect.w = csTile_Width;
-	BoxRect.h = csTile_Height;
+	BoxRect.w = WH;
+	BoxRect.h = WH;
 
-	iType = type;
+	iID = id;
 }
 
 Tile::~Tile()
@@ -20,7 +20,7 @@ Tile::~Tile()
 
 int Tile::getType()
 {
-	return iType;
+	return iID;
 }
 
 SDL_Rect Tile::getBox()
