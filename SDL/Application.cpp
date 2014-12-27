@@ -110,7 +110,20 @@ void Application::callRenderer()
 {
 	/*Clears the render then draws to the screen*/
 	SDL_RenderClear(Renderer);
-	TextureLoader->OnDraw(Renderer, Backgrounds->getTexture(), Backgrounds->getRect());
+	/*TextureLoader->OnDraw(Renderer, Backgrounds->getTexture(), 1, TileList[57].getBox());*/
+	int y = 0;
+	int x = 0;
+	for (int i = 0; i < TestMap.size(); i++)
+	{
+		
+		if (TestMap[i] == 0)
+		{
+			y += 1;
+			x = -1;
+		}
+		TextureLoader->OnDraw(Renderer, Backgrounds->getTexture(),x,y, TileList[TestMap[i]].getBox());
+		x++;
+	}
 	TextureLoader->OnDraw(Renderer, PlayerEntity->getTexture(), PlayerEntity->getDescRect(),PlayerEntity->getSrcRect());
 	
 }
@@ -123,7 +136,7 @@ void Application::callCleanup()
 void Application::callSurface()
 {	
 		PlayerEntity->setSurface(TextureLoader->onSurfaceLoad("Asset/Entity/Player/Player.png"));
-		Backgrounds->setSurface(TextureLoader->onSurfaceLoad("background.bmp"));
+		Backgrounds->setSurface(TextureLoader->onSurfaceLoad("Asset/map.png"));
 
 }
 

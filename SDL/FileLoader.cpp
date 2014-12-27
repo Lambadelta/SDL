@@ -85,12 +85,14 @@ void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 }
 void FileLoader::LoadTileFile(std::vector<Tile>& List)
 {
+	int tilesize = -1;
 	std::ifstream TileList("Asset/Tiles.txt");
 	if (!TileList)
 	{
 		printf("Unexpected Error has Occurred : Tiles.txt has failed to load\n");
 	}
-	for (int i = 0; i < TILENUMBER; i++)
+	TileList >> tilesize;
+	for (int i = 0; i < tilesize; i++)
 	{
 		if (TileList.fail())
 		{

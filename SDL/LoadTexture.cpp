@@ -27,10 +27,16 @@ SDL_Surface* LoadTexture::onSurfaceLoad(std::string path)
 	return Temp;
 }
 /*OnDraw method for drawing the texture singler*/
-bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect)
+bool LoadTexture::OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, int i,int y, SDL_Rect srcRect)
 {
-	SDL_QueryTexture(cTexture, NULL, NULL, &descRect.w, &descRect.h);
-	SDL_RenderCopy(Renderer, cTexture, NULL, &descRect);
+	
+	SDL_Rect descRect;
+	descRect.x = i * 32;
+	descRect.y = y * 32;
+	descRect.w = 32;
+	descRect.h = 32;
+
+	SDL_RenderCopy(Renderer, cTexture, &srcRect, &descRect);
 	return true;
 }
 /*OnDraw method for using a sprite map source image*/

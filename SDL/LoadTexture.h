@@ -41,7 +41,7 @@ public:
 	@param SDL_Rect - The location on the screen to be rendered
 	@returns bool - if it succeed/failed.
 	*/
-	bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture, SDL_Rect descRect);
+	bool OnDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture,int i,int y, SDL_Rect descRect);
 	/**
 	@brief A Method to render a texture to the screen. Overloaded
 	This method does support sprite maps.
