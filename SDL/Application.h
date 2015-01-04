@@ -4,15 +4,9 @@
 #include <SDL.h>
 #include <sstream>
 #include <SDL_image.h>
-#include "LoadTexture.h"
-#include "Background.h"
-#include "Tile.h"
-#include "Time.h"
-#include "Player.h"
-#include "EventHandler.h"
-#include "Moemon.h"
-#include "Skill.h"
-#include "FileLoader.h"
+#include "Manager.h"
+#include "GameplayState.h"
+
 
 /**
 @brief A class representing the Application
@@ -81,41 +75,17 @@ public:
 	This is called in the callInit method.
 	*/
 	void callSurface();
-	/**
-	@brief A method to set the texture of all visual objects
 
-	This method is where all the different objects that need textures are processed.
-	This is called in the callInit method.
-	*/
-	void callTexture();
 
 protected:
-	///A bool to start or end the game loop
-	bool GameLoop;
 	///A SDL_Window* for creating the screen
 	SDL_Window* Display;
-	///A FileLoader object for loading in the different files required
-	FileLoader* fLoader;
-	///A vector of Moemon that stores all the Moemon the application will use
-	std::vector<Moemon> MoeMonList;
-	///A vector of Skills that stores all of the MoeMon moves the application will use
-	std::vector<Skill> SkillList;
-	///A vector of Tiles that stores all of the tiles the application will use
-	std::vector<Tile> TileList;
-
-	std::vector<int> TestMap;
-	///A Player object 
-	Player* PlayerEntity;
-	///A background object (subject to change)
-	Background* Backgrounds;
 	///The SDL_Renderer used to render textures to the screen
 	SDL_Renderer * Renderer;
-	///A LoadTexture object for loading in the surface/textures
-	LoadTexture* TextureLoader;
-	///A time object for managing delta time
-	Time time;
-	///A EventHandler object
-	EventHandler* Event;
+	///A bool to start or end the game loop
+	bool GameLoop;
+	Time* time;
+	Manager* GSManager;
 	///A constant int for the window's x axises
 	const int WINDOW_X = 100;		
 	///A constant int for the window's y axises
@@ -124,8 +94,6 @@ protected:
 	const int WINDOW_WIDTH = 640;	
 	///A constant int for the window's Height
 	const int WINDOW_HEIGHT = 480;
-
-	
 };
 
 #endif

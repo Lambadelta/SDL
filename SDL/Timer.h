@@ -1,5 +1,8 @@
 #ifndef TIMER_H
 #define TIMER_H
+
+#include <ctime>
+#include <cstdlib>
 /**
 @brief A class that represents a timer
 
@@ -41,13 +44,9 @@ public:
 	*/
 
 	bool expiredTimer();
-	/**
-	@brief A debug method for timer
 
-	Returns the timer's current value.
-	@returns int
-	*/
-	int debug();
+	int randNum();
+
 
 private:
 	 ///A float containing the initial time

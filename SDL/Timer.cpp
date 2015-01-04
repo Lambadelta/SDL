@@ -44,7 +44,10 @@ bool Timer::expiredTimer()
 	}
 }
 
-int Timer::debug()
+
+int Timer::randNum()
 {
-	return currentTime;
+	std::srand(std::time(0));
+	int random = std::rand();
+	return random;
 }

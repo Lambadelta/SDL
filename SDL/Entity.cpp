@@ -1,7 +1,8 @@
 #include "Entity.h"
 
-Entity::Entity()
+Entity::Entity(std::string path, SDL_Renderer* renderer)
 {
+	loadIMG(path, renderer);
 }
 Entity::~Entity()
 {
@@ -9,21 +10,27 @@ Entity::~Entity()
 	SDL_FreeSurface(EntitySurface);*/
 }
 
-void Entity::setSurface(SDL_Surface* sSurface)
+bool Entity::loadIMG(std::string path, SDL_Renderer* renderer)
 {
-	EntitySurface = sSurface;
-}
+	SDL_Surface* Temp = NULL;
 
-void Entity::setTexture(SDL_Texture* sTexture)
-{
-	EntityTexture = sTexture;
+	Temp = IMG_Load(path.c_str());
+	if (Temp == NULL)
+	{
+		// We'll do a quick check here because it's easy to get filenames or directories wrong
+		std::cout << "Image -> " << path << "Could not be loaded. Returning NULL" << std::endl;
+		SDL_Delay(100);
+		SDL_Quit();
+		/*Returns the value NULL to the pointer incase of an error with the image*/
+		return NULL;
+	}
+	EntityTexture = SDL_CreateTextureFromSurface(renderer, Temp);
+	if (EntityTexture == NULL)
+	{
+		return NULL;
+	}
+	return true;
 }
-
-SDL_Surface* Entity::getSurface()
-{
-	return EntitySurface;
-}
-
 SDL_Texture* Entity::getTexture()
 {
 	return EntityTexture;
@@ -38,4 +45,3 @@ SDL_Rect Entity::getSrcRect()
 {
 	return SrcRect;
 }
-

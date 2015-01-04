@@ -2,7 +2,7 @@
 Tile::Tile()
 {
 }
-Tile::Tile(int x, int y, int id)
+Tile::Tile(int x, int y, int id, bool collision)
 {
 	BoxRect.x = (x - 1 ) * WH ;
 	BoxRect.y = (y - 1 ) * WH;
@@ -11,6 +11,7 @@ Tile::Tile(int x, int y, int id)
 	BoxRect.h = WH;
 
 	iID = id;
+	isWall = collision;
 }
 
 Tile::~Tile()

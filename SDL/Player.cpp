@@ -1,10 +1,8 @@
 #include "Player.h"
 
 
-Player::Player(Rect v1, Rect sr1, float s) : Entity()
+Player::Player(Rect v1, Rect sr1, float s, std::string path, SDL_Renderer* renderer) : Entity(path,renderer)
 {
-	EntitySurface = NULL;
-	EntityTexture = NULL;
 	DescRect.x = v1.f_x;
 	DescRect.y = v1.f_y;
 	DescRect.w = v1.f_w;
@@ -21,63 +19,88 @@ Player::~Player()
 
 }
 
-void Player::callMoveUp(bool canMove, Timer* PlayerAnim, Time dt)
+void Player::callMoveUp(bool canMove, Timer* AnimTime, float dt)
 {
-	if (canMove == true && PlayerAnim->expiredTimer())
+	if (canMove == true && AnimTime->expiredTimer())
 	{
-		SrcRect.y = 44;
-		SrcRect.x += 22;
-		if (SrcRect.x >= 66)
+		SrcRect.y = 100;
+		SrcRect.x += 50;
+		if (SrcRect.x >= 150)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.y -= fSpeed * dt.getDelta();
-		PlayerAnim->resetTimer();
+		DescRect.y -= fSpeed * dt;
+		AnimTime->resetTimer();
 	}
 }
 
-void Player::callMoveLeft(bool canMove, Timer* PlayerAnim, Time dt)
+void Player::callMoveLeft(bool canMove, Timer* AnimTime, float dt)
 {
-	if (canMove == true && PlayerAnim->expiredTimer())
+	if (canMove == true && AnimTime->expiredTimer())
 	{
-		SrcRect.y = 66;
-		SrcRect.x += 22;
-		if (SrcRect.x >= 66)
+		SrcRect.y = 50;
+		SrcRect.x += 50;
+		if (SrcRect.x >= 150)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.x -= fSpeed * dt.getDelta();
-		PlayerAnim->resetTimer();
+		DescRect.x -= fSpeed * dt;
+		AnimTime->resetTimer();
 	}
 }
 
-void Player::callMoveRight(bool canMove, Timer* PlayerAnim, Time dt)
+void Player::callMoveRight(bool canMove, Timer* AnimTime, float dt)
 {
-	if (canMove == true && PlayerAnim->expiredTimer())
+	if (canMove == true && AnimTime->expiredTimer())
 	{
-		SrcRect.y = 22;
-		SrcRect.x += 22;
-		if (SrcRect.x >= 66)
+		SrcRect.y = 150;
+		SrcRect.x += 50;
+		if (SrcRect.x >= 150)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.x += fSpeed * dt.getDelta();
-		PlayerAnim->resetTimer();
+		DescRect.x += fSpeed * dt;
+		AnimTime->resetTimer();
 	}
 
 }
 
-void Player::callMoveDown(bool canMove, Timer* PlayerAnim, Time dt)
+void Player::callMoveDown(bool canMove, Timer* AnimTime, float dt)
 {
-	if (canMove == true && PlayerAnim->expiredTimer())
+	if (canMove == true && AnimTime->expiredTimer())
 	{
 		SrcRect.y = 0;
-		SrcRect.x += 22;
-		if (SrcRect.x >= 66)
+		SrcRect.x += 50;
+		if (SrcRect.x >= 150)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.y += fSpeed * dt.getDelta();
-		PlayerAnim->resetTimer();
+		DescRect.y += fSpeed * dt;
+		AnimTime->resetTimer();
 	}
+}
+void Player::callDraw(SDL_Renderer* Renderer)
+{
+	/*Coping the destination surface with the texture from the Source surface using the Rect data*/
+	SDL_RenderCopy(Renderer, EntityTexture, &SrcRect, &DescRect);
+
+}
+
+Vec2 Player::XYpos()
+{
+	Vec2 XY;
+	XY.f_x = DescRect.x;
+	XY.f_y = DescRect.y;
+
+	return XY;
+}
+
+int Player::rtnWidth()
+{
+	return DescRect.w;
+}
+
+int Player::rtnHeight()
+{
+	return DescRect.y;
 }

@@ -11,14 +11,16 @@ FileLoader::~FileLoader()
 }
 
 
-void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List)
+void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List, SDL_Renderer* renderer)
 {
+	int Moemonsize = -1;
 	std::ifstream MoeMon("Asset/Entity/MoeMon.txt");
 	if (!MoeMon)
 	{
 		printf("Unexpected Error has Occurred : MoeMon.txt has failed to load\n");
 	}
-	for (int i = 0; i < MOEMONNUMBER; i++)
+	MoeMon >> Moemonsize;
+	for (int i = 0; i < Moemonsize; i++) 
 	{
 		if (MoeMon.fail())
 		{
@@ -34,15 +36,17 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List)
 		int Speed = -1;	 int level = -1;
 
 		std::string name;	std::string type;
+		std::string path;
 
 		MoeMon >> id;	    MoeMon >> health;
 		MoeMon >> attack;	MoeMon >> defense;
 		MoeMon >> SpAtk;	MoeMon >> SpDef;
 		MoeMon >> Speed;    MoeMon >> level;
 		std::getline(MoeMon, name, ',');
-		std::getline(MoeMon, type, '.');
+		std::getline(MoeMon, type, ',');
+		std::getline(MoeMon, path, ';');
 
-		List.push_back(Moemon(id, health, attack, defense, SpAtk, SpDef, Speed, level, name, type));
+		List.push_back(Moemon(id, health, attack, defense, SpAtk, SpDef, Speed, level, name, type, path, renderer));
 
 	}
 }
@@ -105,20 +109,21 @@ void FileLoader::LoadTileFile(std::vector<Tile>& List)
 		int x = -1;
 		int y = -1;
 		int id = -1;
+		bool collision = 0;
 
 		TileList >> id;
 		TileList >> y;
 		TileList >> x;
+		TileList >> collision;
 
-
-		List.push_back(Tile(x, y, id));
+		List.push_back(Tile(x, y, id, collision));
 	}
 }
 
-void FileLoader::LoadMapFile(std::vector<int>& Map)
+void FileLoader::LoadMapFile(std::vector<int>& Map, std::string path)
 {
 	int Mapsize = -1;
-	std::ifstream MapCoord("Asset/MapTest.txt");
+	std::ifstream MapCoord(path);
 	if (!MapCoord)
 	{
 		printf("Unexpected Error has Occurred : Tiles.txt has failed to load\n");

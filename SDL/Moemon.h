@@ -30,7 +30,7 @@ public:
 	@param std::string - Contains the Moemon's name
 	@param std::string - Contains the Moemon's type
 	*/
-	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type);
+	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type, std::string path, SDL_Renderer* renderer);
 	
 private:
 	///An int containing the ID of the Moemon

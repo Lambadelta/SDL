@@ -1,7 +1,9 @@
 #ifndef ENTITY_H
 #define ENTITY_H
 #include <SDL.h>
+#include <SDL_image.h>
 #include <iostream>
+#include <string>
 #include "Vec2.h"
 #include "SourceRect.h"
 #include "Time.h"
@@ -25,7 +27,7 @@ public:
 	Only derived objects will call this.
 
 	*/
-	Entity();
+	Entity(std::string path, SDL_Renderer* renderer);
 	/**
 	@brief Deconstructs an Entity object
 
@@ -39,20 +41,7 @@ public:
 
 	@param SDL_Surface* - A pointer to a SDL_Surface
 	*/
-	void setSurface(SDL_Surface*);
-	/**
-	@brief A method to set the texture of the object
-
-	@param SDL_Texture* - A pointer to a SDL_Texture
-	*/
-	void setTexture(SDL_Texture*);
-	/**
-	@brief A method to get the surface from the object
-
-	Returns a SDL_Surface* when called
-	@returns SDL_Surface*
-	*/
-	SDL_Surface* getSurface();
+	bool loadIMG(std::string, SDL_Renderer*);
 	/**
 	@brief A method to get the texture from the object
 
@@ -78,8 +67,6 @@ public:
 
 protected:
 
-	///The objects Surface used to create a texture
-	SDL_Surface* EntitySurface;
 	///The objects Texture created from the surface, and used to render to screen
 	SDL_Texture* EntityTexture;
 	///The objects location to be drawn to the screen
