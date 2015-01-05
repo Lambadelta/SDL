@@ -19,9 +19,7 @@ public:
 	bool EventHandle();
 	void update(float dt);
 	void draw();
-	void onInit();
-	void getcollision(int);
-	void collision();
+	bool getcollision(int, std::string);
 
 	int getposition();
 
@@ -56,6 +54,7 @@ private:
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
 
+	float initialspeed;
 	float speed;
 	float deltatime;
 };
