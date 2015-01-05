@@ -9,6 +9,7 @@
 #include "Moemon.h"
 #include "Skill.h"
 #include "Tile.h"
+#include "Maptile.h"
 
 	/**
 	@brief A class that represents the FileLoader
@@ -39,7 +40,7 @@ public:
 	void LoadMoeMonFile(std::vector<Moemon>& List, SDL_Renderer* Renderer);
 	void LoadSkillFile(std::vector<Skill>& List);
 	void LoadTileFile(std::vector<Tile>& List);
-	void LoadMapFile(std::vector<int>& Map, std::string);
+	void LoadMapFile(std::vector<Maptile>& Map, std::string);
 	
 private:
 	///A constant int containing the number of MoeMon to be loaded in

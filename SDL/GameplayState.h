@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "Background.h"
 #include "Entity.h"
+#include "Maptile.h"
 
 class GameplayState : public Gamestate
 {
@@ -19,6 +20,10 @@ public:
 	void update(float dt);
 	void draw();
 	void onInit();
+	void getcollision(int);
+	void collision();
+
+	int getposition();
 
 
 private:
@@ -33,8 +38,9 @@ private:
 	///A vector of Tiles that stores all of the tiles the application will use
 	std::vector<Tile> TileList;
 
-	std::vector<int> Route1;
-	std::vector<int> Route1OB;
+	std::vector<Maptile> Route1;
+	std::vector<Maptile> Route1OB;
+	std::vector<SDL_Rect>collisionOB;
 	///A Player object 
 	Player* PlayerEntity;
 	///A background object (subject to change)
@@ -44,8 +50,9 @@ private:
 
 	Timer* AnimTime;
 
-	int Mapx = 32;
-	int Mapy = 32;
+	SDL_Rect test;
+	int Mapx = 0;
+	int Mapy = 0;
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
 

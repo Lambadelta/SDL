@@ -29,6 +29,7 @@ bool Entity::loadIMG(std::string path, SDL_Renderer* renderer)
 	{
 		return NULL;
 	}
+	SDL_FreeSurface(Temp);
 	return true;
 }
 SDL_Texture* Entity::getTexture()

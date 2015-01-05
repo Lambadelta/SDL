@@ -31,7 +31,12 @@ public:
 	@param std::string - Contains the Moemon's type
 	*/
 	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type, std::string path, SDL_Renderer* renderer);
+	/**
+	@brief A method to set if the moemon is shiny
 	
+	*/
+	void setShiny();
+	void callDraw();
 private:
 	///An int containing the ID of the Moemon
 	int i_ID;
@@ -53,6 +58,9 @@ private:
 	std::string s_MoeMonName;
 	///A string containing the Moemon's type
 	std::string s_Type;
+
+	bool isShiny;
+	int x = 0;
 
 
 };

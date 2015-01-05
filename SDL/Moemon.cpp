@@ -14,3 +14,13 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 	s_Type = type;
 	SDL_Texture* EntityTexture = NULL;
 }
+
+void Moemon::setShiny()
+{
+	x = 32;
+}
+
+void Moemon::callDraw()
+{
+
+}

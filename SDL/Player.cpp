@@ -1,7 +1,7 @@
 #include "Player.h"
 
 
-Player::Player(Rect v1, Rect sr1, float s, std::string path, SDL_Renderer* renderer) : Entity(path,renderer)
+Player::Player(Rect v1, Rect sr1, std::string path, SDL_Renderer* renderer) : Entity(path,renderer)
 {
 	DescRect.x = v1.f_x;
 	DescRect.y = v1.f_y;
@@ -11,7 +11,6 @@ Player::Player(Rect v1, Rect sr1, float s, std::string path, SDL_Renderer* rende
 	SrcRect.y = sr1.f_y;
 	SrcRect.w = sr1.f_w;
 	SrcRect.h = sr1.f_h;
-	fSpeed = s;
 }
 
 Player::~Player()
@@ -19,7 +18,7 @@ Player::~Player()
 
 }
 
-void Player::callMoveUp(bool canMove, Timer* AnimTime, float dt)
+void Player::callMoveUp(bool canMove, Timer* AnimTime, int& mapy, int speed)
 {
 	if (canMove == true && AnimTime->expiredTimer())
 	{
@@ -29,12 +28,12 @@ void Player::callMoveUp(bool canMove, Timer* AnimTime, float dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.y -= fSpeed * dt;
+		mapy -= speed;
 		AnimTime->resetTimer();
 	}
 }
 
-void Player::callMoveLeft(bool canMove, Timer* AnimTime, float dt)
+void Player::callMoveLeft(bool canMove, Timer* AnimTime, int& mapx, int speed)
 {
 	if (canMove == true && AnimTime->expiredTimer())
 	{
@@ -44,12 +43,12 @@ void Player::callMoveLeft(bool canMove, Timer* AnimTime, float dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.x -= fSpeed * dt;
+		mapx -= speed;
 		AnimTime->resetTimer();
 	}
 }
 
-void Player::callMoveRight(bool canMove, Timer* AnimTime, float dt)
+void Player::callMoveRight(bool canMove, Timer* AnimTime, int& mapx, int speed)
 {
 	if (canMove == true && AnimTime->expiredTimer())
 	{
@@ -59,13 +58,13 @@ void Player::callMoveRight(bool canMove, Timer* AnimTime, float dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.x += fSpeed * dt;
+		mapx += speed;
 		AnimTime->resetTimer();
 	}
 
 }
 
-void Player::callMoveDown(bool canMove, Timer* AnimTime, float dt)
+void Player::callMoveDown(bool canMove, Timer* AnimTime, int& mapy, int speed)
 {
 	if (canMove == true && AnimTime->expiredTimer())
 	{
@@ -75,7 +74,7 @@ void Player::callMoveDown(bool canMove, Timer* AnimTime, float dt)
 		{
 			SrcRect.x = 0;
 		}
-		DescRect.y += fSpeed * dt;
+		mapy += speed;
 		AnimTime->resetTimer();
 	}
 }

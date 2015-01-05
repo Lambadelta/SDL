@@ -120,8 +120,9 @@ void FileLoader::LoadTileFile(std::vector<Tile>& List)
 	}
 }
 
-void FileLoader::LoadMapFile(std::vector<int>& Map, std::string path)
+void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 {
+	std::vector<int>Tempmap;
 	int Mapsize = -1;
 	std::ifstream MapCoord(path);
 	if (!MapCoord)
@@ -144,8 +145,24 @@ void FileLoader::LoadMapFile(std::vector<int>& Map, std::string path)
 
 		MapCoord >> tile;
 
-		Map.push_back(tile);
+		Tempmap.push_back(tile);
 
+	}
+
+	int y = 0;
+	int x = 0;
+	for (int j = 0; j < Tempmap.size(); j++)
+	{
+
+		if (Tempmap[j] == 0)
+		{
+			y += 1;
+			x = -1;
+		}
+
+		int type = Tempmap[j];
+		Map.push_back(Maptile(j, x * 32, y * 32, type));
+		x++;
 	}
 		
 

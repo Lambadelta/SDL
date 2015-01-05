@@ -79,8 +79,9 @@
     <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="Gamestate.cpp" />
     <ClCompile Include="Manager.cpp" />
+    <ClCompile Include="Maptile.cpp" />
     <ClCompile Include="Moemon.cpp" />
-    <ClCompile Include="MoemonStoragecpp.cpp" />
+    <ClCompile Include="MoemonStorage.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDL Main.cpp" />
     <ClCompile Include="Skill.cpp" />
@@ -97,6 +98,7 @@
     <ClInclude Include="GameplayState.h" />
     <ClInclude Include="Gamestate.h" />
     <ClInclude Include="Manager.h" />
+    <ClInclude Include="Maptile.h" />
     <ClInclude Include="Moemon.h" />
     <ClInclude Include="MoemonStorage.h" />
     <ClInclude Include="Player.h" />

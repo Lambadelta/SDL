@@ -28,3 +28,15 @@ SDL_Rect Tile::getBox()
 {
 	return BoxRect;
 }
+
+bool Tile::getisWall()
+{
+	if (isWall == true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}

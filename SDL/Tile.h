@@ -42,6 +42,8 @@ public:
 	@returns SDL_Rect
 	*/
 	SDL_Rect getBox();
+
+	bool getisWall();
 	
 private:
 	///A SDL_Rect containing the tiles Rect
