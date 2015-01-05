@@ -7,13 +7,20 @@
 class Trainer : public Entity
 {
 public:
-	Trainer(int, std::string, MoeMonStorage*);
+	Trainer(int,int,int, std::string,SDL_Renderer* renderer, MoeMonStorage*);
 	~Trainer();
 
 	void Move();
+	void setDefeated(bool);
+	bool isDefeated();
 private:
 
 	MoeMonStorage* MoeMon;
+
+	int x;
+	int y;
+	int index;
+	bool defeated;
 };
 
 #endif

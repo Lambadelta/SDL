@@ -22,7 +22,7 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	fLoader->LoadTileFile(TileList);
 	fLoader->LoadMapFile(Route1, "Asset/Route 1.txt");
 	fLoader->LoadMapFile(Route1OB, "Asset/Route 1 OBJ.txt");
-	AnimTime = new Timer(2);
+	AnimTime = new Timer(1);
 }
 
 GameplayState::~GameplayState()
@@ -43,30 +43,31 @@ bool GameplayState::EventHandle()
 			switch (eve.key.keysym.sym) 
 			{
 			case SDLK_w:
-				getcollision(getposition() - 39, "up");
+				getcollision(getposition() - 39);
 				PlayerEntity->callMoveUp(true, AnimTime, Mapy, speed);
 				
 				/*Mapy -= speed;*/
 				break;
 			case SDLK_s:
-				getcollision(getposition() + 39, "down");
+				getcollision(getposition() + 39);
 				PlayerEntity->callMoveDown(true, AnimTime, Mapy, speed);
 				
 			/*	Mapy += speed;*/
 				break;
 			case SDLK_d:
-				getcollision(getposition() + 1, "right");
+				getcollision(getposition() + 1);
 				PlayerEntity->callMoveRight(true, AnimTime, Mapx, speed);
 			/*	Mapx += speed;*/
 				break;
 			case SDLK_a:
-				getcollision(getposition() - 1, "left");
+				getcollision(getposition() - 1);
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 			/*	Mapx -= speed;*/
 				break;
 			case SDLK_k:
 				/*printf("%f \n", deltatime);*/
-				getposition();
+				int debug = getposition();
+				std::cout << debug << std::endl;
 				break;
 			}
 		case SDL_KEYUP:
@@ -110,7 +111,7 @@ void GameplayState::draw()
 }
 
 
-bool GameplayState::getcollision(int pos, std::string direction)
+bool GameplayState::getcollision(int pos)
 {
 	if (pos < 0)
 	{
@@ -131,11 +132,7 @@ bool GameplayState::getcollision(int pos, std::string direction)
 			}
 		}
 	}
-	int debugi = Route1OB[pos].gettype();
-	std::cout << debugi << std::endl;			SDL_Rect debug = Route1OB[pos].getrect();
-	SDL_Rect collision;
-	collision.w = 32;
-	collision.h = 32;
+
 	if (TileList[Route1OB[pos].gettype()].getisWall() == true)
 	{
 
@@ -159,8 +156,6 @@ int GameplayState::getposition()
 	int y = (test.y + Mapy) / 32;
 
 	int pos = (y * 39) + x;
-
-	std::cout << pos << std::endl;
 	return pos;
 }
 
