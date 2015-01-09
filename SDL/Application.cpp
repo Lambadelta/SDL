@@ -48,7 +48,7 @@ bool Application::callInit()
 
 
 	/*Assigns the Display window the screen size, and properties*/
-	Display = SDL_CreateWindow("SDL Main", WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE);
+	Display = SDL_CreateWindow("SDL Main", WINDOW_X, WINDOW_Y, WINDOW_WIDTH, WINDOW_HEIGHT, SDL_WINDOW_SHOWN);
 
 	/*Checks if the display has been initialised correctly*/
 	if (Display == NULL)

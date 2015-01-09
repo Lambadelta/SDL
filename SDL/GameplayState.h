@@ -19,7 +19,7 @@ public:
 	bool EventHandle();
 	void update(float dt);
 	void draw();
-	bool getcollision(int);
+	bool getcollision(int, std::string);
 
 	int getposition();
 

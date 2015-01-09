@@ -13,7 +13,7 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	Camera.w = 640;
 	Camera.h = 480;
 	Name = "Gameplay";
-	PlayerEntity = new Player(Rect(/*100, 100*/256,224, 32, 32), Rect(0, 0, 50, 50), "Asset/Entity/Player/player.png", renderer);
+	PlayerEntity = new Player(Rect(/*100, 100*/256,256, 32, 32), Rect(0, 0, 50, 50), "Asset/Entity/Player/player.png", renderer);
 	Backgrounds = new Background("Asset/map.png", renderer);
 	speed = 32.0f;	
 	initialspeed = speed;
@@ -43,24 +43,24 @@ bool GameplayState::EventHandle()
 			switch (eve.key.keysym.sym) 
 			{
 			case SDLK_w:
-				getcollision(getposition() - 39);
+				getcollision(getposition() - 39, "");
 				PlayerEntity->callMoveUp(true, AnimTime, Mapy, speed);
 				
 				/*Mapy -= speed;*/
 				break;
 			case SDLK_s:
-				getcollision(getposition() + 39);
+				getcollision(getposition() + 39, "down");
 				PlayerEntity->callMoveDown(true, AnimTime, Mapy, speed);
 				
 			/*	Mapy += speed;*/
 				break;
 			case SDLK_d:
-				getcollision(getposition() + 1);
+				getcollision(getposition() + 1, "");
 				PlayerEntity->callMoveRight(true, AnimTime, Mapx, speed);
 			/*	Mapx += speed;*/
 				break;
 			case SDLK_a:
-				getcollision(getposition() - 1);
+				getcollision(getposition() - 1, "");
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 			/*	Mapx -= speed;*/
 				break;
@@ -111,7 +111,7 @@ void GameplayState::draw()
 }
 
 
-bool GameplayState::getcollision(int pos)
+bool GameplayState::getcollision(int pos, std::string jump)
 {
 	if (pos < 0)
 	{
@@ -130,6 +130,14 @@ bool GameplayState::getcollision(int pos)
 			{
 				return false;
 			}
+		}
+	}
+	if (jump == "down")
+	{
+		if (Route1OB[pos].gettype() == 75)
+		{
+			speed = 64;
+			return true;
 		}
 	}
 
