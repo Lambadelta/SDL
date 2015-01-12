@@ -3,14 +3,14 @@
 
 Player::Player(Rect v1, Rect sr1, std::string path, SDL_Renderer* renderer) : Entity(path,renderer)
 {
-	DescRect.x = v1.f_x;
-	DescRect.y = v1.f_y;
-	DescRect.w = v1.f_w;
-	DescRect.h = v1.f_h;
-	SrcRect.x = sr1.f_x;
-	SrcRect.y = sr1.f_y;
-	SrcRect.w = sr1.f_w;
-	SrcRect.h = sr1.f_h;
+	DescRect.x = (int)v1.f_x;
+	DescRect.y = (int)v1.f_y;
+	DescRect.w = (int)v1.f_w;
+	DescRect.h = (int)v1.f_h;
+	SrcRect.x = (int)sr1.f_x;
+	SrcRect.y = (int)sr1.f_y;
+	SrcRect.w = (int)sr1.f_w;
+	SrcRect.h = (int)sr1.f_h;
 }
 
 Player::~Player()
@@ -88,8 +88,8 @@ void Player::callDraw(SDL_Renderer* Renderer)
 Vec2 Player::XYpos()
 {
 	Vec2 XY;
-	XY.f_x = DescRect.x;
-	XY.f_y = DescRect.y;
+	XY.f_x = (float)DescRect.x;
+	XY.f_y = (float)DescRect.y;
 
 	return XY;
 }

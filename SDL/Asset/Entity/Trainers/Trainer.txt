@@ -1,0 +1,5 @@
+4
+0 0 0 15 22 ,Asset/Entity/Trainers/IdleTrainer.png;
+1 0 0 12 18 ,Asset/Entity/Trainers/IdleTrainer.png;
+2 0 0 30 25 ,Asset/Entity/Trainers/IdleTrainer.png;
+3 0 0 11 13 ,Asset/Entity/Trainers/IdleTrainer.png;

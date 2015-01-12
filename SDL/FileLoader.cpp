@@ -14,7 +14,7 @@ FileLoader::~FileLoader()
 void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List, SDL_Renderer* renderer)
 {
 	int Moemonsize = -1;
-	std::ifstream MoeMon("Asset/Entity/MoeMon.txt");
+	std::ifstream MoeMon("Asset/Entity/Moemon/MoeMon.txt");
 	if (!MoeMon)
 	{
 		printf("Unexpected Error has Occurred : MoeMon.txt has failed to load\n");
@@ -53,12 +53,14 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List, SDL_Renderer* rendere
 
 void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 {
+	int Skillsize = -1;
 	std::ifstream SkillList("Asset/SkillList.txt");
 	if (!SkillList)
 	{
 		printf("Unexpected Error has Occurred : SkillList.txt has failed to load\n");
 	}
-	for (int i = 0; i < SKILLNUMBER; i++)
+	SkillList >> Skillsize;
+	for (int i = 0; i < Skillsize; i++)
 	{
 		if (SkillList.fail())
 		{
@@ -151,7 +153,7 @@ void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 
 	int y = 0;
 	int x = 0;
-	for (int j = 0; j < Tempmap.size(); j++)
+	for (unsigned int j = 0; j < Tempmap.size(); j++)
 	{
 
 		if (Tempmap[j] == 0)
@@ -166,4 +168,39 @@ void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 	}
 		
 
+}
+
+void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>& Ref, SDL_Renderer* renderer)
+{
+	int Trainersize = -1;
+	std::ifstream TrainerList("Asset/Entity/Trainers/Trainer.txt");
+	if (!TrainerList)
+	{
+		printf("Unexpected Error has Occurred : Trainers.txt has failed to load\n");
+	}
+	TrainerList >> Trainersize;
+	for (int i = 0; i < Trainersize; i++)
+	{
+		int id = -1;
+		int x = -1;
+		int y = -1;
+		std::string image;
+		int mmone = -1;	    int mmtwo = -1;
+		std::string remove;
+		
+		TrainerList >> id; 
+		TrainerList >> x;
+		TrainerList >> y;
+		TrainerList >> mmone;
+		TrainerList >> mmtwo;
+		std::getline(TrainerList, remove, ',');
+		std::getline(TrainerList, image, ';');
+		MoeMonStorage * temp = new MoeMonStorage();
+		temp->add(&Ref[mmone]);
+		temp->add(&Ref[mmtwo]);
+
+		List.push_back(Trainer(id, x, y, image, renderer, temp));
+
+
+	}
 }

@@ -42,7 +42,7 @@ void Manager::update(float dt)
 void Manager::draw()
 {
 	/*vGS.at(0)->draw();*/
-	for (int i = 0; i < vGS.size(); i++)
+	for (unsigned int i = 0; i < vGS.size(); i++)
 	{
 		vGS.at(i)->draw();
 

@@ -12,7 +12,7 @@
 class GameplayState : public Gamestate
 {
 public:
-	GameplayState(Manager* GSManager, SDL_Renderer* renderer, int, int);
+	GameplayState(Manager*, SDL_Renderer*, int, int);
 	~GameplayState();
 
 
@@ -35,10 +35,11 @@ private:
 	std::vector<Skill> SkillList;
 	///A vector of Tiles that stores all of the tiles the application will use
 	std::vector<Tile> TileList;
-
+	std::vector<Trainer> TrainerList;
 	std::vector<Maptile> Route1;
 	std::vector<Maptile> Route1OB;
 	std::vector<SDL_Rect>collisionOB;
+	
 	///A Player object 
 	Player* PlayerEntity;
 	///A background object (subject to change)
@@ -54,8 +55,8 @@ private:
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
 
-	float initialspeed;
-	float speed;
+	int initialspeed;
+	int speed;
 	float deltatime;
 };
 

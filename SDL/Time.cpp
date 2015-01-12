@@ -19,7 +19,7 @@ void Time::callStart()
 	bStart = true;
 	bPaused = false;
 
-	iStartTick = SDL_GetTicks();
+	iStartTick = (float)SDL_GetTicks();
 	iPausedTick = 0;
 
 }
@@ -29,7 +29,7 @@ void Time::callPause()
 	{
 		bPaused = true;
 
-		iPausedTick = SDL_GetTicks() - iStartTick;
+		iPausedTick = (float)SDL_GetTicks() - iStartTick;
 		iStartTick = 0;
 	}
 }
@@ -40,7 +40,7 @@ void Time::callUnpause()
 	{
 		bPaused = false;
 
-		iStartTick = SDL_GetTicks() - iStartTick;
+		iStartTick = (float)SDL_GetTicks() - iStartTick;
 		iPausedTick = 0;
 	}
 }
@@ -68,9 +68,8 @@ void Time::updateTime()
 		else
 		{
 			
-			iStartTick = SDL_GetTicks();
+			iStartTick = (float)SDL_GetTicks();
 			fDelta = (iStartTick - iLastTick) / 100;
-			/*fDelta = fDelta / 100;*/
 			iLastTick = iStartTick;
 		}
 	}

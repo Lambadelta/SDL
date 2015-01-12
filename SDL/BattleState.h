@@ -6,17 +6,23 @@
 #include "Player.h"
 #include "Trainer.h"
 
-class BattleState
+class BattleState : public Gamestate
 {
 public:
-	BattleState(Manager* GSManager, SDL_Renderer* renderer, Player*, Trainer* );
-	BattleState();
+	BattleState(Manager* GSManager, SDL_Renderer*, Player*, Trainer* );
+	~BattleState();
 
 	bool EventHandle();
 	void update(float dt);
 	void draw();
 
 private:
+
+	Player* PEntity;
+	Trainer* TEntity;
+
+	int TEMoemonNum;
+	int PEMoemonNum;
 
 };
 

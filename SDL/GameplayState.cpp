@@ -4,8 +4,6 @@
 GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Width, int Height) : Gamestate(GSManager, Renderer)
 {
 	fLoader = new FileLoader;
-	//PlayerEntity = NULL;
-	//Backgrounds = NULL;
 	SCREEN_WIDTH = Width;
 	SCREEN_HEIGHT = Height;
 	Camera.x = 0;
@@ -13,15 +11,16 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	Camera.w = 640;
 	Camera.h = 480;
 	Name = "Gameplay";
-	PlayerEntity = new Player(Rect(/*100, 100*/256,256, 32, 32), Rect(0, 0, 50, 50), "Asset/Entity/Player/player.png", renderer);
+	PlayerEntity = new Player(Rect(256,256, 32, 32), Rect(0, 0, 50, 50), "Asset/Entity/Player/player.png", renderer);
 	Backgrounds = new Background("Asset/map.png", renderer);
-	speed = 32.0f;	
+	speed = 32;	
 	initialspeed = speed;
 	fLoader->LoadMoeMonFile(MoeMonList, renderer);
 	fLoader->LoadSkillFile(SkillList);
 	fLoader->LoadTileFile(TileList);
 	fLoader->LoadMapFile(Route1, "Asset/Route 1.txt");
 	fLoader->LoadMapFile(Route1OB, "Asset/Route 1 OBJ.txt");
+	fLoader->LoadTrainerFile(TrainerList, MoeMonList, renderer);
 	AnimTime = new Timer(1);
 }
 
@@ -45,35 +44,28 @@ bool GameplayState::EventHandle()
 			case SDLK_w:
 				getcollision(getposition() - 39, "");
 				PlayerEntity->callMoveUp(true, AnimTime, Mapy, speed);
-				
-				/*Mapy -= speed;*/
 				break;
 			case SDLK_s:
 				getcollision(getposition() + 39, "down");
 				PlayerEntity->callMoveDown(true, AnimTime, Mapy, speed);
-				
-			/*	Mapy += speed;*/
 				break;
 			case SDLK_d:
 				getcollision(getposition() + 1, "");
 				PlayerEntity->callMoveRight(true, AnimTime, Mapx, speed);
-			/*	Mapx += speed;*/
 				break;
 			case SDLK_a:
 				getcollision(getposition() - 1, "");
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
-			/*	Mapx -= speed;*/
 				break;
 			case SDLK_k:
-				/*printf("%f \n", deltatime);*/
 				int debug = getposition();
 				std::cout << debug << std::endl;
 				break;
 			}
-		case SDL_KEYUP:
-			switch (eve.key.keysym.sym)
-			{
-			}
+		//case SDL_KEYUP:
+		//	switch (eve.key.keysym.sym)
+		//	{
+		//	}
 		}
 	}
 	return true;
@@ -83,6 +75,7 @@ void GameplayState::update(float dt)
 {
 		deltatime = dt;
 		AnimTime->updateTimer(dt);
+		speed = (int)(speed * dt);
 		test = PlayerEntity->getDescRect();
 		Vec2 XY = PlayerEntity->XYpos();
 	
@@ -93,7 +86,7 @@ void GameplayState::draw()
 
 	int y = 0;
 	int x = 0;
-	for (int i = 0; i < Route1.size(); i++)
+	for (unsigned int i = 0; i < Route1.size(); i++)
 	{
 		SDL_Rect descRect;
 		descRect.x = Route1[i].getx() - Mapx;

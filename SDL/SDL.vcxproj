@@ -48,6 +48,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <AdditionalIncludeDirectories>C:\SDKs\SDL\SDL2-2.0.3\include;H:\Visual Studio\SDK\SDL2-2.0.3\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
@@ -73,8 +74,8 @@
   <ItemGroup>
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Background.cpp" />
+    <ClCompile Include="Battlestate.cpp" />
     <ClCompile Include="Entity.cpp" />
-    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="Gamestate.cpp" />
@@ -103,7 +104,6 @@
     <ClInclude Include="Moemon.h" />
     <ClInclude Include="MoemonStorage.h" />
     <ClInclude Include="Player.h" />
-    <ClInclude Include="EventHandler.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="SourceRect.h" />
     <ClInclude Include="Tile.h" />

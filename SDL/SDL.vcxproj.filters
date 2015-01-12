@@ -48,9 +48,6 @@
     <ClCompile Include="Timer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="EventHandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Moemon.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -78,6 +75,9 @@
     <ClCompile Include="Trainer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Battlestate.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -102,9 +102,6 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Timer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="EventHandler.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GameplayState.h">

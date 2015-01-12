@@ -40,41 +40,8 @@ public:
 	@returns bool - If the application has successfully initialised 
 	*/
 	int callExecution();
-	/**
-	@brief A method that is called as part of the game loop
 
-	This method takes in the event parameter, and manages the EventHandler object.
-
-	@param SDL_Event* - A SDL_Event* that contains all the events that SDL catches
-	@returns 0
-	*/
-	void callEvent(SDL_Event* sdlEvent);
-	/**
-	@brief A method that is called as part of the game loop
-
-	This method is where the methods of other objects are called to update them. 
-	Time is updated here.
-	*/
-	void callLoop();
-	/**
-	@brief A method to call the rendering function
-
-	This method is where the texture of objects are sent to the renderer.
-	*/
-	void callRenderer();
-	/**
-	@brief This method is called when the program exits
-
-	This method cleans up all the vectors, objects, and any other parts of the application before exiting.
-	*/
 	void callCleanup();
-	/**
-	@brief A method to set the surface of all visual objects
-
-	This method is where all the different objects that need surfaces are processed.
-	This is called in the callInit method.
-	*/
-	void callSurface();
 
 
 protected:
