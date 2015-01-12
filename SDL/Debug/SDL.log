@@ -1,7 +1,33 @@
-﻿Build started 08/01/2015 13:47:06.
+﻿Build started 09/01/2015 21:34:18.
      1>Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameplayState.cpp
+         H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Application.cpp Background.cpp Entity.cpp FileLoader.cpp GameplayState.cpp Gamestate.cpp Manager.cpp Maptile.cpp Moemon.cpp MoemonStorage.cpp Player.cpp "SDL Main.cpp" Skill.cpp Tile.cpp Time.cpp Timer.cpp Trainer.cpp
+         Trainer.cpp
+         Timer.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\timer.cpp(50): warning C4244: 'argument' : conversion from 'time_t' to 'unsigned int', possible loss of data
+         Time.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\time.cpp(22): warning C4244: '=' : conversion from 'Uint32' to 'float', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\time.cpp(71): warning C4244: '=' : conversion from 'Uint32' to 'float', possible loss of data
+         Tile.cpp
+         Skill.cpp
+         SDL Main.cpp
+         Player.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(6): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(7): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(8): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(9): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(10): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(11): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(12): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(13): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(91): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\player.cpp(92): warning C4244: '=' : conversion from 'int' to 'float', possible loss of data
+         MoemonStorage.cpp
+         Moemon.cpp
+         Maptile.cpp
+         Manager.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\manager.cpp(45): warning C4018: '<' : signed/unsigned mismatch
+         Gamestate.cpp
          GameplayState.cpp
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(47): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(53): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
@@ -9,8 +35,14 @@
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(64): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(76): warning C4060: switch statement contains no 'case' or 'default' labels
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(96): warning C4018: '<' : signed/unsigned mismatch
+         FileLoader.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\fileloader.cpp(154): warning C4018: '<' : signed/unsigned mismatch
+         Entity.cpp
+         Background.cpp
+         Application.cpp
+         Generating Code...
        Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" /LIBPATH:"H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 Debug\Application.obj
+         H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" /LIBPATH:"H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib SDL2_image.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Background.obj
          Debug\Entity.obj
          Debug\EventHandler.obj
@@ -28,9 +60,12 @@
          Debug\Time.obj
          Debug\Timer.obj
          Debug\Trainer.obj
+     1>LINK : warning LNK4076: invalid incremental status file 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.ilk' (which will be deleted); linking nonincrementally
+     1>Application.obj : warning LNK4075: ignoring '/EDITANDCONTINUE' due to '/OPT:LBR' specification
+     1>MSVCRTD.lib(cinitexe.obj) : warning LNK4098: defaultlib 'msvcrt.lib' conflicts with use of other libs; use /NODEFAULTLIB:library
          SDL.vcxproj -> C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe
      1>Done Building Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:04.21
+Time Elapsed 00:00:11.46
