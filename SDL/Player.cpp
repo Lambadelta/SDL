@@ -11,6 +11,11 @@ Player::Player(Rect v1, Rect sr1, std::string path, SDL_Renderer* renderer) : En
 	SrcRect.y = (int)sr1.f_y;
 	SrcRect.w = (int)sr1.f_w;
 	SrcRect.h = (int)sr1.f_h;
+	SrcAnimRect.x = 0;
+	SrcAnimRect.y = 0;
+	SrcAnimRect.w = 115;
+	SrcAnimRect.h = 100;
+	loadIMGA("Asset/Entity/Player/PlayerBattleAnim.png", renderer);
 }
 
 Player::~Player()
@@ -102,4 +107,31 @@ int Player::rtnWidth()
 int Player::rtnHeight()
 {
 	return DescRect.y;
+}
+
+void Player::battleAnimation(Timer* AnimTime, float dt, SDL_Renderer* renderer, int&i)
+{
+	
+		if (AnimTime->expiredTimer())
+		{
+			callDrawAnimation(renderer);
+			SDL_RenderPresent(renderer);
+			SrcAnimRect.x += 115;
+			AnimTime->resetTimer();
+			i++;
+			if (SrcAnimRect.x >= 575)
+			{
+				SrcAnimRect.x = 0;
+			}
+		}
+}
+
+void Player::callDrawAnimation(SDL_Renderer* renderer)
+{
+	SDL_Rect DescAnimRect;
+	DescAnimRect.x = 400;
+	DescAnimRect.y = 400;
+	DescAnimRect.w = 115;
+	DescAnimRect.h = 100;
+	SDL_RenderCopy(renderer, AnimaText, &SrcAnimRect, &DescAnimRect);
 }

@@ -5,7 +5,7 @@
 #include "Manager.h"
 #include "Player.h"
 #include "Trainer.h"
-
+#include "Timer.h"
 class BattleState : public Gamestate
 {
 public:
@@ -15,6 +15,7 @@ public:
 	bool EventHandle();
 	void update(float dt);
 	void draw();
+	void start();
 
 private:
 
@@ -23,6 +24,8 @@ private:
 
 	int TEMoemonNum;
 	int PEMoemonNum;
+
+	Timer* PlayerAnim;
 
 };
 

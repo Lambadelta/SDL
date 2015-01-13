@@ -19,7 +19,7 @@ public:
 	@param float - A float containing the speed
 
 	*/
-	Player(Rect v1, Rect sr1, std::string path, SDL_Renderer* renderer);
+	Player(Rect, Rect, std::string, SDL_Renderer*);
 	~Player();
 	/**
 	@brief A method for calling the player to move up
@@ -28,7 +28,7 @@ public:
 	@param Timer* - A timer to control the player's animation
 	@param Time - The time for accessing time method (e.g. Delta time)
 	*/
-	void callMoveUp(bool canMove, Timer* PlayerAnim, int&,int);
+	void callMoveUp(bool, Timer* , int&,int);
 	/**
 	@brief A method for calling the player to move left
 
@@ -36,7 +36,7 @@ public:
 	@param Timer* - A timer to control the player's animation
 	@param Time - The time for accessing time method (e.g. Delta time)
 	*/
-	void callMoveLeft(bool canMove, Timer* PlayerAnim, int&, int);
+	void callMoveLeft(bool, Timer*, int&, int);
 	/**
 	@brief A method for calling the player to move right
 
@@ -44,7 +44,7 @@ public:
 	@param Timer* - A timer to control the player's animation
 	@param Time - The time for accessing time method (e.g. Delta time)
 	*/
-	void callMoveRight(bool canMove, Timer* PlayerAnim, int&, int);
+	void callMoveRight(bool, Timer*, int&, int);
 	/**
 	@brief A method for calling the player to move down
 
@@ -52,8 +52,11 @@ public:
 	@param Timer* - A timer to control the player's animation
 	@param Time - The time for accessing time method (e.g. Delta time)
 	*/
-	void callMoveDown(bool canMove, Timer* PlayerAnim, int&, int);
-	void callDraw(SDL_Renderer* Renderer);
+	void callMoveDown(bool, Timer*, int&, int);
+	void callDraw(SDL_Renderer*);
+	void callDrawAnimation(SDL_Renderer*);
+
+	void battleAnimation(Timer*, float, SDL_Renderer*, int&);
 
 	int rtnWidth();
 	int rtnHeight();

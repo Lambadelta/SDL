@@ -7,23 +7,31 @@ Programming for Graphic and Games
 
 											###TO DO###
 											
-***Implement maps/new backgrounds
+
 
 ***Implement Trainers
-
-	**Create trainer class based on Entity.
-	**Assign them Moemon from the Moemon class.
-	**Place them on the maps.
+	**Give trainers names.
+	**Give trainers sprites.
 	
 ***Implement Battles
 
-	**Create Battle Class based on Entity.
-	**Load player to battle screen.
-	**Read Moemon data based on trainer.
-	
-***Implement Moemon
+	**Trainer test to see if player is in their LoS
+	**Tested positive Battle State begins
+	**Battle state takes in player and trainer and display trainers on the screen.
+	**Display first Moemon in Moemon storage.
+	**Load in options (Fight, Change MoeMon)
+	**Fight read in skill names that MoeMon stores.
+	**When selected use skill in index location
+	**Preform Skill
+	**Trainer AI selects skill based on enemy moemon type
+	**If not an effect type found use random skill
+	**When moemon dies use the next one for trainer, give player choice.
+	**When end give money based on level.
+	**Return to gameplay state, and delete battle state
 
-	**Create Moemon Class.
-	**Load in Moemon Sprites.
-	**Assign Attributes.
+	
+***Add to Moemon
+
+	**assign skills to trainer moemon during loading.
+	
 	

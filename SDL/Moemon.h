@@ -2,6 +2,8 @@
 #define MOEMON_H
 
 #include "Entity.h"
+#include "Skill.h"
+#include <vector>
 
 /** 
 @brief Class that represents an MoeMon
@@ -58,6 +60,7 @@ private:
 	std::string s_MoeMonName;
 	///A string containing the Moemon's type
 	std::string s_Type;
+	std::vector<Skill>LearnedMoves;
 
 	bool isShiny;
 	int x = 0;

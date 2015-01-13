@@ -58,6 +58,7 @@ bool GameplayState::EventHandle()
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 				break;
 			case SDLK_k:
+		
 				int debug = getposition();
 				std::cout << debug << std::endl;
 				break;
@@ -101,6 +102,7 @@ void GameplayState::draw()
 		x++;
 	}
 	PlayerEntity->callDraw(renderer);
+	
 }
 
 

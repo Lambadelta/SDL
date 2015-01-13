@@ -5,7 +5,7 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	renderer = Renderer;
 	PEntity = player;
 	TEntity = trainer;
-
+	PlayerAnim = new Timer(1);
 }
 
 BattleState::~BattleState()
@@ -20,12 +20,18 @@ bool BattleState::EventHandle()
 
 void BattleState::update(float dt)
 {
-	PEntity->callDraw(renderer);
-	TEntity->getStorage()->get(1)->callDraw();
+	PlayerAnim->updateTimer(dt);
+	
 
 }
 
 void BattleState::draw()
+{
+	PEntity->callDraw(renderer);
+	TEntity->getStorage()->get(1)->callDraw();
+}
+
+void BattleState::start()
 {
 
 }

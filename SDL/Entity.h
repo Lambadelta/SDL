@@ -42,6 +42,8 @@ public:
 	@param SDL_Surface* - A pointer to a SDL_Surface
 	*/
 	bool loadIMG(std::string, SDL_Renderer*);
+
+	bool Entity::loadIMGA(std::string path, SDL_Renderer* renderer);
 	/**
 	@brief A method to get the texture from the object
 
@@ -69,10 +71,12 @@ protected:
 
 	///The objects Texture created from the surface, and used to render to screen
 	SDL_Texture* EntityTexture;
+	SDL_Texture* AnimaText;
 	///The objects location to be drawn to the screen
 	SDL_Rect DescRect;
 	///The objects location on the texture to be drawn
 	SDL_Rect SrcRect;
+	SDL_Rect SrcAnimRect;
 };
 
 #endif
