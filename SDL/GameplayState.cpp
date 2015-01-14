@@ -70,7 +70,7 @@ bool GameplayState::EventHandle()
 				break;
 			case SDLK_k:
 				MoeMonStorage* Test = new MoeMonStorage();
-				Test->add(&MoeMonList[2], 40);
+				Test->add(&MoeMonList[34], 40);
 				Trainer* TrainerTest = new Trainer(1, 0, 0, "Asset/Entity/Trainers/IdleTrainer.png", renderer,Test);
 				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerTest));
 				int debug = getposition();

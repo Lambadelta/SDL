@@ -80,8 +80,8 @@ void BattleState::draw()
 	}
 	if (AnimationCount >= 5)
 	{
-	
-		PEntity->getBag()->get(0)->callDraw(renderer);
 		TEntity->getStorage()->get(0)->callDraw(renderer);
+		PEntity->getBag()->get(0)->callDraw(renderer);
+		
 	}
 }

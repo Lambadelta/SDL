@@ -39,7 +39,7 @@ void Moemon::setEnemy()
 void Moemon::callDraw(SDL_Renderer* renderer)
 {	
 		SDL_RenderCopy(renderer, EntityTexture, &SrcRect, &DescRect);
-		SDL_RenderPresent(renderer);
+		
 }
 void Moemon::setDescRect(SDL_Rect desc)
 {

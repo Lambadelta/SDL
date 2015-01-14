@@ -113,11 +113,10 @@ int Player::rtnHeight()
 
 void Player::battleAnimation(Timer* AnimTime, float dt, SDL_Renderer* renderer, int&i)
 {
-	
+	callDrawAnimation(renderer);
 		if (AnimTime->expiredTimer())
 		{
-			callDrawAnimation(renderer);
-			//SDL_RenderPresent(renderer);
+			
 			SrcAnimRect.x += 115;
 			AnimTime->resetTimer();
 			i++;
