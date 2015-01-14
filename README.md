@@ -10,8 +10,9 @@ Programming for Graphic and Games
 
 
 ***Implement Trainers
-	**Give trainers names.
-	**Give trainers sprites.
+
+	** Give trainers names.
+	** Give trainers sprites.
 	
 ***Implement Battles
 
