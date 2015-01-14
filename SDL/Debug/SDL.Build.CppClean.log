@@ -2,6 +2,7 @@ c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\vc120.pd
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\vc120.idb
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\application.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\background.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\battlestate.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\entity.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\fileloader.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\gameplaystate.obj
@@ -17,7 +18,6 @@ c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\tile.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\time.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\timer.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\trainer.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\battlestate.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\debug\sdl.ilk
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\debug\sdl.exe
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\debug\sdl.pdb

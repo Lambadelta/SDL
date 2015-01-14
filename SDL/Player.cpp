@@ -115,7 +115,7 @@ void Player::battleAnimation(Timer* AnimTime, float dt, SDL_Renderer* renderer, 
 		if (AnimTime->expiredTimer())
 		{
 			callDrawAnimation(renderer);
-			SDL_RenderPresent(renderer);
+			//SDL_RenderPresent(renderer);
 			SrcAnimRect.x += 115;
 			AnimTime->resetTimer();
 			i++;

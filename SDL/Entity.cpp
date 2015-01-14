@@ -6,8 +6,7 @@ Entity::Entity(std::string path, SDL_Renderer* renderer)
 }
 Entity::~Entity()
 {
-	/*SDL_DestroyTexture(EntityTexture);
-	SDL_FreeSurface(EntitySurface);*/
+	SDL_DestroyTexture(EntityTexture);
 }
 
 bool Entity::loadIMG(std::string path, SDL_Renderer* renderer)

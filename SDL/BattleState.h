@@ -24,7 +24,8 @@ private:
 
 	int TEMoemonNum;
 	int PEMoemonNum;
-
+	float dt;
+	int AnimationCount = 0;
 	Timer* PlayerAnim;
 
 };

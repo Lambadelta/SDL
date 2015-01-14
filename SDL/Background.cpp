@@ -9,6 +9,7 @@ Background::Background(std::string path, SDL_Renderer* renderer)
 
 Background::~Background()
 {
+	SDL_DestroyTexture(BackgroundTexture);
 }
 
 bool Background::loadIMG(std::string path, SDL_Renderer* renderer)

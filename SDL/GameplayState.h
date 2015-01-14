@@ -8,6 +8,7 @@
 #include "Background.h"
 #include "Entity.h"
 #include "Maptile.h"
+#include "BattleState.h"
 
 class GameplayState : public Gamestate
 {

@@ -26,7 +26,16 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 
 GameplayState::~GameplayState()
 {
-
+	MoeMonList.clear();
+	SkillList.clear();
+	TileList.clear();
+	Route1.clear();
+	Route1OB.clear();
+	TrainerList.clear();
+	delete AnimTime;
+	delete PlayerEntity;
+	delete Backgrounds;
+	delete fLoader;
 }
 
 bool GameplayState::EventHandle()
@@ -58,15 +67,14 @@ bool GameplayState::EventHandle()
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 				break;
 			case SDLK_k:
-		
+				MoeMonStorage* Test = new MoeMonStorage();
+				Test->add(&MoeMonList[2]);
+				Trainer* TrainerTest = new Trainer(1, 0, 0, "Asset/Entity/Trainers/IdleTrainer.png", renderer,Test);
+				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerTest));
 				int debug = getposition();
 				std::cout << debug << std::endl;
 				break;
 			}
-		//case SDL_KEYUP:
-		//	switch (eve.key.keysym.sym)
-		//	{
-		//	}
 		}
 	}
 	return true;

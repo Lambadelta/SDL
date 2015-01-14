@@ -20,7 +20,16 @@ void Moemon::setShiny()
 	x = 32;
 }
 
-void Moemon::callDraw()
+void Moemon::callDraw(SDL_Renderer* renderer)
 {
+	SrcRect.x = 0;
+	SrcRect.y = 0;
+	SrcRect.w = 40;
+	SrcRect.h = 30;
 
+	DescRect.x = 300;
+	DescRect.y = 400;
+	DescRect.w = 40;
+	DescRect.h = 30;
+	SDL_RenderCopy(renderer, EntityTexture, &SrcRect, &DescRect);
 }

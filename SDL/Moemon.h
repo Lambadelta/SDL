@@ -38,7 +38,7 @@ public:
 	
 	*/
 	void setShiny();
-	void callDraw();
+	void callDraw(SDL_Renderer*);
 private:
 	///An int containing the ID of the Moemon
 	int i_ID;
