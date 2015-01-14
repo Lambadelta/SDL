@@ -6,6 +6,9 @@
 #include "Player.h"
 #include "Trainer.h"
 #include "Timer.h"
+#include "Background.h"
+#include <SDL_mixer.h>
+
 class BattleState : public Gamestate
 {
 public:
@@ -15,7 +18,6 @@ public:
 	bool EventHandle();
 	void update(float dt);
 	void draw();
-	void start();
 
 private:
 
@@ -27,6 +29,8 @@ private:
 	float dt;
 	int AnimationCount = 0;
 	Timer* PlayerAnim;
+	Background* Backgrounds;
+	Mix_Music* BattleTheme;
 
 };
 

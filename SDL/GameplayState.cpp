@@ -22,6 +22,8 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	fLoader->LoadMapFile(Route1OB, "Asset/Route 1 OBJ.txt");
 	fLoader->LoadTrainerFile(TrainerList, MoeMonList, renderer);
 	AnimTime = new Timer(1);
+
+	PlayerEntity->getBag()->add(&MoeMonList[33], 15);
 }
 
 GameplayState::~GameplayState()
@@ -68,7 +70,7 @@ bool GameplayState::EventHandle()
 				break;
 			case SDLK_k:
 				MoeMonStorage* Test = new MoeMonStorage();
-				Test->add(&MoeMonList[2]);
+				Test->add(&MoeMonList[2], 40);
 				Trainer* TrainerTest = new Trainer(1, 0, 0, "Asset/Entity/Trainers/IdleTrainer.png", renderer,Test);
 				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerTest));
 				int debug = getposition();
@@ -107,6 +109,7 @@ void GameplayState::draw()
 			Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, TileList[Route1[i].gettype()].getBox());
 			Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, TileList[Route1OB[i].gettype()].getBox());
 		}
+		
 		x++;
 	}
 	PlayerEntity->callDraw(renderer);

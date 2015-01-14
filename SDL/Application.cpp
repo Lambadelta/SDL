@@ -17,6 +17,7 @@ int Application::callExecution()
 	{
 		return -1;
 	}
+	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1048);
 	GSManager->Add(new GameplayState(GSManager, Renderer, WINDOW_WIDTH, WINDOW_HEIGHT));
 	while (GameLoop)
 	{

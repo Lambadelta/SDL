@@ -6,6 +6,7 @@
 #include <SDL_image.h>
 #include "Manager.h"
 #include "GameplayState.h"
+#include <SDL_mixer.h>
 
 
 /**

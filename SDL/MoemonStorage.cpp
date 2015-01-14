@@ -11,8 +11,9 @@ MoeMonStorage::~MoeMonStorage()
 
 }
 
-void MoeMonStorage::add(Moemon* New)
+void MoeMonStorage::add(Moemon* New, int level)
 {
+	New->setLevel(level);
 	Storage.push_back(New);
 }
 

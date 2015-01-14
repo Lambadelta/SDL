@@ -10,7 +10,7 @@ public:
 	MoeMonStorage();
 	~MoeMonStorage();
 
-	void add(Moemon*);
+	void add(Moemon*, int);
 	void remove(int);
 	Moemon* get(int);
 

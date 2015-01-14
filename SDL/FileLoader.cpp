@@ -196,8 +196,8 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>
 		std::getline(TrainerList, remove, ',');
 		std::getline(TrainerList, image, ';');
 		MoeMonStorage * temp = new MoeMonStorage();
-		temp->add(&Ref[mmone]);
-		temp->add(&Ref[mmtwo]);
+		temp->add(&Ref[mmone], 5);
+		temp->add(&Ref[mmtwo], 5);
 
 		List.push_back(Trainer(id, x, y, image, renderer, temp));
 

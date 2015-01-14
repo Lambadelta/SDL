@@ -12,24 +12,46 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 	i_Level = level;
 	s_MoeMonName = name;
 	s_Type = type;
-	SDL_Texture* EntityTexture = NULL;
+
+	SrcRect.x = 64;
+	SrcRect.y = 0;
+	SrcRect.w = 64;
+	SrcRect.h = 64;
+
+	DescRect.x = 50;
+	DescRect.y = 224;
+	DescRect.w = (64 * 4);
+	DescRect.h = (64 * 4);
+
+	
 }
 
 void Moemon::setShiny()
 {
-	x = 32;
+	SrcRect.x += 64;
+}
+
+void Moemon::setEnemy()
+{
+	SrcRect.y = +64;
 }
 
 void Moemon::callDraw(SDL_Renderer* renderer)
+{	
+		SDL_RenderCopy(renderer, EntityTexture, &SrcRect, &DescRect);
+		SDL_RenderPresent(renderer);
+}
+void Moemon::setDescRect(SDL_Rect desc)
 {
-	SrcRect.x = 0;
-	SrcRect.y = 0;
-	SrcRect.w = 40;
-	SrcRect.h = 30;
-
-	DescRect.x = 300;
-	DescRect.y = 400;
-	DescRect.w = 40;
-	DescRect.h = 30;
-	SDL_RenderCopy(renderer, EntityTexture, &SrcRect, &DescRect);
+	DescRect = desc;
+}
+void Moemon::setLevel(int level)
+{
+	i_Health = i_Health*level;
+	i_Attack = i_Attack*level;
+	i_Defense = i_Defense*level;
+	i_SpAtk = i_SpAtk*level;
+	i_SpDef = i_SpDef*level;
+	i_Speed = i_Speed*level;
+	i_Level = i_Level*level;
 }

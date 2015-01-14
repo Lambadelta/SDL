@@ -38,7 +38,10 @@ public:
 	
 	*/
 	void setShiny();
+	void setLevel(int);
 	void callDraw(SDL_Renderer*);
+	void setDescRect(SDL_Rect);
+	void setEnemy();
 private:
 	///An int containing the ID of the Moemon
 	int i_ID;
@@ -61,9 +64,8 @@ private:
 	///A string containing the Moemon's type
 	std::string s_Type;
 	std::vector<Skill>LearnedMoves;
-
+	SDL_Texture* test;
 	bool isShiny;
-	int x = 0;
 
 
 };

@@ -1,7 +1,8 @@
 35
-001 100 100 100 100 100 100 01 Charmander,Fire,Asset/Entity/Moemon/Charmander.png;
-002 100 100 100 100 100 100 01 Carmeleon,Fire,Asset/Entity/Moemon/Charmeleon.png;
-003 100 100 100 100 100 100 01 Charizard,Fire,Asset/Entity/Moemon/Charizard.png;
+
+001 39 52 43 60 50 65 01 Charmander,Fire,Asset/Entity/Moemon/Charmander.png;
+002 58 64 58 80 65 80 01 Carmeleon,Fire,Asset/Entity/Moemon/Charmeleon.png;
+003 78 84 78 109 85 100 01 Charizard,Fire,Asset/Entity/Moemon/Charizard.png;
 004 100 100 100 100 100 100 01 Bulbasuar,Grass,Asset/Entity/Moemon/Bulbasaur.png;
 005 100 100 100 100 100 100 01 Ivysaur,Grass,Asset/Entity/Moemon/Ivysaur.png;
 006 100 100 100 100 100 100 01 Venasaur,Grass,Asset/Entity/Moemon/Venasaur.png;

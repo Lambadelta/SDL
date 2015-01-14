@@ -16,6 +16,8 @@ Player::Player(Rect v1, Rect sr1, std::string path, SDL_Renderer* renderer) : En
 	SrcAnimRect.w = 115;
 	SrcAnimRect.h = 100;
 	loadIMGA("Asset/Entity/Player/PlayerBattleAnim.png", renderer);
+	MoeBag = new MoeMonStorage();
+
 }
 
 Player::~Player()
@@ -129,9 +131,14 @@ void Player::battleAnimation(Timer* AnimTime, float dt, SDL_Renderer* renderer, 
 void Player::callDrawAnimation(SDL_Renderer* renderer)
 {
 	SDL_Rect DescAnimRect;
-	DescAnimRect.x = 400;
-	DescAnimRect.y = 400;
-	DescAnimRect.w = 115;
-	DescAnimRect.h = 100;
+	DescAnimRect.x = 50;
+	DescAnimRect.y = 180;
+	DescAnimRect.w = (115 * 3);
+	DescAnimRect.h = (100 * 3);
 	SDL_RenderCopy(renderer, AnimaText, &SrcAnimRect, &DescAnimRect);
+}
+
+MoeMonStorage* Player::getBag()
+{
+	return MoeBag;
 }

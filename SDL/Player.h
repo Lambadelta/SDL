@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Vec2.h"
+#include "MoemonStorage.h"
 /**
 @brief A class that represents a Player
 
@@ -60,9 +61,11 @@ public:
 
 	int rtnWidth();
 	int rtnHeight();
+	MoeMonStorage* getBag();
 	Vec2 XYpos();
+	
 private:
-
+	MoeMonStorage* MoeBag;
 };
 
 #endif

@@ -5,8 +5,12 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	renderer = Renderer;
 	PEntity = player;
 	TEntity = trainer;
-	PlayerAnim = new Timer(1);
-	start();
+	PlayerAnim = new Timer(2);
+	Name = "Battle";
+	Backgrounds = new Background("Asset/BattleBackgroundGrass.png", renderer);
+	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
+	Mix_PlayMusic(BattleTheme, -1);
+		TEntity->getStorage()->get(0)->setEnemy();
 }
 
 BattleState::~BattleState()
@@ -53,18 +57,31 @@ void BattleState::update(float deltat)
 
 void BattleState::draw()
 {
-	start();
-	if (AnimationCount > 5)
-	{
-		/*PEntity->callDraw(renderer);*/
-		TEntity->getStorage()->get(0)->callDraw(renderer);
-	}
-}
+	
+	SDL_Rect descRect;
+	descRect.x = 0;
+	descRect.y = 0;
+	descRect.w = 640;
+	descRect.h = 480;
 
-void BattleState::start()
-{
+	SDL_Rect ETrainerM;
+
+	ETrainerM.x = 334;
+	ETrainerM.y = 74;
+	ETrainerM.w = (64 * 4);
+	ETrainerM.h = (64 * 4);
+
+	TEntity->getStorage()->get(0)->setDescRect(ETrainerM);
+	Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, descRect);
+	
 	if (AnimationCount <= 5)
 	{
 		PEntity->battleAnimation(PlayerAnim, dt, renderer, AnimationCount);
+	}
+	if (AnimationCount >= 5)
+	{
+	
+		PEntity->getBag()->get(0)->callDraw(renderer);
+		TEntity->getStorage()->get(0)->callDraw(renderer);
 	}
 }
