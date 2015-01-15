@@ -8,6 +8,7 @@
 #include "Timer.h"
 #include "Background.h"
 #include <SDL_mixer.h>
+#include "Text.h"
 
 class BattleState : public Gamestate
 {
@@ -31,6 +32,7 @@ private:
 	Timer* PlayerAnim;
 	Background* Backgrounds;
 	Mix_Music* BattleTheme;
+	Text* textManager;
 
 };
 

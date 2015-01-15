@@ -55,3 +55,8 @@ void Moemon::setLevel(int level)
 	i_Speed = i_Speed*level;
 	i_Level = i_Level*level;
 }
+
+SkillStorage* Moemon::getLearnedSkills()
+{
+	return LearnedMoves;
+}

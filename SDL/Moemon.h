@@ -2,7 +2,7 @@
 #define MOEMON_H
 
 #include "Entity.h"
-#include "Skill.h"
+#include "SkillStorage.h"
 #include <vector>
 
 /** 
@@ -42,6 +42,7 @@ public:
 	void callDraw(SDL_Renderer*);
 	void setDescRect(SDL_Rect);
 	void setEnemy();
+	SkillStorage* getLearnedSkills();
 private:
 	///An int containing the ID of the Moemon
 	int i_ID;
@@ -63,7 +64,7 @@ private:
 	std::string s_MoeMonName;
 	///A string containing the Moemon's type
 	std::string s_Type;
-	std::vector<Skill>LearnedMoves;
+	SkillStorage* LearnedMoves;
 	SDL_Texture* test;
 	bool isShiny;
 

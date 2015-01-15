@@ -10,7 +10,9 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	Backgrounds = new Background("Asset/BattleBackgroundGrass.png", renderer);
 	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
 	Mix_PlayMusic(BattleTheme, -1);
-		TEntity->getStorage()->get(0)->setEnemy();
+	TEntity->getStorage()->get(0)->setEnemy();
+	textManager = new Text();
+	textManager->create("Frostlass Used Shadow Punch! It was super effective.",renderer);
 }
 
 BattleState::~BattleState()
@@ -66,7 +68,7 @@ void BattleState::draw()
 
 	SDL_Rect ETrainerM;
 
-	ETrainerM.x = 334;
+	ETrainerM.x = 350;
 	ETrainerM.y = 74;
 	ETrainerM.w = (64 * 4);
 	ETrainerM.h = (64 * 4);
@@ -78,10 +80,12 @@ void BattleState::draw()
 	{
 		PEntity->battleAnimation(PlayerAnim, dt, renderer, AnimationCount);
 	}
-	if (AnimationCount >= 5)
+	if (AnimationCount > 5)
 	{
 		TEntity->getStorage()->get(0)->callDraw(renderer);
 		PEntity->getBag()->get(0)->callDraw(renderer);
+		textManager->callDraw(renderer);
+		
 		
 	}
 }

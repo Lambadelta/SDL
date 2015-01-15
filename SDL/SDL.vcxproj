@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>C:\SDKs\SDL\SDL2-2.0.3\include;C:\SDKs\SDL2_mixer-2.0.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\lib\x86;C:\SDKs\SDL2_mixer-2.0.0\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>H:\Visual Studio\SDK\SDL2_ttf-2.0.12\include;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\include;H:\Visual Studio\SDK\SDL2_image-2.0.0\include;C:\SDKs\SDL\SDL2-2.0.3\include;C:\SDKs\SDL2_mixer-2.0.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>H:\Visual Studio\SDK\SDL2_ttf-2.0.12\lib\x86;H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\lib\x86;C:\SDKs\SDL2_mixer-2.0.0\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -53,7 +53,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\SDKs\SDL\SDL2-2.0.3\lib\x86;H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SubSystem>Console</SubSystem>
     </Link>
   </ItemDefinitionGroup>
@@ -86,6 +86,8 @@
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="SDL Main.cpp" />
     <ClCompile Include="Skill.cpp" />
+    <ClCompile Include="SkillStorage.cpp" />
+    <ClCompile Include="Text.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Time.cpp" />
     <ClCompile Include="Timer.cpp" />
@@ -105,7 +107,9 @@
     <ClInclude Include="MoemonStorage.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Skill.h" />
+    <ClInclude Include="SkillStorage.h" />
     <ClInclude Include="SourceRect.h" />
+    <ClInclude Include="Text.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Time.h" />
     <ClInclude Include="Timer.h" />
