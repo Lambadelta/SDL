@@ -19,9 +19,11 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 	SrcRect.h = 64;
 
 	DescRect.x = 50;
-	DescRect.y = 224;
-	DescRect.w = (64 * 4);
-	DescRect.h = (64 * 4);
+	DescRect.y = 188;
+	DescRect.w = (64 * 3);
+	DescRect.h = (64 * 3);
+
+	LearnedMoves = new SkillStorage();
 
 	
 }

@@ -20,10 +20,14 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	fLoader->LoadTileFile(TileList);
 	fLoader->LoadMapFile(Route1, "Asset/Route 1.txt");
 	fLoader->LoadMapFile(Route1OB, "Asset/Route 1 OBJ.txt");
-	fLoader->LoadTrainerFile(TrainerList, MoeMonList, renderer);
+	fLoader->LoadTrainerFile(TrainerList, MoeMonList,SkillList, renderer);
 	AnimTime = new Timer(1);
-
-	PlayerEntity->getBag()->add(&MoeMonList[34], 15);
+	Moemon* playerMoe = &MoeMonList[34];
+	playerMoe->getLearnedSkills()->add(&SkillList[0]);
+	playerMoe->getLearnedSkills()->add(&SkillList[1]);
+	playerMoe->getLearnedSkills()->add(&SkillList[2]);
+	playerMoe->getLearnedSkills()->add(&SkillList[1]);
+	PlayerEntity->getBag()->add(playerMoe, 15);
 	//PlayerEntity->getBag()->get(0)->getLearnedSkills()->add(&SkillList[2]);
 }
 

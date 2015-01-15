@@ -170,7 +170,7 @@ void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 
 }
 
-void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>& Ref, SDL_Renderer* renderer)
+void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>& Ref,std::vector<Skill>& SRef, SDL_Renderer* renderer)
 {
 	int Trainersize = -1;
 	std::ifstream TrainerList("Asset/Entity/Trainers/Trainer.txt");
@@ -186,20 +186,34 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>
 		int y = -1;
 		std::string image;
 		int mmone = -1;	    int mmtwo = -1;
+		int mmones1 = -1; int mmones2 = -1;
+		int mmtwos1 = -1; int mmtwos2 = -1;
 		std::string remove;
 		
 		TrainerList >> id; 
 		TrainerList >> x;
 		TrainerList >> y;
 		TrainerList >> mmone;
+		TrainerList >> mmones1;
+		TrainerList >> mmones2;
 		TrainerList >> mmtwo;
+		TrainerList >> mmtwos1;
+		TrainerList >> mmtwos2;
 		std::getline(TrainerList, remove, ',');
 		std::getline(TrainerList, image, ';');
 		MoeMonStorage * temp = new MoeMonStorage();
-		temp->add(&Ref[mmone], 5);
-		temp->add(&Ref[mmtwo], 5);
+		Moemon* temp1 = &Ref[mmone];
+		temp1->getLearnedSkills()->add(&SRef[mmones1]);
+		temp1->getLearnedSkills()->add(&SRef[mmones2]);
+		temp->add(temp1, 5);
+		Moemon* temp2 = &Ref[mmtwo];
+		temp1->getLearnedSkills()->add(&SRef[mmtwos1]);
+		temp1->getLearnedSkills()->add(&SRef[mmtwos2]);
+		temp->add(temp2, 5);
 
+		
 		List.push_back(Trainer(id, x, y, image, renderer, temp));
+
 
 
 	}

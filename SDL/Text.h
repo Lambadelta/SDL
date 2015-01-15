@@ -13,12 +13,15 @@ public:
 	
 	bool create(std::string, SDL_Renderer*);
 	void callDraw(SDL_Renderer*);
+	void setRect(SDL_Rect);
+	SDL_Rect getRect() { return descRect; };
 private:
 
 	SDL_Texture* textTexture;
 	TTF_Font* font;
 	int width;
 	int height;
+	SDL_Rect descRect;
 };
 
 #endif

@@ -14,7 +14,6 @@ public:
 	void remove(int);
 	Moemon* get(int);
 
-
 private:
 	std::vector<Moemon*> Storage;
 };

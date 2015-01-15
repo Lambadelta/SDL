@@ -9,7 +9,6 @@ public:
 	Skill(int id, int power, int pp, int accuracy, int statusinflict, std::string n, std::string t, std::string desc);
 	~Skill();
 
-	std::string getName();
 	std::string getDescription();
 	std::string getType();
 	int getPotency();
@@ -17,6 +16,14 @@ public:
 	int getAcc();
 	int getCost();
 	int getStatus();
+	std::string getName()
+	{
+		if (name == "")
+		{
+			return NULL;
+		}
+		return name;
+	}
 	
 private:
 	int skillID;

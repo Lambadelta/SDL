@@ -42,7 +42,7 @@ public:
 	void LoadSkillFile(std::vector<Skill>& List);
 	void LoadTileFile(std::vector<Tile>& List);
 	void LoadMapFile(std::vector<Maptile>& Map, std::string);
-	void LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>&, SDL_Renderer*);
+	void LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>&, std::vector<Skill>&, SDL_Renderer*);
 	
 private:
 	///A constant int containing the number of MoeMon to be loaded in

@@ -10,6 +10,14 @@ public:
 	void add(Skill*);
 	void remove(int);
 	void useSkill(int);
+	Skill* getSkill(int i)
+	{
+		if (Storage[i] == NULL)
+		{
+			return NULL;
+		}
+		return Storage[i];
+	};
 private:
 	std::vector<Skill*> Storage;
 	

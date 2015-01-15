@@ -17,10 +17,6 @@ Skill::~Skill()
 
 }
 
-std::string Skill::getName()
-{
-	return name;
-}
 
 std::string Skill::getDescription()
 {

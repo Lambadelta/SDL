@@ -131,7 +131,7 @@ void Player::callDrawAnimation(SDL_Renderer* renderer)
 {
 	SDL_Rect DescAnimRect;
 	DescAnimRect.x = 50;
-	DescAnimRect.y = 280;
+	DescAnimRect.y = 180;
 	DescAnimRect.w = (115 * 2);
 	DescAnimRect.h = (100 * 2);
 	SDL_RenderCopy(renderer, AnimaText, &SrcAnimRect, &DescAnimRect);

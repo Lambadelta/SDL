@@ -19,6 +19,8 @@ public:
 	bool EventHandle();
 	void update(float dt);
 	void draw();
+	void menu();
+	void textInit();
 
 private:
 
@@ -27,13 +29,17 @@ private:
 
 	int TEMoemonNum;
 	int PEMoemonNum;
+	int MenuSelection;
 	float dt;
+	bool MBattleMenu;
 	int AnimationCount = 0;
 	Timer* PlayerAnim;
 	Background* Backgrounds;
+	Background* Menu;
 	Mix_Music* BattleTheme;
 	Text* textManager;
-
+	std::vector<Text*> TMenu;
+	std::vector<Text*> TSMenu;
 };
 
 

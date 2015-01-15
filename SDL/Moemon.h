@@ -42,6 +42,10 @@ public:
 	void callDraw(SDL_Renderer*);
 	void setDescRect(SDL_Rect);
 	void setEnemy();
+	std::string getName()
+	{
+		return s_MoeMonName;
+	}
 	SkillStorage* getLearnedSkills();
 private:
 	///An int containing the ID of the Moemon

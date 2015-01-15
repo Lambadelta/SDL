@@ -39,8 +39,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>H:\Visual Studio\SDK\SDL2_ttf-2.0.12\include;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\include;H:\Visual Studio\SDK\SDL2_image-2.0.0\include;C:\SDKs\SDL\SDL2-2.0.3\include;C:\SDKs\SDL2_mixer-2.0.0\include;$(IncludePath)</IncludePath>
-    <LibraryPath>H:\Visual Studio\SDK\SDL2_ttf-2.0.12\lib\x86;H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\lib\x86;C:\SDKs\SDL2_mixer-2.0.0\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\SDKs\SDL2_ttf-2.0.12\include;H:\Visual Studio\SDK\SDL2_ttf-2.0.12\include;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\include;H:\Visual Studio\SDK\SDL2_image-2.0.0\include;C:\SDKs\SDL\SDL2-2.0.3\include;C:\SDKs\SDL2_mixer-2.0.0\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\SDKs\SDL2_ttf-2.0.12\lib\x86;H:\Visual Studio\SDK\SDL2_ttf-2.0.12\lib\x86;H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86;H:\Visual Studio\SDK\SDL2_mixer-2.0.0\lib\x86;C:\SDKs\SDL2_mixer-2.0.0\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

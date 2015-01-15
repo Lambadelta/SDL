@@ -27,10 +27,15 @@ bool Text::create(std::string text, SDL_Renderer* renderer)
 	SDL_FreeSurface(temp);
 	return true;
 }
-
+void Text::setRect(SDL_Rect rect)
+{
+	descRect.x = rect.x;
+	descRect.y = rect.y;
+}
 void Text::callDraw(SDL_Renderer* renderer)
 {
-	SDL_Rect descRect = { 0, 0, width, height };
+	descRect.w = width * 2;
+	descRect.h = height * 2;
 	SDL_RenderCopy(renderer, textTexture, NULL, &descRect);
 }
 
