@@ -23,3 +23,13 @@ void Trainer::setDefeated(bool defeat)
 	defeated = defeat;
 }
 
+void Trainer::callDraw(SDL_Renderer* renderer)
+{
+	SDL_RenderCopy(renderer, EntityTexture, &SrcRect, &DescRect);
+}
+
+void Trainer::BattleAnimation(SDL_Renderer* renderer)
+{
+	SDL_Rect AnimaRect = { 380, 40, 82 * 2.5, 82 * 2.5 };
+	SDL_RenderCopy(renderer, EntityTexture, NULL, &AnimaRect);
+}

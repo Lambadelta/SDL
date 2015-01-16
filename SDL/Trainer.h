@@ -12,8 +12,11 @@ public:
 
 	void Move();
 	void setDefeated(bool);
+	void callDraw(SDL_Renderer*);
+	void BattleAnimation(SDL_Renderer*);
 
-	MoeMonStorage* getStorage() 
+
+	MoeMonStorage* getBag() 
 	{
 		return MoeMon;
 	};

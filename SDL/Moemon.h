@@ -39,35 +39,40 @@ public:
 	*/
 	void setShiny();
 	void setLevel(int);
+	void setHealth(int i) { Health -= i; };
+	void fullHeal() { Health = maxHealth; };
 	void callDraw(SDL_Renderer*);
 	void setDescRect(SDL_Rect);
 	void setEnemy();
+	int getHealth() { return Health; };
 	std::string getName()
 	{
-		return s_MoeMonName;
+		return MoeMonName;
 	}
 	SkillStorage* getLearnedSkills();
 private:
 	///An int containing the ID of the Moemon
-	int i_ID;
+	int ID;
 	///An int containing the base Health of the Moemon
-	int i_Health;
+	int Health;
 	///An int containing the default Level of the Moemon
-	int i_Level;
+	int Level;
 	///An int containing the base Attack of the Moemon
-	int i_Attack;
+	int Attack;
 	//An int containing the base Defense of the Moemon
-	int i_Defense;
+	int Defense;
 	///An int containing the base Special Attack of the Moemon
-	int i_SpAtk;
+	int SpAtk;
 	///An int containing the base Special Defense of the Moemon
-	int i_SpDef;
+	int SpDef;
 	///An int containing the base Speed of the Moemon
-	int i_Speed;
+	int Speed;
+
+	int maxHealth;
 	///A string containing the Moemon's name
-	std::string s_MoeMonName;
+	std::string MoeMonName;
 	///A string containing the Moemon's type
-	std::string s_Type;
+	std::string Type;
 	SkillStorage* LearnedMoves;
 	SDL_Texture* test;
 	bool isShiny;

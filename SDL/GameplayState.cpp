@@ -12,17 +12,17 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	Camera.h = 480;
 	Name = "Gameplay";
 	PlayerEntity = new Player(Rect(256,256, 32, 32), Rect(0, 0, 50, 50), "Asset/Entity/Player/player.png", renderer);
-	Backgrounds = new Background("Asset/map.png", renderer);
+	Backgrounds = new Background("Asset/Maps/map.png", renderer);
 	speed = 32;	
 	initialspeed = speed;
 	fLoader->LoadMoeMonFile(MoeMonList, renderer);
 	fLoader->LoadSkillFile(SkillList);
 	fLoader->LoadTileFile(TileList);
-	fLoader->LoadMapFile(Route1, "Asset/Route 1.txt");
-	fLoader->LoadMapFile(Route1OB, "Asset/Route 1 OBJ.txt");
+	fLoader->LoadMapFile(Route1, "Asset/Maps/Route 1.txt");
+	fLoader->LoadMapFile(Route1OB, "Asset/Maps/Route 1 OBJ.txt");
 	fLoader->LoadTrainerFile(TrainerList, MoeMonList,SkillList, renderer);
 	AnimTime = new Timer(1);
-	Moemon* playerMoe = &MoeMonList[34];
+	Moemon* playerMoe = MoeMonList[34];
 	playerMoe->getLearnedSkills()->add(&SkillList[0]);
 	playerMoe->getLearnedSkills()->add(&SkillList[1]);
 	playerMoe->getLearnedSkills()->add(&SkillList[2]);
@@ -75,9 +75,11 @@ bool GameplayState::EventHandle()
 				break;
 			case SDLK_k:
 				MoeMonStorage* Test = new MoeMonStorage();
-
-				Test->add(&MoeMonList[25], 40);
-				Trainer* TrainerTest = new Trainer(1, 0, 0, "Asset/Entity/Trainers/IdleTrainer.png", renderer,Test);
+				Moemon * temp = MoeMonList[25];
+				Test->add(temp, 40);
+				Moemon * temp1 = MoeMonList[30];
+				Test->add(temp1, 40);
+				Trainer* TrainerTest = new Trainer(1, 0, 0, "Asset/Entity/Trainers/GymLeader.png", renderer,Test);
 				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerTest));
 				int debug = getposition();
 				std::cout << debug << std::endl;

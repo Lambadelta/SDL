@@ -1,25 +1,25 @@
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\vc120.pdb
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\vc120.idb
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\application.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\background.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\battlestate.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\entity.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\fileloader.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\gameplaystate.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\gamestate.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\manager.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\maptile.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\moemon.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\moemonstorage.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\player.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\sdl main.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\skill.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\skillstorage.obj
+c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\text.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\tile.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\time.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\timer.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\trainer.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\battlestate.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\application.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\gameplaystate.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\gamestate.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\sdl main.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\text.obj
-c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\debug\skillstorage.obj
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\debug\sdl.ilk
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\debug\sdl.exe
 c:\users\lambadelta\documents\visual studio 2013\projects\sdl\debug\sdl.pdb

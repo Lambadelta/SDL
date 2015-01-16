@@ -7,11 +7,14 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	TEntity = trainer;
 	PlayerAnim = new Timer(2.5);
 	Name = "Battle";
-	Backgrounds = new Background("Asset/Background.png", renderer);
-	Menu = new Background("Asset/MenuBackground.png", renderer);
+	Backgrounds = new Background("Asset/Maps/Background.png", renderer);
+	Menu = new Background("Asset/Menus/MenuBackground.png", renderer);
 	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
 	Mix_PlayMusic(BattleTheme, -1);
-	TEntity->getStorage()->get(0)->setEnemy();
+	PEMoemonNum = 0;
+	TEMoemonNum = 0;
+	TEntity->getBag()->get(0)->setEnemy();
+	TEntity->getBag()->get(1)->setEnemy();
 	textManager = new Text();
 	textManager->create("Frostlass Used Shadow Punch! It was super effective.",renderer);
 	MBattleMenu = true;
@@ -20,7 +23,7 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 
 BattleState::~BattleState()
 {
-
+	Mix_HaltMusic();
 }
 
 bool BattleState::EventHandle()
@@ -76,7 +79,7 @@ bool BattleState::EventHandle()
 				}
 				break;
 			case SDLK_k:
-				GSManager->RemoveLast();
+				TEntity->getBag()->get(TEMoemonNum)->setHealth(40000);
 				break;
 			}
 		}
@@ -88,6 +91,22 @@ void BattleState::update(float deltat)
 {
 	dt = deltat;
 	PlayerAnim->updateTimer(dt);
+	if (PEntity->getBag()->get(PEMoemonNum)->getHealth() <= 0)
+	{
+		PEMoemonNum = +1;
+		textInit();
+	}
+	if (TEntity->getBag()->get(TEMoemonNum)->getHealth() <= 0)
+	{
+		if (sizeof(TEntity->getBag()) > (TEMoemonNum))
+		{
+			TEMoemonNum = +1;
+		}
+		else
+		{
+			GSManager->RemoveLast();
+		}
+	}
 	
 
 }
@@ -109,18 +128,20 @@ void BattleState::draw()
 	ETrainerM.w = (64 * 3);
 	ETrainerM.h = (64 * 3);
 
-	TEntity->getStorage()->get(0)->setDescRect(ETrainerM);
+	TEntity->getBag()->get(TEMoemonNum)->setDescRect(ETrainerM);
 	Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, descRect);
 	
 	if (AnimationCount <= 5)
 	{
+		TEntity->BattleAnimation(renderer);
 		PEntity->battleAnimation(PlayerAnim, dt, renderer, AnimationCount);
+		
 	}
 	if (AnimationCount > 5)
 	{
 		Menu->callDraw(renderer, Menu->getTexture(), menuRect, dummyRect);
-		TEntity->getStorage()->get(0)->callDraw(renderer);
-		PEntity->getBag()->get(0)->callDraw(renderer);
+		TEntity->getBag()->get(TEMoemonNum)->callDraw(renderer);
+		PEntity->getBag()->get(PEMoemonNum)->callDraw(renderer);
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
 		if (MBattleMenu == true)
 		{
@@ -160,19 +181,20 @@ void BattleState::menu()
 		{
 			if (MenuSelection == 1)
 			{
-				Mix_HaltMusic();
 				GSManager->RemoveLast();
 			}
 		}
 	}
 	if (MBattleMenu == false)
 	{
-		PEntity->getBag()->get(0)->getLearnedSkills()->useSkill(MenuSelection);
+		PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->useSkill(MenuSelection);
 	}
 }
 
 void BattleState::textInit()
 {
+	TMenu.clear();
+	TSMenu.clear();
 	Text* temp = new Text();
 	temp->create("Fight", renderer);
 	SDL_Rect temprec = { 370, 400, 0, 0 };
@@ -187,19 +209,19 @@ void BattleState::textInit()
 
 	Text* skill1 = new Text();
 	SDL_Rect tempskill1 = { 350, 405, 0, 0 };
-	skill1->create(PEntity->getBag()->get(0)->getLearnedSkills()->getSkill(0)->getName(), renderer);
+	skill1->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(0)->getName(), renderer);
 	skill1->setRect(tempskill1);
 	Text* skill2 = new Text();
 	SDL_Rect tempskill2 = { 470, 405, 0, 0 };
-	skill2->create(PEntity->getBag()->get(0)->getLearnedSkills()->getSkill(1)->getName(), renderer);
+	skill2->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(1)->getName(), renderer);
 	skill2->setRect(tempskill2);
 	Text* skill3 = new Text();
 	SDL_Rect tempskill3 = { 350, 445, 0, 0 };
-	skill3->create(PEntity->getBag()->get(0)->getLearnedSkills()->getSkill(2)->getName(), renderer);
+	skill3->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(2)->getName(), renderer);
 	skill3->setRect(tempskill3);
 	Text* skill4 = new Text();
 	SDL_Rect tempskill4 = { 470, 445, 0, 0 };
-	skill4->create(PEntity->getBag()->get(0)->getLearnedSkills()->getSkill(3)->getName(), renderer);
+	skill4->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(3)->getName(), renderer);
 	skill4->setRect(tempskill4);
 	TSMenu.push_back(skill1);
 	TSMenu.push_back(skill2);
@@ -207,3 +229,20 @@ void BattleState::textInit()
 	TSMenu.push_back(skill4);
 
 }
+
+/*
+Create a skill function inside battle
+Have it get the power, acc and name of skill.
+Have it take away from the enemys health.
+Load in new art asset (health bars)
+
+To get percentage based bars its : Current Health / Max Health * 100;
+
+Use this to create a rect that can scale to any max health, and show a percentage based version of the healthbar.
+Have it play damage sound when low
+
+Have text for skills stored inside skills themselves.
+Have text for moemon name stored inside themselves.
+Have text for trainers name stored inside itself.
+
+*/
