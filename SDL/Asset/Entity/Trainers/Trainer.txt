@@ -1,5 +1,5 @@
 4
-0 0 0 15 1 2 22 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-1 0 0 12 1 2 18 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+0 0 0 15 1 2 22 1 2 ,Asset/Entity/Trainers/YoungWoman.png;
+1 0 0 12 1 2 18 1 2 ,Asset/Entity/Trainers/BugCatcher.png;
 2 0 0 30 1 2 25 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
 3 0 0 11 1 2 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
