@@ -13,17 +13,22 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	Mix_PlayMusic(BattleTheme, -1);
 	PEMoemonNum = 0;
 	TEMoemonNum = 0;
-	TEntity->getBag()->get(0)->setEnemy();
-	TEntity->getBag()->get(1)->setEnemy();
 	textManager = new Text();
 	textManager->create("Frostlass Used Shadow Punch! It was super effective.",renderer);
 	MBattleMenu = true;
+	PlayerTurn = true;
 	textInit();
 }
 
 BattleState::~BattleState()
 {
 	Mix_HaltMusic();
+	delete PlayerAnim;
+	delete Backgrounds;
+	delete Menu;
+	delete textManager;
+	TMenu.clear();
+	TSMenu.clear();
 }
 
 bool BattleState::EventHandle()
@@ -62,7 +67,12 @@ bool BattleState::EventHandle()
 				}
 				break;
 			case SDLK_RETURN:
+				if (MBattleMenu == false)
+				{
+				useSkill();
+				}
 				menu();
+				
 				break;
 			case SDLK_d:
 				MenuSelection += 1;
@@ -98,9 +108,10 @@ void BattleState::update(float deltat)
 	}
 	if (TEntity->getBag()->get(TEMoemonNum)->getHealth() <= 0)
 	{
-		if (sizeof(TEntity->getBag()) > (TEMoemonNum))
+		int debug = TEntity->getStorageSize();
+		if (TEntity->getStorageSize() > (TEMoemonNum + 1))
 		{
-			TEMoemonNum = +1;
+			TEMoemonNum += 1;
 		}
 		else
 		{
@@ -207,28 +218,132 @@ void BattleState::textInit()
 	TMenu.push_back(temp1);
 
 
-	Text* skill1 = new Text();
-	SDL_Rect tempskill1 = { 350, 405, 0, 0 };
-	skill1->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(0)->getName(), renderer);
-	skill1->setRect(tempskill1);
-	Text* skill2 = new Text();
-	SDL_Rect tempskill2 = { 470, 405, 0, 0 };
-	skill2->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(1)->getName(), renderer);
-	skill2->setRect(tempskill2);
-	Text* skill3 = new Text();
-	SDL_Rect tempskill3 = { 350, 445, 0, 0 };
-	skill3->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(2)->getName(), renderer);
-	skill3->setRect(tempskill3);
-	Text* skill4 = new Text();
-	SDL_Rect tempskill4 = { 470, 445, 0, 0 };
-	skill4->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(3)->getName(), renderer);
-	skill4->setRect(tempskill4);
-	TSMenu.push_back(skill1);
-	TSMenu.push_back(skill2);
-	TSMenu.push_back(skill3);
-	TSMenu.push_back(skill4);
+	//Text* skill1 = new Text();
+	SDL_Rect skill1 = { 350, 405, 0, 0 };
+	//skill1->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(0)->getName(), renderer);
+	//skill1->setRect(tempskill1);
+	//Text* skill2 = new Text();
+	SDL_Rect skill2 = { 470, 405, 0, 0 };
+	//skill2->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(1)->getName(), renderer);
+	//skill2->setRect(tempskill2);
+	//Text* skill3 = new Text();
+	SDL_Rect skill3 = { 350, 445, 0, 0 };
+	//skill3->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(2)->getName(), renderer);
+	//skill3->setRect(tempskill3);
+	//Text* skill4 = new Text();
+	SDL_Rect skill4 = { 470, 445, 0, 0 };
+	//skill4->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(3)->getName(), renderer);
+	//skill4->setRect(tempskill4);
+	for (int i = 0; i < sizeof(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()); i++)
+	{
+		if (i == 0)
+		{
+			PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(i)->getText()->setRect(skill1);
+		}
+		else
+		{
+			if (i == 1)
+			{
+				PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(i)->getText()->setRect(skill2);
+			}
+			else
+			{
+				if (i == 2)
+				{
+					PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(i)->getText()->setRect(skill3);
+				}
+				else
+				{
+					PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(i)->getText()->setRect(skill4);
+				}
+			}
+
+		}
+		TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(i)->getText());
+	}
+
+	
+}
+
+void BattleState::useSkill()
+{
+		
+		if (PlayerTurn == true)
+		{
+			/*
+			The damage is calculated through this slightly altered Pokemon Damage Formula
+			Damage = (2 * Level + 10 / 20) * (Enemey Defese / Player Attack) * (Skill Base Attack) * Modifier) / 100)
+
+			Formula was found here : http://bulbapedia.bulbagarden.net/wiki/Damage
+			*/
+			float Modifier = (STAB() * 1 * 2 * PlayerAnim->randNum(1,2));
+			float damage = (((2 * PEntity->getBag()->get(PEMoemonNum)->getLevel() + 10 / 250) *
+				(TEntity->getBag()->get(TEMoemonNum)->getDefense() / PEntity->getBag()->get(PEMoemonNum)->getAttack()) *
+				(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack()) * Modifier) / 100);
+			float debug1 = (2 * PEntity->getBag()->get(PEMoemonNum)->getLevel() + 10 / 250);
+			float debug2 = (TEntity->getBag()->get(TEMoemonNum)->getDefense() / PEntity->getBag()->get(PEMoemonNum)->getAttack());
+			float debug3 = (PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack());
+			float debug4 = (PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack() * Modifier);
+
+			TEntity->getBag()->get(TEMoemonNum)->setHealth(damage);
+			std::cout << "You deal : " << damage << std::endl << "Enemy Health is :" << TEntity->getBag()->get(TEMoemonNum)->getHealth() << std::endl;
+			PlayerTurn = false;
+			useSkill();
+		}
+		else
+		{
+			AI();
+			float Modifier = (STAB() * 1 * 2 * PlayerAnim->randNum(1, 2));
+			float Enemydamage = (((2 * TEntity->getBag()->get(TEMoemonNum)->getLevel() + 10 / 250) *
+				(PEntity->getBag()->get(PEMoemonNum)->getDefense() / TEntity->getBag()->get(TEMoemonNum)->getAttack()) *
+				(TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getAttack()) * Modifier));
+
+
+			PEntity->getBag()->get(PEMoemonNum)->setHealth(Enemydamage);
+			PlayerTurn = true;
+		}
 
 }
+
+float BattleState::STAB()
+{
+	if (PlayerTurn == true)
+	{
+		if (PEntity->getBag()->get(PEMoemonNum)->getType() == PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getType())
+		{
+			return 1.5;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+	else
+	{
+		if (TEntity->getBag()->get(TEMoemonNum)->getType() == TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getType())
+		{
+			return 1.5;
+		}
+		else
+		{
+			return 1;
+		}
+	}
+}
+
+void BattleState::AI()
+{
+	EnemySelection = PlayerAnim->randNum(0, TEntity->getStorageSize());
+	if (EnemySelection > TEntity->getStorageSize())
+	{
+		AI();
+	}
+}
+
+//TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(1)->getText());
+	//TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(2)->getText());
+	//TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(3)->getText());
+
 
 /*
 Create a skill function inside battle

@@ -36,12 +36,13 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon*> &List, SDL_Renderer* render
 		int Speed = -1;	 int level = -1;
 
 		std::string name;	std::string type;
-		std::string path;
+		std::string path;   std::string remove;
 
 		MoeMon >> id;	    MoeMon >> health;
 		MoeMon >> attack;	MoeMon >> defense;
 		MoeMon >> SpAtk;	MoeMon >> SpDef;
 		MoeMon >> Speed;    MoeMon >> level;
+		std::getline(MoeMon, remove, ',');
 		std::getline(MoeMon, name, ',');
 		std::getline(MoeMon, type, ',');
 		std::getline(MoeMon, path, ';');
@@ -51,7 +52,7 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon*> &List, SDL_Renderer* render
 	}
 }
 
-void FileLoader::LoadSkillFile(std::vector<Skill>& List)
+void FileLoader::LoadSkillFile(std::vector<Skill*>& List, SDL_Renderer* renderer)
 {
 	int Skillsize = -1;
 	std::ifstream SkillList("Asset/SkillList.txt");
@@ -84,7 +85,7 @@ void FileLoader::LoadSkillFile(std::vector<Skill>& List)
 		std::getline(SkillList, type, ',');
 		std::getline(SkillList, description, ';');
 
-		List.push_back(Skill(id, power, cost, acc, statusinflict,name, type, description));
+		List.push_back(new Skill(id, power, cost, acc, statusinflict,name, type, description,renderer));
 
 
 	}
@@ -170,7 +171,7 @@ void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 
 }
 
-void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon*>& Ref,std::vector<Skill>& SRef, SDL_Renderer* renderer)
+void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon*>& Ref,std::vector<Skill*>& SRef, SDL_Renderer* renderer)
 {
 	int Trainersize = -1;
 	std::ifstream TrainerList("Asset/Entity/Trainers/Trainer.txt");
@@ -202,13 +203,15 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon*
 		std::getline(TrainerList, remove, ',');
 		std::getline(TrainerList, image, ';');
 		MoeMonStorage * temp = new MoeMonStorage();
-		Moemon* temp1 = Ref[mmone];
-		temp1->getLearnedSkills()->add(&SRef[mmones1]);
-		temp1->getLearnedSkills()->add(&SRef[mmones2]);
+		Moemon* temp1(Ref[mmone]);
+		temp1->getLearnedSkills()->add(SRef[mmones1]);
+		temp1->getLearnedSkills()->add(SRef[mmones2]);
+		temp1->setEnemy();
 		temp->add(temp1, 5);
-		Moemon* temp2 = Ref[mmtwo];
-		temp2->getLearnedSkills()->add(&SRef[mmtwos1]);
-		temp2->getLearnedSkills()->add(&SRef[mmtwos2]);
+		Moemon* temp2(Ref[mmtwo]);
+		temp2->getLearnedSkills()->add(SRef[mmtwos1]);
+		temp2->getLearnedSkills()->add(SRef[mmtwos2]);
+		temp2->setEnemy();
 		temp->add(temp2, 5);
 
 		

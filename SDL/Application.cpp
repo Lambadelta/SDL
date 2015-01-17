@@ -9,7 +9,10 @@ Application::Application()
 }
 Application::~Application()
 {
-
+	delete GSManager;
+	delete time;
+	SDL_DestroyRenderer(Renderer);
+	SDL_DestroyWindow(Display);
 }
 int Application::callExecution()
 {
@@ -59,7 +62,6 @@ bool Application::callInit()
 
 void Application::callCleanup()
 {
-	/*MoeMonList.clear();*/
 	SDL_Quit();
 }
 

@@ -45,7 +45,7 @@ public:
 
 	bool expiredTimer();
 
-	int randNum();
+	float randNum(int,int);
 
 
 private:

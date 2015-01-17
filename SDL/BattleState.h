@@ -21,6 +21,9 @@ public:
 	void draw();
 	void menu();
 	void textInit();
+	void useSkill();
+	float STAB();
+	void AI();
 
 private:
 
@@ -32,6 +35,8 @@ private:
 	int MenuSelection;
 	float dt;
 	bool MBattleMenu;
+	bool PlayerTurn;
+	int EnemySelection;
 	int AnimationCount = 0;
 	Timer* PlayerAnim;
 	Background* Backgrounds;

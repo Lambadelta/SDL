@@ -13,6 +13,7 @@ public:
 	void add(Moemon*, int);
 	void remove(int);
 	Moemon* get(int);
+	std::vector<Moemon*> getStorage() { return Storage; };
 
 private:
 	std::vector<Moemon*> Storage;

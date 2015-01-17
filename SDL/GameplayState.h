@@ -23,7 +23,7 @@ public:
 	bool getcollision(int, std::string);
 
 	int getposition();
-
+	Trainer* TrainerTest;
 
 private:
 	///A time object for managing delta time
@@ -33,13 +33,12 @@ private:
 	///A vector of Moemon that stores all the Moemon the application will use
 	std::vector<Moemon*> MoeMonList;
 	///A vector of Skills that stores all of the MoeMon moves the application will use
-	std::vector<Skill> SkillList;
+	std::vector<Skill*> SkillList;
 	///A vector of Tiles that stores all of the tiles the application will use
 	std::vector<Tile> TileList;
 	std::vector<Trainer> TrainerList;
 	std::vector<Maptile> Route1;
 	std::vector<Maptile> Route1OB;
-	std::vector<SDL_Rect>collisionOB;
 	
 	///A Player object 
 	Player* PlayerEntity;

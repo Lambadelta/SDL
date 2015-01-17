@@ -6,13 +6,14 @@ Text::Text()
 
 Text::~Text()
 {
-
+	SDL_DestroyTexture(textTexture);
 }
 
 bool Text::create(std::string text, SDL_Renderer* renderer)
 {
 	SDL_Color colour = { 1, 1, 1 };
-	SDL_Surface* temp = TTF_RenderText_Solid(font, text.c_str(), colour);
+	SDL_Surface* temp;
+	temp = TTF_RenderText_Solid(font, text.c_str(), colour);
 	if (temp == NULL)
 	{
 		return false;

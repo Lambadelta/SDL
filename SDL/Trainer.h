@@ -14,7 +14,7 @@ public:
 	void setDefeated(bool);
 	void callDraw(SDL_Renderer*);
 	void BattleAnimation(SDL_Renderer*);
-
+	int getStorageSize(){  return MoeMon->getStorage().size(); };
 
 	MoeMonStorage* getBag() 
 	{

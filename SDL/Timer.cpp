@@ -45,9 +45,9 @@ bool Timer::expiredTimer()
 }
 
 
-int Timer::randNum()
+float Timer::randNum(int min, int max)
 {
 	std::srand((unsigned int) std::time(0));
-	int random = std::rand();
+	float random = std::rand() % (max - min) + min;
 	return random;
 }

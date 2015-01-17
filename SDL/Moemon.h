@@ -4,6 +4,7 @@
 #include "Entity.h"
 #include "SkillStorage.h"
 #include <vector>
+#include "Text.h"
 
 /** 
 @brief Class that represents an MoeMon
@@ -33,6 +34,7 @@ public:
 	@param std::string - Contains the Moemon's type
 	*/
 	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type, std::string path, SDL_Renderer* renderer);
+	Moemon(const Moemon& mm);
 	/**
 	@brief A method to set if the moemon is shiny
 	
@@ -45,10 +47,12 @@ public:
 	void setDescRect(SDL_Rect);
 	void setEnemy();
 	int getHealth() { return Health; };
-	std::string getName()
-	{
-		return MoeMonName;
-	}
+	int getLevel() { return Level; };
+	int getAttack() { return Attack; };
+	int getDefense() { return Defense; };
+	std::string getType() { return Type; };
+	std::string getName(){	return MoeMonName;	}
+	Text* getText() { if (Name == NULL) { return NULL; }  return Name; };
 	SkillStorage* getLearnedSkills();
 private:
 	///An int containing the ID of the Moemon
@@ -74,7 +78,9 @@ private:
 	///A string containing the Moemon's type
 	std::string Type;
 	SkillStorage* LearnedMoves;
-	SDL_Texture* test;
+	SDL_Renderer* renderer;
+	std::string path;
+	Text* Name;
 	bool isShiny;
 
 

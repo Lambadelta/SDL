@@ -39,10 +39,10 @@ public:
 	@param std::Vector<Moemon>& - A reference to the Moemon vector
 	*/
 	void LoadMoeMonFile(std::vector<Moemon*>&, SDL_Renderer*);
-	void LoadSkillFile(std::vector<Skill>&);
+	void LoadSkillFile(std::vector<Skill*>&,SDL_Renderer*);
 	void LoadTileFile(std::vector<Tile>&);
 	void LoadMapFile(std::vector<Maptile>&, std::string);
-	void LoadTrainerFile(std::vector<Trainer>& , std::vector<Moemon*>&, std::vector<Skill>&, SDL_Renderer*);
+	void LoadTrainerFile(std::vector<Trainer>& , std::vector<Moemon*>&, std::vector<Skill*>&, SDL_Renderer*);
 	
 private:
 	///A constant int containing the number of MoeMon to be loaded in
