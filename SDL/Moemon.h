@@ -48,8 +48,8 @@ public:
 	void setEnemy();
 	int getHealth() { return Health; };
 	int getLevel() { return Level; };
-	int getAttack() { return Attack; };
-	int getDefense() { return Defense; };
+	float getAttack() { return (float)Attack; };
+	float getDefense() { return (float)Defense; };
 	std::string getType() { return Type; };
 	std::string getName(){	return MoeMonName;	}
 	Text* getText() { if (Name == NULL) { return NULL; }  return Name; };

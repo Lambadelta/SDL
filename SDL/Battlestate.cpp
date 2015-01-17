@@ -103,12 +103,20 @@ void BattleState::update(float deltat)
 	PlayerAnim->updateTimer(dt);
 	if (PEntity->getBag()->get(PEMoemonNum)->getHealth() <= 0)
 	{
-		PEMoemonNum = +1;
-		textInit();
+		if (PEntity->getStorageSize() > (PEMoemonNum + 1))
+		{
+			PEMoemonNum += 1;
+			textInit();
+		}
+		else
+		{
+			GSManager->RemoveLast();
+		}
+		
+		
 	}
 	if (TEntity->getBag()->get(TEMoemonNum)->getHealth() <= 0)
 	{
-		int debug = TEntity->getStorageSize();
 		if (TEntity->getStorageSize() > (TEMoemonNum + 1))
 		{
 			TEMoemonNum += 1;
@@ -217,23 +225,14 @@ void BattleState::textInit()
 	TMenu.push_back(temp);
 	TMenu.push_back(temp1);
 
-
-	//Text* skill1 = new Text();
 	SDL_Rect skill1 = { 350, 405, 0, 0 };
-	//skill1->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(0)->getName(), renderer);
-	//skill1->setRect(tempskill1);
-	//Text* skill2 = new Text();
-	SDL_Rect skill2 = { 470, 405, 0, 0 };
-	//skill2->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(1)->getName(), renderer);
-	//skill2->setRect(tempskill2);
-	//Text* skill3 = new Text();
+
+	SDL_Rect skill2 = { 465, 405, 0, 0 };
+
 	SDL_Rect skill3 = { 350, 445, 0, 0 };
-	//skill3->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(2)->getName(), renderer);
-	//skill3->setRect(tempskill3);
-	//Text* skill4 = new Text();
-	SDL_Rect skill4 = { 470, 445, 0, 0 };
-	//skill4->create(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(3)->getName(), renderer);
-	//skill4->setRect(tempskill4);
+
+	SDL_Rect skill4 = { 465, 445, 0, 0 };
+
 	for (int i = 0; i < sizeof(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()); i++)
 	{
 		if (i == 0)
@@ -272,18 +271,14 @@ void BattleState::useSkill()
 		{
 			/*
 			The damage is calculated through this slightly altered Pokemon Damage Formula
-			Damage = (2 * Level + 10 / 20) * (Enemey Defese / Player Attack) * (Skill Base Attack) * Modifier) / 100)
+			Damage = (((2 * Level) + 10) / 20) * (Enemey Defese / Player Attack) * (Skill Base Attack) * Modifier))
 
 			Formula was found here : http://bulbapedia.bulbagarden.net/wiki/Damage
 			*/
-			float Modifier = (STAB() * 1 * 2 * PlayerAnim->randNum(1,2));
-			float damage = (((2 * PEntity->getBag()->get(PEMoemonNum)->getLevel() + 10 / 250) *
-				(TEntity->getBag()->get(TEMoemonNum)->getDefense() / PEntity->getBag()->get(PEMoemonNum)->getAttack()) *
-				(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack()) * Modifier) / 100);
-			float debug1 = (2 * PEntity->getBag()->get(PEMoemonNum)->getLevel() + 10 / 250);
-			float debug2 = (TEntity->getBag()->get(TEMoemonNum)->getDefense() / PEntity->getBag()->get(PEMoemonNum)->getAttack());
-			float debug3 = (PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack());
-			float debug4 = (PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack() * Modifier);
+			float Modifier = (STAB() * 1 * 2 * PlayerAnim->randNum(1, 2));
+			float damage = ((((2.0f * PEntity->getBag()->get(PEMoemonNum)->getLevel()) + 10.0f) / 200.0f) *
+				(PEntity->getBag()->get(PEMoemonNum)->getAttack() / TEntity->getBag()->get(TEMoemonNum)->getDefense()) *
+				(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack()) * Modifier);
 
 			TEntity->getBag()->get(TEMoemonNum)->setHealth(damage);
 			std::cout << "You deal : " << damage << std::endl << "Enemy Health is :" << TEntity->getBag()->get(TEMoemonNum)->getHealth() << std::endl;
@@ -293,13 +288,12 @@ void BattleState::useSkill()
 		else
 		{
 			AI();
-			float Modifier = (STAB() * 1 * 2 * PlayerAnim->randNum(1, 2));
-			float Enemydamage = (((2 * TEntity->getBag()->get(TEMoemonNum)->getLevel() + 10 / 250) *
+			float Modifier = (STAB() * 1.0f * 2.0f * PlayerAnim->randNum(1, 2));
+			float Enemydamage = ((((2.0f * TEntity->getBag()->get(TEMoemonNum)->getLevel()) + 10.0f) / 200.0f) *
 				(PEntity->getBag()->get(PEMoemonNum)->getDefense() / TEntity->getBag()->get(TEMoemonNum)->getAttack()) *
-				(TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getAttack()) * Modifier));
-
-
+				(TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getAttack()) * Modifier);
 			PEntity->getBag()->get(PEMoemonNum)->setHealth(Enemydamage);
+			std::cout << "Your dealt : " << Enemydamage << std::endl << "Your Health is : " << PEntity->getBag()->get(PEMoemonNum)->getHealth() << std::endl;
 			PlayerTurn = true;
 		}
 

@@ -62,6 +62,7 @@ public:
 	int rtnWidth();
 	int rtnHeight();
 	MoeMonStorage* getBag();
+	int getStorageSize() { return MoeBag->getStorage().size(); };
 	Vec2 XYpos();
 	
 private:
