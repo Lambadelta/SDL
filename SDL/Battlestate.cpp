@@ -15,8 +15,6 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	Mix_PlayMusic(BattleTheme, -1);
 	PEMoemonNum = 0;
 	TEMoemonNum = 0;
-	textManager = new Text();
-	textManager->create("Frostlass Used Shadow Punch! It was super effective.",renderer);
 	MBattleMenu = true;
 	PlayerTurn = true;
 	textInit();
@@ -28,7 +26,8 @@ BattleState::~BattleState()
 	delete PlayerAnim;
 	delete Backgrounds;
 	delete Menu;
-	delete textManager;
+	delete HealthBars;
+	delete Health;
 	TMenu.clear();
 	TSMenu.clear();
 }
@@ -135,6 +134,10 @@ void BattleState::draw()
 		TEntity->getBag()->get(TEMoemonNum)->callDraw(renderer);
 		PEntity->getBag()->get(PEMoemonNum)->callDraw(renderer);
 
+		TEntity->getBag()->get(TEMoemonNum)->getTextName()->setRect(TNameLoc);
+		PEntity->getBag()->get(PEMoemonNum)->getTextName()->setRect(PNameLoc);
+		TEntity->getBag()->get(TEMoemonNum)->getTextName()->callDraw(renderer);
+		PEntity->getBag()->get(PEMoemonNum)->getTextName()->callDraw(renderer);
 	
 		Health->callDraw(renderer, Health->getTexture(), THealthBar, dummyHealth);
 		Health->callDraw(renderer, Health->getTexture(), PHealthBar, dummyHealth);
@@ -189,6 +192,8 @@ void BattleState::menu()
 
 void BattleState::textInit()
 {
+	TNameLoc = { 15, 15, TEntity->getBag()->get(TEMoemonNum)->getTextName()->getWidth(), TEntity->getBag()->get(TEMoemonNum)->getTextName()->getHeight() };
+	PNameLoc = { 360, 290, PEntity->getBag()->get(PEMoemonNum)->getTextName()->getWidth(), PEntity->getBag()->get(PEMoemonNum)->getTextName()->getHeight() };
 	TMenu.clear();
 	TSMenu.clear();
 	Text* temp = new Text();

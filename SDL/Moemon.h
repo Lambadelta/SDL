@@ -35,6 +35,7 @@ public:
 	*/
 	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type, std::string path, SDL_Renderer* renderer);
 	Moemon(const Moemon& mm);
+	~Moemon();
 	/**
 	@brief A method to set if the moemon is shiny
 	

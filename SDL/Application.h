@@ -7,6 +7,7 @@
 #include "Manager.h"
 #include "GameplayState.h"
 #include <SDL_mixer.h>
+#include "Titlestate.h"
 
 
 /**

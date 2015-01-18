@@ -27,9 +27,11 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 
 	LearnedMoves = new SkillStorage();
 	Name = new Text();
+	Lvl = new Text();
+	std::string lvl = std::to_string(Level);
 	Name->create(MoeMonName, renderer);
+	Lvl->create(lvl, renderer);
 
-	
 }
 
 Moemon::Moemon(const Moemon& mm) : Entity(mm.path,mm.renderer)
@@ -57,10 +59,23 @@ Moemon::Moemon(const Moemon& mm) : Entity(mm.path,mm.renderer)
 	DescRect.w = (64 * 3);
 	DescRect.h = (64 * 3);
 
+
+
 	LearnedMoves = new SkillStorage();
 	Name = new Text();
+	Lvl = new Text();
+	std::string lvl = std::to_string(Level);
 	Name->create(MoeMonName, renderer);
+	Lvl->create(lvl, renderer);
+};
+
+Moemon::~Moemon()
+{
+	delete LearnedMoves;
+	delete Name;
+	delete Lvl;
 }
+
 
 
 void Moemon::setShiny()
@@ -71,6 +86,7 @@ void Moemon::setShiny()
 void Moemon::setEnemy()
 {
 	SrcRect.y = +64;
+
 }
 
 void Moemon::callDraw(SDL_Renderer* renderer)

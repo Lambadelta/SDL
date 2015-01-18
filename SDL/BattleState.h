@@ -46,12 +46,14 @@ private:
 	Background* HealthBars;
 	Background* Health;
 	Mix_Music* BattleTheme;
-	Text* textManager;
 	std::vector<Text*> TMenu;
 	std::vector<Text*> TSMenu;
 
 	SDL_Rect THealthBar;
 	SDL_Rect PHealthBar;
+
+	SDL_Rect TNameLoc;
+	SDL_Rect PNameLoc;
 };
 
 

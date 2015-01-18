@@ -15,6 +15,8 @@ public:
 	void callDraw(SDL_Renderer*);
 	void setRect(SDL_Rect);
 	SDL_Rect getRect() { return descRect; };
+	int getWidth() { return width; };
+	int getHeight() { return height; };
 private:
 
 	SDL_Texture* textTexture;

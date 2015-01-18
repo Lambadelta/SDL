@@ -87,6 +87,9 @@
     <ClCompile Include="Tile.cpp">
       <Filter>Source Files\FL Objects</Filter>
     </ClCompile>
+    <ClCompile Include="Titlestate.cpp">
+      <Filter>Source Files\States</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Entity.h">
@@ -151,6 +154,9 @@
     </ClInclude>
     <ClInclude Include="Maptile.h">
       <Filter>Header Files\FL Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="Titlestate.h">
+      <Filter>Header Files\States</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

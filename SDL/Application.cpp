@@ -22,7 +22,7 @@ int Application::callExecution()
 	}
 	Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 1048);
 	TTF_Init();
-	GSManager->Add(new GameplayState(GSManager, Renderer, WINDOW_WIDTH, WINDOW_HEIGHT));
+	GSManager->Add(new Titlestate(GSManager,Renderer));
 	while (GameLoop)
 	{
 	GameLoop = GSManager->EventHandle();
