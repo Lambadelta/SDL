@@ -7,7 +7,7 @@ Titlestate::Titlestate(Manager* GSManager, SDL_Renderer* renderer) : Gamestate(G
 
 Titlestate::~Titlestate()
 {
-
+	delete Menu;
 }
 
 bool Titlestate::EventHandle()
@@ -24,6 +24,9 @@ bool Titlestate::EventHandle()
 			{
 			case SDLK_RETURN:
 				GSManager->Add(new GameplayState(GSManager, renderer, 640, 480));
+				break;
+			case SDLK_c:
+				GSManager->Add(new Creditsstate(GSManager, renderer));
 				break;
 			}
 		}

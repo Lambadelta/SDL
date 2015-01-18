@@ -1,17 +1,16 @@
-#ifndef TITLESTATE_H
-#define TITLESTATE_H
+#ifndef CREDITSSTATE_H
+#define CREDITSSTATE_H
 
 #include "Gamestate.h"
 #include "Manager.h"
 #include "Background.h"
 #include "GameplayState.h"
-#include "Creditsstate.h"
 
-class Titlestate : public Gamestate
+class Creditsstate : public Gamestate
 {
 public:
-	Titlestate(Manager*, SDL_Renderer*);
-	~Titlestate();
+	Creditsstate(Manager*, SDL_Renderer*);
+	~Creditsstate();
 
 
 	bool EventHandle();
@@ -20,7 +19,7 @@ public:
 
 private:
 
-	Background* Menu;
+	Background* Credits;
 
 };
 #endif
