@@ -21,9 +21,11 @@ public:
 	void draw();
 	void menu();
 	void textInit();
-	void useSkill();
+	bool useSkill();
 	float STAB();
 	void AI();
+	void checkPDefeat();
+	void checkTDefeat();
 
 private:
 
@@ -41,10 +43,15 @@ private:
 	Timer* PlayerAnim;
 	Background* Backgrounds;
 	Background* Menu;
+	Background* HealthBars;
+	Background* Health;
 	Mix_Music* BattleTheme;
 	Text* textManager;
 	std::vector<Text*> TMenu;
 	std::vector<Text*> TSMenu;
+
+	SDL_Rect THealthBar;
+	SDL_Rect PHealthBar;
 };
 
 

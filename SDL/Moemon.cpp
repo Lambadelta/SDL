@@ -98,3 +98,12 @@ SkillStorage* Moemon::getLearnedSkills()
 {
 	return LearnedMoves;
 }
+
+float Moemon::getHPPercentage()
+{
+	/*
+	Basic dividing the current health by the max health, and then multipling it by 100;
+	*/
+	float Percentage = ((float)Health / (float)maxHealth) * 100.0f;
+	return Percentage;
+}

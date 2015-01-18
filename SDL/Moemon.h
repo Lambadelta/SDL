@@ -52,7 +52,9 @@ public:
 	float getDefense() { return (float)Defense; };
 	std::string getType() { return Type; };
 	std::string getName(){	return MoeMonName;	}
-	Text* getText() { if (Name == NULL) { return NULL; }  return Name; };
+	Text* getTextName() { if (Name == NULL) { return NULL; }  return Name; };
+	Text* getTextLevel() { if (Lvl == NULL) { return NULL; }  return Lvl; };
+	float getHPPercentage();
 	SkillStorage* getLearnedSkills();
 private:
 	///An int containing the ID of the Moemon
@@ -81,6 +83,7 @@ private:
 	SDL_Renderer* renderer;
 	std::string path;
 	Text* Name;
+	Text* Lvl;
 	bool isShiny;
 
 

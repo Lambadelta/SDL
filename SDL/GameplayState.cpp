@@ -29,18 +29,17 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	
 	*/
 	Moemon* playerMoe(MoeMonList[34]);
+	Moemon* playerMoe1(MoeMonList[30]);
 	playerMoe->getLearnedSkills()->add(SkillList[0]);
 	playerMoe->getLearnedSkills()->add(SkillList[1]);
 	playerMoe->getLearnedSkills()->add(SkillList[2]);
 	playerMoe->getLearnedSkills()->add(SkillList[4]);
-	PlayerEntity->getBag()->add(playerMoe, 15);
-	MoeMonStorage* Test = new MoeMonStorage();
-	Moemon* temp = MoeMonList[25];
-	Test->add(temp, 40);
-	Moemon* temp1 = MoeMonList[30];
-	Test->add(temp1, 40);
-	TrainerTest = new Trainer(1, 0, 0, "Asset/Entity/Trainers/GymLeader.png", renderer, Test);
-	//PlayerEntity->getBag()->get(0)->getLearnedSkills()->add(&SkillList[2]);
+	playerMoe1->getLearnedSkills()->add(SkillList[5]);
+	playerMoe1->getLearnedSkills()->add(SkillList[4]);
+	playerMoe1->getLearnedSkills()->add(SkillList[3]);
+	playerMoe1->getLearnedSkills()->add(SkillList[1]);
+	PlayerEntity->getBag()->add(playerMoe, 5);
+	PlayerEntity->getBag()->add(playerMoe1, 5);
 }
 
 GameplayState::~GameplayState()
@@ -86,7 +85,8 @@ bool GameplayState::EventHandle()
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 				break;
 			case SDLK_k:
-				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerTest));
+				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, &TrainerList[0]));
+
 				int debug = getposition();
 				std::cout << debug << std::endl;
 				break;

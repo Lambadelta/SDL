@@ -1,5 +1,13 @@
-4
-0 0 0 15 1 2 22 1 2 ,Asset/Entity/Trainers/YoungWoman.png;
-1 0 0 12 1 2 18 1 2 ,Asset/Entity/Trainers/BugCatcher.png;
-2 0 0 30 1 2 25 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-3 0 0 11 1 2 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+11
+0  0 0 15 01 02 22 1 2 ,Asset/Entity/Trainers/YoungWoman.png;
+1  0 0 12 01 02 18 1 2 ,Asset/Entity/Trainers/BugCatcher.png;
+2  0 0 30 01 02 25 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+3  0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+4  0 0 20 01 02 19 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+5  0 0 25 19 19 25 19 19 ,Asset/Entity/Trainers/IdleTrainer.png;
+6  0 0 27 01 02 27 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+7  0 0 17 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+8  0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+9  0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+10 0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+11 0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;

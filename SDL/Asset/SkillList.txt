@@ -1,8 +1,20 @@
-7
+19
 001 60 25 100 00 Bite,Normal,Bites with vicious fangs.;
 002 35 40 100 00 Scratch,Normal,Scratches the foe with sharp claws.;
 003 25 40 100 00 Ember,Fire,A weak fire attack.;
-057 60 20 100 00 Shadow Punch,Ghost, An unavoidable punch that is thrown from shadows.;
-058 80 15 100 00 Shadow Ball,Ghost,Hurls a black blobl that may lower Sp. Def;
-059 00 10 100 00 Confuse Ray,Ghost,A sinister ray that confuses the foe.;
-060 90 10 100 00 Phantom Force,Ghost,The user vanishes somewhere, then strikes the target on the next Turn. This move hits even if the target protects itself.;
+004 75 15 100 00 Fire Punch,Fire,A fiery punch.;
+005 75 15 100 00 Ice Punch,Ice,An icy punch.;
+006 80 20 85 00 Mega Punch,Normal,A strong punch thrown with incredible power.;
+007 40 35 100 00 Pound,Normal,Pounds the foe with forelegs or tail.;
+008 90 15 100 00 Thunderbolt,Electric,A powerful electric attack.;
+009 85 10 90 00 Blaze Kick,Fire,A kick with a high critical-hit ratio.;
+010 80 10 100 00 Dragon Claw,Dragon,Slashes the foe with sharp claws.;
+011 60 20 100 00 Water Pulse,Water,An attack with a pulsing blast of water.;
+012 120 10 85 00 Megahorn,Bug,A brutal ramming attack using out-thrust horns.;
+013 40 20 95 00 Fury Cutter,Bug,The foe is slashed with scythes or claws.;
+014 55 25 95 00 Razor Leaf,Grass,Cuts the enemy with leaves.;
+015 45 25 100 00 Vine Whip,Grass,Strikes the foe with slender, whiplike vines.;
+016 60 20 100 00 Shadow Punch,Ghost, An unavoidable punch that is thrown from shadows.;
+017 80 15 100 00 Shadow Ball,Ghost,Hurls a black blob.;
+018 110 5 80  00 Hydro Pump,Water,A powerful water- type attack.;
+019 0 25 100 00 Splash,Water,A weak splash.;

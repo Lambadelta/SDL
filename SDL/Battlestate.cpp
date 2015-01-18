@@ -9,6 +9,8 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	Name = "Battle";
 	Backgrounds = new Background("Asset/Maps/Background.png", renderer);
 	Menu = new Background("Asset/Menus/MenuBackground.png", renderer);
+	HealthBars = new Background("Asset/Menus/HealthBars.png", renderer);
+	Health = new Background("Asset/Menus/Healthbar.png", renderer);
 	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
 	Mix_PlayMusic(BattleTheme, -1);
 	PEMoemonNum = 0;
@@ -60,10 +62,13 @@ bool BattleState::EventHandle()
 				}
 				break;
 			case SDLK_s:
-				MenuSelection += 2;
-				if (MenuSelection >= 4)
+				if (MBattleMenu == false)
 				{
-					MenuSelection -=2;
+					MenuSelection += 2;
+					if (MenuSelection >= 4)
+					{
+						MenuSelection -= 2;
+					}
 				}
 				break;
 			case SDLK_RETURN:
@@ -100,52 +105,19 @@ bool BattleState::EventHandle()
 void BattleState::update(float deltat)
 {
 	dt = deltat;
-	PlayerAnim->updateTimer(dt);
-	if (PEntity->getBag()->get(PEMoemonNum)->getHealth() <= 0)
-	{
-		if (PEntity->getStorageSize() > (PEMoemonNum + 1))
-		{
-			PEMoemonNum += 1;
-			textInit();
-		}
-		else
-		{
-			GSManager->RemoveLast();
-		}
-		
-		
-	}
-	if (TEntity->getBag()->get(TEMoemonNum)->getHealth() <= 0)
-	{
-		if (TEntity->getStorageSize() > (TEMoemonNum + 1))
-		{
-			TEMoemonNum += 1;
-		}
-		else
-		{
-			GSManager->RemoveLast();
-		}
-	}
-	
-
+	PlayerAnim->updateTimer(dt);	
+	THealthBar = { 50, 55, (TEntity->getBag()->get(TEMoemonNum)->getHPPercentage() * 1.58), 12 };
+	PHealthBar = { 460, 333, (PEntity->getBag()->get(PEMoemonNum)->getHPPercentage() * 1.58), 12 };
 }
 
 void BattleState::draw()
 {
 	
-	SDL_Rect descRect;
-	descRect.x = 0;
-	descRect.y = 0;
-	descRect.w = 640;
-	descRect.h = 480;
+	SDL_Rect descRect = { 0, 0, 640, 480 };
 	SDL_Rect dummyRect = {0,0,320,100};
+	SDL_Rect dummyHealth = { 0, 0, 158, 12 };
 	SDL_Rect menuRect = { 320, 380, 320, 100 };
-	SDL_Rect ETrainerM;
-
-	ETrainerM.x = 400;
-	ETrainerM.y = 74;
-	ETrainerM.w = (64 * 3);
-	ETrainerM.h = (64 * 3);
+	SDL_Rect ETrainerM = { 400, 74, (64 * 3), (64 * 3) };
 
 	TEntity->getBag()->get(TEMoemonNum)->setDescRect(ETrainerM);
 	Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, descRect);
@@ -159,8 +131,13 @@ void BattleState::draw()
 	if (AnimationCount > 5)
 	{
 		Menu->callDraw(renderer, Menu->getTexture(), menuRect, dummyRect);
+		HealthBars->callDraw(renderer, HealthBars->getTexture(), descRect, descRect);
 		TEntity->getBag()->get(TEMoemonNum)->callDraw(renderer);
 		PEntity->getBag()->get(PEMoemonNum)->callDraw(renderer);
+
+	
+		Health->callDraw(renderer, Health->getTexture(), THealthBar, dummyHealth);
+		Health->callDraw(renderer, Health->getTexture(), PHealthBar, dummyHealth);
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
 		if (MBattleMenu == true)
 		{
@@ -264,7 +241,7 @@ void BattleState::textInit()
 	
 }
 
-void BattleState::useSkill()
+bool BattleState::useSkill()
 {
 		
 		if (PlayerTurn == true)
@@ -283,7 +260,15 @@ void BattleState::useSkill()
 			TEntity->getBag()->get(TEMoemonNum)->setHealth(damage);
 			std::cout << "You deal : " << damage << std::endl << "Enemy Health is :" << TEntity->getBag()->get(TEMoemonNum)->getHealth() << std::endl;
 			PlayerTurn = false;
-			useSkill();
+			checkTDefeat();
+			if (PlayerTurn == false)
+			{
+				useSkill();
+			}
+			else
+			{
+				return false;
+			}
 		}
 		else
 		{
@@ -294,6 +279,7 @@ void BattleState::useSkill()
 				(TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getAttack()) * Modifier);
 			PEntity->getBag()->get(PEMoemonNum)->setHealth(Enemydamage);
 			std::cout << "Your dealt : " << Enemydamage << std::endl << "Your Health is : " << PEntity->getBag()->get(PEMoemonNum)->getHealth() << std::endl;
+			checkPDefeat();
 			PlayerTurn = true;
 		}
 
@@ -334,11 +320,43 @@ void BattleState::AI()
 	}
 }
 
-//TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(1)->getText());
-	//TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(2)->getText());
-	//TSMenu.push_back(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(3)->getText());
+void BattleState::checkPDefeat()
+{
+	if (PEntity->getBag()->get(PEMoemonNum)->getHealth() <= 0)
+	{
+		if (PEntity->getStorageSize() > (PEMoemonNum + 1))
+		{
+			PEMoemonNum += 1;
+			textInit();
+
+		}
+		else
+		{
+			GSManager->RemoveLast();
+		}
 
 
+	}
+
+}
+
+void BattleState::checkTDefeat()
+{
+	if (TEntity->getBag()->get(TEMoemonNum)->getHealth() <= 0)
+	{
+		if (TEntity->getStorageSize() > (TEMoemonNum + 1))
+		{
+			TEMoemonNum += 1;
+			PlayerTurn = true;
+		
+		}
+		else
+		{
+			TEntity->setDefeated(true);
+			GSManager->RemoveLast();
+		}
+	}
+}
 /*
 Create a skill function inside battle
 Have it get the power, acc and name of skill.

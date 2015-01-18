@@ -58,7 +58,6 @@ private:
 	int initialspeed;
 	int speed;
 	float deltatime;
-
 };
 
 #endif

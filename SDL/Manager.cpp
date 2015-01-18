@@ -44,11 +44,11 @@ void Manager::update(float dt)
 void Manager::draw()
 {
 	/*vGS.at(0)->draw();*/
-	//for (unsigned int i = 0; i < vGS.size(); i++)
-	//{
-	//vGS.at(i)->draw();
+	for (unsigned int i = 0; i < vGS.size(); i++)
+	{
+	vGS.at(i)->draw();
 
-	//}
-	vGS.back()->draw();
+	}
+/*	vGS.back()->draw();*/
 }
 
