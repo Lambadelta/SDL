@@ -34,7 +34,7 @@ public:
 	@param std::string - Contains the Moemon's type
 	*/
 	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type, std::string path, SDL_Renderer* renderer);
-	Moemon(const Moemon& mm);
+	virtual Moemon* clone(){ return new Moemon(*this); };
 	~Moemon();
 	/**
 	@brief A method to set if the moemon is shiny
@@ -55,6 +55,7 @@ public:
 	std::string getName(){	return MoeMonName;	}
 	Text* getTextName() { if (Name == NULL) { return NULL; }  return Name; };
 	Text* getTextLevel() { if (Lvl == NULL) { return NULL; }  return Lvl; };
+	void createLevelText();
 	float getHPPercentage();
 	SkillStorage* getLearnedSkills();
 private:

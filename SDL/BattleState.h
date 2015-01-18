@@ -13,6 +13,7 @@
 class BattleState : public Gamestate
 {
 public:
+	BattleState(Manager* GSManager, SDL_Renderer*, Player*, Moemon*);
 	BattleState(Manager* GSManager, SDL_Renderer*, Player*, Trainer* );
 	~BattleState();
 
@@ -20,6 +21,7 @@ public:
 	void update(float dt);
 	void draw();
 	void menu();
+	void init();
 	void textInit();
 	bool useSkill();
 	float STAB();
@@ -31,6 +33,7 @@ private:
 
 	Player* PEntity;
 	Trainer* TEntity;
+	MoeMonStorage* Wild;
 
 	int TEMoemonNum;
 	int PEMoemonNum;
@@ -54,6 +57,8 @@ private:
 
 	SDL_Rect TNameLoc;
 	SDL_Rect PNameLoc;
+	SDL_Rect TLevelLoc;
+	SDL_Rect PLevelLoc;
 };
 
 

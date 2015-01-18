@@ -17,19 +17,14 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	initialspeed = speed;
 	fLoader->LoadMoeMonFile(MoeMonList, renderer);
 	fLoader->LoadSkillFile(SkillList,renderer);
-	fLoader->LoadTileFile(TileList);
-	fLoader->LoadMapFile(Route1, "Asset/Maps/Route 1.txt");
-	fLoader->LoadMapFile(Route1OB, "Asset/Maps/Route 1 OBJ.txt");
-	fLoader->LoadTrainerFile(TrainerList, MoeMonList,SkillList, renderer);
-	AnimTime = new Timer(1);
 
 	/*
-	
+
 	Debug Code
-	
+
 	*/
-	Moemon* playerMoe(MoeMonList[34]);
-	Moemon* playerMoe1(MoeMonList[30]);
+	Moemon* playerMoe = MoeMonList[34].clone();
+	Moemon* playerMoe1 = MoeMonList[15].clone();
 	playerMoe->getLearnedSkills()->add(SkillList[0]);
 	playerMoe->getLearnedSkills()->add(SkillList[1]);
 	playerMoe->getLearnedSkills()->add(SkillList[2]);
@@ -40,6 +35,16 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	playerMoe1->getLearnedSkills()->add(SkillList[1]);
 	PlayerEntity->getBag()->add(playerMoe, 5);
 	PlayerEntity->getBag()->add(playerMoe1, 5);
+	/*
+	End of Debug code
+	
+	*/
+	fLoader->LoadTileFile(TileList);
+	fLoader->LoadMapFile(Route1, "Asset/Maps/Route 1.txt");
+	fLoader->LoadMapFile(Route1OB, "Asset/Maps/Route 1 OBJ.txt");
+	fLoader->LoadTrainerFile(TrainerList, MoeMonList,SkillList, renderer);
+	AnimTime = new Timer(1);
+
 }
 
 GameplayState::~GameplayState()
@@ -85,6 +90,8 @@ bool GameplayState::EventHandle()
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 				break;
 			case SDLK_k:
+				//Moemon* wild(MoeMonList[4]);
+				//GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, wild));
 				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, &TrainerList[0]));
 
 				int debug = getposition();

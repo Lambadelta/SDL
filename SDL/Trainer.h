@@ -7,7 +7,8 @@
 class Trainer : public Entity
 {
 public:
-	Trainer(int, int, int, std::string, SDL_Renderer* renderer, MoeMonStorage*);
+	Trainer(int, int, int, std::string, SDL_Renderer*, MoeMonStorage*);
+	Trainer(MoeMonStorage*,std::string, SDL_Renderer*);
 	~Trainer();
 
 	void Move();

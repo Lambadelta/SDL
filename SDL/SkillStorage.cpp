@@ -7,7 +7,6 @@ SkillStorage::SkillStorage()
 
 SkillStorage::~SkillStorage()
 {
-
 	Storage.clear();
 }
 

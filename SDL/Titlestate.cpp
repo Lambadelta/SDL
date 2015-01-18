@@ -23,7 +23,7 @@ bool Titlestate::EventHandle()
 			switch (eve.key.keysym.sym)
 			{
 			case SDLK_RETURN:
-				GSManager->Add(new GameplayState(GSManager, renderer, 640, 480));
+				GSManager->Change(new GameplayState(GSManager, renderer, 640, 480));
 				break;
 			case SDLK_c:
 				GSManager->Add(new Creditsstate(GSManager, renderer));

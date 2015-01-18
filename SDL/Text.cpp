@@ -6,7 +6,7 @@ Text::Text()
 
 Text::~Text()
 {
-	SDL_DestroyTexture(textTexture);
+	//SDL_DestroyTexture(textTexture);
 }
 
 bool Text::create(std::string text, SDL_Renderer* renderer)

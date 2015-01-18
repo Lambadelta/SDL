@@ -27,53 +27,16 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 
 	LearnedMoves = new SkillStorage();
 	Name = new Text();
-	Lvl = new Text();
-	std::string lvl = std::to_string(Level);
 	Name->create(MoeMonName, renderer);
-	Lvl->create(lvl, renderer);
 
 }
 
-Moemon::Moemon(const Moemon& mm) : Entity(mm.path,mm.renderer)
-{
-	ID = mm.ID;
-	Health = mm.Health;
-	Attack = mm.Attack;
-	Defense = mm.Defense;
-	SpAtk = mm.SpAtk;
-	SpDef = mm.SpDef;
-	Speed = mm.Speed;
-	Level = mm.Level;
-	MoeMonName = mm.MoeMonName;
-	Type = mm.Type;
-	path = mm.path;
-	renderer = mm.renderer;
-
-	SrcRect.x = 64;
-	SrcRect.y = 0;
-	SrcRect.w = 64;
-	SrcRect.h = 64;
-
-	DescRect.x = 50;
-	DescRect.y = 188;
-	DescRect.w = (64 * 3);
-	DescRect.h = (64 * 3);
-
-
-
-	LearnedMoves = new SkillStorage();
-	Name = new Text();
-	Lvl = new Text();
-	std::string lvl = std::to_string(Level);
-	Name->create(MoeMonName, renderer);
-	Lvl->create(lvl, renderer);
-};
 
 Moemon::~Moemon()
 {
-	delete LearnedMoves;
-	delete Name;
-	delete Lvl;
+// 	delete LearnedMoves;
+// 	delete Name;
+// 	delete Lvl;
 }
 
 
@@ -122,4 +85,11 @@ float Moemon::getHPPercentage()
 	*/
 	float Percentage = ((float)Health / (float)maxHealth) * 100.0f;
 	return Percentage;
+}
+
+void Moemon::createLevelText()
+{
+	Lvl = new Text();
+	std::string lvl = std::to_string(Level);
+	Lvl->create(lvl, renderer);
 }

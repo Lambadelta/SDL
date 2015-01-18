@@ -15,9 +15,10 @@ void Manager::Add(Gamestate* GS)
 
 void Manager::Change(Gamestate* GS)
 {
-	for (int i = 0; i < sizeof(vGS); i++)
+	for (unsigned int i = 0; i < vGS.size();)
 	{
 		delete vGS.at(i);
+		i++;
 	}
 	vGS.clear();
 	Add(GS);

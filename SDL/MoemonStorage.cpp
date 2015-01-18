@@ -15,6 +15,7 @@ void MoeMonStorage::add(Moemon* New, int level)
 {
 	Moemon* temp = New;
 	temp->setLevel(level);
+	temp->createLevelText();
 	Storage.push_back(temp);
 }
 

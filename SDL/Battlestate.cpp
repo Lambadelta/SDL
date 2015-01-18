@@ -5,19 +5,17 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	renderer = Renderer;
 	PEntity = player;
 	TEntity = trainer;
-	PlayerAnim = new Timer(2.5);
-	Name = "Battle";
-	Backgrounds = new Background("Asset/Maps/Background.png", renderer);
-	Menu = new Background("Asset/Menus/MenuBackground.png", renderer);
-	HealthBars = new Background("Asset/Menus/HealthBars.png", renderer);
-	Health = new Background("Asset/Menus/Healthbar.png", renderer);
-	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
-	Mix_PlayMusic(BattleTheme, -1);
-	PEMoemonNum = 0;
-	TEMoemonNum = 0;
-	MBattleMenu = true;
-	PlayerTurn = true;
-	textInit();
+	Wild = NULL;
+	init();
+}
+BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* player, Moemon* wildMoemon) : Gamestate(GSManager, Renderer)
+{
+	renderer = Renderer;
+	PEntity = player;
+	Wild = new MoeMonStorage();
+	Wild->add(wildMoemon, wildMoemon->getLevel());
+	TEntity = new Trainer(Wild, "", renderer);
+	init();
 }
 
 BattleState::~BattleState()
@@ -32,6 +30,22 @@ BattleState::~BattleState()
 	TSMenu.clear();
 }
 
+void BattleState::init()
+{
+	PlayerAnim = new Timer(2.5);
+	Name = "Battle";
+	Backgrounds = new Background("Asset/Maps/Background.png", renderer);
+	Menu = new Background("Asset/Menus/MenuBackground.png", renderer);
+	HealthBars = new Background("Asset/Menus/HealthBars.png", renderer);
+	Health = new Background("Asset/Menus/Healthbar.png", renderer);
+	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
+	Mix_PlayMusic(BattleTheme, -1);
+	PEMoemonNum = 0;
+	TEMoemonNum = 0;
+	MBattleMenu = true;
+	PlayerTurn = true;
+	textInit();
+}
 bool BattleState::EventHandle()
 {
 	SDL_Event eve;
@@ -139,6 +153,11 @@ void BattleState::draw()
 		TEntity->getBag()->get(TEMoemonNum)->getTextName()->callDraw(renderer);
 		PEntity->getBag()->get(PEMoemonNum)->getTextName()->callDraw(renderer);
 	
+		TEntity->getBag()->get(TEMoemonNum)->getTextLevel()->setRect(TLevelLoc);
+		PEntity->getBag()->get(PEMoemonNum)->getTextLevel()->setRect(PLevelLoc);
+		TEntity->getBag()->get(TEMoemonNum)->getTextLevel()->callDraw(renderer);
+		PEntity->getBag()->get(PEMoemonNum)->getTextLevel()->callDraw(renderer);
+
 		Health->callDraw(renderer, Health->getTexture(), THealthBar, dummyHealth);
 		Health->callDraw(renderer, Health->getTexture(), PHealthBar, dummyHealth);
 		SDL_SetRenderDrawColor(renderer, 255, 0, 0, 0);
@@ -194,6 +213,8 @@ void BattleState::textInit()
 {
 	TNameLoc = { 15, 15, TEntity->getBag()->get(TEMoemonNum)->getTextName()->getWidth(), TEntity->getBag()->get(TEMoemonNum)->getTextName()->getHeight() };
 	PNameLoc = { 360, 290, PEntity->getBag()->get(PEMoemonNum)->getTextName()->getWidth(), PEntity->getBag()->get(PEMoemonNum)->getTextName()->getHeight() };
+	TLevelLoc = { 240, 15, TEntity->getBag()->get(TEMoemonNum)->getTextLevel()->getWidth(), TEntity->getBag()->get(TEMoemonNum)->getTextLevel()->getHeight() };
+	PLevelLoc = { 590, 290, PEntity->getBag()->get(PEMoemonNum)->getTextLevel()->getWidth(), PEntity->getBag()->get(PEMoemonNum)->getTextLevel()->getHeight() };
 	TMenu.clear();
 	TSMenu.clear();
 	Text* temp = new Text();
@@ -257,7 +278,7 @@ bool BattleState::useSkill()
 
 			Formula was found here : http://bulbapedia.bulbagarden.net/wiki/Damage
 			*/
-			float Modifier = (STAB() * 1 * 2 * PlayerAnim->randNum(1, 2));
+			float Modifier = (STAB() * 1.0f * 1.5f * PlayerAnim->randNum(1, 2));
 			float damage = ((((2.0f * PEntity->getBag()->get(PEMoemonNum)->getLevel()) + 10.0f) / 200.0f) *
 				(PEntity->getBag()->get(PEMoemonNum)->getAttack() / TEntity->getBag()->get(TEMoemonNum)->getDefense()) *
 				(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack()) * Modifier);
@@ -278,7 +299,7 @@ bool BattleState::useSkill()
 		else
 		{
 			AI();
-			float Modifier = (STAB() * 1.0f * 2.0f * PlayerAnim->randNum(1, 2));
+			float Modifier = (STAB() * 1.0f * 1.5f * PlayerAnim->randNum(1, 2));
 			float Enemydamage = ((((2.0f * TEntity->getBag()->get(TEMoemonNum)->getLevel()) + 10.0f) / 200.0f) *
 				(PEntity->getBag()->get(PEMoemonNum)->getDefense() / TEntity->getBag()->get(TEMoemonNum)->getAttack()) *
 				(TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getAttack()) * Modifier);
@@ -362,6 +383,9 @@ void BattleState::checkTDefeat()
 		}
 	}
 }
+
+
+
 /*
 Create a skill function inside battle
 Have it get the power, acc and name of skill.

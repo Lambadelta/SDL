@@ -6,12 +6,16 @@ Entity::Entity(std::string path, SDL_Renderer* renderer)
 }
 Entity::~Entity()
 {
-	SDL_DestroyTexture(EntityTexture);
+	//SDL_DestroyTexture(EntityTexture);
 	/*SDL_DestroyTexture(AnimaText);*/
 }
 
 bool Entity::loadIMG(std::string path, SDL_Renderer* renderer)
 {
+	if (path == "")
+	{
+		return false;
+	}
 	SDL_Surface* Temp = NULL;
 
 	Temp = IMG_Load(path.c_str());

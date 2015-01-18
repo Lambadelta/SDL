@@ -11,7 +11,7 @@ FileLoader::~FileLoader()
 }
 
 
-void FileLoader::LoadMoeMonFile(std::vector<Moemon*> &List, SDL_Renderer* renderer)
+void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List, SDL_Renderer* renderer)
 {
 	int Moemonsize = -1;
 	std::ifstream MoeMon("Asset/Entity/Moemon/MoeMon.txt");
@@ -47,7 +47,7 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon*> &List, SDL_Renderer* render
 		std::getline(MoeMon, type, ',');
 		std::getline(MoeMon, path, ';');
 
-		List.push_back(new Moemon(id, health, attack, defense, SpAtk, SpDef, Speed, level, name, type, path, renderer));
+		List.push_back(Moemon(id, health, attack, defense, SpAtk, SpDef, Speed, level, name, type, path, renderer));
 
 	}
 }
@@ -171,7 +171,7 @@ void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 
 }
 
-void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon*>& Ref,std::vector<Skill*>& SRef, SDL_Renderer* renderer)
+void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>& Ref,std::vector<Skill*>& SRef, SDL_Renderer* renderer)
 {
 	int Trainersize = -1;
 	std::ifstream TrainerList("Asset/Entity/Trainers/Trainer.txt");
@@ -203,15 +203,13 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon*
 		std::getline(TrainerList, remove, ',');
 		std::getline(TrainerList, image, ';');
 		MoeMonStorage * temp = new MoeMonStorage();
-		Moemon* temp1(Ref[mmone]);
+		Moemon* temp1 = Ref[mmone].clone();
 		temp1->getLearnedSkills()->add(SRef[mmones1]);
 		temp1->getLearnedSkills()->add(SRef[mmones2]);
-		temp1->setEnemy();
 		temp->add(temp1, 5);
-		Moemon* temp2(Ref[mmtwo]);
+		Moemon* temp2 = Ref[mmtwo].clone();
 		temp2->getLearnedSkills()->add(SRef[mmtwos1]);
 		temp2->getLearnedSkills()->add(SRef[mmtwos2]);
-		temp2->setEnemy();
 		temp->add(temp2, 5);
 
 		

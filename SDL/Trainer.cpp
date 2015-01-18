@@ -6,8 +6,20 @@ Trainer::Trainer(int ind, int xpos, int ypos, std::string path,SDL_Renderer* ren
 	x = xpos;
 	y = ypos;
 	defeated = false;
+
 	MoeMon = temp;
+	for (unsigned int i = 0; i < MoeMon->getStorage().size(); i++)
+	{
+		MoeMon->get(i)->setEnemy();
+	}
 }
+
+Trainer::Trainer(MoeMonStorage* wild, std::string path, SDL_Renderer* renderer) : Entity(path,renderer)
+{
+	wild->get(0)->setEnemy();
+	MoeMon = wild;
+}
+
 Trainer::~Trainer()
 {
 
