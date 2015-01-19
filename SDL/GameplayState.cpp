@@ -14,9 +14,13 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	MapID = 0;
 	PlayerEntity = new Player(Rect(256,256, 32, 32), Rect(0, 0, 50, 50), "Asset/Entity/Player/player.png", renderer);
 	Backgrounds = new Background("Asset/Maps/map.png", renderer);
+	BGM = Mix_LoadMUS("Asset/Music/Route110.wav");
+	Mix_PlayMusic(BGM, -1);
+	Mix_VolumeMusic(30);
 	Trainers = new Background("Asset/Entity/Trainers/OWtrainers.png", renderer);
 	speed = 32;	
 	initialspeed = speed;
+	//Heal = Mix_LoadWAV("Asset/Music/Healing.wav");
 	fLoader->LoadMoeMonFile(MoeMonList, renderer);
 	fLoader->LoadSkillFile(SkillList,renderer);
 
@@ -27,14 +31,14 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	*/
 	Moemon* playerMoe = MoeMonList[34].clone();
 	Moemon* playerMoe1 = MoeMonList[15].clone();
-	playerMoe->getLearnedSkills()->add(SkillList[0]);
-	playerMoe->getLearnedSkills()->add(SkillList[1]);
-	playerMoe->getLearnedSkills()->add(SkillList[2]);
-	playerMoe->getLearnedSkills()->add(SkillList[4]);
-	playerMoe1->getLearnedSkills()->add(SkillList[5]);
-	playerMoe1->getLearnedSkills()->add(SkillList[4]);
-	playerMoe1->getLearnedSkills()->add(SkillList[3]);
-	playerMoe1->getLearnedSkills()->add(SkillList[1]);
+	playerMoe->getLearnedSkills()->add(SkillList[1].clone());
+	playerMoe->getLearnedSkills()->add(SkillList[2].clone());
+	playerMoe->getLearnedSkills()->add(SkillList[3].clone());
+	playerMoe->getLearnedSkills()->add(SkillList[5].clone());
+	playerMoe1->getLearnedSkills()->add(SkillList[6].clone());
+	playerMoe1->getLearnedSkills()->add(SkillList[7].clone());
+	playerMoe1->getLearnedSkills()->add(SkillList[2].clone());
+	playerMoe1->getLearnedSkills()->add(SkillList[1].clone());
 	PlayerEntity->getBag()->add(playerMoe, 5);
 	PlayerEntity->getBag()->add(playerMoe1, 5);
 	/*
@@ -47,9 +51,12 @@ GameplayState::GameplayState(Manager* GSManager, SDL_Renderer* Renderer,int Widt
 	fLoader->LoadMapFile(Route1OW, "Asset/Maps/Route1OW.txt");
 	fLoader->LoadMapFile(Village, "Asset/Maps/Village.txt");
 	fLoader->LoadMapFile(VillageOB, "Asset/Maps/VillageOBJ.txt");
+	fLoader->LoadMapFile(Town, "Asset/Maps/Town.txt");
+	fLoader->LoadMapFile(TownOB, "Asset/Maps/TownOBJ.txt");
 	fLoader->LoadTrainerFile(TrainerList, MoeMonList,SkillList, renderer);
 	AnimTime = new Timer(1);
 	placeTrainers();
+	
 
 }
 
@@ -81,21 +88,25 @@ bool GameplayState::EventHandle()
 			{
 			case SDLK_w:
 				getcollision(getposition() - 39, "");
+				healMoemon(getposition() - 39);
 				PlayerEntity->callMoveUp(true, AnimTime, Mapy, speed);
 				wildEncounter();
 				break;
 			case SDLK_s:
 				getcollision(getposition() + 39, "down");
+				healMoemon(getposition() + 39);
 				PlayerEntity->callMoveDown(true, AnimTime, Mapy, speed);
 				wildEncounter();
 				break;
 			case SDLK_d:
 				getcollision(getposition() + 1, "");
+				healMoemon(getposition() + 1);
 				PlayerEntity->callMoveRight(true, AnimTime, Mapx, speed);
 				wildEncounter();
 				break;
 			case SDLK_a:
 				getcollision(getposition() - 1, "");
+				healMoemon(getposition() - 1);
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 				wildEncounter();
 				break;
@@ -128,10 +139,11 @@ void GameplayState::update(float dt)
 void GameplayState::draw()
 {
 
-	int y = 0;
-	int x = 0;
+	
 	if (MapID == 0)
 	{
+		int y = 0;
+		int x = 0;
 		for (unsigned int k = 0; k < Village.size(); k++)
 		{
 			SDL_Rect descRect;
@@ -150,6 +162,8 @@ void GameplayState::draw()
 	}
 	if (MapID == 1)
 	{
+		int y = 0;
+		int x = 0;
 		for (unsigned int i = 0; i < Route1.size(); i++)
 		{
 			SDL_Rect descRect;
@@ -169,6 +183,26 @@ void GameplayState::draw()
 		{
 			SDL_Rect trainerRect = { TrainerMap1[j]->getDescRect().x - Mapx, TrainerMap1[j]->getDescRect().y - Mapy, 32, 32 };
 			Trainers->callDraw(renderer, Trainers->getTexture(), trainerRect, TrainerMap1[j]->getSrcRect());
+		}
+	}
+	if (MapID == 2)
+	{
+		int y = 0;
+		int x = 0;
+		for (unsigned int o = 0; o < Town.size(); o++)
+		{
+			SDL_Rect descRect;
+			descRect.x = Town[o].getx() - Mapx;
+			descRect.y = Town[o].gety() - Mapy;
+			descRect.w = 32;
+			descRect.h = 32;
+			if (SDL_HasIntersection(&Camera, &descRect) == SDL_TRUE)
+			{
+				Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, TileList[Town[o].gettype()].getBox());
+				Backgrounds->callDraw(renderer, Backgrounds->getTexture(), descRect, TileList[TownOB[o].gettype()].getBox());
+			}
+
+			x++;
 		}
 	}
 	PlayerEntity->callDraw(renderer);
@@ -213,10 +247,7 @@ bool GameplayState::getcollision(int pos, std::string jump)
 		if (VillageOB[pos].gettype() == 326)
 		{
 			MapID = 1;
-			//SDL_Rect newLoc = { 1376 - Mapx, 544 - Mapy, 32, 32 };
-			//PlayerEntity->setDescRect(newLoc);
-// 			Mapx = 0;
-// 			Mapy = 0;
+			return true;
 		}
 		if (TileList[VillageOB[pos].gettype()].getisWall() == true)
 		{
@@ -236,6 +267,18 @@ bool GameplayState::getcollision(int pos, std::string jump)
 	}
 	if (MapID == 1)
 	{
+		if (Route1OB[pos].gettype() == 326)
+		{
+			MapID = 0;
+			return true;
+		}
+		if (Route1OB[pos].gettype() == 328)
+		{
+			MapID = 2;
+			Mapx = 0;
+			Mapy = 0;
+			return true;
+		}
 		if (TileList[Route1OB[pos].gettype()].getisWall() == true)
 		{
 
@@ -245,6 +288,24 @@ bool GameplayState::getcollision(int pos, std::string jump)
 		else
 		{
 			if (TileList[Route1OB[pos].gettype()].getisWall() == false)
+			{
+				speed = initialspeed;
+				return false;
+			}
+		}
+		return false;
+	}
+	if (MapID == 2)
+	{
+		if (TileList[TownOB[pos].gettype()].getisWall() == true)
+		{
+
+			speed = 0;
+			return true;
+		}
+		else
+		{
+			if (TileList[TownOB[pos].gettype()].getisWall() == false)
 			{
 				speed = initialspeed;
 				return false;
@@ -269,13 +330,13 @@ void GameplayState::wildEncounter()
 	{
 		if (Route1OB[getposition()].gettype() == 159)
 		{
-			int rng = AnimTime->randNum(1, 15);
+			int rng = AnimTime->randNum(1, 10);
 			if (rng == 1)
 			{
 				Moemon* wild = (MoeMonList[AnimTime->randNum(0, MoeMonList.size())]).clone();
 				wild->setLevel(AnimTime->randNum(5, 10));
-				wild->getLearnedSkills()->add(SkillList[AnimTime->randNum(0, SkillList.size())]);
-				wild->getLearnedSkills()->add(SkillList[AnimTime->randNum(0, SkillList.size())]);
+				wild->getLearnedSkills()->add(SkillList[AnimTime->randNum(0, SkillList.size())].clone());
+				wild->getLearnedSkills()->add(SkillList[AnimTime->randNum(0, SkillList.size())].clone());
 				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, wild));
 			}
 
@@ -285,22 +346,23 @@ void GameplayState::wildEncounter()
 
 void GameplayState::placeTrainers()
 {
-	for (unsigned int i = 0; i < Route1OW.size(); i++)
-	{
-		if (Route1OW[i].gettype() != 14)
+		for (unsigned int i = 0; i < Route1OW.size(); i++)
 		{
-			Trainer* temp = TrainerList[Route1OW[i].gettype()].clone();
-			temp->setDescRect(Route1OW[i].getrect());
-			TrainerMap1.push_back(temp);
+			if (Route1OW[i].gettype() < 14 && Route1OW[i].gettype() > 0)
+			{
+				Trainer* temp = TrainerList[Route1OW[i].gettype()].clone();
+				temp->setDescRect(Route1OW[i].getrect());
+				TrainerMap1.push_back(temp);
+			}
 		}
-	}
-	for (unsigned int j = 0; j < TrainerMap1.size(); j++)
-	{
-		for (unsigned int k = 0; k < TrainerMap1[j]->getStorageSize(); k++)
+		for (unsigned int j = 0; j < TrainerMap1.size(); j++)
 		{
-			TrainerMap1[j]->getBag()->get(k)->setLevel(AnimTime->randNum(5, 15));
+			for (unsigned int k = 0; k < TrainerMap1[j]->getStorageSize(); k++)
+			{
+				TrainerMap1[j]->getBag()->get(k)->setLevel(AnimTime->randNum(5, 15));
+			}
 		}
-	}
+	
 }
 
 bool GameplayState::trainerBattleCollision()
@@ -309,11 +371,38 @@ bool GameplayState::trainerBattleCollision()
 	{
 		for (unsigned int i = 0; i < TrainerMap1.size(); i++)
 		{
-			/*int pos = getTrainerPosition(i) + 1;*/
-			if (Route1OB[getTrainerPosition(i)].getindex() == getposition())
+			if (TrainerMap1[i]->isDefeated() == false)
 			{
-				GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
-				return true;
+				if (Route1OB[getTrainerPosition(i) + 1].getindex() == getposition())
+				{
+					GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
+					return true;
+				}
+				if (Route1OB[getTrainerPosition(i) + 2].getindex() == getposition())
+				{
+					GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
+					return true;
+				}
+				if (Route1OB[getTrainerPosition(i) + 3].getindex() == getposition())
+				{
+					GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
+					return true;
+				}
+					if (Route1OB[getTrainerPosition(i) - 1].getindex() == getposition())
+					{
+						GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
+						return true;
+					}
+					if (Route1OB[getTrainerPosition(i) - 2].getindex() == getposition())
+					{
+						GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
+						return true;
+					}
+					if (Route1OB[getTrainerPosition(i) - 3].getindex() == getposition())
+					{
+						GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, TrainerMap1[i]));
+						return true;
+					}
 			}
 		}
 	}
@@ -322,11 +411,27 @@ bool GameplayState::trainerBattleCollision()
 int GameplayState::getTrainerPosition(int currentTrainer)
 {
 	trainerBattleTest = TrainerMap1[currentTrainer]->getDescRect();
-	int x = (trainerBattleTest.x + Mapx) / 32;
-	int y = (trainerBattleTest.y + Mapy) / 32;
+	int x = (trainerBattleTest.x /*- Mapx*/) / 32;
+	int y = (trainerBattleTest.y /*+ Mapy*/) / 32;
 
-	int pos = ((y * 39) + x) + 1;
-	return pos;
+	int pos = ((y * 39) + x);
+return pos;
+}
+
+void GameplayState::healMoemon(int pos)
+{
+	if (MapID == 1)
+	{
+		if (Route1OB[pos].gettype() == 163 || Route1OB[pos].gettype() == 164)
+		{
+			for (unsigned int i = 0; i < PlayerEntity->getStorageSize(); i++)
+			{
+				PlayerEntity->getBag()->get(i)->fullHeal();
+				Mix_PlayChannel(-1, Heal, 0);
+			}
+		}
+	}
+
 }
 
 

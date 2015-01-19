@@ -7,6 +7,7 @@
 class MoeMonStorage
 {
 public:
+	virtual MoeMonStorage* clone() { return new MoeMonStorage(*this); };
 	~MoeMonStorage();
 
 	void add(Moemon*, int);

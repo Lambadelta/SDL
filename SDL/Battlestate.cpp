@@ -6,6 +6,7 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	PEntity = player;
 	TEntity = trainer;
 	Wild = NULL;
+	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
 	init();
 }
 BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* player, Moemon* wildMoemon) : Gamestate(GSManager, Renderer)
@@ -14,6 +15,7 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	PEntity = player;
 	Wild = new MoeMonStorage();
 	Wild->add(wildMoemon, wildMoemon->getLevel());
+	BattleTheme = Mix_LoadMUS("Asset/Music/WildBattle.wav");
 	TEntity = new Trainer(Wild, "", renderer);
 	init();
 }
@@ -21,6 +23,7 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 BattleState::~BattleState()
 {
 	Mix_HaltMusic();
+	Mix_FreeMusic(BattleTheme);
 	delete PlayerAnim;
 	delete Backgrounds;
 	delete Menu;
@@ -38,8 +41,8 @@ void BattleState::init()
 	Menu = new Background("Asset/Menus/MenuBackground.png", renderer);
 	HealthBars = new Background("Asset/Menus/HealthBars.png", renderer);
 	Health = new Background("Asset/Menus/Healthbar.png", renderer);
-	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
 	Mix_PlayMusic(BattleTheme, -1);
+	Mix_VolumeMusic(30);
 	PEMoemonNum = 0;
 	TEMoemonNum = 0;
 	MBattleMenu = true;
@@ -139,7 +142,7 @@ void BattleState::update(float deltat)
 
 void BattleState::draw()
 {
-	
+	checkPDefeat();
 	SDL_Rect descRect = { 0, 0, 640, 480 };
 	SDL_Rect dummyRect = {0,0,320,100};
 	SDL_Rect dummyHealth = { 0, 0, 158, 12 };
@@ -217,7 +220,7 @@ void BattleState::menu()
 	}
 	if (MBattleMenu == false)
 	{
-		PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->useSkill(MenuSelection);
+		/*PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->useSkill(MenuSelection);*/
 	}
 }
 
@@ -295,7 +298,7 @@ bool BattleState::useSkill()
 				(PEntity->getBag()->get(PEMoemonNum)->getAttack() / TEntity->getBag()->get(TEMoemonNum)->getDefense()) *
 				(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()->getSkill(MenuSelection)->getAttack()) * Modifier);
 
-			TEntity->getBag()->get(TEMoemonNum)->setHealth(damage);
+			TEntity->getBag()->get(TEMoemonNum)->setHealth((damage / 1.5f));
 			std::cout << "You deal : " << damage << std::endl << "Enemy Health is :" << TEntity->getBag()->get(TEMoemonNum)->getHealth() << std::endl;
 			PlayerTurn = false;
 			checkTDefeat();
@@ -315,7 +318,7 @@ bool BattleState::useSkill()
 			float Enemydamage = ((((2.0f * TEntity->getBag()->get(TEMoemonNum)->getLevel()) + 10.0f) / 200.0f) *
 				(PEntity->getBag()->get(PEMoemonNum)->getDefense() / TEntity->getBag()->get(TEMoemonNum)->getAttack()) *
 				(TEntity->getBag()->get(TEMoemonNum)->getLearnedSkills()->getSkill(EnemySelection)->getAttack()) * Modifier);
-			PEntity->getBag()->get(PEMoemonNum)->setHealth(Enemydamage);
+			PEntity->getBag()->get(PEMoemonNum)->setHealth(Enemydamage / 2);
 			std::cout << "Your dealt : " << Enemydamage << std::endl << "Your Health is : " << PEntity->getBag()->get(PEMoemonNum)->getHealth() << std::endl;
 			checkPDefeat();
 			PlayerTurn = true;
@@ -370,7 +373,7 @@ void BattleState::checkPDefeat()
 		}
 		else
 		{
-			GSManager->RemoveLast();
+			GSManager->Change(new Titlestate(GSManager, renderer));
 		}
 
 
@@ -385,16 +388,20 @@ void BattleState::checkTDefeat()
 		if (TEntity->getStorageSize() > (TEMoemonNum + 1))
 		{
 			TEMoemonNum += 1;
+			PEntity->getBag()->get(PEMoemonNum)->addEXP((TEntity->getBag()->get(TEMoemonNum)->getLevel() / PEntity->getBag()->get(PEMoemonNum)->getLevel()) * 10);
 			PlayerTurn = true;
 		
 		}
 		else
 		{
 			TEntity->setDefeated(true);
+			PEntity->getBag()->get(PEMoemonNum)->addEXP((TEntity->getBag()->get(TEMoemonNum)->getLevel() / PEntity->getBag()->get(PEMoemonNum)->getLevel()) * 10);
 			for (int i = 0; i < TEntity->getStorageSize(); i++)
 			{
 				TEntity->getBag()->get(i)->cleanup();
+
 			}
+			
 			GSManager->RemoveLast();
 		}
 	}

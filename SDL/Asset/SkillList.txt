@@ -1,4 +1,5 @@
-19
+20
+000 00 00 000 00 Dummy,Dummy,Dummy Text.;
 001 60 25 100 00 Bite,Normal,Bites with vicious fangs.;
 002 35 40 100 00 Scratch,Normal,Scratches the foe with sharp claws.;
 003 25 40 100 00 Ember,Fire,A weak fire attack.;

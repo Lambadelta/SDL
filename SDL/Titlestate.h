@@ -38,6 +38,7 @@ public:
 private:
 
 	Background* Menu;
+	Mix_Music* Title;
 
 };
 #endif

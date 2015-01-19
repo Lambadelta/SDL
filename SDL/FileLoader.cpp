@@ -50,9 +50,10 @@ void FileLoader::LoadMoeMonFile(std::vector<Moemon> &List, SDL_Renderer* rendere
 		List.push_back(Moemon(id, health, attack, defense, SpAtk, SpDef, Speed, level, name, type, path, renderer));
 
 	}
+	MoeMon.close();
 }
 
-void FileLoader::LoadSkillFile(std::vector<Skill*>& List, SDL_Renderer* renderer)
+void FileLoader::LoadSkillFile(std::vector<Skill>& List, SDL_Renderer* renderer)
 {
 	int Skillsize = -1;
 	std::ifstream SkillList("Asset/SkillList.txt");
@@ -85,10 +86,11 @@ void FileLoader::LoadSkillFile(std::vector<Skill*>& List, SDL_Renderer* renderer
 		std::getline(SkillList, type, ',');
 		std::getline(SkillList, description, ';');
 
-		List.push_back(new Skill(id, power, cost, acc, statusinflict,name, type, description,renderer));
+		List.push_back(Skill(id, power, cost, acc, statusinflict,name, type, description,renderer));
 
 
 	}
+	SkillList.close();
 }
 void FileLoader::LoadTileFile(std::vector<Tile>& List)
 {
@@ -121,6 +123,7 @@ void FileLoader::LoadTileFile(std::vector<Tile>& List)
 
 		List.push_back(Tile(x, y, id, collision));
 	}
+	TileList.close();
 }
 
 void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
@@ -167,11 +170,11 @@ void FileLoader::LoadMapFile(std::vector<Maptile>& Map, std::string path)
 		Map.push_back(Maptile(j, x * 32, y * 32, type));
 		x++;
 	}
-		
+	MapCoord.close();
 
 }
 
-void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>& Ref,std::vector<Skill*>& SRef, SDL_Renderer* renderer)
+void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>& Ref,std::vector<Skill>& SRef, SDL_Renderer* renderer)
 {
 	int Trainersize = -1;
 	std::ifstream TrainerList("Asset/Entity/Trainers/Trainer.txt");
@@ -206,18 +209,21 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>
 		std::getline(TrainerList, remove, ',');
 		std::getline(TrainerList, image, ';');
 		MoeMonStorage * temp = new MoeMonStorage();
+		SkillStorage* temp1 = new SkillStorage();
+		SkillStorage* temp2 = new SkillStorage();
 		temp->add(Ref[mmone].clone(), level1);
-		temp->get(0)->getLearnedSkills()->add(SRef[mmones1]);
-		temp->get(0)->getLearnedSkills()->add(SRef[mmones2]);
-
+		temp1->add(SRef[mmones1].clone());
+		temp1->add(SRef[mmones2].clone());
 		temp->add(Ref[mmtwo].clone(), level2);
-		temp->get(1)->getLearnedSkills()->add(SRef[mmtwos1]);
-		temp->get(1)->getLearnedSkills()->add(SRef[mmtwos2]);
-
-		
-		List.push_back(Trainer(id, (x * 20), (y * 20), image, renderer, temp));
+		temp2->add(SRef[mmtwos1].clone());
+		temp2->add(SRef[mmtwos2].clone());
+		temp->get(0)->setLearnedSkills(temp1);
+		temp->get(1)->setLearnedSkills(temp2);
+		List.push_back(Trainer(id, (x * 20), (y * 20), image, renderer, temp->clone()));
+		//delete temp;
 
 
 
 	}
+	TrainerList.close();
 }

@@ -24,7 +24,7 @@ public:
 	void wildEncounter();
 	void placeTrainers();
 	int getposition();
-
+	void healMoemon(int);
 	bool trainerBattleCollision();
 	int getTrainerPosition(int);
 	Trainer* TrainerTest;
@@ -37,7 +37,7 @@ private:
 	///A vector of Moemon that stores all the Moemon the application will use
 	std::vector<Moemon> MoeMonList;
 	///A vector of Skills that stores all of the MoeMon moves the application will use
-	std::vector<Skill*> SkillList;
+	std::vector<Skill> SkillList;
 	///A vector of Tiles that stores all of the tiles the application will use
 	std::vector<Tile> TileList;
 	std::vector<Trainer> TrainerList;
@@ -46,6 +46,8 @@ private:
 	std::vector<Maptile> Route1OW;
 	std::vector<Maptile> Village;
 	std::vector<Maptile> VillageOB;
+	std::vector<Maptile> Town;
+	std::vector<Maptile> TownOB;
 	std::vector<Trainer*> TrainerMap1;
 	///A Player object 
 	Player* PlayerEntity;
@@ -53,6 +55,8 @@ private:
 	Background* Backgrounds;
 	Background* Trainers;
 
+	Mix_Chunk* Heal;
+	Mix_Music* BGM;
 
 	SDL_Rect Camera;
 

@@ -9,6 +9,7 @@
 #include "Background.h"
 #include <SDL_mixer.h>
 #include "Text.h"
+#include "Titlestate.h"
 
 class BattleState : public Gamestate
 {

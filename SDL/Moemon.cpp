@@ -15,6 +15,7 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 	path = pathin;
 	renderer = rendererin;
 
+	EXP = 0;
 	SrcRect.x = 0;
 	SrcRect.y = 0;
 	SrcRect.w = 64;
@@ -89,4 +90,16 @@ void Moemon::cleanup()
 	delete Name;
 	delete Lvl;
 	delete LearnedMoves;
+}
+
+void Moemon::checkIfLeveled()
+{
+	EXPtoLVL = Level * 10;
+
+	if (EXP >= EXPtoLVL)
+	{
+		Level += 1;
+		std::string lvl = std::to_string(Level);
+		Lvl->create(lvl, renderer);
+	}
 }

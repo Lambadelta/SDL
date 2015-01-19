@@ -8,6 +8,7 @@ class Skill
 {
 public:
 	Skill(int, int, int, int, int, std::string, std::string, std::string, SDL_Renderer*);
+	virtual Skill* clone() { return new Skill(*this); }
 	~Skill();
 
 	std::string getDescription();

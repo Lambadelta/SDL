@@ -3,11 +3,15 @@
 Titlestate::Titlestate(Manager* GSManager, SDL_Renderer* renderer) : Gamestate(GSManager, renderer)
 {
 	Menu = new Background("Asset/Menus/TitleMenu.png", renderer);
+	Title = Mix_LoadMUS("Asset/Music/Title.wav");
+	Mix_PlayMusic(Title, -1);
+	Mix_VolumeMusic(30);
 }
 
 Titlestate::~Titlestate()
 {
 	delete Menu;
+	Mix_FreeMusic(Title);
 }
 
 bool Titlestate::EventHandle()

@@ -12,14 +12,14 @@
 010 45 30 35 20 20 45 01   ,Caterpie  ,Grass,Asset/Entity/Moemon/Caterpie.png;
 011 50 20 55 25 25 30 01   ,Metapod   ,Grass,Asset/Entity/Moemon/Metapod.png;
 012 60 45 50 80 80 70 01   ,Butterfree,Grass,Asset/Entity/Moemon/Butterfree.png;
-013 40 35 30 20 20 50 01   ,Weedle	  ,Grass,Asset/Entity/Moemon/Weedle.png;
+013 40 35 30 20 20 50 01   ,Weedle,Grass,Asset/Entity/Moemon/Weedle.png;
 014 45 25 50 25 25 35 01   ,Kakuna    ,Grass,Asset/Entity/Moemon/Kakuna.png;
 015 65 80 40 45 80 75 01   ,Beedrill  ,Grass,Asset/Entity/Moemon/Beedrill.png;
-016 40 45 40 35 35 56 01   ,Pidgey	  ,Flying,Asset/Entity/Moemon/Pidgey.png;
+016 40 45 40 35 35 56 01   ,Pidgey,Flying,Asset/Entity/Moemon/Pidgey.png;
 017 63 60 55 50 50 71 01   ,Pidgeotto ,Flying,Asset/Entity/Moemon/Pidgeotto.png;
 018 83 80 75 70 70 91 01   ,Pidgeot   ,Flying,Asset/Entity/Moemon/Pidgeot.png;
-019 35 55 30 55 40 90 01   ,Pikachu	  ,Electric,Asset/Entity/Moemon/Pikachu.png;
-020 60 90 55 90 80 100 01  ,Raichu	  ,Electric,Asset/Entity/Moemon/Raichu.png;
+019 35 55 30 55 40 90 01   ,Pikachu,Electric,Asset/Entity/Moemon/Pikachu.png;
+020 60 90 55 90 80 100 01  ,Raichu,Electric,Asset/Entity/Moemon/Raichu.png;
 021 55 55 50 45 65 55 01   ,Eevee     ,Normal,Asset/Entity/Moemon/Eevee.png;
 022 65 65 60 110 95 130 01 ,Jolteon   ,Electric,Asset/Entity/Moemon/Jolteon.png;
 023 30 35 30 100 35 80 01  ,Gastly    ,Ghost,Asset/Entity/Moemon/Gastly.png;

@@ -3,6 +3,7 @@
 
 #include <SDL.h>
 #include <string>
+#include <SDL_mixer.h>
 
 class Manager;
 

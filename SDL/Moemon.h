@@ -55,8 +55,11 @@ public:
 	std::string getName(){	return MoeMonName;	}
 	Text* getTextName() { if (Name == NULL) { return NULL; }  return Name; };
 	Text* getTextLevel() { if (Lvl == NULL) { return NULL; }  return Lvl; };
+	void setLearnedSkills(SkillStorage* in){ LearnedMoves = in; };
 	void createLevelText();
 	float getHPPercentage();
+	void addEXP(int xp){ EXP += xp; checkIfLeveled(); };
+	void checkIfLeveled();
 	SkillStorage* getLearnedSkills();
 private:
 	///An int containing the ID of the Moemon
@@ -75,6 +78,9 @@ private:
 	int SpDef;
 	///An int containing the base Speed of the Moemon
 	int Speed;
+
+	int EXP;
+	int EXPtoLVL;
 
 	int maxHealth;
 	///A string containing the Moemon's name
