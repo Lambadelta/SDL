@@ -18,11 +18,15 @@ public:
 
 
 	bool EventHandle();
-	void update(float dt);
+	void update(float);
 	void draw();
 	bool getcollision(int, std::string);
-
+	void wildEncounter();
+	void placeTrainers();
 	int getposition();
+
+	bool trainerBattleCollision();
+	int getTrainerPosition(int);
 	Trainer* TrainerTest;
 
 private:
@@ -39,17 +43,23 @@ private:
 	std::vector<Trainer> TrainerList;
 	std::vector<Maptile> Route1;
 	std::vector<Maptile> Route1OB;
-	
+	std::vector<Maptile> Route1OW;
+	std::vector<Maptile> Village;
+	std::vector<Maptile> VillageOB;
+	std::vector<Trainer*> TrainerMap1;
 	///A Player object 
 	Player* PlayerEntity;
 	///A background object (subject to change)
 	Background* Backgrounds;
+	Background* Trainers;
+
 
 	SDL_Rect Camera;
 
 	Timer* AnimTime;
 
-	SDL_Rect test;
+	SDL_Rect collisionTest;
+	SDL_Rect trainerBattleTest;
 	int Mapx = 0;
 	int Mapy = 0;
 	int SCREEN_WIDTH;
@@ -58,6 +68,7 @@ private:
 	int initialspeed;
 	int speed;
 	float deltatime;
+	int MapID;
 };
 
 #endif

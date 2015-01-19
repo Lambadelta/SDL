@@ -1,13 +1,34 @@
-11
-0  0 0 15 01 02 22 1 2 ,Asset/Entity/Trainers/YoungWoman.png;
-1  0 0 12 01 02 18 1 2 ,Asset/Entity/Trainers/BugCatcher.png;
-2  0 0 30 01 02 25 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-3  0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-4  0 0 20 01 02 19 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-5  0 0 25 19 19 25 19 19 ,Asset/Entity/Trainers/IdleTrainer.png;
-6  0 0 27 01 02 27 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-7  0 0 17 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-8  0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-9  0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-10 0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
-11 0 0 11 01 02 13 1 2 ,Asset/Entity/Trainers/IdleTrainer.png;
+14
+00 00 00 00 00 00 00 00 00 00 00 ,Asset/Entity/Trainers/Dummy.png;
+01 03 02 15 06 01 02 22 07 01 02 ,Asset/Entity/Trainers/YoungWoman.png;
+02 03 03 12 07 01 02 18 05 01 02 ,Asset/Entity/Trainers/BugCatcher.png;
+03 01 00 30 08 01 02 25 08 01 02 ,Asset/Entity/Trainers/MaleScientist.png;
+04 01 08 11 06 01 02 13 09 01 02 ,Asset/Entity/Trainers/YoungBoy.png;
+05 00 06 20 10 01 02 19 10 01 02 ,Asset/Entity/Trainers/YoungScientist.png;
+06 03 05 25 14 19 19 25 12 19 19 ,Asset/Entity/Trainers/MartialArtist.png;
+07 03 06 27 15 01 02 27 17 01 02 ,Asset/Entity/Trainers/YoungScientist.png;
+08 00 05 17 16 01 02 13 15 01 02 ,Asset/Entity/Trainers/MartialArtist.png;
+09 03 08 11 15 01 02 13 18 01 02 ,Asset/Entity/Trainers/PsychicWoman.png;
+10 03 09 11 19 01 02 13 20 01 02 ,Asset/Entity/Trainers/PsychicMan.png;
+11 01 08 11 20 01 02 13 21 01 02 ,Asset/Entity/Trainers/PsychicWoman.png;
+12 01 09 11 21 01 02 13 22 01 02 ,Asset/Entity/Trainers/PsychicMan.png;
+13 00 07 11 25 01 02 11 27 01 02 ,Asset/Entity/Trainers/GymLeader.png;
+14 00 00 00 00 00 00 00 00 00 00 ,Asset/Entity/Trainers/Dummy.png;
+
+/*
+Reads in 
+
+ID
+Xpos
+Ypos
+Moemon
+Moemon level
+Moemon Skill 
+Moemon Skill
+Moemon
+Moemon Level
+Moemon Skill
+Moemon Skill,
+Sprite;
+
+*/

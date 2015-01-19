@@ -27,7 +27,7 @@ public:
 	Only derived objects will call this.
 
 	*/
-	Entity(std::string path, SDL_Renderer* renderer);
+	Entity(std::string, SDL_Renderer*);
 	/**
 	@brief Deconstructs an Entity object
 
@@ -43,7 +43,7 @@ public:
 	*/
 	bool loadIMG(std::string, SDL_Renderer*);
 
-	bool Entity::loadIMGA(std::string path, SDL_Renderer* renderer);
+	bool Entity::loadIMGA(std::string, SDL_Renderer*);
 	/**
 	@brief A method to get the texture from the object
 
@@ -66,6 +66,7 @@ public:
 	@returns SDL_Rect
 	*/
 	SDL_Rect getSrcRect();
+	void setDescRect(SDL_Rect i) { DescRect = i; };
 
 protected:
 

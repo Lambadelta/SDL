@@ -7,7 +7,6 @@
 class MoeMonStorage
 {
 public:
-	MoeMonStorage();
 	~MoeMonStorage();
 
 	void add(Moemon*, int);

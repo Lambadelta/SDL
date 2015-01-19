@@ -3,8 +3,7 @@
 Trainer::Trainer(int ind, int xpos, int ypos, std::string path,SDL_Renderer* renderer, MoeMonStorage* temp) : Entity(path, renderer)
 {
 	index = ind;
-	x = xpos;
-	y = ypos;
+	SrcRect = { xpos, ypos, 20, 20 };
 	defeated = false;
 
 	MoeMon = temp;

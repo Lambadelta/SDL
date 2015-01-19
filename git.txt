@@ -1,0 +1,360 @@
+2015-01-18 16:06:38 +0000 - Harry Friend: Fixed issues with moemon
+Moemon now create new instances of themselves for trainers to prevent
+them sharing a health pool.
+Trainer sprite now displays.
+Destructors for moemon and entity have been commented out for now.
+
+
+2015-01-18 03:47:52 +0000 - Harry Friend: Create credits page
+Created credits state.
+Created credits image.
+
+
+2015-01-18 03:20:03 +0000 - Harry Friend: Created title menu
+Created state to manage title screen
+Created title menu image
+
+
+2015-01-18 02:06:34 +0000 - Harry Friend: Health Bars
+Added Health bars that scale to HP.
+Fixes various bugs.
+
+
+2015-01-17 02:13:03 +0000 - Harry Friend: Updated Battle Formula
+Changed battle formula, and some return methods to ensure that the
+damage dealt was accurate, and that both the AI, and player used the
+same formula.
+AI works now that the player can die.
+Need to fix the condition checking for when player dies.
+
+
+2015-01-17 01:42:28 +0000 - Harry Friend: Battlestate Update
+Player can now select skills and do damage to enemy.
+Enemy can select a skill, and do damage.
+If enemy dies then battle exits.
+Fixed issue with moemon pointers with a copy constructor.
+Need to add health bars to battlestate.
+Need to finialize trainers, and place them on the map.
+Create gym map, center map, and two town maps.
+Add random pokemon encounters.
+
+
+2015-01-16 11:07:10 +0000 - Harry Friend: Updated Trainer.txt
+Added two new sprites to Trainer.txt for testing.
+
+
+2015-01-16 01:15:10 +0000 - Harry Friend: Updated
+Tested killing enemy moemon, and having their next one appear : was a
+success.
+Will look at creating text for all the names of items inside themselves.
+Working on getting skills to do damage.
+
+
+2015-01-15 15:34:42 +0000 - Harry Friend: Updated
+Added skill text
+shows which text is selected
+can change menu inside battle
+
+
+2015-01-15 00:56:25 +0000 - Harry Friend: Updated
+Added text functions
+Added skill storage
+
+
+2015-01-14 22:51:50 +0000 - Harry Friend: Fixed Battle
+Animation fixed
+Animation has overhang needs fixing
+
+
+2015-01-14 22:24:26 +0000 - Harry Friend: Updated Battle
+Bug with sprites
+
+
+2015-01-14 10:55:44 +0000 - Harry Friend: Update to battle
+Timer need update
+Test trainer sent in
+Test trainer moemon isn't loading
+
+
+2015-01-14 00:00:23 +0000 - Harry Friend: Update README.md
+
+
+2015-01-13 23:56:28 +0000 - Harry Friend: Update to battle
+Created battle start animation.
+Timer needs to be changed for it.
+Updated readme
+
+
+2015-01-12 17:18:43 +0000 - Harry Friend: Changed trainer tile names. Moved stuff
+Moved MoeMon.txt
+deleted old image
+Changed image names.
+
+
+2015-01-12 00:35:35 +0000 - Harry Friend: Added new tile
+Added new grass tile 327
+Grass on route 1 is now tile 327
+
+
+2015-01-09 21:25:53 +0000 - Harry Friend: Updated Route 1 (again)
+
+
+2015-01-07 12:53:11 +0000 - Harry Friend: Updated Route 1
+Made map smaller.
+Added more detail.
+Still Unfinished
+
+
+2015-01-05 19:53:55 +0000 - Harry Friend: Updated Map
+Added new tiles to route 1 OBJ map
+
+
+2015-01-05 11:50:47 +0000 - Harry Friend: Collision Working
+*Checks if tile is a passable one. If not speed = 0, if it is then move
+to that tile.
+*Removed old methods.
+*Removed SDL_Rect draw used for debugging
+
+
+2015-01-05 11:00:29 +0000 - Harry Friend: Map Positions
+*Maps are now created using maptiles
+*Mapx, and Mapy are used to give a relative location to both the map,
+and the character.
+*Function made to get the current index tile that the player is on.
+*Started collision function to test the next tile for possible
+collision.
+
+
+2015-01-04 03:11:23 +0000 - Harry Friend: Big Update
+Moved Rendering for gameplay to gameplay state
+Got State manager worker
+Started Router 1 map
+Updated Sprite Map
+Removed old test map
+Map now moves with player
+Added camera
+
+
+2014-12-27 05:25:37 +0000 - Harry Friend: Map Generation working
+Map generates from file.
+Map draws its X and Y correctly.
+Builds map currently 400 tiles +
+Added 00 tile as an empty tile.
+
+
+2014-12-27 03:00:25 +0000 - Harry Friend: Added tiles, and test map
+
+
+2014-12-03 08:11:47 +0000 - Harry Friend: added reset timer method
+Added new method to timer class
+
+
+2014-12-01 12:08:17 +0000 - Harry Friend: Fixed FileLoader SkillList
+**Fixed SkillList loading.
+**Currently loads in 4 ghost moves.
+**Added status element to skill type
+
+
+2014-11-29 18:50:27 +0000 - Harry Friend: Updated FileLoader, and created Skill class
+Fileloader will now load in Skills into the application.
+
+Needs doxygen commenting for skills
+
+
+2014-11-28 10:11:58 +0000 - Harry Friend: Delete Sprite.h
+
+
+2014-11-28 10:11:48 +0000 - Harry Friend: Delete Sprite.cpp
+
+
+2014-11-28 10:11:34 +0000 - Harry Friend: Delete Animation.cpp
+
+
+2014-11-28 10:11:24 +0000 - Harry Friend: Delete Animation.h
+
+
+2014-11-28 10:11:11 +0000 - Harry Friend: Delete Vec4.h
+
+
+2014-11-28 10:10:58 +0000 - Harry Friend: Delete Texture.h
+
+
+2014-11-28 10:10:21 +0000 - Harry Friend: Removed old Texture class
+
+
+2014-11-27 17:36:17 +0000 - Harry Friend: Created Doxygen Documentation
+**Did Doxygen documentation for the code.
+
+
+2014-11-27 10:03:48 +0000 - Harry Friend: Deleted Old txt
+
+
+2014-11-27 08:50:17 +0000 - Harry Friend: Updated MoeMon.txt
+*Added new values for MoeMon.txt to read in.
+*Base Health,attack,defense and other stats will be rewritten as the
+current values are just placeholders
+
+
+2014-11-26 13:44:54 +0000 - Harry Friend: Fixed Fileloader
+*FileLoader now loads in 36 different MoeMon
+*FileLoader will soon load in the sprite maps for these moemon.
+*Create method to get all moemon surfaces textured.
+*Load in skill list.
+
+
+2014-11-26 09:16:13 +0000 - Harry Friend: Created Fileloader class and MoeMon Class
+*Created Fileloader
+*Currently doesn't work
+*Need to change how the file is read into the code used to create the
+MoeMon class
+*MoeMon class created
+
+
+2014-11-18 18:01:14 +0000 - Harry Friend: Removed animation
+removed animation and looking at changing event handling. Character
+animation is handle by a timer
+
+
+2014-10-27 23:13:03 +0000 - Harry Friend: Created two new sprite sheets
+Used Pokemon sprites to create 2 new sprite sheets to be used for
+implementing and testing a trainer system.
+
+
+2014-10-27 21:10:16 +0000 - Harry Friend: Updated Readme (Again)
+Github Formatting was wrong
+
+2014-10-27 21:07:55 +0000 - Harry Friend: Updated Readme
+Added a To do list to the readme
+
+
+2014-10-27 20:59:34 +0000 - Harry Friend: Added Timer
+*Fixed animations by creating a timer with 1 tick
+*Changed character speed to match up with animation
+*Changed window size
+
+#To do
+*Create Background
+*Add Interactive Objects
+*Look into double buffering through SDL window
+
+
+2014-10-27 17:53:41 +0000 - Harry Friend: Changed player sprite
+Using sprite sheet. Need timer for animations.
+
+
+2014-10-24 19:30:28 +0100 - Harry Friend: Changed file location for assets
+Added new assets for possible use.
+
+
+2014-10-23 21:41:07 +0100 - Harry Friend: Cleaned up player movement
+Changed from nested if statements, and removed the cout statements from
+the movement if
+
+
+2014-10-23 12:53:15 +0100 - Harry Friend: Created Player header
+Player now inherit Entity, and uses a new movement method.
+
+
+2014-10-23 02:23:59 +0100 - Harry Friend: Updated timer
+Passed timer into entity to move the character along with speed.
+
+
+2014-10-23 00:49:04 +0100 - Harry Friend: Changed Timer
+Changed getTime to updateTime which creates fDelta that can be obtained
+through a method in the class timer.
+
+Needs Testing
+
+
+2014-10-21 00:49:19 +0100 - Harry Friend: Changed timer
+Changed timer, and reverted entity movement.
+
+
+2014-10-20 23:57:44 +0100 - Harry Friend: Changed keyboard event + timer
+Implemented the timer into the main application. Still working out the
+bugs to make it limit the refresh to 60 fps. Keyboard has been changed
+to register when the button is pressed and released.
+
+
+2014-10-19 15:27:33 +0100 - Harry Friend: Started Tile Class
+Looking at reading in files for creating maps based on a tile system.
+
+
+2014-10-16 10:21:13 +0100 - Harry Friend: Created Git Readme File
+
+
+2014-10-16 00:45:38 +0100 - Harry Friend: Fixed Memory Leak
+*Delete the textures in LoadTexture after they are drawn.
+*Created a calltexture method to store textures inside entity
+
+
+2014-10-15 18:09:21 +0100 - Harry Friend: Moved move parts into LoadTexture
+
+
+2014-10-15 11:47:29 +0100 - Harry Friend: Removed static loadtexture
+Changed from using static methods to a class texture loading with a
+class pointer for LoadTexture called TextureLoader.
+
+
+2014-10-13 20:11:37 +0100 - Harry Friend: Updated Movement and Query
+Changed movement to 5.0f, and moved query to the loadrender cpp.
+
+
+2014-10-13 16:01:26 +0100 - Harry Friend: Added basic movement
+Added basic movement to the Entity Class
+
+
+2014-10-13 15:28:55 +0100 - Harry Friend: Fixed Application and Texture Loading
+*Error was texture was being written with no width or height
+
+
+2014-10-11 00:26:21 +0100 - Harry Friend: Update
+
+
+2014-10-10 14:37:33 +0100 - Harry Friend: Linked classes to Application
+*Linked Animation, LoadTexture, EventHandler to the Application Class
+*Implemented methods directly into Application functions
+
+
+2014-10-10 09:36:51 +0100 - Harry Friend: Updated
+*Updated Application Header/CPP
+*Created EventHander header
+*Created Vec4 header
+
+
+2014-10-09 22:47:18 +0100 - Harry Friend: Created Application class
+Implementing the class methods into a class.
+
+
+2014-10-09 21:37:26 +0100 - Harry Friend: Splitting Texture class
+Changing the texture class into smaller, and more flexible classes to
+manage loading, and other functionality.
+
+
+2014-10-08 21:27:32 +0100 - Harry Friend: Update to Sprite Class
+
+
+2014-10-08 18:11:53 +0100 - Harry Friend: Starting the sprite class
+
+
+2014-10-07 22:18:47 +0100 - Harry Friend: Fixed Texture Class
+Finished creating and fixing the bugs in the texture class. added if
+statements to check for a NULL in the initialization of some of the
+functions.
+
+
+2014-10-07 20:33:26 +0100 - Harry Friend: Moved functions to Header
+Moved the functions found in SDL Main to class header Texture.h
+
+
+2014-10-07 13:52:53 +0100 - Harry Friend: Rest of the start project
+GitHub for Windows is buggy >.>
+
+
+2014-10-07 13:52:12 +0100 - Harry Friend: Starting SDL Uni
+Started doing the SDL setup for Programming for Graphic and Games
+
+
+2014-10-07 13:28:39 +0100 - Harry Friend: :lollipop: Added .gitattributes
+
+

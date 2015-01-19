@@ -14,7 +14,7 @@ This class is used to create a background object
 class Background
 {
 public:
-	Background(std::string path, SDL_Renderer* renderer);
+	Background(std::string, SDL_Renderer*);
 	~Background();
 	/**
 	@brief A method to get the background surface
@@ -30,7 +30,7 @@ public:
 	*/
 	SDL_Texture* getTexture();
 
-	bool callDraw(SDL_Renderer* Renderer, SDL_Texture* cTexture,SDL_Rect descRect, SDL_Rect srcRect);
+	bool callDraw(SDL_Renderer*, SDL_Texture*,SDL_Rect, SDL_Rect);
 
 	/**
 	@brief A method to get the background Rect

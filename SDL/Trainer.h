@@ -9,6 +9,7 @@ class Trainer : public Entity
 public:
 	Trainer(int, int, int, std::string, SDL_Renderer*, MoeMonStorage*);
 	Trainer(MoeMonStorage*,std::string, SDL_Renderer*);
+	virtual Trainer* clone(){ return new Trainer(*this); };
 	~Trainer();
 
 	void Move();
@@ -17,14 +18,8 @@ public:
 	void BattleAnimation(SDL_Renderer*);
 	int getStorageSize(){  return MoeMon->getStorage().size(); };
 
-	MoeMonStorage* getBag() 
-	{
-		return MoeMon;
-	};
-	const bool isDefeated() const
-	{
-		return defeated;
-	};
+	MoeMonStorage* getBag() {	return MoeMon;};
+	const bool isDefeated() const{ return defeated; };
 private:
 
 	MoeMonStorage* MoeMon;

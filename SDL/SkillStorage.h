@@ -5,7 +5,6 @@
 class SkillStorage
 {
 public:
-	SkillStorage();
 	~SkillStorage();
 	void add(Skill*);
 	void remove(int);

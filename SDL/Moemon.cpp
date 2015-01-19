@@ -15,7 +15,7 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 	path = pathin;
 	renderer = rendererin;
 
-	SrcRect.x = 64;
+	SrcRect.x = 0;
 	SrcRect.y = 0;
 	SrcRect.w = 64;
 	SrcRect.h = 64;
@@ -28,18 +28,8 @@ Moemon::Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef
 	LearnedMoves = new SkillStorage();
 	Name = new Text();
 	Name->create(MoeMonName, renderer);
-
+	createLevelText();
 }
-
-
-Moemon::~Moemon()
-{
-// 	delete LearnedMoves;
-// 	delete Name;
-// 	delete Lvl;
-}
-
-
 
 void Moemon::setShiny()
 {
@@ -92,4 +82,11 @@ void Moemon::createLevelText()
 	Lvl = new Text();
 	std::string lvl = std::to_string(Level);
 	Lvl->create(lvl, renderer);
+}
+
+void Moemon::cleanup()
+{
+	delete Name;
+	delete Lvl;
+	delete LearnedMoves;
 }

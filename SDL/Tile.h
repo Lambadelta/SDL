@@ -23,7 +23,7 @@ public:
 	@param int - An int containing the y axises
 	@param int - An int containing the type of tile
 	*/
-	Tile(int x, int y, int id, bool collision);
+	Tile(int, int, int, bool);
 	/**
 	@brief The deconstructor for the Tile object
 	*/

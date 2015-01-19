@@ -33,9 +33,8 @@ public:
 	@param std::string - Contains the Moemon's name
 	@param std::string - Contains the Moemon's type
 	*/
-	Moemon(int id, int health, int attack, int defense, int SpAtk, int SpDef, int Speed, int level, std::string name, std::string type, std::string path, SDL_Renderer* renderer);
+	Moemon(int, int, int, int, int, int , int, int , std::string, std::string, std::string, SDL_Renderer*);
 	virtual Moemon* clone(){ return new Moemon(*this); };
-	~Moemon();
 	/**
 	@brief A method to set if the moemon is shiny
 	
@@ -47,6 +46,7 @@ public:
 	void callDraw(SDL_Renderer*);
 	void setDescRect(SDL_Rect);
 	void setEnemy();
+	void cleanup();
 	int getHealth() { return Health; };
 	int getLevel() { return Level; };
 	float getAttack() { return (float)Attack; };

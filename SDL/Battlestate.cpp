@@ -93,17 +93,31 @@ bool BattleState::EventHandle()
 				
 				break;
 			case SDLK_d:
-				MenuSelection += 1;
-				if (MenuSelection >= 4)
+				if (MBattleMenu == true)
 				{
-					MenuSelection -= 1;
+					MenuSelection = 1;
+				}
+				if (MBattleMenu == false)
+				{
+					MenuSelection += 1;
+					if (MenuSelection > 3)
+					{
+						MenuSelection -= 1;
+					}
 				}
 				break;
 			case SDLK_a:
-				MenuSelection -= 1;
-				if (MenuSelection <= -1)
+				if (MBattleMenu == true)
 				{
-					MenuSelection += 1;
+					MenuSelection = 0;
+				}
+				if (MBattleMenu == false)
+				{
+					MenuSelection -= 1;
+					if (MenuSelection < 0)
+					{
+						MenuSelection += 1;
+					}
 				}
 				break;
 			case SDLK_k:
@@ -181,8 +195,6 @@ void BattleState::draw()
 			SDL_RenderDrawRect(renderer, &TSMenu[MenuSelection]->getRect());
 		}
 		SDL_SetRenderDrawColor(renderer, 0x0, 0x0, 0x0, 0x0);
-		//textManager->callDraw(renderer);
-		
 		
 	}
 }
@@ -228,13 +240,13 @@ void BattleState::textInit()
 	TMenu.push_back(temp);
 	TMenu.push_back(temp1);
 
-	SDL_Rect skill1 = { 350, 405, 0, 0 };
+	SDL_Rect skill1 = { 313, 405, 0, 0 };
 
-	SDL_Rect skill2 = { 465, 405, 0, 0 };
+	SDL_Rect skill2 = { 475, 405, 0, 0 };
 
-	SDL_Rect skill3 = { 350, 445, 0, 0 };
+	SDL_Rect skill3 = { 313, 445, 0, 0 };
 
-	SDL_Rect skill4 = { 465, 445, 0, 0 };
+	SDL_Rect skill4 = { 475, 445, 0, 0 };
 
 	for (int i = 0; i < sizeof(PEntity->getBag()->get(PEMoemonNum)->getLearnedSkills()); i++)
 	{
@@ -379,6 +391,10 @@ void BattleState::checkTDefeat()
 		else
 		{
 			TEntity->setDefeated(true);
+			for (int i = 0; i < TEntity->getStorageSize(); i++)
+			{
+				TEntity->getBag()->get(i)->cleanup();
+			}
 			GSManager->RemoveLast();
 		}
 	}

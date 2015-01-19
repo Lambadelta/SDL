@@ -187,6 +187,7 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>
 		int y = -1;
 		std::string image;
 		int mmone = -1;	    int mmtwo = -1;
+		int level1 = -1;		int level2 = -1;
 		int mmones1 = -1; int mmones2 = -1;
 		int mmtwos1 = -1; int mmtwos2 = -1;
 		std::string remove;
@@ -195,25 +196,26 @@ void FileLoader::LoadTrainerFile(std::vector<Trainer>& List, std::vector<Moemon>
 		TrainerList >> x;
 		TrainerList >> y;
 		TrainerList >> mmone;
+		TrainerList >> level1;
 		TrainerList >> mmones1;
 		TrainerList >> mmones2;
 		TrainerList >> mmtwo;
+		TrainerList >> level2;
 		TrainerList >> mmtwos1;
 		TrainerList >> mmtwos2;
 		std::getline(TrainerList, remove, ',');
 		std::getline(TrainerList, image, ';');
 		MoeMonStorage * temp = new MoeMonStorage();
-		Moemon* temp1 = Ref[mmone].clone();
-		temp1->getLearnedSkills()->add(SRef[mmones1]);
-		temp1->getLearnedSkills()->add(SRef[mmones2]);
-		temp->add(temp1, 5);
-		Moemon* temp2 = Ref[mmtwo].clone();
-		temp2->getLearnedSkills()->add(SRef[mmtwos1]);
-		temp2->getLearnedSkills()->add(SRef[mmtwos2]);
-		temp->add(temp2, 5);
+		temp->add(Ref[mmone].clone(), level1);
+		temp->get(0)->getLearnedSkills()->add(SRef[mmones1]);
+		temp->get(0)->getLearnedSkills()->add(SRef[mmones2]);
+
+		temp->add(Ref[mmtwo].clone(), level2);
+		temp->get(1)->getLearnedSkills()->add(SRef[mmtwos1]);
+		temp->get(1)->getLearnedSkills()->add(SRef[mmtwos2]);
 
 		
-		List.push_back(Trainer(id, x, y, image, renderer, temp));
+		List.push_back(Trainer(id, (x * 20), (y * 20), image, renderer, temp));
 
 
 

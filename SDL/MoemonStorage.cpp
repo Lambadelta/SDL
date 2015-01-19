@@ -1,11 +1,5 @@
 #include "MoemonStorage.h"
 
-
-MoeMonStorage::MoeMonStorage()
-{
-
-}
-
 MoeMonStorage::~MoeMonStorage()
 {
 	Storage.clear();

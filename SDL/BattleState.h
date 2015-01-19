@@ -13,12 +13,12 @@
 class BattleState : public Gamestate
 {
 public:
-	BattleState(Manager* GSManager, SDL_Renderer*, Player*, Moemon*);
-	BattleState(Manager* GSManager, SDL_Renderer*, Player*, Trainer* );
+	BattleState(Manager*, SDL_Renderer*, Player*, Moemon*);
+	BattleState(Manager*, SDL_Renderer*, Player*, Trainer* );
 	~BattleState();
 
 	bool EventHandle();
-	void update(float dt);
+	void update(float);
 	void draw();
 	void menu();
 	void init();

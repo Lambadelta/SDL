@@ -14,7 +14,7 @@ public:
 
 
 	bool EventHandle();
-	void update(float dt);
+	void update(float);
 	void draw();
 
 private:

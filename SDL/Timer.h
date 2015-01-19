@@ -17,7 +17,7 @@ public:
 	Takes in a float parameter to set up the timer.
 	@param float - Time for the timer
 	*/
-	Timer(float ms);
+	Timer(float);
 	/**
 	@brief The time class object deconstructor
 
@@ -30,7 +30,7 @@ public:
 	Takes in the parameter of delta time to update the timer.
 	@param float - A float containing the delta time
 	*/
-	void updateTimer(float DeltaTime);
+	void updateTimer(float);
 	/**
 	@brief A method for resetting the timer
 

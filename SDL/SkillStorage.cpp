@@ -1,10 +1,4 @@
 #include "SkillStorage.h"
-
-SkillStorage::SkillStorage()
-{
-
-}
-
 SkillStorage::~SkillStorage()
 {
 	Storage.clear();
