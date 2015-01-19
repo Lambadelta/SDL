@@ -1,21 +1,36 @@
-﻿Build started 19/01/2015 07:11:31.
+﻿Build started 19/01/2015 07:39:06.
      1>Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
-         H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameplayState.cpp
+         H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt Application.cpp Battlestate.cpp Creditsstatecpp.cpp GameplayState.cpp Gamestate.cpp Helpstate.cpp Manager.cpp "SDL Main.cpp" Titlestate.cpp
+         Titlestate.cpp
+         SDL Main.cpp
+         Manager.cpp
+         Helpstate.cpp
+         Gamestate.cpp
          GameplayState.cpp
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(398): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(396): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(399): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(400): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
      1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(401): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(402): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(403): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(404): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(425): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(427): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(441): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(443): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(582): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(381): warning C4715: 'GameplayState::getcollision' : not all control paths return a value
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(574): warning C4715: 'GameplayState::getTrainerPosition' : not all control paths return a value
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(552): warning C4715: 'GameplayState::trainerBattleCollision' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(402): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(423): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(425): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(439): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(441): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(575): warning C4018: '<' : signed/unsigned mismatch
+         Creditsstatecpp.cpp
+         Battlestate.cpp
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\battlestate.cpp(150): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\battlestate.cpp(151): warning C4244: 'initializing' : conversion from 'double' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\battlestate.cpp(312): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\battlestate.cpp(332): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\battlestate.cpp(368): warning C4244: '=' : conversion from 'float' to 'int', possible loss of data
+         Application.cpp
+         Generating Code...
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\battlestate.cpp(338): warning C4715: 'BattleState::useSkill' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(379): warning C4715: 'GameplayState::getcollision' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(567): warning C4715: 'GameplayState::getTrainerPosition' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(545): warning C4715: 'GameplayState::trainerBattleCollision' : not all control paths return a value
        Link:
          H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" /LIBPATH:"H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Background.obj
@@ -25,6 +40,7 @@
          Debug\FileLoader.obj
          Debug\GameplayState.obj
          Debug\Gamestate.obj
+         Debug\Helpstate.obj
          Debug\Manager.obj
          Debug\Maptile.obj
          Debug\Moemon.obj
@@ -39,9 +55,23 @@
          Debug\Timer.obj
          Debug\Titlestate.obj
          Debug\Trainer.obj
+     1>Trainer.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Trainer.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Timer.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Timer.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Time.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Time.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Tile.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Tile.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Text.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Text.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>SkillStorage.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'SkillStorage.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Skill.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Skill.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Player.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Player.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>MoemonStorage.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'MoemonStorage.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Moemon.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Moemon.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Maptile.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Maptile.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>FileLoader.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'FileLoader.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Entity.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Entity.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
+     1>Background.obj : warning LNK4099: PDB 'vc120.pdb' was not found with 'Background.obj' or at 'C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\vc120.pdb'; linking object as if no debug info
          SDL.vcxproj -> C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe
      1>Done Building Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" (Build target(s)).
 
 Build succeeded.
 
-Time Elapsed 00:00:00.97
+Time Elapsed 00:00:04.91

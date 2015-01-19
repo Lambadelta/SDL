@@ -80,6 +80,7 @@
     <ClCompile Include="FileLoader.cpp" />
     <ClCompile Include="GameplayState.cpp" />
     <ClCompile Include="Gamestate.cpp" />
+    <ClCompile Include="Helpstate.cpp" />
     <ClCompile Include="Manager.cpp" />
     <ClCompile Include="Maptile.cpp" />
     <ClCompile Include="Moemon.cpp" />
@@ -104,6 +105,7 @@
     <ClInclude Include="FileLoader.h" />
     <ClInclude Include="GameplayState.h" />
     <ClInclude Include="Gamestate.h" />
+    <ClInclude Include="Helpstate.h" />
     <ClInclude Include="Manager.h" />
     <ClInclude Include="Maptile.h" />
     <ClInclude Include="Moemon.h" />

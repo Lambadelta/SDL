@@ -85,10 +85,14 @@ bool GameplayState::EventHandle()
 		switch (eve.type)
 		{
 		case SDL_QUIT:
+			SDL_Quit();
 			break;
 		case SDL_KEYDOWN:
 			switch (eve.key.keysym.sym) 
 			{
+			case SDLK_ESCAPE:
+				GSManager->Add(new Helpstate(GSManager, renderer));
+				break;
 			case SDLK_w:
 				getcollision(getposition() - 39, "");
 				healMoemon(getposition() - 39);
@@ -113,13 +117,7 @@ bool GameplayState::EventHandle()
 				PlayerEntity->callMoveLeft(true, AnimTime, Mapx, speed);
 				wildEncounter();
 				break;
-			case SDLK_k:
-				//GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, wild));
-				//GSManager->Add(new BattleState(GSManager, renderer, PlayerEntity, &TrainerList[0]));
 
-				int debug = getposition();
-				std::cout << debug << std::endl;
-				break;
 			}
 		}
 	}
