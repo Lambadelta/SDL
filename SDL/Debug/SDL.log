@@ -1,18 +1,21 @@
-﻿Build started 19/01/2015 04:48:12.
+﻿Build started 19/01/2015 07:11:31.
      1>Project "C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\SDL\SDL.vcxproj" on node 2 (Build target(s)).
      1>ClCompile:
          H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\CL.exe /c /I"C:\SDKs\SDL\SDL2-2.0.3\include" /I"H:\Visual Studio\SDK\SDL2-2.0.3\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MD /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt GameplayState.cpp
          GameplayState.cpp
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(333): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(336): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(337): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(338): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(339): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(360): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(362): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(427): warning C4018: '<' : signed/unsigned mismatch
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(316): warning C4715: 'GameplayState::getcollision' : not all control paths return a value
-     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(409): warning C4715: 'GameplayState::trainerBattleCollision' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(398): warning C4244: 'initializing' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(401): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(402): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(403): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(404): warning C4244: 'argument' : conversion from 'float' to 'unsigned int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(425): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(427): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(441): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(443): warning C4244: 'argument' : conversion from 'float' to 'int', possible loss of data
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(582): warning C4018: '<' : signed/unsigned mismatch
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(381): warning C4715: 'GameplayState::getcollision' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(574): warning C4715: 'GameplayState::getTrainerPosition' : not all control paths return a value
+     1>c:\users\lambadelta\documents\visual studio 2013\projects\sdl\sdl\gameplaystate.cpp(552): warning C4715: 'GameplayState::trainerBattleCollision' : not all control paths return a value
        Link:
          H:\Program Files (x86)\Microsoft Sutdio 2013\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\SDKs\SDL\SDL2-2.0.3\lib\x86" /LIBPATH:"H:\Visual Studio\SDK\SDL2-2.0.3\lib\x86" SDL2.lib SDL2main.lib SDL2_image.lib SDL2_mixer.lib SDL2_ttf.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\Lambadelta\Documents\Visual Studio 2013\Projects\SDL\Debug\SDL.lib" /MACHINE:X86 Debug\Application.obj
          Debug\Background.obj
@@ -41,4 +44,4 @@
 
 Build succeeded.
 
-Time Elapsed 00:00:00.91
+Time Elapsed 00:00:00.97

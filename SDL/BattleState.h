@@ -16,6 +16,7 @@ class BattleState : public Gamestate
 public:
 	BattleState(Manager*, SDL_Renderer*, Player*, Moemon*);
 	BattleState(Manager*, SDL_Renderer*, Player*, Trainer* );
+	BattleState(Manager*, SDL_Renderer*, Player*, Trainer*,bool);
 	~BattleState();
 
 	bool EventHandle();
@@ -44,6 +45,7 @@ private:
 	bool PlayerTurn;
 	int EnemySelection;
 	int AnimationCount = 0;
+	bool GymBattle;
 	Timer* PlayerAnim;
 	Background* Backgrounds;
 	Background* Menu;

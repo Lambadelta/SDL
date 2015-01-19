@@ -4,15 +4,15 @@
 02 01 03 12 07 01 02 18 05 01 02 ,Asset/Entity/Trainers/BugCatcher.png;
 03 01 00 30 08 01 02 25 08 01 02 ,Asset/Entity/Trainers/MaleScientist.png;
 04 01 09 11 06 01 02 13 09 01 02 ,Asset/Entity/Trainers/YoungBoy.png;
-05 03 05 20 10 01 02 19 10 01 02 ,Asset/Entity/Trainers/YoungScientist.png;
-06 01 04 25 14 19 19 25 12 19 19 ,Asset/Entity/Trainers/MartialArtist.png;
-07 01 05 27 15 01 02 27 17 01 02 ,Asset/Entity/Trainers/YoungScientist.png;
-08 03 04 17 16 01 02 13 15 01 02 ,Asset/Entity/Trainers/MartialArtist.png;
-09 01 07 11 15 01 02 13 18 01 02 ,Asset/Entity/Trainers/PsychicWoman.png;
-10 03 08 11 19 01 02 13 20 01 02 ,Asset/Entity/Trainers/PsychicMan.png;
-11 03 07 11 20 01 02 13 21 01 02 ,Asset/Entity/Trainers/PsychicWoman.png;
-12 01 08 11 21 01 02 13 22 01 02 ,Asset/Entity/Trainers/PsychicMan.png;
-13 00 06 11 25 01 02 11 27 01 02 ,Asset/Entity/Trainers/GymLeader.png;
+05 03 05 20 07 01 02 19 05 01 02 ,Asset/Entity/Trainers/YoungScientist.png;
+06 01 04 25 04 19 19 25 02 19 19 ,Asset/Entity/Trainers/MartialArtist.png;
+07 01 05 27 05 01 02 27 07 01 02 ,Asset/Entity/Trainers/YoungScientist.png;
+08 03 04 17 06 01 02 13 05 01 02 ,Asset/Entity/Trainers/MartialArtist.png;
+09 01 07 11 05 01 02 13 08 01 02 ,Asset/Entity/Trainers/PsychicWoman.png;
+10 03 08 31 09 01 02 32 10 01 02 ,Asset/Entity/Trainers/PsychicMan.png;
+11 03 07 32 10 01 02 31 11 01 02 ,Asset/Entity/Trainers/PsychicWoman.png;
+12 01 08 31 11 01 02 28 12 01 02 ,Asset/Entity/Trainers/PsychicMan.png;
+13 00 06 33 15 01 02 34 17 01 02 ,Asset/Entity/Trainers/GymLeader.png;
 14 00 00 00 00 00 00 00 00 00 00 ,Asset/Entity/Trainers/Dummy.png;
 
 /*

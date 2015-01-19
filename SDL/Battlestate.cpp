@@ -6,6 +6,7 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	PEntity = player;
 	TEntity = trainer;
 	Wild = NULL;
+	GymBattle = false;
 	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
 	init();
 }
@@ -14,15 +15,25 @@ BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* pla
 	renderer = Renderer;
 	PEntity = player;
 	Wild = new MoeMonStorage();
+	GymBattle = false;
 	Wild->add(wildMoemon, wildMoemon->getLevel());
 	BattleTheme = Mix_LoadMUS("Asset/Music/WildBattle.wav");
 	TEntity = new Trainer(Wild, "", renderer);
 	init();
 }
 
+BattleState::BattleState(Manager* GSManager, SDL_Renderer* Renderer, Player* player, Trainer* trainer, bool gymLeader) : Gamestate(GSManager, Renderer)
+{
+	renderer = Renderer;
+	PEntity = player;
+	TEntity = trainer;
+	GymBattle = gymLeader;
+	BattleTheme = Mix_LoadMUS("Asset/Music/LeaderTheme.wav");
+	init();
+}
+
 BattleState::~BattleState()
 {
-	Mix_HaltMusic();
 	Mix_FreeMusic(BattleTheme);
 	delete PlayerAnim;
 	delete Backgrounds;
@@ -373,7 +384,14 @@ void BattleState::checkPDefeat()
 		}
 		else
 		{
-			GSManager->Change(new Titlestate(GSManager, renderer));
+			if (GymBattle == true)
+			{
+				GSManager->Change(new Creditsstate(GSManager, renderer));
+			}
+			else
+			{
+				GSManager->Change(new Titlestate(GSManager, renderer));
+			}
 		}
 
 
@@ -396,13 +414,14 @@ void BattleState::checkTDefeat()
 		{
 			TEntity->setDefeated(true);
 			PEntity->getBag()->get(PEMoemonNum)->addEXP((TEntity->getBag()->get(TEMoemonNum)->getLevel() / PEntity->getBag()->get(PEMoemonNum)->getLevel()) * 10);
-			for (int i = 0; i < TEntity->getStorageSize(); i++)
+			if (GymBattle == true)
 			{
-				TEntity->getBag()->get(i)->cleanup();
-
+				GSManager->Change(new Creditsstate(GSManager, renderer));
 			}
-			
-			GSManager->RemoveLast();
+			else
+			{
+				GSManager->RemoveLast();
+			}
 		}
 	}
 }

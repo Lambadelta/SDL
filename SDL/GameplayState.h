@@ -48,7 +48,11 @@ private:
 	std::vector<Maptile> VillageOB;
 	std::vector<Maptile> Town;
 	std::vector<Maptile> TownOB;
+	std::vector<Maptile> Gym;
+	std::vector<Maptile> GymOB;
+	std::vector<Maptile> GymOW;
 	std::vector<Trainer*> TrainerMap1;
+	std::vector<Trainer*> TrainerMap2;
 	///A Player object 
 	Player* PlayerEntity;
 	///A background object (subject to change)
@@ -66,6 +70,8 @@ private:
 	SDL_Rect trainerBattleTest;
 	int Mapx = 0;
 	int Mapy = 0;
+	int PreviousMapx;
+	int PreviousMapy;
 	int SCREEN_WIDTH;
 	int SCREEN_HEIGHT;
 
