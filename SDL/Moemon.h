@@ -34,16 +34,57 @@ public:
 	@param std::string - Contains the Moemon's type
 	*/
 	Moemon(int, int, int, int, int, int , int, int , std::string, std::string, std::string, SDL_Renderer*);
+	/**
+	@brief A method to create a clone of this MoeMon
+
+	Used to create unique versions of all the Moemon to prevent them sharing health, or other values.
+
+	@Returns Moemon* - A pointer to a new clone of this Moemon.
+
+	*/
 	virtual Moemon* clone(){ return new Moemon(*this); };
 	/**
 	@brief A method to set if the moemon is shiny
 	
 	*/
 	void setShiny();
+	/**
+	@brief A method to set the level of the Moemon
+
+	Will modify the stats based on the new level given.
+
+	@param int - An int containing the new level
+
+	*/
 	void setLevel(int);
+	/**
+	@brief A method to change the health of the Moemon
+
+	Used to apply damage from the Battlestate.
+
+	@param int - An int containing the amount to remove from health.
+
+	*/
 	void setHealth(int i) { Health -= i; };
+	/**
+	@brief A method to set the Moemon to full health
+
+	Used for healing Moemon, and for future expansion of the MoeCenter system.
+
+	*/
 	void fullHeal() { Health = maxHealth; };
+	/**
+	@brief A method to draw the sprite of the Moemon.
+
+	@param SDL_Renderer* - A pointer to the renderer where the Moemon will be drawn to.
+
+	*/
 	void callDraw(SDL_Renderer*);
+	/**
+	@brief A method to set the Moemon a new Rect
+
+	@param SDL_Rect
+	*/
 	void setDescRect(SDL_Rect);
 	void setEnemy();
 	void cleanup();

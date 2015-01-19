@@ -1,3 +1,31 @@
+2015-01-19 07:40:32 +0000 - Harry Friend: Added ingame help menu
+Press esc for an ingame help menu
+
+
+2015-01-19 07:15:33 +0000 - Harry Friend: Gym Created
+Final map finished
+Gym created
+Trainers placed in gym
+Gym leader placed
+Gym tested
+When gym leader is defeated goes to credit screen.
+
+
+2015-01-19 04:54:14 +0000 - Harry Friend: Trainers Fixed
+Trainers can now fight the player
+Trainers once beaten will not be fightable again.
+Added field health station sigh. Click to heal.
+Given battles two different themes depending on if the fight is against
+a trainer or a wild moemon.
+#TO DO#
+Finish final map
+
+
+2015-01-19 01:28:27 +0000 - Harry Friend: Added second map
+Added new sprites
+Added second map
+
+
 2015-01-18 16:06:38 +0000 - Harry Friend: Fixed issues with moemon
 Moemon now create new instances of themselves for trainers to prevent
 them sharing a health pool.

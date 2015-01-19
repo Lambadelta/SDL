@@ -12,10 +12,6 @@ Maptile::Maptile(int ind, int xpos, int ypos,int type)
 	rect.h = 32;
 }
 
-Maptile::~Maptile()
-{
-
-}
 
 int Maptile::getx()
 {
