@@ -1,9 +1,12 @@
-SDL
+SDL assignment for my 2nd year of Games Programming at Bournemouth University
 ===
 
-Programming for Graphic and Games
+Unit : Programming for Graphic and Games
 
 ===
+
+The code is very buggy, and was mostly left unfinished. It is a small game based off the fan mod for Pokemon called Moemon. The sprites used have been reference please check it for the list of known artists for the sprites. Other than the sprites were used belonging to Game Freak, and The Pokemon Company. These sprites belong to them, and are used under fair usage for use in education.
+
 
 											###TO DO###
 											
@@ -12,7 +15,6 @@ Programming for Graphic and Games
 ***Implement Trainers
 
 	** Give trainers names.
-	** Give trainers sprites.
 	
 ***Implement Battles
 
